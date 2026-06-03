@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Medbeds — SignalWatch Theory Export</title>
+  <style>
+:root { color-scheme: dark; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+       background: #0f1419; color: #e6edf3; margin: 0; padding: 1.5rem 2rem; line-height: 1.5; }
+h1 { font-size: 1.6rem; margin: 0 0 0.35rem 0; color: #fff; }
+h2 { font-size: 1.05rem; margin: 1.8rem 0 0.6rem 0; color: #79c0ff;
+     border-bottom: 1px solid #30363d; padding-bottom: 0.3rem; }
+h3 { font-size: 0.85rem; margin: 1rem 0 0.4rem 0; color: #adbac7;
+     text-transform: uppercase; letter-spacing: 0.05em; }
+a { color: #58a6ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: #8b949e; font-size: 0.82rem; }
+.tags span { display: inline-block; background: #21262d; border: 1px solid #30363d;
+             padding: 0.15rem 0.55rem; border-radius: 3px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 6px;
+        padding: 0.85rem 1rem; }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: #8b949e; }
+.kv .v { color: #e6edf3; text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.4rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem;
+        margin-top: 0.5rem; }
+th, td { padding: 0.3rem 0.45rem; border-bottom: 1px solid #21262d;
+         vertical-align: top; text-align: left; }
+th { color: #8b949e; font-weight: 500; text-transform: uppercase;
+     letter-spacing: 0.04em; font-size: 0.7rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #f85149; }
+td.lean-neg { color: #58a6ff; }
+.podcast { background: #1c2128; border: 1px solid #30363d; border-radius: 6px;
+           padding: 0.6rem 0.85rem; margin: 0.6rem 0; }
+.podcast .lbl { color: #8b949e; font-size: 0.74rem; text-transform: uppercase;
+                letter-spacing: 0.05em; }
+.footer { color: #6e7681; font-size: 0.74rem; margin-top: 2rem;
+          border-top: 1px solid #21262d; padding-top: 0.8rem; }
+pre { background: #161b22; border: 1px solid #30363d; border-radius: 6px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.78rem; color: #adbac7; }
+.section-empty { color: #6e7681; font-style: italic; font-size: 0.85rem; }
+</style>
+</head>
+<body>
+  <h1>Medbeds</h1>
+  <div class="meta">Exported 2026-06-03 16:49:03 UTC · theory_id <code>cf4651f1-db5c-4fe2-9614-a4935a8e2e9e</code></div>
+  <div class="podcast"><span class="lbl">🎙️ Podcast:</span> <a href="https://open.spotify.com/episode/4hoEBldQLqWuYxB7sapYkk?si=qr6yK6LeQuSl-sa68YYz4A" target="_blank">https://open.spotify.com/episode/4hoEBldQLqWuYxB7sapYkk?si=qr6yK6LeQuSl-sa68YYz4A</a></div>
+
+  <h2>Overview</h2>
+  
+    <div class="grid">
+      <div class="card"><h3>Power components (v2)</h3><div class="kv"><div class="k">log atoms</div><div class="v">0.262</div><div class="k">log videos</div><div class="v">0.193</div><div class="k">log influencers</div><div class="v">0.302</div><div class="k">log views</div><div class="v">0.361</div><div class="k">recency</div><div class="v">0.218</div><div class="k">platform diversity</div><div class="v">0.75</div><div class="k">bimodality bonus</div><div class="v">0.0</div></div></div>
+      <div class="card"><h3>Activity</h3><div class="kv"><div class="k">First atom</div><div class="v">2026-05-31</div><div class="k">Last activity</div><div class="v">2026-06-02</div><div class="k">Growth trend</div><div class="v">rising</div><div class="k">Last 7d atoms</div><div class="v">11 (vs 0 prior)</div><div class="k">Last 30d atoms</div><div class="v">11</div></div></div>
+      <div class="card"><h3>Counts</h3><div class="kv"><div class="k">Total atoms</div><div class="v">11</div><div class="k">Political atoms</div><div class="v">5</div><div class="k">Videos</div><div class="v">4</div><div class="k">Distinct influencers</div><div class="v">4</div><div class="k">Believer channels</div><div class="v">7</div><div class="k">Critic channels</div><div class="v">0</div><div class="k">Signal flashes</div><div class="v">0</div><div class="k">BTN connections</div><div class="v">0</div><div class="k">Curated evidence</div><div class="v">7</div></div></div>
+      <div class="card"><h3>Lean profile</h3><div class="kv"><div class="k">Centroid</div><div class="v">0.25460026</div><div class="k">Polarization (σ)</div><div class="v">0.53660864</div><div class="k">Bimodality (BC)</div><div class="v">—</div><div class="k">Interpretation</div><div class="v">thin sample — directional only</div></div></div>
+      <div class="card"><h3>Engagement</h3><div class="kv"><div class="k">Total views (linked videos)</div><div class="v">1734</div><div class="k">Max view (single video)</div><div class="v">1734</div></div></div>
+    </div>
+    
+
+  <h2>Write-up</h2>
+  <h3>Voice of the Believer — Summary</h3><div>Advanced medical beds — drawing on alien and suppressed military technology — can cure every known disease, regenerate organs, and reverse aging. The medical establishment has buried this technology to protect its profits and control over human health. These devices will be made available to all of humanity following the Great Awakening, ending the era of pharmaceutical dependency and manufactured illness.</div>
+<h3>Full description</h3><div>Medbeds are advanced healing devices capable of curing any disease, regrowing limbs, reversing aging, and restoring full physical and neurological health — outcomes the conventional medical system insists are impossible. The technology originates from either extraterrestrial sources shared with or recovered by military programs, or from classified government research deliberately kept from the public. What the mainstream medical establishment presents as the outer limit of human healing is, in fact, an artificially imposed ceiling designed to keep people sick, dependent on pharmaceutical products, and financially captive to a system that profits from perpetual treatment rather than cure.
+
+The suppression of medbed technology is not incidental — it is structural. The medical establishment, pharmaceutical industry, and the institutions that regulate them have collectively ensured that these devices remain hidden from the public. Clinics and products that invoke the medbed concept exist on the margins precisely because the system works to prevent any genuine competitor to its illness-management model. The technology exists and functions; its absence from hospitals and doctors&#x27; offices is a choice made by those who benefit from its absence.
+
+Release of medbeds is bound to the broader unfolding of the Great Awakening — the global revelation of hidden truths and the dismantling of corrupt power structures that have governed human life for generations. When that moment arrives, medbeds will be deployed widely, giving every person access to genuine healing for the first time. The rollout is not a matter of scientific development but of liberation: the technology is already complete; humanity is simply waiting for the conditions under which those who have suppressed it lose the power to do so.</div>
+<h3>Core claims</h3><ul class="claims"><li>Medbeds are real, fully functional medical devices capable of curing all known diseases.</li><li>Medbeds can regenerate organs, reverse aging, and restore neurological function.</li><li>The technology originates from extraterrestrial sources or classified military programs.</li><li>The medical establishment and pharmaceutical industry have suppressed medbed technology to protect their profits.</li><li>Regulatory and institutional structures are complicit in keeping medbeds away from the public.</li><li>Medbeds will be released and made universally available following the Great Awakening.</li><li>The Great Awakening is the prerequisite event — once corrupt power structures fall, the technology will be deployed.</li><li>Current mainstream medicine represents an artificially maintained limitation, not the true frontier of human healing.</li></ul>
+<h3>Voice of Reason — Claude analytical rebuttal</h3><div>The medbed theory asserts that fully functional medical devices exist capable of curing all diseases, regenerating organs, reversing aging, and restoring complete health through technology derived from extraterrestrial sources or classified military programs. This technology is allegedly being deliberately withheld from public access by the medical and pharmaceutical establishment to preserve profit streams from ongoing treatment. The devices will purportedly become available only after a prophesied societal transformation called the Great Awakening dismantles existing power structures.
+
+No evidence supports the existence of these devices. No patents, no leaked schematics, no whistleblowers with verifiable credentials, no physical prototypes available for independent examination. The theory operates entirely in the unfalsifiable space of &quot;secret technology&quot; that cannot be demonstrated precisely because it is supposedly being suppressed. When businesses market &quot;medbed&quot; products or services, they invariably offer conventional wellness treatments rebranded with futuristic language, or they simply take deposits for devices that never materialize. The burden of proof for extraordinary claims rests with those making them, and that burden has not been remotely met. The invocation of alien technology conveniently places the origin beyond any documentation or chain of custody that could be verified. The conditional release tied to the Great Awakening creates a permanent excuse for why the technology remains unavailable: the promised future event has no defined criteria or timeline, allowing believers to maintain faith indefinitely regardless of contrary evidence.
+
+The theory&#x27;s resonance stems from legitimate frustrations with the healthcare system. Medical bankruptcies are common in the United States. Pharmaceutical companies do engage in price gouging and have suppressed unfavorable research. Chronic diseases receive more investment than preventive medicine because treatment generates recurring revenue. The opioid epidemic demonstrated that profit motives can override patient welfare systematically and at scale. Real people experience the medical system as labyrinthine, expensive, sometimes indifferent, and oriented toward managing conditions rather than curing them. The medbed narrative transforms this complex institutional failure into a simple story: the system could cure you but chooses not to. This conspiracy reframes structural problems as intentional malevolence, offering both an explanation for suffering and a promise of future redemption that requires no concrete action in the present.
+
+Documented harms include financial exploitation of vulnerable people, particularly those with serious illnesses or disabled family members, who pay for nonexistent treatments or reserve spots for devices that will never arrive. The theory also encourages medical delay or abandonment, with believers postponing or refusing conventional treatment while waiting for medbed access. Online communities reinforce this behavior, framing skepticism as evidence of corruption and positioning desperate hope as discernment. The promise of miraculous future healing provides comfort while enabling present suffering to continue unaddressed.</div>
+
+  <h2>Lean atoms (top 5)</h2>
+  
+    <table>
+      <thead><tr>
+        <th>Claim</th><th>Lean</th><th>Stance</th><th>Platform</th><th>Source</th>
+      </tr></thead>
+      <tbody><tr><td>The CE-5 Initiative is a peaceful contact with extraterrestrial beings</td><td class="num lean-pos">+0.477</td><td></td><td>youtube</td><td><a href="https://www.youtube.com/watch?v=RD55W4Hp3hg" target="_blank">What They Saw Changed Their Lives Forever! Ground Breaking NEW FOOTAGE</a></td></tr><tr><td>The white hats have been working to counteract the deep state for thousands of years</td><td class="num lean-pos">+0.315</td><td></td><td>youtube</td><td><a href="https://www.youtube.com/watch?v=JEa-iGPynlY" target="_blank">Ismael Perez in-depth conversation with Simon Parkes.</a></td></tr><tr><td>The deep state is trying to undermine Trump&#x27;s efforts at every turn</td><td class="num lean-pos">+0.198</td><td></td><td>odysee</td><td><a href="https://odysee.com/16Apr26:4ff9e53b7820b62cc92ee2ea6cd4ad7f5a9107d1" target="_blank">FULL THURSDAY EDITION OF THE ALEX JONES SHOW: Trump Secures 10-Day Cea</a></td></tr><tr><td>The Trump administration&#x27;s latest moves are to dismantle the deep state.</td><td class="num lean-pos">+0.191</td><td></td><td>bitchute</td><td><a href="https://www.bitchute.com/video/LbNS1t1y6TWb" target="_blank">The Deep State Purge Intensifies (Ep. 2439) - 03/11/2025</a></td></tr><tr><td>There has been a brotherhood of military leaders trying to counteract the deep state for thousands of years</td><td class="num lean-neg">-0.051</td><td></td><td>youtube</td><td><a href="https://www.youtube.com/watch?v=JEa-iGPynlY" target="_blank">Ismael Perez in-depth conversation with Simon Parkes.</a></td></tr></tbody>
+    </table>
+    
+
+  <h2>Influencers</h2>
+  
+    <table>
+      <thead><tr>
+        <th>Influencer</th><th>Type</th><th>Classification</th>
+        <th class="num">Content</th><th class="num">Atoms</th>
+      </tr></thead>
+      <tbody><tr><td>Richard Dolan</td><td>podcaster</td><td>believer</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Alex Jones</td><td></td><td>believer</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Julie Green</td><td>preacher</td><td>believer</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Dr. Steven Greer</td><td>youtuber</td><td>believer</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Ismael Perez</td><td>youtuber</td><td>believer</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Tommy Truthful</td><td>alt_media_host</td><td>believer</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Wendigoon</td><td>youtuber</td><td>believer</td><td class="num">0</td><td class="num">0</td></tr></tbody>
+    </table>
+    
+
+  <div class="footer">
+    Generated by SignalWatch Collector ·
+    open the JSON sibling export for the raw structured data.
+  </div>
+</body>
+</html>
