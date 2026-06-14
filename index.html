@@ -1,20 +1,204 @@
-<!doctype html>
-<html lang="en" data-look="aurora">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SignalWatch — Daily Intelligence Edition</title>
-    <meta name="description" content="SignalWatch tracks how conspiracy narratives form and spread — a daily intelligence brief." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <!-- Data: generated at publish time by publish_site.py (window.SIGNALWATCH_DATA).
-         Absent in local dev -> the app falls back to fetching /api/site-data. -->
-    <script src="./data.js"></script>
-    <script type="module" crossorigin src="./assets/index-D4vOS-N_.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-kr-ZOmwY.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SignalWatch — Intelligence Products</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--border:#30363d;--fg:#e6edf3;--muted:#8b949e;
+--accent:#58a6ff;--warn:#d29922;--bad:#f85149;--good:#3fb950;--chip:#21262d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;padding:0 0 80px}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--border);padding:28px 0 20px;margin-bottom:8px}
+h1{font-size:30px;margin:0 0 6px}.hook{color:var(--muted);font-size:17px;margin:0}
+.meta{color:var(--muted);font-size:13px;margin-top:12px}
+.cii{display:inline-block;background:var(--chip);border:1px solid var(--border);
+border-radius:6px;padding:4px 10px;margin-right:8px;font-size:13px}
+section{margin:28px 0}h2{font-size:20px;border-bottom:1px solid var(--border);
+padding-bottom:6px;margin:0 0 14px}
+.digest{background:var(--card);border:1px solid var(--border);border-radius:8px;
+padding:16px 18px;color:#cdd9e5}
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;
+padding:14px 16px;margin-bottom:12px}
+.card h3{margin:0 0 6px;font-size:16px}
+.row{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{background:var(--chip);border:1px solid var(--border);border-radius:5px;
+padding:2px 8px;font-size:12px;color:var(--muted)}
+.tier{font-weight:600}.tier.high,.tier.surge{color:var(--bad)}
+.tier.elevated,.tier.rising{color:var(--warn)}.tier.moderate{color:var(--good)}
+.summary{color:#cdd9e5;margin:6px 0}.match{color:var(--accent);font-size:13px}
+.vc{border-left:3px solid var(--warn)}.fc-false{color:var(--bad)}
+.fc-unverified{color:var(--warn)}.src{font-size:12px;color:var(--muted);
+word-break:break-all}.empty{color:var(--muted);font-style:italic}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--border);
+color:var(--muted);font-size:12px}a{color:var(--accent)}
+
+table{width:100%;border-collapse:collapse;margin-top:8px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--border);font-size:14px}
+th{color:var(--muted)}.big{display:flex;gap:14px;flex-wrap:wrap;margin:18px 0}
+.big a{flex:1;min-width:220px;background:var(--card);border:1px solid var(--border);
+border-radius:8px;padding:18px;text-decoration:none;color:var(--fg)}
+.big a span{display:block;color:var(--muted);font-size:13px;margin-top:4px}</style>
+</head><body><div class="wrap">
+<header><h1>SignalWatch — Intelligence Products</h1>
+<p class="hook">Static snapshots of the SignalWatch information-operations dashboards.</p>
+<div class="meta"><span class="cii">latest snapshot: <b>2026-06-14</b></span></div></header>
+<div class="big">
+  <a href="latest/conspiracy-today.html"><b>Conspiracy Today</b><span>Trending narratives, viral alerts, daily digest</span></a>
+  <a href="latest/behind-the-news.html"><b>Behind The News</b><span>Recent news items connected to tracked theories</span></a>
+  <a href="latest/political-valence.html"><b>Political Valence</b><span>Left/right leaning distribution across theories</span></a>
+  <a href="latest/source-valence.html"><b>Source Valence</b><span>Conspiracy/unreliable news sources ranked by political lean</span></a>
+</div>
+<section><h2>Belief vs Loudness</h2>
+  <div class="digest">
+    <b>Loudness</b> = how much a theory is discussed in our corpus.
+    <b>Belief</b> = polled public adoption. Over the 14 poll-anchored theories:
+    corpus footprint ↔ belief Spearman <b>ρ = +0.58</b>
+    (p = 0.029) — raw loudness
+    partly tracks belief; but the composite Power score ↔ belief <b>ρ = -0.01</b>,
+    so the score is labeled <b>loudness</b>, not a belief tracker
+    (needs ρ ≥ +0.60). Small n — exploratory. Why they differ &amp; our gaps:
+    docs/belief_vs_loudness.md.
+  </div>
+</section>
+<section><h2>Individual theories <span class="chip" id="thcount">117</span></h2>
+<input id="thsearch" type="search" placeholder="Search theories by name, category, or threat level…"
+ style="width:100%;box-sizing:border-box;margin:8px 0 4px;padding:9px 12px;background:var(--card);
+ border:1px solid var(--border);border-radius:8px;color:var(--fg);font-size:14px">
+<table id="thtable"><thead><tr><th>Theory</th><th>Threat</th><th>Atoms</th><th>Power</th></tr></thead>
+<tbody>
+<tr data-search="2025 launched with coordinated deep state psychological operations  informational"><td><a href="latest/theories/viral-bitchute-rumble-2025-launched-with-coordinated-deep-state-psychological-op.html">2025 launched with coordinated deep state psychological operations</a></td><td>informational</td><td>245</td><td>66</td></tr>
+<tr data-search="2026 digital simulation sync phenomenon  informational"><td><a href="latest/theories/2026-digital-simulation-sync-phenomenon.html">2026 Digital Simulation Sync Phenomenon</a></td><td>informational</td><td>3</td><td>30</td></tr>
+<tr data-search="2026 mass psyop coordination theory  informational"><td><a href="latest/theories/2026-mass-psyop-coordination-theory.html">2026 Mass Psyop Coordination Theory</a></td><td>informational</td><td>44</td><td>9</td></tr>
+<tr data-search="3i/atlas interstellar fuel budget conspiracy  informational"><td><a href="latest/theories/3i-atlas-interstellar-fuel-budget-conspiracy.html">3I/ATLAS Interstellar Fuel Budget Conspiracy</a></td><td>informational</td><td>89</td><td>9</td></tr>
+<tr data-search="5g/covid connection  moderate"><td><a href="latest/theories/5g-covid-connection.html">5G/COVID Connection</a></td><td>moderate</td><td>83</td><td>23</td></tr>
+<tr data-search="9/11 trutherism  low"><td><a href="latest/theories/9-11-trutherism.html">9/11 Trutherism</a></td><td>low</td><td>304</td><td>58</td></tr>
+<tr data-search="adrenochrome harvesting  moderate"><td><a href="latest/theories/adrenochrome-harvesting.html">Adrenochrome Harvesting</a></td><td>moderate</td><td>69</td><td>26</td></tr>
+<tr data-search="ai portal alien summoning theory  informational"><td><a href="latest/theories/ai-portal-alien-summoning-theory.html">AI Portal Alien Summoning Theory</a></td><td>informational</td><td>27</td><td>35</td></tr>
+<tr data-search="area 51/ufo coverup  informational"><td><a href="latest/theories/area-51-ufo-coverup.html">Area 51/UFO Coverup</a></td><td>informational</td><td>885</td><td>64</td></tr>
+<tr data-search="artemis ii hoax  high"><td><a href="latest/theories/artemis-ii-hoax.html">Artemis II Hoax</a></td><td>high</td><td>58</td><td>22</td></tr>
+<tr data-search="baba vanga 2026 hantavirus prophecy  low"><td><a href="latest/theories/baba-vanga-2026-hantavirus-prophecy.html">Baba Vanga 2026 Hantavirus Prophecy</a></td><td>low</td><td>161</td><td>38</td></tr>
+<tr data-search="ballot harvesting  moderate"><td><a href="latest/theories/ballot-harvesting.html">Ballot Harvesting</a></td><td>moderate</td><td>120</td><td>57</td></tr>
+<tr data-search="barron trump time travel conspiracy  informational"><td><a href="latest/theories/barron-trump-time-travel-conspiracy.html">Barron Trump Time Travel Conspiracy</a></td><td>informational</td><td>233</td><td>91</td></tr>
+<tr data-search="beneath the pyramids  informational"><td><a href="latest/theories/beneath-the-pyramids.html">Beneath the Pyramids</a></td><td>informational</td><td>60</td><td>52</td></tr>
+<tr data-search="big pharma suppression  moderate"><td><a href="latest/theories/big-pharma-suppression.html">Big Pharma Suppression</a></td><td>moderate</td><td>107</td><td>34</td></tr>
+<tr data-search="bill gates microchip  moderate"><td><a href="latest/theories/bill-gates-microchip.html">Bill Gates Microchip</a></td><td>moderate</td><td>199</td><td>75</td></tr>
+<tr data-search="body double theory  informational"><td><a href="latest/theories/body-double-theory.html">Body Double Theory</a></td><td>informational</td><td>42</td><td>11</td></tr>
+<tr data-search="bondi beach mossad false flag  informational"><td><a href="latest/theories/bondi-beach-mossad-false-flag.html">Bondi Beach Mossad False Flag</a></td><td>informational</td><td>158</td><td>39</td></tr>
+<tr data-search="bulga sphere  informational"><td><a href="latest/theories/bulga-sphere.html">Bulga Sphere</a></td><td>informational</td><td>88</td><td>15</td></tr>
+<tr data-search="bush stole the 2000 election  elevated"><td><a href="latest/theories/bush-stole-the-2000-election.html">Bush Stole the 2000 Election</a></td><td>elevated</td><td>30</td><td>16</td></tr>
+<tr data-search="butler shooting staged  elevated"><td><a href="latest/theories/butler-shooting-staged.html">Butler Shooting Staged</a></td><td>elevated</td><td>212</td><td>66</td></tr>
+<tr data-search="cancer cure suppression conspiracy  moderate"><td><a href="latest/theories/cancer-cure-suppression-conspiracy.html">Cancer Cure Suppression Conspiracy</a></td><td>moderate</td><td>106</td><td>36</td></tr>
+<tr data-search="challenger crew still alive  elevated"><td><a href="latest/theories/challenger-crew-still-alive.html">Challenger Crew Still Alive</a></td><td>elevated</td><td>48</td><td>0.3029</td></tr>
+<tr data-search="charlie kirk assassination conspiracy  moderate"><td><a href="latest/theories/charlie-kirk-assassination-conspiracy.html">Charlie Kirk Assassination Conspiracy</a></td><td>moderate</td><td>551</td><td>63</td></tr>
+<tr data-search="charlie kirk staged death cover-up  informational"><td><a href="latest/theories/charlie-kirk-staged-death-cover-up.html">Charlie Kirk Staged Death Cover-Up</a></td><td>informational</td><td>317</td><td>25</td></tr>
+<tr data-search="chemtrails  low"><td><a href="latest/theories/chemtrails.html">Chemtrails</a></td><td>low</td><td>301</td><td>85</td></tr>
+<tr data-search="covid lab leak  informational"><td><a href="latest/theories/covid-lab-leak.html">COVID Lab Leak</a></td><td>informational</td><td>551</td><td>87</td></tr>
+<tr data-search="crisis actors  high"><td><a href="latest/theories/crisis-actors.html">Crisis Actors</a></td><td>high</td><td>276</td><td>59</td></tr>
+<tr data-search="dark forest theory  informational"><td><a href="latest/theories/dark-forest-theory.html">Dark Forest Theory</a></td><td>informational</td><td>45</td><td>3</td></tr>
+<tr data-search="dead people voting  moderate"><td><a href="latest/theories/dead-people-voting.html">Dead People Voting</a></td><td>moderate</td><td>101</td><td>62</td></tr>
+<tr data-search="deep state  moderate"><td><a href="latest/theories/deep-state.html">Deep State</a></td><td>moderate</td><td>341</td><td>95</td></tr>
+<tr data-search="deep state psyop season 2025 theory  informational"><td><a href="latest/theories/deep-state-psyop-season-2025-theory.html">Deep State Psyop Season 2025 Theory</a></td><td>informational</td><td>177</td><td>43</td></tr>
+<tr data-search="degendering parenthood  high"><td><a href="latest/theories/degendering-parenthood.html">Degendering Parenthood</a></td><td>high</td><td>16</td><td>24</td></tr>
+<tr data-search="depopulation agenda  high"><td><a href="latest/theories/depopulation-agenda.html">Depopulation Agenda</a></td><td>high</td><td>134</td><td>67</td></tr>
+<tr data-search="dnc rigged the 2016 primary against bernie  elevated"><td><a href="latest/theories/dnc-rigged-the-2016-primary-against-bernie.html">DNC Rigged the 2016 Primary Against Bernie</a></td><td>elevated</td><td>110</td><td>42</td></tr>
+<tr data-search="dominion voting machines  moderate"><td><a href="latest/theories/dominion-voting-machines.html">Dominion Voting Machines</a></td><td>moderate</td><td>86</td><td>81</td></tr>
+<tr data-search="douma chemical attack was a staged false flag  elevated"><td><a href="latest/theories/douma-chemical-attack-was-a-staged-false-flag.html">Douma Chemical Attack Was a Staged False Flag</a></td><td>elevated</td><td>58</td><td>16</td></tr>
+<tr data-search="elongated skulls  elevated"><td><a href="latest/theories/elongated-skulls-paracas-peru-and-elsewhere-as-evidence-of-a-separate-intelligen.html">Elongated Skulls</a></td><td>elevated</td><td>0</td><td>2</td></tr>
+<tr data-search="emp apocalypse  low"><td><a href="latest/theories/emp-apocalypse.html">EMP Apocalypse</a></td><td>low</td><td>103</td><td>27</td></tr>
+<tr data-search="epstein files conspiracy  moderate"><td><a href="latest/theories/epstein-files-conspiracy.html">Epstein Files Conspiracy</a></td><td>moderate</td><td>778</td><td>94</td></tr>
+<tr data-search="epstein is alive  informational"><td><a href="latest/theories/epstein-is-alive.html">Epstein is Alive</a></td><td>informational</td><td>386</td><td>100</td></tr>
+<tr data-search="fema camps  moderate"><td><a href="latest/theories/fema-camps.html">FEMA Camps</a></td><td>moderate</td><td>38</td><td>20</td></tr>
+<tr data-search="finland does not exist  informational"><td><a href="latest/theories/finland-does-not-exist.html">Finland Does Not Exist</a></td><td>informational</td><td>101</td><td>71</td></tr>
+<tr data-search="flat earth  low"><td><a href="latest/theories/flat-earth.html">Flat Earth</a></td><td>low</td><td>80</td><td>76</td></tr>
+<tr data-search="frazzledrip  moderate"><td><a href="latest/theories/frazzledrip.html">Frazzledrip</a></td><td>moderate</td><td>64</td><td>4</td></tr>
+<tr data-search="gmo ticks alpha-gal meat allergy weapon  moderate"><td><a href="latest/theories/gmo-ticks-alpha-gal-meat-allergy-weapon.html">GMO Ticks Alpha-Gal Meat Allergy Weapon</a></td><td>moderate</td><td>22</td><td>46</td></tr>
+<tr data-search="government, history, and reality are all manipulated - book reveals deep deception  informational"><td><a href="latest/theories/viral-tiktok-government-history-and-reality-are-all-manipulated-book-reveals-dee.html">Government, history, and reality are all manipulated - book reveals deep deception</a></td><td>informational</td><td>113</td><td>97</td></tr>
+<tr data-search="gravity is an internal atomic force  informational"><td><a href="latest/theories/gravity-is-an-internal-atomic-force.html">Gravity Is an Internal Atomic Force</a></td><td>informational</td><td>8</td><td>28</td></tr>
+<tr data-search="gravity is density and buoyancy  informational"><td><a href="latest/theories/gravity-is-density-and-buoyancy.html">Gravity Is Density and Buoyancy</a></td><td>informational</td><td>31</td><td>22</td></tr>
+<tr data-search="great replacement  critical"><td><a href="latest/theories/great-replacement.html">Great Replacement</a></td><td>critical</td><td>66</td><td>77</td></tr>
+<tr data-search="haarp weather control  low"><td><a href="latest/theories/haarp-weather-control.html">HAARP Weather Control</a></td><td>low</td><td>166</td><td>34</td></tr>
+<tr data-search="haitians eating pets  high"><td><a href="latest/theories/haitians-eating-pets.html">Haitians Eating Pets</a></td><td>high</td><td>98</td><td>29</td></tr>
+<tr data-search="hanta means fake or scam in israeli slang  low"><td><a href="latest/theories/hanta-means-fake-or-scam-in-israeli-slang.html">Hanta means fake or scam in Israeli slang</a></td><td>low</td><td>188</td><td>17</td></tr>
+<tr data-search="hantavirus plandemic successor theory  moderate"><td><a href="latest/theories/hantavirus-plandemic-successor-theory.html">Hantavirus Plandemic Successor Theory</a></td><td>moderate</td><td>482</td><td>78</td></tr>
+<tr data-search="high diesel prices staged  informational"><td><a href="latest/theories/high-diesel-prices-staged-psyop.html">High Diesel Prices Staged</a></td><td>informational</td><td>6</td><td>18</td></tr>
+<tr data-search="hollow earth  informational"><td><a href="latest/theories/hollow-earth.html">Hollow Earth</a></td><td>informational</td><td>120</td><td>72</td></tr>
+<tr data-search="hugo chavez/venezuela connection  low"><td><a href="latest/theories/hugo-chavez-venezuela-connection.html">Hugo Chavez/Venezuela Connection</a></td><td>low</td><td>43</td><td>12</td></tr>
+<tr data-search="illuminati card game prophecy (inwo)  low"><td><a href="latest/theories/illuminati-card-game-prophecy.html">Illuminati Card Game Prophecy (INWO)</a></td><td>low</td><td>38</td><td>19</td></tr>
+<tr data-search="illuminati/secret societies  low"><td><a href="latest/theories/illuminati-secret-societies.html">Illuminati/Secret Societies</a></td><td>low</td><td>287</td><td>68</td></tr>
+<tr data-search="iran&#x27;s alleged manipulation of regional climate through radar interference is linked to severe we  informational"><td><a href="latest/theories/iran-s-alleged-manipulation-of-regional-climate-through-radar-interference-is-li.html">Iran&#x27;s alleged manipulation of regional climate through radar interference is linked to severe we</a></td><td>informational</td><td>31</td><td>47</td></tr>
+<tr data-search="jade helm  informational"><td><a href="latest/theories/jade-helm.html">Jade Helm</a></td><td>informational</td><td>60</td><td>6</td></tr>
+<tr data-search="jfk assassination theories  informational"><td><a href="latest/theories/jfk-assassination-theories.html">JFK Assassination Theories</a></td><td>informational</td><td>150</td><td>84</td></tr>
+<tr data-search="jfk jr. alive  low"><td><a href="latest/theories/jfk-jr-alive.html">JFK Jr. Alive</a></td><td>low</td><td>240</td><td>91</td></tr>
+<tr data-search="maha moms  informational"><td><a href="latest/theories/maha-moms.html">MAHA moms</a></td><td>informational</td><td>84</td><td>1</td></tr>
+<tr data-search="martial law imminence  moderate"><td><a href="latest/theories/martial-law-imminence.html">Martial Law Imminence</a></td><td>moderate</td><td>65</td><td>86</td></tr>
+<tr data-search="maui fires directed energy weapon theory  informational"><td><a href="latest/theories/maui-fires-directed-energy-weapon-theory.html">Maui Fires Directed Energy Weapon Theory</a></td><td>informational</td><td>91</td><td>33</td></tr>
+<tr data-search="medbeds  moderate"><td><a href="latest/theories/medbeds.html">Medbeds</a></td><td>moderate</td><td>211</td><td>60</td></tr>
+<tr data-search="microneedle implants theory  informational"><td><a href="latest/theories/microneedle-implants-theory.html">Microneedle Implants Theory</a></td><td>informational</td><td>34</td><td>54</td></tr>
+<tr data-search="minnesota shooting psyop theory  moderate"><td><a href="latest/theories/minnesota-shooting-psyop-theory.html">Minnesota Shooting Psyop Theory</a></td><td>moderate</td><td>16</td><td>56</td></tr>
+<tr data-search="missing scientists  informational"><td><a href="latest/theories/missing-scientists.html">Missing Scientists</a></td><td>informational</td><td>261</td><td>53</td></tr>
+<tr data-search="mkultra (extended)  low"><td><a href="latest/theories/mkultra-extended.html">MKUltra (Extended)</a></td><td>low</td><td>163</td><td>48</td></tr>
+<tr data-search="moon landing hoax  informational"><td><a href="latest/theories/moon-landing-hoax.html">Moon Landing Hoax</a></td><td>informational</td><td>201</td><td>80</td></tr>
+<tr data-search="mrna gene therapy  high"><td><a href="latest/theories/mrna-gene-therapy.html">mRNA Gene Therapy</a></td><td>high</td><td>134</td><td>45</td></tr>
+<tr data-search="mysterious deaths and disappearances linked to america&#x27;s nuclear secrets  informational"><td><a href="latest/theories/mysterious-deaths-and-disappearances-linked-to-america-s-nuclear-secrets.html">Mysterious Deaths and Disappearances Linked to America&#x27;s Nuclear Secrets</a></td><td>informational</td><td>236</td><td>69</td></tr>
+<tr data-search="mysterious pipe  low"><td><a href="latest/theories/mysterious-pipe.html">Mysterious Pipe</a></td><td>low</td><td>0</td><td>13</td></tr>
+<tr data-search="nazi wonder weapons  informational"><td><a href="latest/theories/nazi-wonder-weapons.html">Nazi Wonder Weapons</a></td><td>informational</td><td>102</td><td>90</td></tr>
+<tr data-search="netanyahu is dead  informational"><td><a href="latest/theories/netanyahu-is-dead.html">Netanyahu is Dead</a></td><td>informational</td><td>106</td><td>78</td></tr>
+<tr data-search="new world order  moderate"><td><a href="latest/theories/new-world-order.html">New World Order</a></td><td>moderate</td><td>175</td><td>73</td></tr>
+<tr data-search="newsmax conspiracy theory democrats knicks loss trump  informational"><td><a href="latest/theories/newsmax-conspiracy-theory-democrats-knicks-loss-trump.html">Newsmax conspiracy theory Democrats Knicks loss Trump</a></td><td>informational</td><td>117</td><td>14</td></tr>
+<tr data-search="nick fuentes as a target of persecution  informational"><td><a href="latest/theories/nick-fuentes-as-a-target-of-persecution.html">Nick Fuentes as a Target of Persecution</a></td><td>informational</td><td>242</td><td>37</td></tr>
+<tr data-search="nuclear weapons hoax / atomic weapons do not exist  low"><td><a href="latest/theories/nuclear-weapons-hoax-atomic-weapons-do-not-exist.html">Nuclear Weapons Hoax / Atomic Weapons Do Not Exist</a></td><td>low</td><td>39</td><td>5</td></tr>
+<tr data-search="october 6th attack on israel was a false flag  informational"><td><a href="latest/theories/october-6th-attack-on-israel-was-a-false-flag.html">October 6th Attack on Israel Was A False Flag</a></td><td>informational</td><td>77</td><td>84</td></tr>
+<tr data-search="pfizer hantavirus vaccine side effect  moderate"><td><a href="latest/theories/pfizer-hantavirus-vaccine-side-effect.html">Pfizer Hantavirus Vaccine Side Effect</a></td><td>moderate</td><td>240</td><td>65</td></tr>
+<tr data-search="phantom time hypothesis  informational"><td><a href="latest/theories/phantom-time-hypothesis.html">Phantom Time Hypothesis</a></td><td>informational</td><td>193</td><td>21</td></tr>
+<tr data-search="pizzagate  high"><td><a href="latest/theories/pizzagate.html">Pizzagate</a></td><td>high</td><td>253</td><td>40</td></tr>
+<tr data-search="planet x/nibiru  low"><td><a href="latest/theories/planet-x-nibiru.html">Planet X/Nibiru</a></td><td>low</td><td>198</td><td>74</td></tr>
+<tr data-search="project a119 cultural layer sanitization theory  informational"><td><a href="latest/theories/project-a119-cultural-layer-sanitization-theory.html">Project A119 Cultural Layer Sanitization Theory</a></td><td>informational</td><td>41</td><td>32</td></tr>
+<tr data-search="protocols of the elders of zion  high"><td><a href="latest/theories/protocols-of-the-elders-of-zion.html">Protocols of the Elders of Zion</a></td><td>high</td><td>117</td><td>41</td></tr>
+<tr data-search="qanon  critical"><td><a href="latest/theories/qanon.html">QAnon</a></td><td>critical</td><td>122</td><td>96</td></tr>
+<tr data-search="quantum tartarian reset theory  informational"><td><a href="latest/theories/quantum-tartarian-reset-theory.html">Quantum Tartarian Reset Theory</a></td><td>informational</td><td>10</td><td>59</td></tr>
+<tr data-search="robert harward body double?  low"><td><a href="latest/theories/robert-hayward-body-double.html">Robert Harward Body Double?</a></td><td>low</td><td>103</td><td>50</td></tr>
+<tr data-search="rothschild banking conspiracy  moderate"><td><a href="latest/theories/rothschild-banking-conspiracy.html">Rothschild Banking Conspiracy</a></td><td>moderate</td><td>129</td><td>31</td></tr>
+<tr data-search="russia rigged 2016 voting machines  elevated"><td><a href="latest/theories/russia-rigged-2016-voting-machines.html">Russia Rigged 2016 Voting Machines</a></td><td>elevated</td><td>109</td><td>41</td></tr>
+<tr data-search="sandy hook hoax  critical"><td><a href="latest/theories/sandy-hook-hoax.html">Sandy Hook Hoax</a></td><td>critical</td><td>300</td><td>92</td></tr>
+<tr data-search="save the children (co-opted)  moderate"><td><a href="latest/theories/save-the-children-co-opted.html">Save the Children (Co-opted)</a></td><td>moderate</td><td>42</td><td>10</td></tr>
+<tr data-search="simulation theory  informational"><td><a href="latest/theories/simulation-theory.html">Simulation Theory</a></td><td>informational</td><td>118</td><td>83</td></tr>
+<tr data-search="skywatcher uap detection  informational"><td><a href="latest/theories/skywatcher-uap-detection.html">Skywatcher UAP Detection</a></td><td>informational</td><td>142</td><td>44</td></tr>
+<tr data-search="spielberg ufo disclosure psyop theory  informational"><td><a href="latest/theories/spielberg-ufo-disclosure-psyop-theory.html">Spielberg UFO Disclosure Psyop Theory</a></td><td>informational</td><td>224</td><td>88</td></tr>
+<tr data-search="stop the steal  critical"><td><a href="latest/theories/stop-the-steal.html">Stop the Steal</a></td><td>critical</td><td>269</td><td>99</td></tr>
+<tr data-search="super computer called &quot;sentient&quot; declassified  low"><td><a href="latest/theories/super-computer-called-sentient-declassified.html">Super computer called &quot;Sentient&quot; declassified</a></td><td>low</td><td>21</td><td>47</td></tr>
+<tr data-search="tartarian empire  informational"><td><a href="latest/theories/tartarian-empire.html">Tartarian Empire</a></td><td>informational</td><td>123</td><td>49</td></tr>
+<tr data-search="the baal room  moderate"><td><a href="latest/theories/the-baal-room.html">The Baal Room</a></td><td>moderate</td><td>251</td><td>82</td></tr>
+<tr data-search="the ettore majorana device  informational"><td><a href="latest/theories/the-ettore-majorana-device.html">The Ettore Majorana Device</a></td><td>informational</td><td>0</td><td>8</td></tr>
+<tr data-search="the great reset  moderate"><td><a href="latest/theories/the-great-reset.html">The Great Reset</a></td><td>moderate</td><td>129</td><td>51</td></tr>
+<tr data-search="the storm / great awakening  high"><td><a href="latest/theories/the-storm-great-awakening.html">The Storm / Great Awakening</a></td><td>high</td><td>110</td><td>89</td></tr>
+<tr data-search="torenza passport country hoax  informational"><td><a href="latest/theories/torenza-passport-country-hoax.html">Torenza Passport Country Hoax</a></td><td>informational</td><td>107</td><td>55</td></tr>
+<tr data-search="transing the kids  elevated"><td><a href="latest/theories/transing-the-kids.html">Transing the Kids</a></td><td>elevated</td><td>173</td><td>53</td></tr>
+<tr data-search="transvestigation  moderate"><td><a href="latest/theories/transvestigation.html">Transvestigation</a></td><td>moderate</td><td>65</td><td>61</td></tr>
+<tr data-search="trump assassination attempt was faked  informational"><td><a href="latest/theories/trump-assassination-attempt-was-faked.html">Trump Assassination Attempt was faked</a></td><td>informational</td><td>245</td><td>93</td></tr>
+<tr data-search="trump chemtrails task force operation  informational"><td><a href="latest/theories/trump-chemtrails-task-force-operation.html">Trump Chemtrails Task Force Operation</a></td><td>informational</td><td>161</td><td>97</td></tr>
+<tr data-search="trump mobile palantir surveillance honeytrap  low"><td><a href="latest/theories/trump-mobile-palantir-surveillance-honeytrap.html">Trump Mobile Palantir Surveillance Honeytrap</a></td><td>low</td><td>6</td><td>7</td></tr>
+<tr data-search="trump situation room exclusion theory  informational"><td><a href="latest/theories/trump-situation-room-exclusion-theory.html">Trump Situation Room Exclusion Theory</a></td><td>informational</td><td>294</td><td>79</td></tr>
+<tr data-search="uk muslim grooming gangs &amp; immigrant-crime narrative  elevated"><td><a href="latest/theories/uk-grooming-gangs-narrative.html">UK Muslim Grooming Gangs &amp; immigrant-crime narrative</a></td><td>elevated</td><td>2</td><td>3</td></tr>
+<tr data-search="vaccines cause autism  high"><td><a href="latest/theories/vaccines-cause-autism.html">Vaccines Cause Autism</a></td><td>high</td><td>176</td><td>98</td></tr>
+<tr data-search="whcd security stand-down protocol  informational"><td><a href="latest/theories/whcd-security-stand-down-protocol.html">WHCD Security Stand-Down Protocol</a></td><td>informational</td><td>230</td><td>72</td></tr>
+<tr data-search="woke hate group manufacturing scandal  informational"><td><a href="latest/theories/woke-hate-group-manufacturing-scandal.html">Woke Hate Group Manufacturing Scandal</a></td><td>informational</td><td>20</td><td>28</td></tr>
+<tr data-search="zog (zionist occupied government)  critical"><td><a href="latest/theories/zog-zionist-occupied-government.html">ZOG (Zionist Occupied Government)</a></td><td>critical</td><td>137</td><td>70</td></tr></tbody></table>
+<p id="thnone" style="display:none;color:var(--muted);font-size:14px;margin-top:10px">No theories match.</p></section>
+<footer>Generated 2026-06-14 · dated snapshots under each section's folder · freshest copy in <code>latest/</code></footer>
+<script>
+(function(){
+  var box=document.getElementById('thsearch'),
+      rows=Array.prototype.slice.call(document.querySelectorAll('#thtable tbody tr')),
+      cnt=document.getElementById('thcount'), none=document.getElementById('thnone');
+  function apply(){
+    var q=box.value.trim().toLowerCase(), n=0;
+    rows.forEach(function(r){
+      var hit=!q||(r.getAttribute('data-search')||'').indexOf(q)!==-1;
+      r.style.display=hit?'':'none'; if(hit)n++;
+    });
+    cnt.textContent=n; none.style.display=n?'none':'';
+  }
+  box.addEventListener('input',apply);
+})();
+</script>
+</div></body></html>
