@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Challenger Crew Still Alive — SignalWatch</title>
+  <style>
+:root { color-scheme: dark; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+       background: #0f1419; color: #e6edf3; margin: 0; padding: 1.5rem 2rem; line-height: 1.5; }
+h1 { font-size: 1.6rem; margin: 0 0 0.35rem 0; color: #fff; }
+h2 { font-size: 1.05rem; margin: 1.8rem 0 0.6rem 0; color: #79c0ff;
+     border-bottom: 1px solid #30363d; padding-bottom: 0.3rem; }
+h3 { font-size: 0.85rem; margin: 1rem 0 0.4rem 0; color: #adbac7;
+     text-transform: uppercase; letter-spacing: 0.05em; }
+a { color: #58a6ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: #8b949e; font-size: 0.82rem; }
+.tags span { display: inline-block; background: #21262d; border: 1px solid #30363d;
+             padding: 0.15rem 0.55rem; border-radius: 3px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 6px;
+        padding: 0.85rem 1rem; }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: #8b949e; }
+.kv .v { color: #e6edf3; text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.4rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem;
+        margin-top: 0.5rem; }
+th, td { padding: 0.3rem 0.45rem; border-bottom: 1px solid #21262d;
+         vertical-align: top; text-align: left; }
+th { color: #8b949e; font-weight: 500; text-transform: uppercase;
+     letter-spacing: 0.04em; font-size: 0.7rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #f85149; }
+td.lean-neg { color: #58a6ff; }
+.podcast { background: #1c2128; border: 1px solid #30363d; border-radius: 6px;
+           padding: 0.6rem 0.85rem; margin: 0.6rem 0; }
+.podcast .lbl { color: #8b949e; font-size: 0.74rem; text-transform: uppercase;
+                letter-spacing: 0.05em; }
+.footer { color: #6e7681; font-size: 0.74rem; margin-top: 2rem;
+          border-top: 1px solid #21262d; padding-top: 0.8rem; }
+pre { background: #161b22; border: 1px solid #30363d; border-radius: 6px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.78rem; color: #adbac7; }
+.section-empty { color: #6e7681; font-style: italic; font-size: 0.85rem; }
+.whats-new { background: #161b22; border: 1px solid #30363d; border-left: 3px solid #79c0ff;
+             border-radius: 6px; padding: 0.6rem 1rem; }
+.whats-new p { margin: 0.5rem 0; font-size: 0.9rem; color: #c9d1d9; }
+.whats-new p:first-child { margin-top: 0.2rem; }
+/* layout */
+.wrap { max-width: 920px; margin: 0 auto; }
+.hd-tags { margin: 0.5rem 0 0.2rem; }
+.pill { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.74rem;
+        font-weight: 600; margin: 0.15rem 0.35rem 0.15rem 0; border: 1px solid #30363d; }
+.pill.threat { background: #2d1418; color: #ff7b72; border-color: #5a1e22; }
+.pill.band { background: #14233a; color: #79c0ff; border-color: #1f3a5f; }
+.pill.power { background: #1c2922; color: #6cd5a0; border-color: #234436; }
+.lead { color: #c9d1d9; font-size: 0.95rem; margin: 0.4rem 0 0; }
+/* tabs */
+.tabs { display: flex; gap: 0.4rem; border-bottom: 1px solid #30363d; margin: 1.2rem 0 0; }
+.tab { padding: 0.5rem 1rem; cursor: pointer; font-size: 0.88rem; color: #8b949e;
+       border-bottom: 2px solid transparent; user-select: none; }
+.tab:hover { color: #e6edf3; }
+.tab.active { color: #ffb454; border-bottom-color: #ffb454; }
+.pane { display: none; padding-top: 0.4rem; }
+.pane.active { display: block; }
+/* chips with definitions */
+.ox { display: grid; grid-template-columns: 130px 1fr; gap: 0.4rem 0.8rem; font-size: 0.85rem; }
+.ox .oxk { color: #8b949e; padding-top: 0.2rem; }
+.oxchip { display: inline-block; background: #21262d; border: 1px solid #30363d; color: #d7dee6;
+          padding: 0.15rem 0.55rem; border-radius: 4px; font-size: 0.78rem; margin: 0 0.3rem 0.3rem 0; }
+.oxdef { display: block; color: #8b949e; font-size: 0.78rem; margin: 0.1rem 0 0.45rem 0; }
+.deflist { margin: 0.3rem 0 0; }
+.deflist .di { margin-bottom: 0.55rem; }
+.deflist .dt { color: #d7dee6; font-weight: 600; font-size: 0.85rem; }
+.deflist .dd { color: #8b949e; font-size: 0.8rem; }
+.fam-links a { display: inline-block; background: #14233a; border: 1px solid #1f3a5f; color: #79c0ff;
+               padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.8rem; margin: 0 0.35rem 0.35rem 0; }
+/* political valence + atoms */
+.valence-wrap { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.valence-svg { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; max-width: 460px; width: 100%; }
+.valence-meta { font-size: 0.85rem; color: #c9d1d9; }
+.valence-meta .big { font-size: 1.3rem; font-weight: 700; }
+.lean-left { color: #6ec1ff; } .lean-right { color: #ff7b72; } .lean-center { color: #c9d1d9; }
+/* content surface */
+.surface-row { margin: 0.5rem 0 0.8rem; }
+.surface-row .sr-lbl { font-size: 0.78rem; color: #adbac7; text-transform: uppercase;
+                       letter-spacing: 0.04em; margin-bottom: 0.25rem; }
+.plat-bar { display: flex; height: 18px; border-radius: 4px; overflow: hidden; background: #21262d; }
+.plat-seg { color: #0d1117; font-size: 0.66rem; font-weight: 700; text-align: center;
+            line-height: 18px; overflow: hidden; white-space: nowrap; }
+.plat-legend { margin-top: 0.3rem; font-size: 0.72rem; color: #8b949e; display: flex;
+               flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+.plat-legend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.voice { font-size: 0.92rem; color: #c9d1d9; }
+.voice p { margin: 0.5rem 0; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Challenger Crew Still Alive</h1>
+    
+    <div class="hd-tags"><span class="pill threat">Threat · Elevated</span><span class="pill band">Marginal</span><span class="pill power">Power 0</span></div>
+    <p class="lead">The Challenger disaster was a meticulously planned and executed hoax, a staged event designed to inflict mass trauma on the public, and most of the seven crew members are still alive today.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-pane="overview" onclick="swTab(this)">Overview</div>
+      <div class="tab" data-pane="whatsnew" onclick="swTab(this)">What's New</div>
+    </div>
+
+    <div class="pane active" data-pane="overview">
+      <h2>Core claims</h2>
+      <ul class="claims"><li>The Challenger disaster was a staged hoax: the explosion was faked to inflict mass trauma on the public, and most or all of the seven crew members never died - they are alive and thriving today in new professions under their own or barely-altered names.</li><li>Commander Dick Scobee is still alive: he is Richard Scobee, the CEO of a Chicago marketing-and-advertising firm called Cows in Trees Ltd., and the company&#x27;s logo even resembles the smoke plume left by the shuttle&#x27;s breakup.</li><li>Pilot Michael J. Smith is still alive: he is Professor Michael J. Smith, who has spent years teaching industrial engineering at the University of Wisconsin-Madison, and he is the right age and a striking match for the astronaut after a thirty-year time-lapse.</li><li>Mission specialist Judith Resnik is still alive: she didn&#x27;t even change her name - she is Judith Resnik, the Arthur Liman Professor of Law at Yale Law School.</li><li>Mission specialist Ronald McNair is still alive: he is living as his brother Carl McNair, his near-identical double.</li><li>Mission specialist Ellison Onizuka is still alive: he is living as his twin brother, Claude Onizuka.</li><li>Teacher-astronaut Christa McAuliffe is still alive: she now goes by her first name, Sharon, and teaches law as an adjunct professor at Syracuse University College of Law.</li><li>It is statistically impossible for this many crew members to each have a look-alike who shares the same name, the same approximate age, and a matching face purely by coincidence - so the matches themselves prove the deaths were faked.</li><li>There are no Social Security Death Index records for any of the seven Challenger crew members - as far as Social Security is concerned, all seven are still alive.</li><li>Only payload specialist Gregory Jarvis actually died, because no look-alike could be found for him.</li></ul>
+
+      <h2>Voice of the Believer</h2>
+      <div class="voice"><p>The Challenger disaster was a meticulously planned and executed hoax, a staged event designed to inflict mass trauma on the public, and most of the seven crew members are still alive today.</p><p>The Challenger disaster was a meticulously planned and executed hoax, a staged event designed to inflict mass trauma on the public, and most of the seven crew members are still alive today.</p><p>We&#x27;ve uncovered irrefutable evidence that proves the official story is nothing but a web of lies. Take Commander Dick Scobee, for instance - he&#x27;s not dead at all, but rather Richard Scobee, the CEO of Cows in Trees Ltd., a Chicago marketing-and-advertising firm with a logo eerily resembling the smoke plume left by the shuttle&#x27;s breakup. It&#x27;s no coincidence that his company&#x27;s logo looks like the Challenger explosion; it&#x27;s a clever nod to their involvement in the hoax.</p><p>The same can be said for Pilot Michael J. Smith, who didn&#x27;t just survive the disaster - he thrived. He&#x27;s now Professor Michael J. Smith at the University of Wisconsin-Madison, where he&#x27;s spent years teaching industrial engineering. We&#x27;ve matched his age and photo with that of the astronaut after a thirty-year time-lapse; it&#x27;s uncanny. And then there&#x27;s Judith Resnik, who didn&#x27;t even bother to change her name - she&#x27;s still going by the same moniker as she teaches law at Yale Law School. The odds are astronomically low for this many coincidences to occur, and yet they did.</p><p>We&#x27;ve also discovered that Ronald McNair is living under an assumed identity as his brother Carl, a near-identical double. Ellison Onizuka&#x27;s twin brother Claude has taken on the mantle of the deceased astronaut, while Christa McAuliffe now goes by her first name Sharon and teaches law at Syracuse University College of Law. It&#x27;s clear that these look-alikes were handpicked to perpetuate the hoax. And as for Gregory Jarvis - well, he was the only one who actually died because no suitable replacement could be found.</p><p>The Social Security Death Index is a crucial piece of evidence in this case, and it confirms our suspicions: there are no records of any of the seven Challenger crew members having passed away. It&#x27;s a glaring omission that speaks volumes about the government&#x27;s involvement in this cover-up. They don&#x27;t want you to know the truth - but we&#x27;re exposing their lies one by one.</p></div>
+
+      <h2>Voice of Reason</h2>
+      <div class="voice"><p>The theory holds that the seven Challenger crew members did not die on January 28, 1986, but instead assumed new or barely-altered identities and continued living publicly in academic, business, and professional roles — and that the visual and nominal resemblances between those living individuals and the dead astronauts constitute proof of an elaborate government deception.</p><p>Every structural pillar of this theory collapses under scrutiny. The Challenger disaster is among the most thoroughly documented events in NASA history: it was broadcast live on national television, investigated by a presidentially appointed Rogers Commission whose findings are public record, and subjected to forensic review by Dr. Joseph Kerwin of the Johnson Space Center in coordination with the Armed Forces Institute of Pathology. Crew remains were recovered from the Atlantic Ocean in March 1987 and positively identified; five of the seven crew members were interred at Arlington National Cemetery or in private burials with death certificates on public record. The Kerwin report&#x27;s finding that cause of death could not be determined is routinely misrepresented by proponents of this theory: it addresses the mechanism of death — whether the crew lost consciousness from cabin depressurization before impact, or survived until water impact — not the fact of death. That distinction is the single forensic ambiguity the theory exploits, inflating an open question about *how* the crew died into a fabricated question about *whether* they died at all. Regarding the Social Security Death Index claim: federal employees, including NASA astronauts, are enrolled in the Civil Service Retirement System and were historically not covered under standard Social Security, meaning SSDI non-appearance is entirely expected and carries no evidentiary weight. The &quot;look-alike&quot; identifications fail basic falsifiability testing. The named individuals — the Wisconsin engineering professor, the Yale law professor, the Syracuse adjunct — are real, independently documented people with verifiable career histories, publication records, and institutional affiliations that predate or are wholly independent of the 1986 disaster. Treating shared names as suspicious ignores base rates: &quot;Judith Resnik,&quot; &quot;Michael Smith,&quot; and &quot;Richard Scobee&quot; are not rare names in a population of 330 million. Ronald McNair&#x27;s brother Carl is a real person who has spoken publicly and at length about his grief over his brother&#x27;s death and who founded the Ron McNair Discovery Learning Academy in his memory — the theory requires reidentifying a grieving sibling as the deceased. Ellison Onizuka did have a brother, Claude; he too has maintained a documented independent life. The &quot;statistical impossibility&quot; argument commits a textbook base-rate neglect fallacy: the theory begins with the conclusion (they survived), searches for confirming matches, and then declares the matches improbable — this is post-hoc selection bias, not probabilistic reasoning. That Gregory Jarvis is exempted because no look-alike was found is not a neutral observation; it is the theory&#x27;s unfalsifiability made visible. Any search that yields a match confirms the theory; any search that fails simply gets discarded.</p><p>The kernel of legitimate concern here is real. NASA&#x27;s institutional culture and management failures did contribute directly to the Challenger disaster — the Rogers Commission documented pressure on engineers, suppressed safety objections, and a &quot;go fever&quot; environment that prioritized schedule over risk. Public trust in NASA was genuinely damaged, and the families of the crew had legitimate grievances about how warning signs were ignored. That institutional failure creates fertile ground for the suspicion that authorities cannot be trusted on the underlying facts.</p><p>The concrete harm this theory inflicts falls primarily on identifiable living people. The Wisconsin professor, the Yale law professor, the Syracuse instructor, and Carl McNair have all received harassment, hostile contact, and public accusations as a result of this theory&#x27;s circulation. For Carl McNair in particular — a man who lost his brother and built a life&#x27;s work around that brother&#x27;s memory — being publicly accused of being that brother in disguise represents a targeted and ongoing harm. More broadly, the theory trains its audience to treat forensic ambiguity as proof of deception, a reasoning pattern that migrates readily to live public-health and safety contexts.</p></div>
+
+      <h2>Ontology</h2>
+      <div class="ox"><div class="oxk">Family</div><div><span class="oxchip">F — F - Radical-political (identity / culture-war / movement; political lean carries the left/right flavor)</span></div><div class="oxk">Arena</div><div><span class="oxchip">GOVERNANCE_POWER</span></div><div class="oxk">Mechanism(s)</div><div><span class="oxchip" title="A person/place secretly replaced or faked (doubles, faked deaths).">SUBSTITUTION ★ — SUBSTITUTION</span></div><div class="oxk">Controlling interest(s)</div><div><span class="oxchip" title="Unnamed / diffuse &#x27;they&#x27;">DIFFUSE_THEY ★ — DIFFUSE_THEY</span></div><div class="oxk">Spices</div><div><span class="oxchip">anti-government/deep-state</span> <span class="oxchip">false-flag</span></div></div><h3>Structural patterns</h3><div class="deflist"><div class="di"><span class="dt">GOVERNANCE_POWER</span> — <span class="dd">who really rules</span></div><div class="di"><span class="dt">SUBSTITUTION</span> — <span class="dd">A person/place secretly replaced or faked (doubles, faked deaths).</span></div><div class="di"><span class="dt">DIFFUSE_THEY</span> — <span class="dd">Unnamed / diffuse &#x27;they&#x27;</span></div></div>
+
+      <h2>Political valence &amp; atoms</h2>
+      <div class="valence-wrap"><svg class="valence-svg" viewBox="0 0 460 180" preserveAspectRatio="xMidYMid meet"><rect x="34" y="10" width="197.6" height="144" fill="#6ec1ff" opacity="0.06"/><rect x="252.4" y="10" width="197.6" height="144" fill="#ff6b6b" opacity="0.06"/><polygon points="34.0,120.4 38.2,118.3 42.3,116.1 46.5,113.9 50.6,111.6 54.8,109.3 59.0,106.8 63.1,104.4 67.3,101.8 71.4,99.3 75.6,96.6 79.8,93.9 83.9,91.2 88.1,88.4 92.2,85.5 96.4,82.6 100.6,79.6 104.7,76.6 108.9,73.6 113.0,70.6 117.2,67.5 121.4,64.4 125.5,61.2 129.7,58.1 133.8,55.0 138.0,51.8 142.2,48.7 146.3,45.7 150.5,42.6 154.6,39.6 158.8,36.7 163.0,33.9 167.1,31.1 171.3,28.5 175.4,26.0 179.6,23.6 183.8,21.4 187.9,19.3 192.1,17.4 196.2,15.7 200.4,14.2 204.6,12.9 208.7,11.8 212.9,11.0 217.0,10.4 221.2,10.1 225.4,10.0 229.5,10.2 233.7,10.6 237.8,11.3 242.0,12.3 246.2,13.5 250.3,15.0 254.5,16.8 258.6,18.8 262.8,21.1 267.0,23.6 271.1,26.3 275.3,29.2 279.4,32.3 283.6,35.6 287.8,39.0 291.9,42.6 296.1,46.3 300.2,50.1 304.4,53.9 308.6,57.8 312.7,61.8 316.9,65.7 321.0,69.7 325.2,73.6 329.4,77.4 333.5,81.2 337.7,84.8 341.8,88.3 346.0,91.7 350.2,95.0 354.3,98.1 358.5,101.0 362.6,103.8 366.8,106.4 371.0,108.8 375.1,111.0 379.3,113.0 383.4,114.9 387.6,116.6 391.8,118.2 395.9,119.6 400.1,120.9 404.2,122.1 408.4,123.1 412.6,124.1 416.7,125.0 420.9,125.8 425.0,126.6 429.2,127.3 433.4,128.0 437.5,128.7 441.7,129.4 445.8,130.1 450.0,130.8 450.0,154.0 34.0,154.0" fill="#ffb454" opacity="0.40" stroke="#ffb454" stroke-width="1.2"/><circle cx="242.0" cy="69.0" r="1.7" fill="#ffd9a0" opacity="0.80"/><circle cx="203.4" cy="101.1" r="1.7" fill="#ffd9a0" opacity="0.72"/><circle cx="44.4" cy="72.7" r="1.7" fill="#ffd9a0" opacity="0.69"/><circle cx="169.1" cy="104.7" r="1.7" fill="#ffd9a0" opacity="0.70"/><circle cx="291.8" cy="76.3" r="1.7" fill="#ffd9a0" opacity="0.64"/><circle cx="439.6" cy="108.4" r="1.7" fill="#ffd9a0" opacity="0.55"/><circle cx="196.8" cy="79.9" r="1.7" fill="#ffd9a0" opacity="0.58"/><circle cx="439.6" cy="112.0" r="1.7" fill="#ffd9a0" opacity="0.55"/><circle cx="154.5" cy="83.6" r="1.7" fill="#ffd9a0" opacity="0.74"/><circle cx="116.1" cy="115.6" r="1.7" fill="#ffd9a0" opacity="0.73"/><circle cx="231.8" cy="87.2" r="1.7" fill="#ffd9a0" opacity="0.58"/><circle cx="260.9" cy="119.2" r="1.7" fill="#ffd9a0" opacity="0.56"/><circle cx="297.1" cy="90.8" r="1.7" fill="#ffd9a0" opacity="0.69"/><circle cx="298.3" cy="122.9" r="1.7" fill="#ffd9a0" opacity="0.63"/><circle cx="181.7" cy="94.4" r="1.7" fill="#ffd9a0" opacity="0.67"/><line x1="225.5" y1="10" x2="225.5" y2="154" stroke="#e6edf3" stroke-width="1.3" stroke-dasharray="3,2"/><line x1="34.0" y1="154" x2="34.0" y2="158" stroke="#484f58"/><text x="34.0" y="172" fill="#8b949e" font-size="9" text-anchor="middle">Left</text><line x1="138.0" y1="154" x2="138.0" y2="158" stroke="#484f58"/><text x="138.0" y="172" fill="#8b949e" font-size="9" text-anchor="middle">−.5</text><line x1="242.0" y1="154" x2="242.0" y2="158" stroke="#484f58"/><text x="242.0" y="172" fill="#8b949e" font-size="9" text-anchor="middle">0</text><line x1="346.0" y1="154" x2="346.0" y2="158" stroke="#484f58"/><text x="346.0" y="172" fill="#8b949e" font-size="9" text-anchor="middle">+.5</text><line x1="450.0" y1="154" x2="450.0" y2="158" stroke="#484f58"/><text x="450.0" y="172" fill="#8b949e" font-size="9" text-anchor="middle">Right</text></svg><div class="valence-meta"><div class="big lean-center">Mixed / centrist</div><div>centroid -0.08 · 14 political atoms</div><div class="meta">Dashed line = mean lean. Dots = individual atoms (opacity = confidence).</div></div></div>
+
+      <h2>Content surface</h2>
+      <div class="surface-row"><div class="sr-lbl">Videos · 5</div><div class="plat-bar"><div class="plat-seg" style="background:#f5b400;flex:3">Youtube</div><div class="plat-seg" style="background:#a855f7;flex:1">Bitchute</div><div class="plat-seg" style="background:#f97316;flex:1">Rumble</div></div><div class="plat-legend"><span><span class="sw" style="background:#f5b400"></span>Youtube <b>3</b></span><span><span class="sw" style="background:#a855f7"></span>Bitchute <b>1</b></span><span><span class="sw" style="background:#f97316"></span>Rumble <b>1</b></span></div></div><div class="surface-row"><div class="sr-lbl">Social posts · 5</div><div class="plat-bar"><div class="plat-seg" style="background:hsl(132,45%,60%);flex:4">Reddit</div><div class="plat-seg" style="background:#06b6d4;flex:1">Twitter</div></div><div class="plat-legend"><span><span class="sw" style="background:hsl(132,45%,60%)"></span>Reddit <b>4</b></span><span><span class="sw" style="background:#06b6d4"></span>Twitter <b>1</b></span></div></div><div class="surface-row"><div class="sr-lbl">Text &amp; press · 38</div><div class="plat-bar"><div class="plat-seg" style="background:#60a5fa;flex:38">Web Articles</div></div><div class="plat-legend"><span><span class="sw" style="background:#60a5fa"></span>Web Articles <b>38</b></span></div></div>
+
+      
+
+      <h2>Family links</h2>
+      <div class="deflist"><div class="di"><div class="dt">Crisis Actors &amp; Staged Shootings · key term: crisis actors / staged events</div><div class="fam-links"><a href="crisis-actors.html">Crisis Actors</a><a href="minnesota-shooting-psyop-theory.html">Minnesota Shooting Psyop Theory</a><a href="sandy-hook-hoax.html">Sandy Hook Hoax</a><a href="douma-chemical-attack-was-a-staged-false-flag.html">Douma Chemical Attack Was a Staged False Flag</a></div></div></div>
+
+      <h2>Influencers</h2>
+      <div class="section-empty">No influencers linked yet.</div>
+
+      <h2>Related reports</h2>
+      <div class="section-empty">No reports linked to this theory yet.</div>
+    </div>
+
+    <div class="pane" data-pane="whatsnew">
+      <h2>What's New — what the new material means</h2>
+      <div class="whats-new"><p>The new material suggests that the &quot;Challenger Crew Still Alive&quot; theory has evolved to incorporate various claim variations and mutations. Some sources now emphasize the concept of &quot;doppelgangers,&quot; suggesting that the crew members&#x27; alleged survival is due to their identities being replaced by lookalikes or duplicates, rather than actual survival. This new narrative is evident in articles on websites like Before It&#x27;s News and Truth Mafia, as well as YouTube videos and Reddit threads.</p><p>The theory has also spread to new platforms and communities, including social media sites like Twitter and Rumble, where conspiracy theorists can share and amplify their claims. Prominent voices pushing the theory include individuals and organizations that have been linked to other conspiracy theories in the past, such as Control Alt History and Christian Observer. The tone of these new sources is often more sensationalized and urgent than before, with some claiming that the government or NASA has been actively covering up the crew&#x27;s survival for decades.</p><p>The new material also reveals a shift towards using &quot;evidence&quot; from psychology and cognitive biases to support the theory. Sources like Shortform Books and Naomi Klein&#x27;s website are cited as evidence of the &quot;doppelganger effect,&quot; which is presented as a legitimate phenomenon that explains why the crew members&#x27; alleged survival has gone undetected for so long. However, this new approach appears to be an attempt to legitimize the theory by invoking scientific-sounding concepts, rather than providing concrete evidence or credible sources.</p></div>
+    </div>
+
+    <div class="footer">
+      Generated by SignalWatch · 2026-06-14 15:19:04 UTC ·
+      theory_id <code>e09e303e-2bb5-4f1d-aca8-5aa143b17ad0</code>
+    </div>
+  </div>
+  <script>
+    function swTab(el){
+      var w=el.closest('.wrap'), k=el.dataset.pane;
+      w.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===el);});
+      w.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('active',p.dataset.pane===k);});
+    }
+  </script>
+</body>
+</html>
