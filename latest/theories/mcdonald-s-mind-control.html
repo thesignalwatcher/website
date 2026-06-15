@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>McDonald&#x27;s Mind Control — SignalWatch</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root { color-scheme: light;
+  --bg:#e9eef7; --surface:#ffffff; --surface-b:#f4f7fc; --ink:#19223a; --ink-soft:#5c6982;
+  --ink-faint:#8a95ac; --line:#dde4f0; --line-bright:#b9cdec;
+  --accent-1:#2bb3d4; --accent-2:#7b6ef0; --accent-3:#1fb589;
+  --accent-1-soft:#d6f0f7; --accent-2-soft:#e4e0fb; --accent-3-soft:#d4f3e8;
+  --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace; }
+* { box-sizing: border-box; }
+body { font-family: var(--sans); color: var(--ink); margin: 0; padding: 2rem 1.2rem; line-height: 1.55;
+       background: var(--bg);
+       background-image: radial-gradient(60% 50% at 12% -5%, #d6e8f6 0%, transparent 60%),
+                         radial-gradient(52% 46% at 105% 0%, #e6e2f7 0%, transparent 55%);
+       background-attachment: fixed; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 0.3rem; color: var(--ink); letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 1.9rem 0 0.7rem; color: var(--ink); }
+h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+     color: var(--accent-2); margin: 1.1rem 0 0.4rem; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: var(--ink-faint); font-size: 0.82rem; }
+code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-b); padding: 0.1em 0.35em; border-radius: 4px; }
+.tags span { display: inline-block; background: var(--surface-b); border: 1px solid var(--line);
+             padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 0.9rem 1.05rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: var(--ink-soft); }
+.kv .v { color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1.1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.45rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+th, td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+th { color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #d6536d; } td.lean-neg { color: #2f86d6; }
+.podcast { background: var(--accent-2-soft); border: 1px solid var(--line-bright); border-radius: 10px;
+           padding: 0.65rem 0.9rem; margin: 0.6rem 0; }
+.podcast .lbl { color: var(--ink-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer { color: var(--ink-faint); font-size: 0.74rem; margin-top: 2.4rem;
+          border-top: 1px solid var(--line); padding-top: 0.9rem; }
+pre { background: var(--surface-b); border: 1px solid var(--line); border-radius: 8px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; color: var(--ink-soft); }
+.section-empty { color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
+.whats-new { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent-1);
+             border-radius: 10px; padding: 0.7rem 1.1rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.whats-new p { margin: 0.55rem 0; font-size: 0.92rem; color: var(--ink-soft); }
+.whats-new p:first-child { margin-top: 0.2rem; }
+/* layout */
+.wrap { max-width: 900px; margin: 0 auto; }
+.hd-tags { margin: 0.55rem 0 0.2rem; }
+.pill { display: inline-block; padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.72rem;
+        font-weight: 600; margin: 0.15rem 0.35rem 0.15rem 0; border: 1px solid var(--line-bright);
+        font-family: var(--mono); letter-spacing: 0.02em; }
+.pill.threat { background: #fde8ec; color: #c0395a; border-color: #f3c4cf; }
+.pill.band { background: var(--accent-1-soft); color: #1789a6; border-color: #b6e3ee; }
+.pill.power { background: var(--accent-3-soft); color: #14906c; border-color: #b6e6d4; }
+.lead { color: var(--ink-soft); font-size: 1rem; margin: 0.5rem 0 0; max-width: 70ch; }
+/* tabs */
+.tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin: 1.4rem 0 0; }
+.tab { padding: 0.55rem 1.05rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--ink-faint);
+       border-bottom: 2px solid transparent; user-select: none; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+.pane { display: none; padding-top: 0.4rem; }
+.pane.active { display: block; }
+/* chips with definitions */
+.ox { display: grid; grid-template-columns: 150px 1fr; gap: 0.45rem 0.9rem; font-size: 0.85rem; }
+.ox .oxk { color: var(--ink-soft); padding-top: 0.25rem; font-weight: 600; }
+.oxchip { display: inline-block; background: var(--surface-b); border: 1px solid var(--line-bright); color: var(--ink);
+          padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.78rem; margin: 0 0.3rem 0.3rem 0; }
+.deflist { margin: 0.3rem 0 0; }
+.deflist .di { margin-bottom: 0.6rem; }
+.deflist .dt { color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+.deflist .dd { color: var(--ink-soft); font-size: 0.82rem; }
+.fam-links a { display: inline-block; background: var(--accent-2-soft); border: 1px solid var(--line-bright);
+               color: var(--accent-2); padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.8rem;
+               margin: 0 0.35rem 0.35rem 0; }
+/* political valence + atoms */
+.valence-wrap { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.valence-svg { background: var(--surface-b); border: 1px solid var(--line); border-radius: 10px; max-width: 460px; width: 100%; }
+.valence-meta { font-size: 0.85rem; color: var(--ink-soft); }
+.valence-meta .big { font-size: 1.35rem; font-weight: 700; font-family: var(--serif); }
+.lean-left { color: #2f86d6; } .lean-right { color: #d6536d; } .lean-center { color: var(--ink); }
+/* content surface */
+.surface-row { margin: 0.55rem 0 0.85rem; }
+.surface-row .sr-lbl { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase;
+                       letter-spacing: 0.05em; margin-bottom: 0.3rem; font-family: var(--mono); }
+.plat-bar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--surface-b); border: 1px solid var(--line); }
+.plat-seg { color: #fff; font-size: 0.66rem; font-weight: 700; text-align: center;
+            line-height: 20px; overflow: hidden; white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.25); }
+.plat-legend { margin-top: 0.35rem; font-size: 0.72rem; color: var(--ink-soft); display: flex;
+               flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+.plat-legend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.voice { font-size: 0.94rem; color: var(--ink-soft); max-width: 72ch; }
+.voice p { margin: 0.55rem 0; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>McDonald&#x27;s Mind Control</h1>
+    
+    <div class="hd-tags"><span class="pill threat">Threat · Informational</span><span class="pill band">Marginal</span><span class="pill power">Power 0</span></div>
+    <p class="lead">Big corporations like McDonald&#x27;s are secretly using mind-altering chemicals in their food to control the population and manipulate consumer behavior, turning innocent customers into loyal addicts. This is part of a larger scheme by corporate elites to maintain power over the masses.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-pane="overview" onclick="swTab(this)">Overview</div>
+      <div class="tab" data-pane="whatsnew" onclick="swTab(this)">What's New</div>
+    </div>
+
+    <div class="pane active" data-pane="overview">
+      <h2>Core claims</h2>
+      <ul class="claims"><li>McDonald&#x27;s secret ingredients include chemicals designed to make customers crave more food and feel thirsty after eating their products.</li><li>These manipulative practices are part of a larger scheme by big corporations to control the population and manipulate public behavior.</li><li>The iconic Ronald McDonald character hides a dark past involving sinister corporate agendas.</li></ul>
+
+      <h2>Voice of the Believer</h2>
+      <div class="voice"><p>Big corporations like McDonald&#x27;s are secretly using mind-altering chemicals in their food to control the population and manipulate consumer behavior, turning innocent customers into loyal addicts. This is part of a larger scheme by corporate elites to maintain power over the masses.</p><p>McDonald&#x27;s food contains undisclosed chemical ingredients engineered to make customers crave more and feel thirsty after eating, ensuring they return repeatedly. These are not incidental byproducts of food processing but deliberate additives, designed from the ground up to override the body&#x27;s natural satiation signals. The effect is biological dependency manufactured in a corporate laboratory and sold as a hamburger.</p><p>The manipulation extends far beyond the food itself. The Golden Arches are not a neutral logo — they are specifically designed to make viewers crave fries on a subconscious level. The McDonald&#x27;s jingle operates the same way, embedding compulsive associations below the threshold of conscious awareness. Colors, music, and scent profiles in McDonald&#x27;s environments are all carefully calibrated to influence behavior without customers noticing. Recurring promotional schemes like the annual Monopoly game are instruments of childhood conditioning, used to build brand loyalty before children are old enough to critically evaluate what they are being sold.</p><p>Ronald McDonald, far from being a harmless children&#x27;s entertainer, fronts a corporate agenda with sinister underpinnings. The cheerful mascot is cover for a deeper institutional purpose: normalizing McDonald&#x27;s as a childhood constant, embedding the brand into formative memory, and manufacturing a customer base that feels emotional attachment to the corporation before they ever develop the critical faculties to resist it.</p><p>All of this feeds into a broader scheme by large corporations to manipulate public behavior and exercise population-level control. McDonald&#x27;s is not an outlier — it is a leading example of how big corporations systematically exploit psychological and biochemical vulnerabilities to turn people into compliant consumers. The CIA and other institutional actors are implicated in enabling or architecting these systems of control. The mainstream account that fast food companies are simply aggressive but legal marketers is cover for what is actually a coordinated program of behavioral manipulation.</p></div>
+
+      <h2>Voice of Reason</h2>
+      <div class="section-empty">No analytical rebuttal yet.</div>
+
+      <h2>Ontology</h2>
+      <div class="ox"><div class="oxk">Sub-theory of</div><div><a class="oxchip" href="mkultra-extended.html">MKUltra (Extended)</a></div></div>
+
+      <h2>Political valence &amp; atoms</h2>
+      <div class="section-empty">No lean distribution yet.</div>
+
+      <h2>Content surface</h2>
+      <div class="surface-row"><div class="sr-lbl">Social posts · 15</div><div class="plat-bar"><div class="plat-seg" style="background:#14b8a6;flex:15">Tiktok</div></div><div class="plat-legend"><span><span class="sw" style="background:#14b8a6"></span>Tiktok <b>15</b></span></div></div>
+
+      
+
+      <h2>Family links</h2>
+      <div class="section-empty">Not assigned to a theory family.</div>
+
+      <h2>Influencers</h2>
+      <div class="section-empty">No influencers linked yet.</div>
+
+      <h2>Related reports</h2>
+      <div class="section-empty">No reports linked to this theory yet.</div>
+    </div>
+
+    <div class="pane" data-pane="whatsnew">
+      <h2>What's New — what the new material means</h2>
+      <div class="whats-new"><p>The new material reinforces the established narrative of &quot;McDonald&#x27;s Mind Control&quot; by introducing various claim variations and mutations. For instance, some claims now focus on the concept of the &quot;Bliss Point,&quot; where food companies engineer chemical combinations to hijack consumers&#x27; brains and keep them hooked. This mutation expands the theory to include the idea that McDonald&#x27;s is not just using mind-altering chemicals but also perfecting a specific formula to create addictive foods.</p><p>The new material has spread across various platforms, including TikTok, where advocacy and neutral-descriptive videos have emerged alongside conspiracy-theory content. Prominent voices pushing this narrative now include creators with large followings on TikTok, such as @conspiraciesyoumustknow and @truther605. These voices often frame the issue in terms of &quot;exposing&quot; McDonald&#x27;s secrets and highlighting the company&#x27;s alleged manipulation of consumers&#x27; minds.</p><p>The tone of the new material has shifted to become more urgent and sensationalized, with some creators labeling McDonald&#x27;s actions as &quot;pure evil.&quot; The framing has also changed, with a greater emphasis on the idea that McDonald&#x27;s is not just selling food but also engineering addiction. This shift in tone and framing suggests that the theory is becoming more entrenched and widespread, potentially leading to further polarization and controversy surrounding the topic of corporate influence over consumer behavior.</p></div>
+    </div>
+
+    <div class="footer">
+      Generated by SignalWatch · 2026-06-15 17:33:53 UTC ·
+      theory_id <code>3e489481-c138-4583-b63f-ccc46c4e8cef</code>
+    </div>
+  </div>
+  <script>
+    function swTab(el){
+      var w=el.closest('.wrap'), k=el.dataset.pane;
+      w.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===el);});
+      w.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('active',p.dataset.pane===k);});
+    }
+  </script>
+</body>
+</html>
