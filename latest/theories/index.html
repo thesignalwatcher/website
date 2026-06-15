@@ -29,6 +29,13 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
   padding:9px 11px;cursor:pointer;color:var(--ink);font-family:inherit}
 .thx:hover{background:var(--surface-b)}
 .thx.active{background:var(--accent2);background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.thgrp{font-family:var(--mono);font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint);padding:12px 11px 5px}
+.thgrp-new{color:#c2410c}
+.thx.new{background:#fff4e8;border-left:3px solid #f97316;margin-bottom:3px}
+.thx.new:hover{background:#ffe9d2}
+.thx.new.active{background:#fed7aa}
+.thx.new .thn{color:#9a3412}
+.thx.new .thsub{color:#c2410c}
 .thx .thn{display:block;font-size:.92rem;font-weight:600;line-height:1.25}
 .thx .thm{display:block;font-family:var(--mono);font-size:.68rem;color:var(--ink-faint);margin-top:2px}
 .thx .thsub{display:block;font-size:.74rem;color:var(--accent);margin-top:2px}
@@ -55,7 +62,13 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
       <input id="thsearch" type="search" placeholder="Search theories…" oninput="filt()">
     </div>
     <div class="thlist" id="thlist">
-      <button class="thx" data-slug="viral-bitchute-rumble-2025-launched-with-coordinated-deep-state-psychological-op" data-search="2025 launched with coordinated deep state psychological operations  informational" onclick="pick(this)"><span class="thn">2025 launched with coordinated deep state psychological operations</span><span class="thm">Informational · 247 atoms</span></button>
+      <div class="thgrp thgrp-new">New conspiracy theories</div>
+<button class="thx new" data-slug="mcdonald-s-mind-control" data-search="mcdonald&#x27;s mind control  informational mkultra (extended)" onclick="pick(this)"><span class="thn">McDonald&#x27;s Mind Control</span><span class="thsub">↳ under MKUltra (Extended)</span><span class="thm">Informational · 15 atoms</span></button>
+<button class="thx new" data-slug="newsmax-conspiracy-theory-democrats-knicks-loss-trump" data-search="newsmax conspiracy theory democrats knicks loss trump  informational" onclick="pick(this)"><span class="thn">Newsmax conspiracy theory Democrats Knicks loss Trump</span><span class="thm">Informational · 117 atoms</span></button>
+<button class="thx new" data-slug="challenger-crew-still-alive" data-search="challenger crew still alive  elevated" onclick="pick(this)"><span class="thn">Challenger Crew Still Alive</span><span class="thm">Elevated · 48 atoms</span></button>
+<button class="thx new" data-slug="maha-moms" data-search="maha moms  informational" onclick="pick(this)"><span class="thn">MAHA moms</span><span class="thm">Informational · 85 atoms</span></button>
+<div class="thgrp">All theories</div>
+<button class="thx" data-slug="viral-bitchute-rumble-2025-launched-with-coordinated-deep-state-psychological-op" data-search="2025 launched with coordinated deep state psychological operations  informational" onclick="pick(this)"><span class="thn">2025 launched with coordinated deep state psychological operations</span><span class="thm">Informational · 247 atoms</span></button>
 <button class="thx" data-slug="2026-digital-simulation-sync-phenomenon" data-search="2026 digital simulation sync phenomenon  informational" onclick="pick(this)"><span class="thn">2026 Digital Simulation Sync Phenomenon</span><span class="thm">Informational · 3 atoms</span></button>
 <button class="thx" data-slug="2026-mass-psyop-coordination-theory" data-search="2026 mass psyop coordination theory  informational deep state psyop season 2025 theory" onclick="pick(this)"><span class="thn">2026 Mass Psyop Coordination Theory</span><span class="thsub">↳ under Deep State Psyop Season 2025 Theory</span><span class="thm">Informational · 44 atoms</span></button>
 <button class="thx" data-slug="3i-atlas-interstellar-fuel-budget-conspiracy" data-search="3i/atlas interstellar fuel budget conspiracy  informational" onclick="pick(this)"><span class="thn">3I/ATLAS Interstellar Fuel Budget Conspiracy</span><span class="thm">Informational · 89 atoms</span></button>
@@ -77,7 +90,6 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
 <button class="thx" data-slug="bush-stole-the-2000-election" data-search="bush stole the 2000 election  elevated stop the steal" onclick="pick(this)"><span class="thn">Bush Stole the 2000 Election</span><span class="thsub">↳ under Stop the Steal</span><span class="thm">Elevated · 30 atoms</span></button>
 <button class="thx" data-slug="butler-shooting-staged" data-search="butler shooting staged  elevated" onclick="pick(this)"><span class="thn">Butler Shooting Staged</span><span class="thm">Elevated · 213 atoms</span></button>
 <button class="thx" data-slug="cancer-cure-suppression-conspiracy" data-search="cancer cure suppression conspiracy  moderate" onclick="pick(this)"><span class="thn">Cancer Cure Suppression Conspiracy</span><span class="thm">Moderate · 106 atoms</span></button>
-<button class="thx" data-slug="challenger-crew-still-alive" data-search="challenger crew still alive  elevated" onclick="pick(this)"><span class="thn">Challenger Crew Still Alive</span><span class="thm">Elevated · 48 atoms</span></button>
 <button class="thx" data-slug="charlie-kirk-assassination-conspiracy" data-search="charlie kirk assassination conspiracy  moderate" onclick="pick(this)"><span class="thn">Charlie Kirk Assassination Conspiracy</span><span class="thm">Moderate · 547 atoms</span></button>
 <button class="thx" data-slug="charlie-kirk-staged-death-cover-up" data-search="charlie kirk staged death cover-up  informational" onclick="pick(this)"><span class="thn">Charlie Kirk Staged Death Cover-Up</span><span class="thm">Informational · 317 atoms</span></button>
 <button class="thx" data-slug="chemtrails" data-search="chemtrails  low" onclick="pick(this)"><span class="thn">Chemtrails</span><span class="thm">Low · 301 atoms</span></button>
@@ -118,10 +130,8 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
 <button class="thx" data-slug="jade-helm" data-search="jade helm  informational" onclick="pick(this)"><span class="thn">Jade Helm</span><span class="thm">Informational · 60 atoms</span></button>
 <button class="thx" data-slug="jfk-assassination-theories" data-search="jfk assassination theories  informational" onclick="pick(this)"><span class="thn">JFK Assassination Theories</span><span class="thm">Informational · 150 atoms</span></button>
 <button class="thx" data-slug="jfk-jr-alive" data-search="jfk jr. alive  low" onclick="pick(this)"><span class="thn">JFK Jr. Alive</span><span class="thm">Low · 240 atoms</span></button>
-<button class="thx" data-slug="maha-moms" data-search="maha moms  informational" onclick="pick(this)"><span class="thn">MAHA moms</span><span class="thm">Informational · 85 atoms</span></button>
 <button class="thx" data-slug="martial-law-imminence" data-search="martial law imminence  moderate" onclick="pick(this)"><span class="thn">Martial Law Imminence</span><span class="thm">Moderate · 65 atoms</span></button>
 <button class="thx" data-slug="maui-fires-directed-energy-weapon-theory" data-search="maui fires directed energy weapon theory  informational" onclick="pick(this)"><span class="thn">Maui Fires Directed Energy Weapon Theory</span><span class="thm">Informational · 91 atoms</span></button>
-<button class="thx" data-slug="mcdonald-s-mind-control" data-search="mcdonald&#x27;s mind control  informational mkultra (extended)" onclick="pick(this)"><span class="thn">McDonald&#x27;s Mind Control</span><span class="thsub">↳ under MKUltra (Extended)</span><span class="thm">Informational · 15 atoms</span></button>
 <button class="thx" data-slug="medbeds" data-search="medbeds  moderate" onclick="pick(this)"><span class="thn">Medbeds</span><span class="thm">Moderate · 211 atoms</span></button>
 <button class="thx" data-slug="microneedle-implants-theory" data-search="microneedle implants theory  informational" onclick="pick(this)"><span class="thn">Microneedle Implants Theory</span><span class="thm">Informational · 34 atoms</span></button>
 <button class="thx" data-slug="minnesota-shooting-psyop-theory" data-search="minnesota shooting psyop theory  moderate crisis actors" onclick="pick(this)"><span class="thn">Minnesota Shooting Psyop Theory</span><span class="thsub">↳ under Crisis Actors</span><span class="thm">Moderate · 16 atoms</span></button>
@@ -134,7 +144,6 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
 <button class="thx" data-slug="nazi-wonder-weapons" data-search="nazi wonder weapons  informational" onclick="pick(this)"><span class="thn">Nazi Wonder Weapons</span><span class="thm">Informational · 102 atoms</span></button>
 <button class="thx" data-slug="netanyahu-is-dead" data-search="netanyahu is dead  informational" onclick="pick(this)"><span class="thn">Netanyahu is Dead</span><span class="thm">Informational · 106 atoms</span></button>
 <button class="thx" data-slug="new-world-order" data-search="new world order  moderate" onclick="pick(this)"><span class="thn">New World Order</span><span class="thm">Moderate · 176 atoms</span></button>
-<button class="thx" data-slug="newsmax-conspiracy-theory-democrats-knicks-loss-trump" data-search="newsmax conspiracy theory democrats knicks loss trump  informational" onclick="pick(this)"><span class="thn">Newsmax conspiracy theory Democrats Knicks loss Trump</span><span class="thm">Informational · 117 atoms</span></button>
 <button class="thx" data-slug="nick-fuentes-as-a-target-of-persecution" data-search="nick fuentes as a target of persecution  informational" onclick="pick(this)"><span class="thn">Nick Fuentes as a Target of Persecution</span><span class="thm">Informational · 242 atoms</span></button>
 <button class="thx" data-slug="nuclear-weapons-hoax-atomic-weapons-do-not-exist" data-search="nuclear weapons hoax / atomic weapons do not exist  low" onclick="pick(this)"><span class="thn">Nuclear Weapons Hoax / Atomic Weapons Do Not Exist</span><span class="thm">Low · 39 atoms</span></button>
 <button class="thx" data-slug="october-6th-attack-on-israel-was-a-false-flag" data-search="october 6th attack on israel was a false flag  informational" onclick="pick(this)"><span class="thn">October 6th Attack on Israel Was A False Flag</span><span class="thm">Informational · 78 atoms</span></button>
@@ -176,7 +185,7 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
       <div class="thnone" id="thnone">No theories match.</div>
     </div>
   </aside>
-  <main class="detail"><iframe id="thframe" title="Theory profile" src="viral-bitchute-rumble-2025-launched-with-coordinated-deep-state-psychological-op.html"></iframe></main>
+  <main class="detail"><iframe id="thframe" title="Theory profile" src="mcdonald-s-mind-control.html"></iframe></main>
 </div>
 <script>
 function pick(el){
@@ -189,6 +198,7 @@ function filt(){
     var hit=!q||(b.dataset.search||'').indexOf(q)!==-1;
     b.style.display=hit?'':'none'; if(hit)n++;
   });
+  document.querySelectorAll('.thgrp').forEach(function(g){g.style.display=q?'none':'';});
   document.getElementById('thcount').textContent=n;
   document.getElementById('thnone').style.display=n?'none':'block';
 }
