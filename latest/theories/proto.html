@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/favicon.png">
+<title>SignalWatch — Proto-Conspiracy-Theories</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@0,400;0,500;0,600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root{--bg:#e9eef7;--surface:#fff;--surface-b:#f4f7fc;--ink:#19223a;--ink-soft:#5c6982;
+  --ink-faint:#8a95ac;--line:#dde4f0;--line-bright:#b9cdec;--accent:#7b6ef0;--accent2:#2bb3d4;
+  --serif:"Newsreader",Georgia,serif;--sans:"Hanken Grotesk",system-ui,sans-serif;--mono:"JetBrains Mono",monospace;}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);
+  background-image:radial-gradient(60% 50% at 12% -5%,#d6e8f6 0,transparent 60%),radial-gradient(52% 46% at 105% 0%,#e6e2f7 0,transparent 55%);
+  background-attachment:fixed;display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;gap:18px;padding:12px 20px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.7);backdrop-filter:blur(6px)}
+.topbar .brand{font-family:var(--serif);font-weight:600;font-size:1.25rem;color:var(--ink);text-decoration:none}
+.topbar .brand b{color:var(--accent)}
+.topbar nav{display:flex;gap:14px;margin-left:auto;flex-wrap:wrap}
+.topbar nav a{color:var(--ink-soft);text-decoration:none;font-size:.86rem}
+.topbar nav a:hover{color:var(--accent)}
+.layout{display:flex;flex:1;min-height:0}
+.side{width:320px;flex:none;border-right:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column}
+.side .shd{padding:12px 14px 8px}
+.side h2{font-family:var(--serif);font-weight:500;font-size:1.1rem;margin:0 0 8px}
+#thsearch{width:100%;padding:8px 11px;border:1px solid var(--line);border-radius:8px;background:var(--surface-b);color:var(--ink);font-size:.88rem}
+.thlist{overflow:auto;flex:1;padding:4px 8px 16px}
+.thx{display:block;width:100%;text-align:left;background:none;border:none;border-radius:8px;
+  padding:9px 11px;cursor:pointer;color:var(--ink);font-family:inherit}
+.thx:hover{background:var(--surface-b)}
+.thx.active{background:var(--accent2);background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.thgrp{font-family:var(--mono);font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint);padding:12px 11px 5px}
+.thgrp-new{color:#c2410c}
+.thx.new{background:#fff4e8;border-left:3px solid #f97316;margin-bottom:3px}
+.thx.new:hover{background:#ffe9d2}
+.thx.new.active{background:#fed7aa}
+.thx.new .thn{color:#9a3412}
+.thx.new .thsub{color:#c2410c}
+.thx .thn{display:block;font-size:.92rem;font-weight:600;line-height:1.25}
+.thx .thm{display:block;font-family:var(--mono);font-size:.68rem;color:var(--ink-faint);margin-top:2px}
+.thx .thsub{display:block;font-size:.74rem;color:var(--accent);margin-top:2px}
+.thnone{padding:14px;color:var(--ink-faint);font-size:.85rem;display:none}
+.detail{flex:1;min-width:0}
+#thframe{width:100%;height:100%;border:none;background:var(--bg)}
+@media(max-width:760px){.layout{flex-direction:column}.side{width:auto;max-height:38vh;border-right:none;border-bottom:1px solid var(--line)}.detail{flex:1;min-height:60vh}}
+</style>
+</head><body>
+<div class="topbar">
+  <a class="brand" href="/"><b>Signal</b>Watch · Proto-Conspiracy-Theories</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/latest/conspiracy-today.html">Conspiracy Today</a>
+    <a href="/latest/behind-the-news.html">Behind the News</a>
+    <a href="/latest/political-valence.html">Political Valence</a>
+    <a href="/latest/source-valence.html">Source Valence</a>
+    <a href="index.html">&larr; All theories</a>
+  </nav>
+</div>
+<div class="layout">
+  <aside class="side">
+    <div class="shd">
+      <h2>Proto-Conspiracy-Theories <span id="thcount" style="color:var(--ink-faint);font-size:.8rem">13</span></h2>
+      <input id="thsearch" type="search" placeholder="Search…" oninput="filt()">
+    </div>
+    <div style="padding:10px 14px;color:var(--ink-soft);font-size:.82rem;line-height:1.45;border-bottom:1px solid var(--line)">Conspiratorial thinking that surfaced but never reached escape velocity — fleeting, single-source or single-event claims that never crystallized into a self-propagating theory with its own following. Kept as examples of conspiratorial ideation in its earliest, weakest form.</div>
+    <div class="thlist" id="thlist">
+      <button class="thx" data-slug="2026-digital-simulation-sync-phenomenon" data-search="2026 digital simulation sync phenomenon  informational" onclick="pick(this)"><span class="thn">2026 Digital Simulation Sync Phenomenon</span><span class="thm">Informational · 3 atoms</span></button>
+<button class="thx" data-slug="ai-portal-alien-summoning-theory" data-search="ai portal alien summoning theory  informational" onclick="pick(this)"><span class="thn">AI Portal Alien Summoning Theory</span><span class="thm">Informational · 34 atoms</span></button>
+<button class="thx" data-slug="bulga-sphere" data-search="bulga sphere  informational" onclick="pick(this)"><span class="thn">Bulga Sphere</span><span class="thm">Informational · 88 atoms</span></button>
+<button class="thx" data-slug="democrats-knicks-loss-blame-trump" data-search="democrats wanted the knicks to lose to blame trump  informational" onclick="pick(this)"><span class="thn">Democrats Wanted the Knicks to Lose to Blame Trump</span><span class="thm">Informational · 8 atoms</span></button>
+<button class="thx" data-slug="gravity-is-an-internal-atomic-force" data-search="gravity is an internal atomic force  informational" onclick="pick(this)"><span class="thn">Gravity Is an Internal Atomic Force</span><span class="thm">Informational · 8 atoms</span></button>
+<button class="thx" data-slug="high-diesel-prices-staged-psyop" data-search="high diesel prices staged  informational" onclick="pick(this)"><span class="thn">High Diesel Prices Staged</span><span class="thm">Informational · 6 atoms</span></button>
+<button class="thx" data-slug="iran-s-alleged-manipulation-of-regional-climate-through-radar-interference-is-li" data-search="iran&#x27;s alleged manipulation of regional climate through radar interference is linked to severe we  informational" onclick="pick(this)"><span class="thn">Iran&#x27;s alleged manipulation of regional climate through radar interference is linked to severe we</span><span class="thm">Informational · 35 atoms</span></button>
+<button class="thx" data-slug="mysterious-pipe" data-search="mysterious pipe  low" onclick="pick(this)"><span class="thn">Mysterious Pipe</span><span class="thm">Low</span></button>
+<button class="thx" data-slug="project-a119-cultural-layer-sanitization-theory" data-search="project a119 cultural layer sanitization theory  informational" onclick="pick(this)"><span class="thn">Project A119 Cultural Layer Sanitization Theory</span><span class="thm">Informational · 41 atoms</span></button>
+<button class="thx" data-slug="the-ettore-majorana-device" data-search="the ettore majorana device  informational" onclick="pick(this)"><span class="thn">The Ettore Majorana Device</span><span class="thm">Informational</span></button>
+<button class="thx" data-slug="torenza-passport-country-hoax" data-search="torenza passport country hoax  informational" onclick="pick(this)"><span class="thn">Torenza Passport Country Hoax</span><span class="thm">Informational · 114 atoms</span></button>
+<button class="thx" data-slug="trump-mobile-palantir-surveillance-honeytrap" data-search="trump mobile palantir surveillance honeytrap  low" onclick="pick(this)"><span class="thn">Trump Mobile Palantir Surveillance Honeytrap</span><span class="thm">Low · 9 atoms</span></button>
+<button class="thx" data-slug="woke-hate-group-manufacturing-scandal" data-search="woke hate group manufacturing scandal  informational" onclick="pick(this)"><span class="thn">Woke Hate Group Manufacturing Scandal</span><span class="thm">Informational · 21 atoms</span></button>
+      <div class="thnone" id="thnone">No theories match.</div>
+    </div>
+  </aside>
+  <main class="detail"><iframe id="thframe" title="Theory profile" src="2026-digital-simulation-sync-phenomenon.html"></iframe></main>
+</div>
+<script>
+function pick(el){
+  document.querySelectorAll('.thx').forEach(function(b){b.classList.toggle('active',b===el);});
+  document.getElementById('thframe').src=el.dataset.slug+'.html';
+}
+function filt(){
+  var q=document.getElementById('thsearch').value.trim().toLowerCase(),n=0;
+  document.querySelectorAll('.thx').forEach(function(b){
+    var hit=!q||(b.dataset.search||'').indexOf(q)!==-1;
+    b.style.display=hit?'':'none'; if(hit)n++;
+  });
+  document.querySelectorAll('.thgrp').forEach(function(g){g.style.display=q?'none':'';});
+  document.getElementById('thcount').textContent=n;
+  document.getElementById('thnone').style.display=n?'none':'block';
+}
+var f=document.querySelector('.thx'); if(f) f.classList.add('active');
+</script>
+</body></html>
