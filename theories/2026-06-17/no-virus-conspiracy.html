@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>No-Virus Conspiracy — SignalWatch</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root { color-scheme: light;
+  --bg:#e9eef7; --surface:#ffffff; --surface-b:#f4f7fc; --ink:#19223a; --ink-soft:#5c6982;
+  --ink-faint:#8a95ac; --line:#dde4f0; --line-bright:#b9cdec;
+  --accent-1:#2bb3d4; --accent-2:#7b6ef0; --accent-3:#1fb589;
+  --accent-1-soft:#d6f0f7; --accent-2-soft:#e4e0fb; --accent-3-soft:#d4f3e8;
+  --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace; }
+* { box-sizing: border-box; }
+body { font-family: var(--sans); color: var(--ink); margin: 0; padding: 2rem 1.2rem; line-height: 1.55;
+       background: var(--bg);
+       background-image: radial-gradient(60% 50% at 12% -5%, #d6e8f6 0%, transparent 60%),
+                         radial-gradient(52% 46% at 105% 0%, #e6e2f7 0%, transparent 55%);
+       background-attachment: fixed; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 0.3rem; color: var(--ink); letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 1.9rem 0 0.7rem; color: var(--ink); }
+h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+     color: var(--accent-2); margin: 1.1rem 0 0.4rem; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: var(--ink-faint); font-size: 0.82rem; }
+code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-b); padding: 0.1em 0.35em; border-radius: 4px; }
+.tags span { display: inline-block; background: var(--surface-b); border: 1px solid var(--line);
+             padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 0.9rem 1.05rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: var(--ink-soft); }
+.kv .v { color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1.1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.45rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+th, td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+th { color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #d6536d; } td.lean-neg { color: #2f86d6; }
+.podcast { background: var(--accent-2-soft); border: 1px solid var(--line-bright); border-radius: 10px;
+           padding: 0.65rem 0.9rem; margin: 0.6rem 0; }
+.podcast .lbl { color: var(--ink-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer { color: var(--ink-faint); font-size: 0.74rem; margin-top: 2.4rem;
+          border-top: 1px solid var(--line); padding-top: 0.9rem; }
+pre { background: var(--surface-b); border: 1px solid var(--line); border-radius: 8px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; color: var(--ink-soft); }
+.section-empty { color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
+.whats-new { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent-1);
+             border-radius: 10px; padding: 0.7rem 1.1rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.whats-new p { margin: 0.55rem 0; font-size: 0.92rem; color: var(--ink-soft); }
+.whats-new p:first-child { margin-top: 0.2rem; }
+/* layout */
+.wrap { max-width: 900px; margin: 0 auto; }
+.hd-tags { margin: 0.55rem 0 0.2rem; }
+.pill { display: inline-block; padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.72rem;
+        font-weight: 600; margin: 0.15rem 0.35rem 0.15rem 0; border: 1px solid var(--line-bright);
+        font-family: var(--mono); letter-spacing: 0.02em; }
+.pill.threat { background: #fde8ec; color: #c0395a; border-color: #f3c4cf; }
+.pill.band { background: var(--accent-1-soft); color: #1789a6; border-color: #b6e3ee; }
+.pill.power { background: var(--accent-3-soft); color: #14906c; border-color: #b6e6d4; }
+.lead { color: var(--ink-soft); font-size: 1rem; margin: 0.5rem 0 0; max-width: 70ch; }
+/* tabs */
+.tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin: 1.4rem 0 0; }
+.tab { padding: 0.55rem 1.05rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--ink-faint);
+       border-bottom: 2px solid transparent; user-select: none; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+.pane { display: none; padding-top: 0.4rem; }
+.pane.active { display: block; }
+/* chips with definitions */
+.ox { display: grid; grid-template-columns: 150px 1fr; gap: 0.45rem 0.9rem; font-size: 0.85rem; }
+.ox .oxk { color: var(--ink-soft); padding-top: 0.25rem; font-weight: 600; }
+.oxchip { display: inline-block; background: var(--surface-b); border: 1px solid var(--line-bright); color: var(--ink);
+          padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.78rem; margin: 0 0.3rem 0.3rem 0; }
+.deflist { margin: 0.3rem 0 0; }
+.deflist .di { margin-bottom: 0.6rem; }
+.deflist .dt { color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+.deflist .dd { color: var(--ink-soft); font-size: 0.82rem; }
+.fam-links a { display: inline-block; background: var(--accent-2-soft); border: 1px solid var(--line-bright);
+               color: var(--accent-2); padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.8rem;
+               margin: 0 0.35rem 0.35rem 0; }
+/* political valence + atoms */
+.valence-wrap { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.valence-svg { background: var(--surface-b); border: 1px solid var(--line); border-radius: 10px; max-width: 460px; width: 100%; }
+.valence-meta { font-size: 0.85rem; color: var(--ink-soft); }
+.valence-meta .big { font-size: 1.35rem; font-weight: 700; font-family: var(--serif); }
+.lean-left { color: #2f86d6; } .lean-right { color: #d6536d; } .lean-center { color: var(--ink); }
+/* content surface */
+.surface-row { margin: 0.55rem 0 0.85rem; }
+.surface-row .sr-lbl { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase;
+                       letter-spacing: 0.05em; margin-bottom: 0.3rem; font-family: var(--mono); }
+.plat-bar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--surface-b); border: 1px solid var(--line); }
+.plat-seg { color: #fff; font-size: 0.66rem; font-weight: 700; text-align: center;
+            line-height: 20px; overflow: hidden; white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.25); }
+.plat-legend { margin-top: 0.35rem; font-size: 0.72rem; color: var(--ink-soft); display: flex;
+               flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+.plat-legend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.voice { font-size: 0.94rem; color: var(--ink-soft); max-width: 72ch; }
+.voice p { margin: 0.55rem 0; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>No-Virus Conspiracy</h1>
+    <div class="meta">Also known as: No-Virus Theory, germ theory denial, virus denialism</div>
+    <div class="hd-tags"><span class="pill threat">Threat · Informational</span><span class="pill band">Marginal</span><span class="pill power">Power 1</span></div>
+    <p class="lead">Viruses do not exist as disease-causing agents — this is the truth they have spent decades and billions of dollars to keep buried.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-pane="overview" onclick="swTab(this)">Overview</div>
+      <div class="tab" data-pane="whatsnew" onclick="swTab(this)">What's New</div>
+    </div>
+
+    <div class="pane active" data-pane="overview">
+      <h2>Core claims</h2>
+      <ul class="claims"><li>Lanka is of the opinion that no viruses exist that cause disease</li><li>Viruses do not cause any diseases; they are a myth propagated by the medical establishment to control populations and profit from treatments.</li><li>Dr. Stefan Lanka has provided evidence and arguments proving the non-existence of viruses as pathogens, challenging mainstream scientific consensus.</li><li>The belief in viruses is maintained through misinformation and manipulation by pharmaceutical companies and governments.</li></ul>
+
+      <h2>Voice of the Believer</h2>
+      <div class="voice"><p>Viruses do not exist as disease-causing agents — this is the truth they have spent decades and billions of dollars to keep buried.</p><p>Dr. Stefan Lanka has done the work the establishment refused to do, and his evidence and arguments make the official story fall apart completely. What mainstream science calls a &quot;virus&quot; has never been properly isolated, never been demonstrated to cause disease by any rigorous standard — yet the medical establishment presents this myth as settled fact, because settled facts sell vaccines, antivirals, and endless treatments. The pharmaceutical companies and governments that fund this narrative have every reason to keep you afraid of invisible particles only they can protect you from.</p><p>Lanka&#x27;s challenge to the scientific consensus is not fringe — it is the inconvenient rigor they cannot answer. When you follow the money and look at who benefits from a population conditioned to believe it is perpetually under biological threat, the manipulation becomes impossible to ignore. Big Pharma profits, governments gain compliance tools, and the truth is laundered through captured institutions that call themselves science.</p><p>We are not sick because of viruses. We are controlled through the belief in them. The entire edifice of virology as a disease model is a constructed mythology, and Lanka has handed the world the tools to see it — if only people are willing to look.</p></div>
+
+      <h2>Voice of Reason</h2>
+      <div class="voice"><p>The &quot;no-virus&quot; or &quot;virus denialism&quot; theory holds that pathogenic viruses do not exist as biological entities, that the entire field of virology is a fabricated discipline, and that a figure named Dr. Stefan Lanka has produced conclusive proof of this position — proof suppressed by pharmaceutical interests and captured scientific institutions. Each substantive element of this claim fails on empirical, methodological, and logical grounds.</p><p>Stefan Lanka is a German conspiracy theorist and anti-vaccination activist who advocates for various scientifically refuted positions. He studied biology at the University of Konstanz, where his own doctoral dissertation — submitted in 1994 — was itself a study of virus infection in the marine alga *Ectocarpus siliculosus*. Lanka is therefore not an outsider to virology who stumbled upon suppressed truth; he is someone who built his academic credential on virus research and then reversed course, asserting the very subject of his dissertation was fictitious. The theory&#x27;s presentation of him as uniquely rigorous collapses immediately against this biography. The claim that viruses have &quot;never been properly isolated&quot; is equally unfounded. Viruses can be purified away from cellular proteins and organelles using centrifugation techniques, and are routinely imaged using electron microscopy. Sample workflows for viral detection and characterization involve next-generation sequencing, reverse transcriptase-polymerase chain reaction, and enzyme-linked immunosorbent assay protocols — independent, mutually corroborating methods developed across separate research traditions spanning decades, by scientists in competing institutions across dozens of countries. The conspiracy would require the simultaneous, silent coordination of thousands of independently operating laboratories, none of which has ever produced a dissenting insider account despite no structural mechanism to prevent one.</p><p>The theory&#x27;s most cited evidentiary anchor — the German court case between Lanka and physician David Bardens — is systematically misrepresented in no-virus circles. Lanka had offered €100,000 for a single scientific publication proving the measles virus&#x27;s existence. Bardens submitted six articles and a district court ruled Lanka had to pay; however, a higher court overturned that ruling on appeal — not because it doubted the existence of the measles virus, which it explicitly called &quot;the unanimous opinion in science,&quot; but because Bardens had not met the specific contractual criterion of providing proof within a single publication. Six publications collectively demonstrated the existence of the measles virus and its diameter, but they failed to meet the contest requirements as set by Lanka, who had stipulated both details be covered in a single publication. The presiding judge in Stuttgart stressed the ruling was not about whether the measles virus exists: &quot;It is an illusion to believe that a court can rule on that,&quot; he said. As the story circulated online, the &quot;Higher Regional Court&quot; became the &quot;Supreme Court,&quot; Bardens became &quot;the medical science community,&quot; and the ruling&#x27;s actual contractual basis was stripped away entirely. What the no-virus movement calls a legal vindication was a narrowly scoped contract dispute, and even the judge adjudicating it explicitly disclaimed any scientific conclusion.</p><p>There is a legitimate kernel of concern embedded in the theory that deserves acknowledgment and separation from the distortion built around it. Science funding does create institutional incentives, pharmaceutical companies do have profit motives that can skew research priorities, and regulatory capture is a documented phenomenon that public-health researchers and legislators take seriously. The appropriate response to those concerns is rigorous peer review, funding transparency, independent replication, and conflict-of-interest disclosure — tools the scientific community actually uses and continues to improve. Lanka and his followers instead redirect those legitimate grievances toward an unfalsifiable claim: any evidence for viral existence is dismissed as fabricated, any scientist who disagrees is complicit, and any court ruling that goes against them is corrupted. A position that cannot in principle be falsified is not scientific rigor; it is dogma wearing a lab coat.</p><p>The real-world consequences of this theory are measurable and serious. Increasing numbers of measles infections — driven by misinformation about vaccines and reduced vaccination rates in some communities — have surged in the United States, with more than 1,000 new cases and three measles-related deaths reported by mid-May 2025 alone, surpassing all cases reported in 2024. In the U.S., more than 2,000 cases of measles were reported in 2025, the most since measles was declared eliminated in 2000. Measles vaccines have averted the deaths of approximately 94 million people, mainly children, over the past 50 years, according to a World Health Organization analysis. Misinformation about the Lanka measles case persists across alternative-medicine platforms from New Zealand to the United States, and Lanka continues to publish materials misrepresenting the court ruling and promoting HIV and COVID-19 denialism. The theory does not liberate people from pharmaceutical manipulation; it removes them from access to interventions whose protective effects are quantified in tens of millions of lives.</p></div>
+
+      <h2>Ontology</h2>
+      <div class="ox"><div class="oxk">Sub-theory of</div><div><a class="oxchip" href="big-pharma-suppression.html">Big Pharma Suppression</a></div></div>
+
+      <h2>Political valence &amp; atoms</h2>
+      <div class="section-empty">No lean distribution yet.</div>
+
+      <h2>Content surface</h2>
+      <div class="surface-row"><div class="sr-lbl">Podcasts (host lean) · 1</div><div class="plat-bar"><div class="plat-seg" style="background:#7dd3fc;flex:1">Neutral</div></div><div class="plat-legend"><span><span class="sw" style="background:#7dd3fc"></span>Neutral <b>1</b></span></div></div>
+
+      
+
+      <h2>Family links</h2>
+      <div class="section-empty">Not assigned to a theory family.</div>
+
+      <h2>Influencers</h2>
+      <div class="section-empty">No influencers linked yet.</div>
+
+      <h2>Related reports</h2>
+      <div class="section-empty">No reports linked to this theory yet.</div>
+    </div>
+
+    <div class="pane" data-pane="whatsnew">
+      <h2>What's New — what the new material means</h2>
+      <div class="whats-new"><p>The new material linked to the &quot;No-Virus Conspiracy&quot; theory suggests that Terrain Theory of Disease has been reversed. This implies that proponents of the theory now claim that environmental factors, rather than viral presence, are the primary cause of disease. However, this is a significant departure from the established narrative, which posits that viruses play a central role in causing illness.</p><p>The DarkHorse Podcast is a new platform where this idea is being promoted, indicating a possible expansion into alternative media channels. The podcast&#x27;s audience may be unfamiliar with the theory, potentially introducing it to a broader demographic. This could signal an effort to rebrand or repackage the theory for a wider audience.</p><p>No prominent voices have emerged as champions of this specific claim within the established &quot;No-Virus Conspiracy&quot; community. However, the tone and urgency surrounding this new development are unclear, and further analysis is needed to determine whether it represents a significant shift in the narrative or simply an isolated variation.</p></div>
+    </div>
+
+    <div class="footer">
+      Generated by SignalWatch · 2026-06-17 03:23:32 UTC ·
+      theory_id <code>f2c56817-c9ef-4a5b-a7c1-0ddd45a120c3</code>
+    </div>
+  </div>
+  <script>
+    function swTab(el){
+      var w=el.closest('.wrap'), k=el.dataset.pane;
+      w.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===el);});
+      w.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('active',p.dataset.pane===k);});
+    }
+  </script>
+</body>
+</html>
