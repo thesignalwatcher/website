@@ -34,6 +34,17 @@ h1{font-family:var(--serif);font-weight:600;font-size:2rem;margin:0 0 6px}
   font-weight:600;font-size:.9rem;padding:9px 16px;border-radius:9px}
 .dl-btn:hover{background:#6a5de8}.dl-btn span{margin-left:4px}
 .note{margin-top:26px;font-size:.82rem;color:var(--ink-faint);line-height:1.5}
+.sec-h{font-family:var(--serif);font-weight:600;font-size:1.45rem;margin:38px 0 2px}
+.sec-sub{color:var(--ink-soft);font-size:.92rem;margin:0 0 18px}
+.paper-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:8px}
+@media(max-width:720px){.paper-grid{grid-template-columns:1fr}}
+.paper-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s}
+.paper-card:hover{box-shadow:0 10px 30px rgba(40,50,90,.12);transform:translateY(-2px)}
+.paper-thumb{display:block;background:#0f1626;border-bottom:1px solid var(--line)}
+.paper-thumb img{display:block;width:100%;height:auto}
+.paper-body{padding:18px 22px 22px;display:flex;flex-direction:column;flex:1}
+.paper-meta{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.paper-card h2{font-family:var(--serif);font-weight:600;font-size:1.32rem;line-height:1.22;margin:0 0 8px}
 </style></head><body>
 <div class="topbar">
   <a class="brand" href="/"><b>Signal</b>Watch · Data</a>
@@ -46,8 +57,26 @@ h1{font-family:var(--serif);font-weight:600;font-size:2rem;margin:0 0 6px}
 </div>
 <div class="wrap">
   <h1>Research Data</h1>
-  <p class="lede">Open datasets from the SignalWatch conspiracy-theory tracker, for researchers and
-    journalists. Updated 2026-06-18. Free to use with attribution.</p>
+  <p class="lede">Reports, white papers, and open datasets from the SignalWatch conspiracy-theory
+    tracker, for researchers and journalists. Updated 2026-06-18. Free to use with attribution.</p>
+  
+  <h2 class="sec-h">Reports &amp; White Papers</h2>
+  <p class="sec-sub">In-depth write-ups and methodology notes from the SignalWatch system. Free to read and share.</p>
+  <div class="paper-grid">
+      <article class="paper-card">
+        <a class="paper-thumb" href="/data/papers/seam-search-audit.pdf" target="_blank" rel="noopener">
+          <img src="/data/papers/seam-search-audit.png" alt="Four-panel SEAM infographic: theory-by-engine believer prominence heatmap, engine-agreement matrix, variance decomposition, and most engine-dependent theories." loading="lazy">
+        </a>
+        <div class="paper-body">
+          <div class="paper-meta">White Paper · 2026-06-16 · 817 KB</div>
+          <h2>Your Search Engine Has Blind Spots (and a Stance)</h2>
+          <p class="dl-desc">Run the same query across seven search engines and each shows measurable blind spots and a stance: block rates span 10-100%, Bing surfaces the most pro-conspiracy content, Google the most debunks, and multi-engine search finds ~2.3x the sources.</p>
+          <a class="dl-btn" href="/data/papers/seam-search-audit.pdf" download>Download PDF <span>&#8595;</span></a>
+        </div>
+      </article>
+  </div>
+  <h2 class="sec-h">Datasets</h2>
+  <p class="sec-sub">Open, structured cuts of the database — spreadsheet-ready and semantic-web formats.</p>
   <div class="dl-grid">
       <article class="dl-card">
         <div class="dl-hd"><span class="dl-tag">CSV</span><span class="dl-size">201 KB</span></div>
