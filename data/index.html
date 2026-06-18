@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/favicon.png">
+<title>SignalWatch — Research Data</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@0,400;0,500;0,600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root{--bg:#e9eef7;--surface:#fff;--ink:#19223a;--ink-soft:#5c6982;--ink-faint:#8a95ac;
+  --line:#dde4f0;--accent:#7b6ef0;--accent2:#2bb3d4;--serif:"Newsreader",Georgia,serif;
+  --sans:"Hanken Grotesk",system-ui,sans-serif;--mono:"JetBrains Mono",monospace;}
+*{box-sizing:border-box}body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);
+  background-image:radial-gradient(60% 50% at 12% -5%,#d6e8f6 0,transparent 60%),radial-gradient(52% 46% at 105% 0%,#e6e2f7 0,transparent 55%);background-attachment:fixed;min-height:100vh}
+.topbar{display:flex;align-items:center;gap:14px;padding:12px 22px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.7);backdrop-filter:blur(6px)}
+.brand{font-family:var(--serif);font-weight:600;font-size:1.25rem;color:var(--ink);text-decoration:none}
+.brand b{color:var(--accent)}
+.topbar nav{display:flex;gap:14px;margin-left:auto;flex-wrap:wrap}
+.topbar nav a{color:var(--ink-soft);text-decoration:none;font-size:.86rem}.topbar nav a:hover{color:var(--accent)}
+.wrap{max-width:920px;margin:0 auto;padding:34px 22px 60px}
+h1{font-family:var(--serif);font-weight:600;font-size:2rem;margin:0 0 6px}
+.lede{color:var(--ink-soft);font-size:1.02rem;margin:0 0 28px;max-width:680px;line-height:1.5}
+.dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:720px){.dl-grid{grid-template-columns:1fr}}
+.dl-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;display:flex;flex-direction:column}
+.dl-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.dl-tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--accent);padding:3px 8px;border-radius:6px}
+.dl-size{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint)}
+.dl-card h2{font-family:var(--serif);font-weight:600;font-size:1.3rem;margin:2px 0 6px}
+.dl-desc{color:var(--ink-soft);font-size:.92rem;line-height:1.5;margin:0 0 12px}
+.dl-incl b,.excl b{font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint)}
+.dl-incl ul,.excl ul{margin:5px 0 12px;padding-left:18px}
+.dl-incl li{font-size:.88rem;color:var(--ink);margin:3px 0;line-height:1.4}
+.excl li{font-size:.86rem;color:var(--ink-faint);margin:3px 0}
+.dl-btn{margin-top:auto;align-self:flex-start;background:var(--accent);color:#fff;text-decoration:none;
+  font-weight:600;font-size:.9rem;padding:9px 16px;border-radius:9px}
+.dl-btn:hover{background:#6a5de8}.dl-btn span{margin-left:4px}
+.note{margin-top:26px;font-size:.82rem;color:var(--ink-faint);line-height:1.5}
+</style></head><body>
+<div class="topbar">
+  <a class="brand" href="/"><b>Signal</b>Watch · Data</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/latest/theories/index.html">Theories</a>
+    <a href="/latest/conspiracy-today.html">Conspiracy Today</a>
+    <a href="/latest/political-valence.html">Political Valence</a>
+  </nav>
+</div>
+<div class="wrap">
+  <h1>Research Data</h1>
+  <p class="lede">Open datasets from the SignalWatch conspiracy-theory tracker, for researchers and
+    journalists. Updated 2026-06-18. Free to use with attribution.</p>
+  <div class="dl-grid">
+      <article class="dl-card">
+        <div class="dl-hd"><span class="dl-tag">CSV</span><span class="dl-size">201 KB</span></div>
+        <h2>Theory dataset</h2>
+        <p class="dl-desc">One row per tracked conspiracy theory (120 total). The flat, spreadsheet-ready cut of the database.</p>
+        <div class="dl-incl"><b>Includes:</b><ul><li>Political lean (centroid) + bimodality / modality</li><li>Power, threat, and harm scores; lifecycle status</li><li>Ontology axes: family, mechanism, arena, controlling interest, infrastructure burden</li><li>Structural pattern (archetype) + sub-theory parent</li><li>Core claims, summary, activity metrics &amp; dates</li></ul></div>
+        <div class="excl"><b>Omitted:</b><ul><li>Voice-of-the-Believer / Voice-of-Reason narrative prose</li><li>Individual atoms (post-level data)</li><li>Data-visualisation arrays</li></ul></div>
+        <a class="dl-btn" href="/data/signalwatch_theories.csv" download>Download CSV <span>&#8595;</span></a>
+      </article>
+      <article class="dl-card">
+        <div class="dl-hd"><span class="dl-tag">OWL · Turtle</span><span class="dl-size">2.3 MB</span></div>
+        <h2>SCTO ontology</h2>
+        <p class="dl-desc">The Structured Conspiracy-Theory Ontology in RDF/Turtle (OWL). Importable into Protégé, GraphDB, or any SPARQL endpoint.</p>
+        <div class="dl-incl"><b>Includes:</b><ul><li>Typed vocabulary classes (family, mechanism, arena, claim &amp; evidence types…)</li><li>Per-theory axes, claims, evidence, kernels-of-truth + their relationships</li><li>Structural patterns (archetypes) via hasPattern</li><li>Sub-theory hierarchy via subTheoryOf</li></ul></div>
+        
+        <a class="dl-btn" href="/data/signalwatch_ontology.ttl" download>Download OWL <span>&#8595;</span></a>
+      </article>
+  </div>
+  <p class="note">Lean is a calibrated centroid in [−1 (left), +1 (right)]. The dataset is a snapshot;
+    figures reflect the corpus harvested to date. Questions or corrections: see the site footer.</p>
+</div>
+</body></html>
