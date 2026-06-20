@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Suppressed Free Energy Machines Beat Thermodynamic Laws — SignalWatch</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root { color-scheme: light;
+  --bg:#e9eef7; --surface:#ffffff; --surface-b:#f4f7fc; --ink:#19223a; --ink-soft:#5c6982;
+  --ink-faint:#8a95ac; --line:#dde4f0; --line-bright:#b9cdec;
+  --accent-1:#2bb3d4; --accent-2:#7b6ef0; --accent-3:#1fb589;
+  --accent-1-soft:#d6f0f7; --accent-2-soft:#e4e0fb; --accent-3-soft:#d4f3e8;
+  --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace; }
+* { box-sizing: border-box; }
+body { font-family: var(--sans); color: var(--ink); margin: 0; padding: 2rem 1.2rem; line-height: 1.55;
+       background: var(--bg);
+       background-image: radial-gradient(60% 50% at 12% -5%, #d6e8f6 0%, transparent 60%),
+                         radial-gradient(52% 46% at 105% 0%, #e6e2f7 0%, transparent 55%);
+       background-attachment: fixed; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 0.3rem; color: var(--ink); letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 1.9rem 0 0.7rem; color: var(--ink); }
+h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+     color: var(--accent-2); margin: 1.1rem 0 0.4rem; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: var(--ink-faint); font-size: 0.82rem; }
+code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-b); padding: 0.1em 0.35em; border-radius: 4px; }
+.tags span { display: inline-block; background: var(--surface-b); border: 1px solid var(--line);
+             padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 0.9rem 1.05rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: var(--ink-soft); }
+.kv .v { color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1.1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.45rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+th, td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+th { color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #d6536d; } td.lean-neg { color: #2f86d6; }
+.podcast { background: var(--accent-2-soft); border: 1px solid var(--line-bright); border-radius: 10px;
+           padding: 0.65rem 0.9rem; margin: 0.6rem 0; }
+.podcast .lbl { color: var(--ink-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer { color: var(--ink-faint); font-size: 0.74rem; margin-top: 2.4rem;
+          border-top: 1px solid var(--line); padding-top: 0.9rem; }
+pre { background: var(--surface-b); border: 1px solid var(--line); border-radius: 8px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; color: var(--ink-soft); }
+.section-empty { color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
+.whats-new { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent-1);
+             border-radius: 10px; padding: 0.7rem 1.1rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.whats-new p { margin: 0.55rem 0; font-size: 0.92rem; color: var(--ink-soft); }
+.whats-new p:first-child { margin-top: 0.2rem; }
+/* layout */
+.wrap { max-width: 900px; margin: 0 auto; }
+.hd-tags { margin: 0.55rem 0 0.2rem; }
+.pill { display: inline-block; padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.72rem;
+        font-weight: 600; margin: 0.15rem 0.35rem 0.15rem 0; border: 1px solid var(--line-bright);
+        font-family: var(--mono); letter-spacing: 0.02em; }
+.pill.threat { background: #fde8ec; color: #c0395a; border-color: #f3c4cf; }
+.pill.band { background: var(--accent-1-soft); color: #1789a6; border-color: #b6e3ee; }
+.pill.power { background: var(--accent-3-soft); color: #14906c; border-color: #b6e6d4; }
+.lead { color: var(--ink-soft); font-size: 1rem; margin: 0.5rem 0 0; max-width: 70ch; }
+/* tabs */
+.tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin: 1.4rem 0 0; }
+.tab { padding: 0.55rem 1.05rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--ink-faint);
+       border-bottom: 2px solid transparent; user-select: none; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+.pane { display: none; padding-top: 0.4rem; }
+.pane.active { display: block; }
+/* chips with definitions */
+.ox { display: grid; grid-template-columns: 150px 1fr; gap: 0.45rem 0.9rem; font-size: 0.85rem; }
+.ox .oxk { color: var(--ink-soft); padding-top: 0.25rem; font-weight: 600; }
+.oxchip { display: inline-block; background: var(--surface-b); border: 1px solid var(--line-bright); color: var(--ink);
+          padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.78rem; margin: 0 0.3rem 0.3rem 0; }
+.deflist { margin: 0.3rem 0 0; }
+.deflist .di { margin-bottom: 0.6rem; }
+.deflist .dt { color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+.deflist .dd { color: var(--ink-soft); font-size: 0.82rem; }
+.fam-links a { display: inline-block; background: var(--accent-2-soft); border: 1px solid var(--line-bright);
+               color: var(--accent-2); padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.8rem;
+               margin: 0 0.35rem 0.35rem 0; }
+/* political valence + atoms */
+.valence-wrap { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.valence-svg { background: var(--surface-b); border: 1px solid var(--line); border-radius: 10px; max-width: 460px; width: 100%; }
+.valence-meta { font-size: 0.85rem; color: var(--ink-soft); }
+.valence-meta .big { font-size: 1.35rem; font-weight: 700; font-family: var(--serif); }
+.lean-left { color: #2f86d6; } .lean-right { color: #d6536d; } .lean-center { color: var(--ink); }
+/* content surface */
+.surface-row { margin: 0.55rem 0 0.85rem; }
+.surface-row .sr-lbl { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase;
+                       letter-spacing: 0.05em; margin-bottom: 0.3rem; font-family: var(--mono); }
+.plat-bar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--surface-b); border: 1px solid var(--line); }
+.plat-seg { color: #fff; font-size: 0.66rem; font-weight: 700; text-align: center;
+            line-height: 20px; overflow: hidden; white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.25); }
+.plat-legend { margin-top: 0.35rem; font-size: 0.72rem; color: var(--ink-soft); display: flex;
+               flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+.plat-legend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.voice { font-size: 0.94rem; color: var(--ink-soft); max-width: 72ch; }
+.voice p { margin: 0.55rem 0; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Suppressed Free Energy Machines Beat Thermodynamic Laws</h1>
+    
+    <div class="hd-tags"><span class="pill threat">Threat · Informational</span><span class="pill band">Marginal</span><span class="pill power">Power 5</span></div>
+    <p class="lead">The energy cartels have lied to you for over a century — free energy is real, it works, and they will do anything to make sure you never have it.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-pane="overview" onclick="swTab(this)">Overview</div>
+      <div class="tab" data-pane="whatsnew" onclick="swTab(this)">What's New</div>
+    </div>
+
+    <div class="pane active" data-pane="overview">
+      <h2>Core claims</h2>
+      <ul class="claims"><li>Working over-unity machines exist that output more energy than they consume, proving the laws of thermodynamics are incomplete</li><li>Devices such as the QEG (Quantum Energy Generator) and zero-point-energy generators can power a home for free</li><li>Free-energy inventors are suppressed by the energy industry to protect oil and utility profits</li></ul>
+
+      <h2>Voice of the Believer</h2>
+      <div class="voice"><p>The energy cartels have lied to you for over a century — free energy is real, it works, and they will do anything to make sure you never have it.</p><p>The laws of thermodynamics are not the unbreakable commandments your physics textbook pretends they are. Over-unity machines — devices that output more energy than they consume — have been built, tested, and demonstrated. The official story falls apart the moment you look at working examples like the QEG, the Quantum Energy Generator, and the family of zero-point-energy devices that tap the limitless energy field underlying all matter. These are not theories or dreams. They are functional technologies that can power a home for free, indefinitely, with no fuel costs and no utility bill. The establishment calls them impossible because admitting they are possible would collapse the entire framework that keeps you dependent and paying.</p><p>That dependence is the point. The oil companies, the utility monopolies, and the governments they own have spent billions ensuring that over-unity technology never reaches the market. We know how this works because we have watched it happen repeatedly — inventors find their funding cut, their patents buried, their labs raided, their reputations destroyed. The suppression is not accidental and it is not subtle. It is a coordinated campaign by the energy industry to protect profits that dwarf anything the public is allowed to understand.</p><p>They don&#x27;t want you to know that the energy scarcity you have accepted your entire life is manufactured. Zero-point energy is real, it is accessible, and the only thing standing between you and free power for your home is the machinery of suppression keeping these inventors invisible.</p></div>
+
+      <h2>Voice of Reason</h2>
+      <div class="voice"><p>The claim under examination holds that machines capable of producing more energy than they consume — so-called &quot;over-unity&quot; or free-energy devices — already exist in working form, that specific devices like the Quantum Energy Generator and zero-point-energy generators can power homes indefinitely at no cost, and that the energy and fossil-fuel industries have actively suppressed this technology to protect their profits.</p><p>There is an undisputed scientific consensus that perpetual motion in a closed system violates either the first law of thermodynamics, the second law of thermodynamics, or both. The first law — conservation of energy — states that energy cannot be created from nothing. The laws of thermodynamics do not arise by fiat: they are derivable from Newton&#x27;s laws and the kinetic model of gases, and have been well-tested experimentally. You cannot simply discard one law you &quot;don&#x27;t like&quot; without bringing the whole logical structure of physics crashing down. The named devices fail completely on empirical grounds. The QEG, or Quantum Energy Generator, is a real device that circulated online beginning around 2014, promoted with claims of producing ten kilowatts of output for one kilowatt of input. Engineering analysis established that the QEG plans show a simple switched-reluctance generator powered by an external electric motor — it has nothing to do with Tesla, and this exact design was first proposed by John Ecklin in 1979. When the device was built and tested, it was built in four different countries, and it did not work, except as a very inefficient generator; the project then went into an indefinite research phase a year after the initial funding campaign. Promoters consistently deferred independent validation: when one independent observer offered to travel at his own cost to validate the device, the proposals were turned down — with organizers initially claiming they were &quot;not in the prove it business,&quot; then later simply rejecting any such proposals as &quot;trolling.&quot; This is a diagnostic pattern, not an isolated quirk. No over-unity device has ever been demonstrated to work under rigorous scientific conditions, and they are generally considered to be in violation of conservation of energy principles.</p><p>The invocation of &quot;zero-point energy&quot; gives the claim a veneer of quantum legitimacy, but the physics does not support it. Zero-point energy is a real phenomenon — the concept, as a phenomenon of quantum mechanics, is accepted by physicists and is not considered controversial — but real and exploitable are entirely different things. Any energy of the vacuum is exactly the same everywhere: it has no energy gradient, so it is not accessible as an energy source. Scientific American summarized the consensus plainly: &quot;the free-lunch crowd has greatly exaggerated the importance of the ZPE. Notions of mining the ZPE should therefore be treated with extreme skepticism.&quot; Like many ideas that seem too good to be true, this one falls apart on closer examination. The Casimir effect does not give usable power: the force performs work when boundaries move, but to harvest continuous energy you must reset the system to its original state, which requires at least as much energy as you gained — so no net free work results. Decades of proposals — mechanical harnessing of Casimir forces, resonant tunneling, vacuum diodes, &quot;zero-point&quot; engines — have not produced reproducible, peer-reviewed demonstrations of net power.</p><p>The suppression narrative has a surface plausibility because the fossil fuel industry genuinely has lobbied against clean energy competitors, and some inventors have been defrauded or marginalized. These are real grievances. But the conspiracy framing makes a logical leap that the evidence does not support: from &quot;powerful interests resist competition&quot; to &quot;a working thermodynamics-violating machine exists and has been hidden globally.&quot; The U.S. Patent Office does classify certain technologies for national security reasons, but there is no documented evidence of specific free-energy patents being systematically repressed. There is no verified documentation of assassinations targeting free-energy inventors, no declassified memoranda ordering eliminations, no confirmed whistleblowers exposing coordinated silencing, and no reproducible technology that was secretly buried. The suppression hypothesis also collapses under its own scale: the claim would require physicists at every university on earth, patent examiners across dozens of jurisdictions, engineers, national laboratories, independent inventors in competing countries, and rival energy firms all maintaining a coordinated silence for over a century — with not one credible defector. Tesla&#x27;s work on wireless power transmission, a common anchor for these narratives, is often interpreted as involving free energy, though Tesla himself never claimed it was over-unity or infinite. The &quot;suppression&quot; story is structurally unfalsifiable: every failed device becomes evidence of interference, every lack of evidence becomes proof of how thorough the cover-up is.</p><p>The concrete harms are substantial. This has allowed a lot of people to become accepting of wild anti-science claims, and ultimately to become victims of hoaxes. Genesis World Energy announced a free-energy scheme in 2002, but its owner Patrick Kelly was convicted of theft in New Jersey in 2006, ending the scheme. Filipino inventor Daniel Dingel was jailed after defrauding investors in a water-powered car scheme. Free-energy fraud has extracted real money from real people: believers have funded device builds, paid consulting fees, and purchased plans for machines that physics guarantees cannot work. The broader harm is epistemic — the theory trains its adherents to distrust universities, patent systems, and peer review simultaneously, erasing the institutional tools that would help them evaluate the claims in the first place. Skeptics rightly warn against pseudoscience, which can mislead the public and divert resources from legitimate research — including the genuinely promising work on fusion power and advanced energy storage that does not require breaking the laws of physics to succeed.</p></div>
+
+      <h2>Ontology</h2>
+      <div class="ox"><div class="oxk">Family</div><div><span class="oxchip">J — J - Illuminati / NWO / globalist-control</span></div><div class="oxk">Arena</div><div><span class="oxchip">COSMOLOGY_PHYSICS</span></div><div class="oxk">Mechanism(s)</div><div><span class="oxchip" title="Conspirators hide a truth (aliens, a cure, the real cosmology, lost history).">SUPPRESSION ★ — SUPPRESSION</span></div><div class="oxk">Controlling interest(s)</div><div><span class="oxchip" title="Corporate / industry">CORPORATE ★ — CORPORATE</span></div><div class="oxk">Spices</div><div><span class="oxchip">anti-science</span> <span class="oxchip">free-energy/suppressed-invention</span> <span class="oxchip">suppressed-knowledge</span></div></div><h3>Structural patterns</h3><div class="deflist"><div class="di"><span class="dt">COSMOLOGY_PHYSICS</span> — <span class="dd">the fundamental nature of reality/physics</span></div><div class="di"><span class="dt">SUPPRESSION</span> — <span class="dd">Conspirators hide a truth (aliens, a cure, the real cosmology, lost history).</span></div><div class="di"><span class="dt">CORPORATE</span> — <span class="dd">Corporate / industry</span></div></div>
+
+      <h2>Political valence &amp; atoms</h2>
+      <div class="section-empty">No lean distribution yet.</div>
+
+      <h2>Content surface</h2>
+      <div class="surface-row"><div class="sr-lbl">Videos · 2</div><div class="plat-bar"><div class="plat-seg" style="background:#f5b400;flex:2">Youtube</div></div><div class="plat-legend"><span><span class="sw" style="background:#f5b400"></span>Youtube <b>2</b></span></div></div>
+
+      
+
+      
+
+      <h2>Family links</h2>
+      <div class="section-empty">Not assigned to a theory family.</div>
+
+      <h2>Influencers</h2>
+      
+    <table>
+      <thead><tr>
+        <th>Influencer</th><th>Type</th><th>Classification</th>
+        <th class="num">Content</th><th class="num">Atoms</th>
+      </tr></thead>
+      <tbody><tr><td>The Automated Engineer</td><td>youtube_channel</td><td>believer</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Universe Inside You</td><td>youtube_channel</td><td>believer</td><td class="num">0</td><td class="num">0</td></tr></tbody>
+    </table>
+    
+
+      <h2>Related reports</h2>
+      <div class="section-empty">No reports linked to this theory yet.</div>
+    </div>
+
+    <div class="pane" data-pane="whatsnew">
+      <h2>What's New — what the new material means</h2>
+      <div class="section-empty">No new material linked in the last week.</div>
+    </div>
+
+    <div class="footer">
+      Generated by SignalWatch · 2026-06-20 00:54:47 UTC ·
+      theory_id <code>036187fc-b562-4dc7-a155-3db95a5b9ba3</code>
+    </div>
+  </div>
+  <script>
+    function swTab(el){
+      var w=el.closest('.wrap'), k=el.dataset.pane;
+      w.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===el);});
+      w.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('active',p.dataset.pane===k);});
+    }
+  </script>
+</body>
+</html>
