@@ -46,6 +46,14 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
 .thnone{padding:14px;color:var(--ink-faint);font-size:.85rem;display:none}
 .detail{flex:1;min-width:0}
 #thframe{width:100%;height:100%;border:none;background:var(--bg)}
+.share-link{margin-left:14px;display:inline-flex;align-items:center;gap:6px;
+  background:transparent;border:1px solid var(--line-bright);border-radius:6px;
+  padding:5px 10px;font-size:.78rem;color:var(--ink-soft);cursor:pointer;
+  font-family:inherit;transition:background .15s,color .15s,border-color .15s}
+.share-link:hover{background:var(--surface-b);color:var(--accent);
+  border-color:var(--accent)}
+.share-link.copied{background:#d4f3e8;color:#1fb589;border-color:#1fb589}
+.share-link[hidden]{display:none}
 @media(max-width:760px){.layout{flex-direction:column}.side{width:auto;max-height:38vh;border-right:none;border-bottom:1px solid var(--line)}.detail{flex:1;min-height:60vh}}
 </style>
 </head><body>
@@ -60,6 +68,11 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
     <a href="/data/" title="Open datasets for researchers">Data</a>
     <a href="/pseudoscience/" title="Pseudoscience (junk science) tracked apart from conspiracies" style="color:#2f8f6b;font-weight:600">Pseudoscience</a>
     <a href="proto.html" style="color:#c2410c">Proto-theories</a>
+    <button id="copy-theory-link" class="share-link" hidden
+        onclick="copyTheoryLink()"
+        title="Copy a direct URL to the currently-selected theory">
+      <span style="font-size:.9em">🔗</span><span id="copy-theory-label">copy link</span>
+    </button>
   </nav>
 </div>
 <div class="layout">
@@ -188,7 +201,45 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
 <script>
 function pick(el){
   document.querySelectorAll('.thx').forEach(function(b){b.classList.toggle('active',b===el);});
-  document.getElementById('thframe').src=el.dataset.slug+'.html';
+  var slug=el.dataset.slug;
+  document.getElementById('thframe').src=slug+'.html';
+  try{
+    if((location.hash||'').replace('#','')!==slug){
+      history.replaceState(null,'','#'+slug);
+    }
+  }catch(e){}
+  var btn=document.getElementById('copy-theory-link');
+  if(btn){btn.hidden=false; btn.classList.remove('copied');
+    document.getElementById('copy-theory-label').textContent='copy link';}
+}
+function copyTheoryLink(){
+  var active=document.querySelector('.thx.active');
+  if(!active) return;
+  var slug=active.dataset.slug;
+  var here=location.href.replace(/[#?].*$/,'');
+  var base=here.substring(0, here.lastIndexOf('/')+1);
+  var url=base+slug+'.html';
+  var done=function(){
+    var btn=document.getElementById('copy-theory-link');
+    var lbl=document.getElementById('copy-theory-label');
+    if(btn){btn.classList.add('copied');}
+    if(lbl){lbl.textContent='✓ copied';}
+    setTimeout(function(){
+      if(btn){btn.classList.remove('copied');}
+      if(lbl){lbl.textContent='copy link';}
+    },1800);
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(done).catch(function(){
+      window.prompt('Copy this link:',url);
+    });
+  }else{
+    var ta=document.createElement('textarea');
+    ta.value=url; document.body.appendChild(ta); ta.select();
+    try{document.execCommand('copy'); done();}
+    catch(e){window.prompt('Copy this link:',url);}
+    document.body.removeChild(ta);
+  }
 }
 function filt(){
   var q=document.getElementById('thsearch').value.trim().toLowerCase(),n=0;
@@ -200,6 +251,20 @@ function filt(){
   document.getElementById('thcount').textContent=n;
   document.getElementById('thnone').style.display=n?'none':'block';
 }
-var f=document.querySelector('.thx'); if(f) f.classList.add('active');
+(function bootDeepLink(){
+  var slug=(location.hash||'').replace('#','').trim();
+  if(slug){
+    var btn=document.querySelector('.thx[data-slug="'+slug+'"]');
+    if(btn){pick(btn); btn.scrollIntoView({block:'center'}); return;}
+  }
+  var f=document.querySelector('.thx'); if(f) f.classList.add('active');
+})();
+window.addEventListener('hashchange',function(){
+  var slug=(location.hash||'').replace('#','').trim();
+  if(slug){
+    var btn=document.querySelector('.thx[data-slug="'+slug+'"]');
+    if(btn) pick(btn);
+  }
+});
 </script>
 </body></html>
