@@ -7,7 +7,7 @@
 <meta name="robots" content="index,follow">
 <title>Behind The News — last 7 days published · through Jun 24, 2026</title>
 <meta property="og:title" content="Behind The News — last 7 days published · through Jun 24, 2026">
-<meta property="og:description" content="27 mainstream news stories with documented links to 13 conspiracy theory narratives.">
+<meta property="og:description" content="27 mainstream news stories with documented links to 14 conspiracy theory narratives.">
 <meta property="og:type" content="article">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@0,400;0,500;0,600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -104,6 +104,69 @@
 </style>
 </head>
 <body>
+<!-- Shared top navigation — included at the top of <body> on every page so the
+     nav is uniform app-wide. Self-contained (scoped CSS + JS); no page context
+     needed. Active link is set by matching location.pathname. -->
+<nav class="sw-topnav" aria-label="Primary navigation">
+  <style>
+    .sw-topnav{position:sticky;top:0;z-index:99999;display:flex;flex-wrap:wrap;
+      align-items:center;gap:1px 2px;background:#0d1117;border-bottom:1px solid #30363d;
+      padding:6px 12px;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      box-shadow:0 1px 4px rgba(0,0,0,.35);box-sizing:border-box;}
+    .sw-topnav *{box-sizing:border-box;}
+    .sw-topnav .sw-brand{font-weight:700;color:#e6edf3;font-size:0.95rem;
+      margin-right:12px;text-decoration:none;letter-spacing:.02em;flex:none;}
+    .sw-topnav .sw-brand b{color:#58a6ff;}
+    .sw-topnav a.nl{color:#adbac7;text-decoration:none;font-size:0.78rem;
+      padding:5px 9px;border-radius:6px;white-space:nowrap;line-height:1.2;}
+    .sw-topnav a.nl:hover{background:#21262d;color:#e6edf3;}
+    .sw-topnav a.nl.active{background:#1f6feb;color:#fff;}
+    .sw-topnav .sw-sep{flex:1 1 12px;min-width:8px;}
+    .sw-topnav a.nl.tool{color:#8b949e;font-size:0.74rem;}
+    @media(max-width:760px){.sw-topnav a.nl{font-size:0.72rem;padding:4px 7px;}}
+    /* Collapse legacy inline navs app-wide now that the shared top bar exists,
+       WITHOUT editing each page's markup. Preserve the homepage cost panel —
+       the only non-nav content living in a rail (uses :has, widely supported). */
+    nav.rail > a, nav.rail > .rail-group, nav.rail > .rail-title { display:none !important; }
+    nav.topnav { display:none !important; }
+    nav.rail:not(:has(.cost-panel)) { display:none !important; }
+    .layout:not(:has(.cost-panel)) { grid-template-columns:1fr !important; }
+    body > nav:not(.sw-topnav) { display:none !important; }  /* families top-level nav */
+    .topbar > nav { display:none !important; }               /* btn_export nav inside .topbar */
+  </style>
+  <a class="sw-brand" href="/"><b>Signal</b>Watch</a>
+  <a class="nl" href="/">Situation</a>
+  <a class="nl" href="/theories/dashboard">Theories</a>
+  <a class="nl" href="/influencerwatch">Influencers</a>
+  <a class="nl" href="/intel">Intel</a>
+  <a class="nl" href="/ontology">Ontology</a>
+  <a class="nl" href="/families">Families</a>
+  <a class="nl" href="/dossiers">Dossiers</a>
+  <a class="nl" href="/statistics">Statistics</a>
+  <a class="nl" href="/freshness">Freshness</a>
+  <a class="nl" href="/video">Video</a>
+  <a class="nl" href="/content">Content</a>
+  <a class="nl" href="/images">Graphics</a>
+  <span class="sw-sep"></span>
+  <a class="nl tool" href="/investigate/new-theory">🔎 Investigate</a>
+  <a class="nl tool" href="/investigate/document">📄 Document</a>
+  <a class="nl tool" href="/match-content">Match</a>
+  <a class="nl tool" href="/signature-scan">Signature</a>
+  <a class="nl tool" href="/tabs">Tabs</a>
+  <script>
+  (function(){
+    var p=(location.pathname||'/').replace(/\/+$/,'')||'/';
+    var best=null,bestlen=-1;
+    document.querySelectorAll('.sw-topnav a.nl').forEach(function(a){
+      var h=(a.getAttribute('href')||'/').replace(/\/+$/,'')||'/';
+      if(h===p || (h!=='/' && p.indexOf(h+'/')===0) || (h!=='/' && p===h)){
+        if(h.length>bestlen){best=a;bestlen=h.length;}
+      } else if(h==='/' && p==='/'){ if(bestlen<0){best=a;bestlen=0;} }
+    });
+    if(best) best.classList.add('active');
+  })();
+  </script>
+</nav>
 <div class="topbar">
   <a class="brand" href="/"><b>Signal</b>Watch · Behind the News</a>
   <nav>
@@ -125,7 +188,7 @@
       <span>review state: <b>approved</b></span>
       <span><b>27</b> stories</span>
       <span><b>34</b> connections</span>
-      <span><b>13</b> theories</span>
+      <span><b>14</b> theories</span>
     </div>
     <p class="blurb">
       Each card below is a real news story. The tags name a conspiracy-theory narrative
@@ -137,6 +200,39 @@
   </header>
 
   
+    
+    <article class="story">
+      <div class="story-src">
+        <span class="src-name">BBC News</span>
+        <span class="src-date">· Jun 24, 2026</span>
+      </div>
+      <h2 class="story-headline">
+        
+          <a href="https://www.bbc.co.uk/news/articles/cn8q33gdgjjo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer">Bondi Beach shooting hero pleads not guilty to alleged assault on his father</a>
+        
+        
+      </h2>
+
+      <ul class="theory-list">
+        
+        <li class="theory-row">
+          <span class="conf MEDIUM">MEDIUM</span>
+          <div style="flex:1">
+            <div>
+              <span class="theory-name">Bondi Beach Mossad False Flag</span>
+              <span class="conn-type">· consequence</span>
+            </div>
+            <div class="evidence">Video footage of Ahmed&#39;s actions received international coverage, prompting a fundraiser that collected more than A$2.5m (£1.24m; $1.7m) for him... two of Ahmed&#39;s brothers have recently been charged over allegations they threatened him and tried to extort some of the donations he had received.</div>
+            <p class="explanation">The Bondi Beach Mossad False Flag theory holds that the attack was staged by Israeli intelligence to manufacture a narrative around a Jewish-targeted event. The &#39;hero&#39; figure Ahmed al Ahmed was central to the international media story — his viral footage and the A$2.5m fundraiser made him the human face of the event. His subsequent criminal charges, family extortion scandal, and complicated personal circumstances are being seized by believers as evidence that the hero narrative was constructed or artificially amplified, consistent with the theory&#39;s claim that the incident was orchestrated for propaganda purposes.</p>
+          </div>
+        </li>
+        
+      </ul>
+
+      
+        <a class="cta" href="https://www.bbc.co.uk/news/articles/cn8q33gdgjjo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer">Read the story</a>
+      
+    </article>
     
     <article class="story">
       <div class="story-src">
@@ -1080,43 +1176,10 @@
       
     </article>
     
-    <article class="story">
-      <div class="story-src">
-        <span class="src-name">BBC News</span>
-        <span class="src-date">· Jun 17, 2026</span>
-      </div>
-      <h2 class="story-headline">
-        
-          <a href="https://www.bbc.com/news/articles/cvgep4l397eo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer">Search for six-year-old Ebola patient after armed men storm DR Congo hospital</a>
-        
-        
-      </h2>
-
-      <ul class="theory-list">
-        
-        <li class="theory-row">
-          <span class="conf MEDIUM">MEDIUM</span>
-          <div style="flex:1">
-            <div>
-              <span class="theory-name">Big Pharma Suppression</span>
-              <span class="conn-type">· consequence</span>
-            </div>
-            <div class="evidence">&#39;They believe it is the NGOs and hospitals creating this to make money, and this is tragic.&#39;</div>
-            <p class="explanation">A core claim of Big Pharma Suppression is that medical institutions manufacture or exploit disease for profit. In Butembo, local residents are acting on exactly this belief — attacking hospitals and storming wards — because they believe Ebola is fabricated by NGOs and health workers to extract money. The armed removal of a child from an Ebola ward is a direct violent consequence of this conspiratorial framework taking root in a community.</p>
-          </div>
-        </li>
-        
-      </ul>
-
-      
-        <a class="cta" href="https://www.bbc.com/news/articles/cvgep4l397eo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer">Read the story</a>
-      
-    </article>
-    
   
 
   <footer class="ftr">
-    Generated <span class="brand">2026-06-24 05:34 UTC</span> by SignalWatch · <code>btn-export</code><br>
+    Generated <span class="brand">2026-06-24 16:51 UTC</span> by SignalWatch · <code>btn-export</code><br>
     Showing items reviewed and approved by an analyst. Connection types and
     confidence ratings are produced by an LLM analysis pass over the original story.
   </footer>
