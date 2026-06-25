@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Roswell UFO Crash and Alien Coverup — SignalWatch</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root { color-scheme: light;
+  --bg:#e9eef7; --surface:#ffffff; --surface-b:#f4f7fc; --ink:#19223a; --ink-soft:#5c6982;
+  --ink-faint:#8a95ac; --line:#dde4f0; --line-bright:#b9cdec;
+  --accent-1:#2bb3d4; --accent-2:#7b6ef0; --accent-3:#1fb589;
+  --accent-1-soft:#d6f0f7; --accent-2-soft:#e4e0fb; --accent-3-soft:#d4f3e8;
+  --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace; }
+* { box-sizing: border-box; }
+body { font-family: var(--sans); color: var(--ink); margin: 0; padding: 2rem 1.2rem; line-height: 1.55;
+       background: var(--bg);
+       background-image: radial-gradient(60% 50% at 12% -5%, #d6e8f6 0%, transparent 60%),
+                         radial-gradient(52% 46% at 105% 0%, #e6e2f7 0%, transparent 55%);
+       background-attachment: fixed; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 0.3rem; color: var(--ink); letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 1.9rem 0 0.7rem; color: var(--ink); }
+h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+     color: var(--accent-2); margin: 1.1rem 0 0.4rem; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: var(--ink-faint); font-size: 0.82rem; }
+code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-b); padding: 0.1em 0.35em; border-radius: 4px; }
+.tags span { display: inline-block; background: var(--surface-b); border: 1px solid var(--line);
+             padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 0.9rem 1.05rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: var(--ink-soft); }
+.kv .v { color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1.1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.45rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+th, td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+th { color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #d6536d; } td.lean-neg { color: #2f86d6; }
+.podcast { background: var(--accent-2-soft); border: 1px solid var(--line-bright); border-radius: 10px;
+           padding: 0.65rem 0.9rem; margin: 0.6rem 0; }
+.podcast .lbl { color: var(--ink-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer { color: var(--ink-faint); font-size: 0.74rem; margin-top: 2.4rem;
+          border-top: 1px solid var(--line); padding-top: 0.9rem; }
+pre { background: var(--surface-b); border: 1px solid var(--line); border-radius: 8px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; color: var(--ink-soft); }
+.section-empty { color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
+.whats-new { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent-1);
+             border-radius: 10px; padding: 0.7rem 1.1rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.whats-new p { margin: 0.55rem 0; font-size: 0.92rem; color: var(--ink-soft); }
+.whats-new p:first-child { margin-top: 0.2rem; }
+/* layout */
+.wrap { max-width: 900px; margin: 0 auto; }
+.hd-tags { margin: 0.55rem 0 0.2rem; }
+.pill { display: inline-block; padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.72rem;
+        font-weight: 600; margin: 0.15rem 0.35rem 0.15rem 0; border: 1px solid var(--line-bright);
+        font-family: var(--mono); letter-spacing: 0.02em; }
+.pill.threat { background: #fde8ec; color: #c0395a; border-color: #f3c4cf; }
+.pill.band { background: var(--accent-1-soft); color: #1789a6; border-color: #b6e3ee; }
+.pill.power { background: var(--accent-3-soft); color: #14906c; border-color: #b6e6d4; }
+.lead { color: var(--ink-soft); font-size: 1rem; margin: 0.5rem 0 0; max-width: 70ch; }
+/* tabs */
+.tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin: 1.4rem 0 0; }
+.tab { padding: 0.55rem 1.05rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--ink-faint);
+       border-bottom: 2px solid transparent; user-select: none; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+.pane { display: none; padding-top: 0.4rem; }
+.pane.active { display: block; }
+/* chips with definitions */
+.ox { display: grid; grid-template-columns: 150px 1fr; gap: 0.45rem 0.9rem; font-size: 0.85rem; }
+.ox .oxk { color: var(--ink-soft); padding-top: 0.25rem; font-weight: 600; }
+.oxchip { display: inline-block; background: var(--surface-b); border: 1px solid var(--line-bright); color: var(--ink);
+          padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.78rem; margin: 0 0.3rem 0.3rem 0; }
+.deflist { margin: 0.3rem 0 0; }
+.deflist .di { margin-bottom: 0.6rem; }
+.deflist .dt { color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+.deflist .dd { color: var(--ink-soft); font-size: 0.82rem; }
+.fam-links a { display: inline-block; background: var(--accent-2-soft); border: 1px solid var(--line-bright);
+               color: var(--accent-2); padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.8rem;
+               margin: 0 0.35rem 0.35rem 0; }
+/* political valence + atoms */
+.valence-wrap { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.valence-svg { background: var(--surface-b); border: 1px solid var(--line); border-radius: 10px; max-width: 460px; width: 100%; }
+.valence-meta { font-size: 0.85rem; color: var(--ink-soft); }
+.valence-meta .big { font-size: 1.35rem; font-weight: 700; font-family: var(--serif); }
+.lean-left { color: #2f86d6; } .lean-right { color: #d6536d; } .lean-center { color: var(--ink); }
+/* content surface */
+.surface-row { margin: 0.55rem 0 0.85rem; }
+.surface-row .sr-lbl { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase;
+                       letter-spacing: 0.05em; margin-bottom: 0.3rem; font-family: var(--mono); }
+.plat-bar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--surface-b); border: 1px solid var(--line); }
+.plat-seg { color: #fff; font-size: 0.66rem; font-weight: 700; text-align: center;
+            line-height: 20px; overflow: hidden; white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.25); }
+.plat-legend { margin-top: 0.35rem; font-size: 0.72rem; color: var(--ink-soft); display: flex;
+               flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+.plat-legend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.voice { font-size: 0.94rem; color: var(--ink-soft); max-width: 72ch; }
+.voice p { margin: 0.55rem 0; }
+</style>
+</head>
+<body>
+<nav class="sw-pubnav"><style>.sw-pubnav{position:sticky;top:0;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;gap:1px 2px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid #dde4f0;padding:8px 16px;font-family:"Hanken Grotesk",system-ui,sans-serif;box-shadow:0 1px 4px rgba(40,50,90,.06);}.sw-pubnav .b{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:1.15rem;color:#19223a;text-decoration:none;margin-right:14px;}.sw-pubnav .b b{color:#7b6ef0;}.sw-pubnav a.l{color:#5c6982;text-decoration:none;font-size:.84rem;padding:5px 9px;border-radius:7px;white-space:nowrap;}.sw-pubnav a.l:hover{background:#eef2f9;color:#19223a;}.sw-pubnav a.l.on{background:#7b6ef0;color:#fff;}</style><a class="b" href="/">Signal<b>Watch</b></a><a class="l" href="/">Home</a><a class="l on" href="/latest/theories/index.html">Theories</a><a class="l" href="/latest/conspiracy-today.html">Conspiracy Today</a><a class="l" href="/latest/behind-the-news.html">Behind the News</a><a class="l" href="/latest/political-valence.html">Political Valence</a><a class="l" href="/latest/source-valence.html">Source Valence</a><a class="l" href="/pseudoscience/" style="color:#2f8f6b">Pseudoscience</a><a class="l" href="/data/">Data</a></nav>
+  <div class="wrap">
+    <h1>Roswell UFO Crash and Alien Coverup</h1>
+    <nav class="lineage-bc" aria-label="Theory lineage" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:2px 0 14px;font-family:Hanken Grotesk,system-ui,sans-serif;font-size:.82rem;color:#5c6982"><span style="color:#8a95ac">↳ sub-theory of</span><a href="area-51-ufo-coverup.html" style="color:#7b6ef0;text-decoration:none;font-weight:600">Area 51/UFO Coverup</a><span style="color:#c2cad8">▸</span><span style="color:#19223a;font-weight:600">Roswell UFO Crash and Alien Coverup</span></nav>
+    
+    <div class="hd-tags"><span class="pill threat">Threat · Informational</span><span class="pill band">Fringe</span><span class="pill power">Power 17</span></div>
+    <p class="lead">Many of us have known this since 1947: the craft recovered outside Roswell, the alien bodies, and the technology that has been reverse-engineered and fed into our high-tech industries — and the massive cover-up that followed, all out of proportion and defying all reason.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-pane="overview" onclick="swTab(this)">Overview</div>
+      <div class="tab" data-pane="whatsnew" onclick="swTab(this)">What's New</div>
+    </div>
+
+    <div class="pane active" data-pane="overview">
+      <h2>Core claims</h2>
+      <ul class="claims"><li>The government recovered a crashed UFO and alien bodies at Roswell</li><li>The U.S. government recovered an extraterrestrial spacecraft and alien bodies in Roswell in 1947.</li><li>This event was immediately classified and covered up by the government to hide advanced technology and biological evidence from public scrutiny.</li><li>A secret shadow government has been controlling this information, using it for their own purposes.</li></ul>
+
+      <h2>Voice of the Believer</h2>
+      <div class="voice"><p>Many of us have known this since 1947: the craft recovered outside Roswell, the alien bodies, and the technology that has been reverse-engineered and fed into our high-tech industries — and the massive cover-up that followed, all out of proportion and defying all reason.</p><p>What happened in the New Mexico desert was not a weather balloon. The U.S. government retrieved a non-human spacecraft and recovered non-human biological matter from the pilots of those craft. David Grusch testified under oath to exactly that — that the U.S. has retrieved &quot;non-human&quot; biological matter from the pilots of UFOs — and he is not alone. The topic of alien bodies recovered from crashed UFOs has long remained on the fringes only because powerful forces worked deliberately to keep it there, burying witness testimony, reclassifying documents, and silencing anyone who got too close to the truth.</p><p>This is not an American secret alone. Declassified KGB records describe a UFO crash in the Ural Mountains and a military cover-up that predated Roswell — eyewitnesses and leaked documents reveal what Soviet authorities buried, mirroring precisely what our own shadow government did. A coordinated, transnational apparatus of secrecy has controlled this information from the beginning, channeling recovered alien technology into private industry while the public was fed lies. The cover-up was and remains a deliberate, sustained act of concealment by those who decided the rest of us simply do not have the right to know.</p></div>
+
+      <h2>Voice of Reason</h2>
+      <div class="voice"><p>The Roswell alien-recovery conspiracy theory holds that the United States government secretly retrieved an extraterrestrial spacecraft and non-human bodies from the New Mexico desert in 1947, that this evidence has since been reverse-engineered to fuel technological development, and that a transnational shadow apparatus has suppressed the truth ever since — a cover-up mirrored, the theory claims, by comparable Soviet concealment of their own crash in the Ural Mountains.</p><p>The factual record does not support any of those premises. In the summer of 1947, rancher W.W. &quot;Mac&quot; Brazel found wreckage on his property about 75 miles north of Roswell — material described at the time as rubber strips, tinfoil, and thick paper — and brought it to local authorities. The Army Air Forces then issued a press release claiming they had recovered a &quot;flying disc,&quot; a statement that generated immediate sensation. Within a day, the military reversed itself, and in 1994 the Air Force conceded that the &quot;weather balloon&quot; story had also been imprecise: the wreckage came from Project Mogul, a classified program using high-altitude balloon arrays to detect Soviet nuclear tests. The government did lie — but the lie was about a spy program, not an alien spacecraft. The Air Force concluded that all available official materials indicated the wreckage most likely came from Project Mogul balloon trains. A General Accounting Office audit of classified and unclassified records from numerous agencies — including the FBI, CIA, and National Security Council — recovered only two government records originating in 1947, both describing a high-altitude balloon with a radar reflector. Documents that surfaced in 1984 purporting to describe a secret Majestic-12 committee convened by President Truman to manage the recovery were later determined to be fake, with no evidence found to support MJ-12&#x27;s existence. The alleged alien bodies grew from similarly shaky ground: many of the key story elements — small grey humanoid bodies, indestructible metals, hieroglyphic writing, government cover-up to prevent panic — were introduced not by Roswell witnesses but by a 1948 crashed-saucer hoax in Aztec, New Mexico, perpetrated by con artists who convinced a Variety columnist to publish the fabricated account. The Air Force&#x27;s 1997 report concluded that stories of alien bodies may have come from witnesses who saw parachute crash-test dummies, a severely injured airman, and charred bodies from a plane crash, consolidated in memory over decades.</p><p>Proponents of the theory lean heavily on the 2023 Congressional testimony of former intelligence officer David Grusch, citing it as sworn proof. The actual record of that testimony is more limited and methodologically weaker than the theory suggests. Grusch acknowledged that he has not personally seen any alien vehicles or bodies, and that his conclusions are based on the accounts of over 40 witnesses he interviewed over four years. At the hearing, he stated that he &quot;was informed in the course of my official duties&quot; of a retrieval program &quot;to which I was denied access.&quot; That is hearsay about hearsay — testimony about what others told him about programs he never personally observed. Scientists reviewing the claims noted the evidentiary problem directly: Joshua Semeter of NASA&#x27;s UAP independent study team concluded that &quot;without data or material evidence, we are at an impasse on evaluating these claims&quot; and that &quot;in the long history of claims of extraterrestrial visitors, it is this level of specificity that always seems to be missing.&quot; Michael Shermer, publisher of Skeptic magazine, observed that the hearing proceeded &quot;without any real evidence, without anybody in the scientific community making an appearance&quot; and that there was &quot;not a shred of physical evidence.&quot; The Pentagon&#x27;s own All-domain Anomaly Resolution Office (AARO), after reviewing nearly 80 years of government UAP records, reported in 2024 that no government investigation into UAPs has confirmed the existence of extraterrestrial life. A sample of alleged alien spacecraft material investigated by AARO was found to be an ordinary terrestrial metal alloy. The claimed Soviet parallel is even weaker: the story of a UFO crash causing Soviet soldiers to turn to stone originated in a 1992 issue of Weekly World News, a tabloid known for fictional content, and the CIA document cited in social media posts was a translation of a Ukrainian article that reprinted the fabricated story — a document that was never classified and therefore never &quot;declassified.&quot; A former CIA agent confirmed the viral document was not written by the agency, but came from the Foreign Broadcast Information Service, which monitored open-source foreign newspaper articles.</p><p>There is a legitimate grievance at the theory&#x27;s core. The government did initially mislead the public about Roswell — not to conceal aliens, but to protect a Cold War surveillance program. A 2024 AARO review found that the U.S. military deliberately spread UFO rumors — including staged photos and false briefings — to protect classified weapons programs during the Cold War. Several UFO legends were intentionally stoked to mislead the public and foreign adversaries about advanced weapons programs, including the use of fabricated stories placed near sensitive testing sites. In the aftermath of the Kennedy assassination and Watergate, public trust in government collapsed, UFO believers accused the government of a &quot;Cosmic Watergate,&quot; and the 1947 incident was reinterpreted to fit a conspiracy-minded frame. The problem is that this reinterpretation mistakes the concealment of an embarrassing classified program for evidence of something far more extraordinary — a logical leap the evidence does not support. A coverup that requires the permanent, globally coordinated, leak-proof silence of every government, military contractor, aerospace company, and scientist who would necessarily touch recovered alien technology across eight decades is a coverup of implausible scale. As radio astronomer Michael Garrett pointed out, crash retrievals of alien craft &quot;would imply that there must be hundreds of them coming every day, and astronomers simply don&#x27;t see them.&quot; The theory is also structurally unfalsifiable: any absence of evidence becomes evidence of suppression, any official denial becomes confirmation of the cover-up&#x27;s depth. That is not how credible claims work, and it is precisely why this one, despite decades of searching, has never produced what planetary scientist Sara Russell noted would take her less than half an hour to confirm: a material alloy that any lab could analyze within minutes to determine whether it is man-made or extraterrestrial. After 78 years, no such material has been produced.</p></div>
+
+      
+
+      <h2>Ontology</h2>
+      <div class="ox"><div class="oxk">Sub-theory of</div><div><a class="oxchip" href="area-51-ufo-coverup.html">Area 51/UFO Coverup</a></div><div class="oxk">Family</div><div><span class="oxchip">K — K - Cosmic / UFO / interstellar</span></div><div class="oxk">Arena</div><div><span class="oxchip">COSMOS_SPACE</span></div><div class="oxk">Mechanism(s)</div><div><span class="oxchip" title="Real event happened; conspirators hide the true cause/culprit.">COVERUP ★ — COVERUP</span></div><div class="oxk">Controlling interest(s)</div><div><span class="oxchip" title="The State / government apparatus">STATE ★ — STATE</span></div></div><h3>Structural patterns</h3><div class="deflist"><div class="di"><span class="dt">COSMOS_SPACE</span> — <span class="dd">space, astronomy, extraterrestrials</span></div><div class="di"><span class="dt">COVERUP</span> — <span class="dd">Real event happened; conspirators hide the true cause/culprit.</span></div><div class="di"><span class="dt">STATE</span> — <span class="dd">The State / government apparatus</span></div></div>
+
+      <h2>Political valence &amp; atoms</h2>
+      <div class="valence-wrap"><svg class="valence-svg" viewBox="0 0 460 180" preserveAspectRatio="xMidYMid meet"><rect x="34" y="10" width="197.6" height="144" fill="#2f86d6" opacity="0.07"/><rect x="252.4" y="10" width="197.6" height="144" fill="#d6536d" opacity="0.07"/><line x1="34" y1="89.2" x2="450" y2="89.2" stroke="#dde4f0"/><circle cx="34.8" cy="67.6" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="34.9" cy="90.5" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="35.6" cy="70.2" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="36.5" cy="93.1" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="41.8" cy="72.8" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="41.8" cy="95.7" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="42.5" cy="75.4" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="43.9" cy="98.3" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="438.7" cy="78.0" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="47.8" cy="100.9" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="47.8" cy="80.6" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="51.9" cy="103.5" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="52.0" cy="83.2" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="67.1" cy="106.0" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="79.8" cy="85.7" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="397.5" cy="108.6" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="92.3" cy="88.3" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="101.2" cy="68.0" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="102.1" cy="90.9" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="103.8" cy="70.6" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="110.9" cy="93.5" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="358.7" cy="73.2" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="358.7" cy="96.1" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="139.4" cy="75.8" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="147.8" cy="98.7" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="156.0" cy="78.4" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="156.6" cy="101.3" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="189.7" cy="81.0" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="286.5" cy="103.9" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="277.0" cy="83.6" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="211.4" cy="106.5" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="227.6" cy="86.2" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><line x1="141.1" y1="10" x2="141.1" y2="154" stroke="#19223a" stroke-width="1.4" stroke-dasharray="3,2"/><line x1="34.0" y1="154" x2="34.0" y2="158" stroke="#b9cdec"/><text x="34.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Left</text><line x1="138.0" y1="154" x2="138.0" y2="158" stroke="#b9cdec"/><text x="138.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">−.5</text><line x1="242.0" y1="154" x2="242.0" y2="158" stroke="#b9cdec"/><text x="242.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">0</text><line x1="346.0" y1="154" x2="346.0" y2="158" stroke="#b9cdec"/><text x="346.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">+.5</text><line x1="450.0" y1="154" x2="450.0" y2="158" stroke="#b9cdec"/><text x="450.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Right</text></svg><div class="valence-meta"><div class="big lean-left">Left-leaning</div><div>centroid -0.49 · 32 political atoms (sparse)</div><div class="meta">Sparse sample — too few atoms for a distribution curve; points are individual atoms.</div></div></div>
+
+      <h2>Content surface</h2>
+      <div class="surface-row"><div class="sr-lbl">Social posts · 127</div><div class="plat-bar"><div class="plat-seg" style="background:hsl(325,45%,60%);flex:65">Podcasts</div><div class="plat-seg" style="background:#9aa0b3;flex:43">4Chan</div><div class="plat-seg" style="background:#22c55e;flex:12"></div><div class="plat-seg" style="background:hsl(246,45%,60%);flex:5"></div><div class="plat-seg" style="background:hsl(253,45%,60%);flex:2"></div></div><div class="plat-legend"><span><span class="sw" style="background:hsl(325,45%,60%)"></span>Podcasts <b>65</b></span><span><span class="sw" style="background:#9aa0b3"></span>4Chan <b>43</b></span><span><span class="sw" style="background:#22c55e"></span>Gab <b>12</b></span><span><span class="sw" style="background:hsl(246,45%,60%)"></span>Web <b>5</b></span><span><span class="sw" style="background:hsl(253,45%,60%)"></span>Odysee <b>2</b></span></div></div><div class="surface-row"><div class="sr-lbl">Podcasts (host lean) · 1</div><div class="plat-bar"><div class="plat-seg" style="background:#6e7388;flex:1">Untracked</div></div><div class="plat-legend"><span><span class="sw" style="background:#6e7388"></span>Untracked <b>1</b></span></div></div><div class="surface-row"><div class="sr-lbl">Text &amp; press · 4</div><div class="plat-bar"><div class="plat-seg" style="background:#60a5fa;flex:4">Web Articles</div></div><div class="plat-legend"><span><span class="sw" style="background:#60a5fa"></span>Web Articles <b>4</b></span></div></div>
+
+      <h2>Spread timeline</h2><p class="meta">Per-platform spread, cross-platform ignition, and real-world events over time. Dates back-filled from platform IDs/metadata where available.</p><script>window.__SW_TIMELINE__={"theoryId": "d13a4166-deb8-4c9e-9770-b1bfb1c1948a", "label": "Roswell UFO Crash and Alien Coverup", "bucket": "week", "platforms": [{"id": "fringe", "label": "Fringe boards", "color": "#888780"}], "series": [{"platform": "fringe", "t": "2025-01-06", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2025-05-05", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2025-06-09", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2025-08-25", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2025-09-15", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2025-09-22", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2025-10-13", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2025-12-29", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2026-05-11", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2026-05-25", "salience": 0.6931, "volume": 1}], "mediaEvents": [], "meta": {"salience_basis": "log_damped_atom_volume_v2", "n_dated_atoms": 10, "date_range": ["2025-01-06", "2026-05-25"]}};</script><div data-sw-timeline data-theory-id="d13a4166-deb8-4c9e-9770-b1bfb1c1948a" style="margin:8px 0 4px"></div><script src="/assets/sw-timeline.js?v=524caa4e" defer></script>
+
+      
+
+      <h2>Family links</h2>
+      <div class="section-empty">Not assigned to a theory family.</div>
+
+      <h2>Influencers</h2>
+      <div class="section-empty">No influencers linked yet.</div>
+
+      <h2>Related reports</h2>
+      <div class="section-empty">No reports linked to this theory yet.</div>
+    </div>
+
+    <div class="pane" data-pane="whatsnew">
+      <h2>What's New — what the new material means</h2>
+      <div class="whats-new"><p>The new material suggests that the Roswell UFO crash and alien cover-up theory has evolved to incorporate new claims and variations, such as the alleged involvement of Aleister Crowley&#x27;s family in the incident (claim 4) and the discovery of unusual isotopic ratios in materials from the crash site (podcast &quot;Scientist Makes Shocking UFO Discovery&quot;). These new claims deviate from the established narrative by introducing occult and mystical elements, which were not previously associated with the Roswell incident. The emergence of these new claims indicates a mutation of the theory, potentially driven by the influence of alternative spirituality and esotericism.</p><p>The spread of this new material is facilitated by various online platforms, including 4chan, Gab, Odysee, and podcasting networks. These communities have become hubs for conspiracy theories and speculation, allowing proponents to share and discuss their ideas with a wider audience. The involvement of prominent voices, such as David Duchovny and Marilyn Manson (in the Area 51 video game), adds credibility and attention-grabbing potential to the new claims.</p><p>The tone of the new material is often sensationalized and urgent, emphasizing the significance of these discoveries for understanding the nature of the Roswell incident. The use of terms like &quot;shocking&quot; and &quot;extraterrestrial extravaganza&quot; creates a sense of excitement and importance, which may be intended to draw in new adherents or reinforce existing convictions. This shift in tone is consistent with the broader trend of conspiracy theories becoming more mainstream and attention-grabbing, as seen in the proliferation of podcasts and online content focused on UFOs and extraterrestrial life.</p></div>
+    </div>
+
+    <div class="footer">
+      Generated by SignalWatch · 2026-06-25 11:03:47 UTC ·
+      theory_id <code>d13a4166-deb8-4c9e-9770-b1bfb1c1948a</code>
+    </div>
+  </div>
+  <script>
+    function swTab(el){
+      var w=el.closest('.wrap'), k=el.dataset.pane;
+      w.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===el);});
+      w.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('active',p.dataset.pane===k);});
+    }
+  </script>
+</body>
+</html>
