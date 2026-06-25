@@ -81,16 +81,16 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
 <div class="layout">
   <aside class="side">
     <div class="shd">
-      <h2>Theories <span id="thcount" style="color:var(--ink-faint);font-size:.8rem">134</span></h2>
+      <h2>Theories <span id="thcount" style="color:var(--ink-faint);font-size:.8rem">135</span></h2>
       <input id="thsearch" type="search" placeholder="Search…" oninput="filt()">
     </div>
     
     <div class="thlist" id="thlist">
       <div class="thgrp thgrp-new">New conspiracy theories</div>
+<button class="thx new" data-slug="ancient-aliens" data-search="ancient aliens  informational beneath the pyramids" onclick="pick(this)"><span class="thn">Ancient Aliens</span><span class="thsub">↳ under Beneath the Pyramids</span><span class="thm">Informational · 1 atoms</span></button>
 <button class="thx new" data-slug="roswell-ufo-crash-and-alien-coverup" data-search="roswell ufo crash and alien coverup  informational area 51/ufo coverup" onclick="pick(this)"><span class="thn">Roswell UFO Crash and Alien Coverup</span><span class="thsub">↳ under Area 51/UFO Coverup</span><span class="thm">Informational · 3 atoms</span></button>
 <button class="thx new" data-slug="mark-of-the-beast-digital-id" data-search="mark of the beast digital id  informational" onclick="pick(this)"><span class="thn">Mark of the Beast Digital ID</span><span class="thm">Informational · 4 atoms</span></button>
 <button class="thx new" data-slug="cern-dimensional-portals" data-search="cern dimensional portals  informational ai portal alien summoning theory" onclick="pick(this)"><span class="thn">CERN Dimensional Portals</span><span class="thsub">↳ under AI Portal Alien Summoning Theory</span><span class="thm">Informational · 132 atoms</span></button>
-<button class="thx new" data-slug="wayfair-child-trafficking" data-search="wayfair child trafficking  informational" onclick="pick(this)"><span class="thn">Wayfair Child Trafficking</span><span class="thm">Informational · 121 atoms</span></button>
 <div class="thgrp">All theories</div>
 <button class="thx" data-slug="15-minute-cities-surveillance-grid" data-search="15-minute cities surveillance grid  informational" onclick="pick(this)"><span class="thn">15-Minute Cities Surveillance Grid</span><span class="thm">Informational · 102 atoms</span></button>
 <button class="thx" data-slug="viral-bitchute-rumble-2025-launched-with-coordinated-deep-state-psychological-op" data-search="2025 launched with coordinated deep state psychological operations  informational" onclick="pick(this)"><span class="thn">2025 launched with coordinated deep state psychological operations</span><span class="thm">Informational · 258 atoms</span></button>
@@ -106,7 +106,7 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
 <button class="thx pseudo" data-slug="baba-vanga-2026-predictions-hantavirus" data-search="baba vanga 2026 predictions &amp; hantavirus prophecy  low" onclick="pick(this)"><span class="thn">Baba Vanga 2026 Predictions &amp; Hantavirus Prophecy</span><span class="thm">Low · 168 atoms</span></button>
 <button class="thx" data-slug="ballot-harvesting" data-search="ballot harvesting  moderate" onclick="pick(this)"><span class="thn">Ballot Harvesting</span><span class="thm">Moderate · 182 atoms</span></button>
 <button class="thx pseudo" data-slug="barron-trump-time-travel-conspiracy" data-search="barron trump time travel conspiracy  informational" onclick="pick(this)"><span class="thn">Barron Trump Time Travel Conspiracy</span><span class="thm">Informational · 308 atoms</span></button>
-<button class="thx pseudo" data-slug="beneath-the-pyramids" data-search="beneath the pyramids  informational" onclick="pick(this)"><span class="thn">Beneath the Pyramids</span><span class="thm">Informational · 98 atoms</span></button>
+<button class="thx pseudo" data-slug="beneath-the-pyramids" data-search="beneath the pyramids  informational ancient aliens" onclick="pick(this)"><span class="thn">Beneath the Pyramids</span><span class="thsub">▸ 1 sub-theory</span><span class="thm">Informational · 98 atoms</span></button>
 <button class="thx" data-slug="big-pharma-suppression" data-search="big pharma suppression  moderate no-virus conspiracy" onclick="pick(this)"><span class="thn">Big Pharma Suppression</span><span class="thsub">▸ 1 sub-theory</span><span class="thm">Moderate · 137 atoms</span></button>
 <button class="thx" data-slug="bilderberg-group-secret-rule" data-search="bilderberg group secret rule  informational new world order" onclick="pick(this)"><span class="thn">Bilderberg Group Secret Rule</span><span class="thsub">↳ under New World Order</span><span class="thm">Informational · 128 atoms</span></button>
 <button class="thx" data-slug="bill-gates-microchip" data-search="bill gates microchip  moderate" onclick="pick(this)"><span class="thn">Bill Gates Microchip</span><span class="thm">Moderate · 255 atoms</span></button>
@@ -219,13 +219,14 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
 <button class="thx" data-slug="vaccines-cause-autism" data-search="vaccines cause autism  high died suddenly vaccine deaths" onclick="pick(this)"><span class="thn">Vaccines Cause Autism</span><span class="thsub">▸ 1 sub-theory</span><span class="thm">High · 206 atoms</span></button>
 <button class="thx pseudo" data-slug="vortex-math-and-the-rodin-coil" data-search="vortex math and the rodin coil  informational" onclick="pick(this)"><span class="thn">Vortex Math and the Rodin Coil</span><span class="thm">Informational · 90 atoms</span></button>
 <button class="thx" data-slug="water-fluoridation-conspiracy" data-search="water fluoridation conspiracy  informational" onclick="pick(this)"><span class="thn">Water Fluoridation Conspiracy</span><span class="thm">Informational · 228 atoms</span></button>
+<button class="thx" data-slug="wayfair-child-trafficking" data-search="wayfair child trafficking  informational" onclick="pick(this)"><span class="thn">Wayfair Child Trafficking</span><span class="thm">Informational · 121 atoms</span></button>
 <button class="thx" data-slug="whcd-security-stand-down-protocol" data-search="whcd security stand-down protocol  informational" onclick="pick(this)"><span class="thn">WHCD Security Stand-Down Protocol</span><span class="thm">Informational · 262 atoms</span></button>
 <button class="thx" data-slug="woke-hate-group-manufacturing-scandal" data-search="woke hate group manufacturing scandal  informational" onclick="pick(this)"><span class="thn">Woke Hate Group Manufacturing Scandal</span><span class="thm">Informational · 55 atoms</span></button>
 <button class="thx" data-slug="zog-zionist-occupied-government" data-search="zog (zionist occupied government)  critical" onclick="pick(this)"><span class="thn">ZOG (Zionist Occupied Government)</span><span class="thm">Critical · 160 atoms</span></button>
       <div class="thnone" id="thnone">No theories match.</div>
     </div>
   </aside>
-  <main class="detail"><iframe id="thframe" title="Theory profile" src="roswell-ufo-crash-and-alien-coverup.html"></iframe></main>
+  <main class="detail"><iframe id="thframe" title="Theory profile" src="ancient-aliens.html"></iframe></main>
 </div>
 <script>
 function pick(el){
