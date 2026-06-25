@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Montauk Project — SignalWatch</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root { color-scheme: light;
+  --bg:#e9eef7; --surface:#ffffff; --surface-b:#f4f7fc; --ink:#19223a; --ink-soft:#5c6982;
+  --ink-faint:#8a95ac; --line:#dde4f0; --line-bright:#b9cdec;
+  --accent-1:#2bb3d4; --accent-2:#7b6ef0; --accent-3:#1fb589;
+  --accent-1-soft:#d6f0f7; --accent-2-soft:#e4e0fb; --accent-3-soft:#d4f3e8;
+  --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace; }
+* { box-sizing: border-box; }
+body { font-family: var(--sans); color: var(--ink); margin: 0; padding: 2rem 1.2rem; line-height: 1.55;
+       background: var(--bg);
+       background-image: radial-gradient(60% 50% at 12% -5%, #d6e8f6 0%, transparent 60%),
+                         radial-gradient(52% 46% at 105% 0%, #e6e2f7 0%, transparent 55%);
+       background-attachment: fixed; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 0.3rem; color: var(--ink); letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 1.9rem 0 0.7rem; color: var(--ink); }
+h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+     color: var(--accent-2); margin: 1.1rem 0 0.4rem; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: var(--ink-faint); font-size: 0.82rem; }
+code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-b); padding: 0.1em 0.35em; border-radius: 4px; }
+.tags span { display: inline-block; background: var(--surface-b); border: 1px solid var(--line);
+             padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 0.9rem 1.05rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: var(--ink-soft); }
+.kv .v { color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1.1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.45rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+th, td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+th { color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #d6536d; } td.lean-neg { color: #2f86d6; }
+.podcast { background: var(--accent-2-soft); border: 1px solid var(--line-bright); border-radius: 10px;
+           padding: 0.65rem 0.9rem; margin: 0.6rem 0; }
+.podcast .lbl { color: var(--ink-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer { color: var(--ink-faint); font-size: 0.74rem; margin-top: 2.4rem;
+          border-top: 1px solid var(--line); padding-top: 0.9rem; }
+pre { background: var(--surface-b); border: 1px solid var(--line); border-radius: 8px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; color: var(--ink-soft); }
+.section-empty { color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
+.whats-new { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent-1);
+             border-radius: 10px; padding: 0.7rem 1.1rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.whats-new p { margin: 0.55rem 0; font-size: 0.92rem; color: var(--ink-soft); }
+.whats-new p:first-child { margin-top: 0.2rem; }
+/* layout */
+.wrap { max-width: 900px; margin: 0 auto; }
+.hd-tags { margin: 0.55rem 0 0.2rem; }
+.pill { display: inline-block; padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.72rem;
+        font-weight: 600; margin: 0.15rem 0.35rem 0.15rem 0; border: 1px solid var(--line-bright);
+        font-family: var(--mono); letter-spacing: 0.02em; }
+.pill.threat { background: #fde8ec; color: #c0395a; border-color: #f3c4cf; }
+.pill.band { background: var(--accent-1-soft); color: #1789a6; border-color: #b6e3ee; }
+.pill.power { background: var(--accent-3-soft); color: #14906c; border-color: #b6e6d4; }
+.lead { color: var(--ink-soft); font-size: 1rem; margin: 0.5rem 0 0; max-width: 70ch; }
+/* tabs */
+.tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin: 1.4rem 0 0; }
+.tab { padding: 0.55rem 1.05rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--ink-faint);
+       border-bottom: 2px solid transparent; user-select: none; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+.pane { display: none; padding-top: 0.4rem; }
+.pane.active { display: block; }
+/* chips with definitions */
+.ox { display: grid; grid-template-columns: 150px 1fr; gap: 0.45rem 0.9rem; font-size: 0.85rem; }
+.ox .oxk { color: var(--ink-soft); padding-top: 0.25rem; font-weight: 600; }
+.oxchip { display: inline-block; background: var(--surface-b); border: 1px solid var(--line-bright); color: var(--ink);
+          padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.78rem; margin: 0 0.3rem 0.3rem 0; }
+.deflist { margin: 0.3rem 0 0; }
+.deflist .di { margin-bottom: 0.6rem; }
+.deflist .dt { color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+.deflist .dd { color: var(--ink-soft); font-size: 0.82rem; }
+.fam-links a { display: inline-block; background: var(--accent-2-soft); border: 1px solid var(--line-bright);
+               color: var(--accent-2); padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.8rem;
+               margin: 0 0.35rem 0.35rem 0; }
+/* political valence + atoms */
+.valence-wrap { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.valence-svg { background: var(--surface-b); border: 1px solid var(--line); border-radius: 10px; max-width: 460px; width: 100%; }
+.valence-meta { font-size: 0.85rem; color: var(--ink-soft); }
+.valence-meta .big { font-size: 1.35rem; font-weight: 700; font-family: var(--serif); }
+.lean-left { color: #2f86d6; } .lean-right { color: #d6536d; } .lean-center { color: var(--ink); }
+/* content surface */
+.surface-row { margin: 0.55rem 0 0.85rem; }
+.surface-row .sr-lbl { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase;
+                       letter-spacing: 0.05em; margin-bottom: 0.3rem; font-family: var(--mono); }
+.plat-bar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--surface-b); border: 1px solid var(--line); }
+.plat-seg { color: #fff; font-size: 0.66rem; font-weight: 700; text-align: center;
+            line-height: 20px; overflow: hidden; white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.25); }
+.plat-legend { margin-top: 0.35rem; font-size: 0.72rem; color: var(--ink-soft); display: flex;
+               flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+.plat-legend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.voice { font-size: 0.94rem; color: var(--ink-soft); max-width: 72ch; }
+.voice p { margin: 0.55rem 0; }
+</style>
+</head>
+<body>
+<nav class="sw-pubnav"><style>.sw-pubnav{position:sticky;top:0;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;gap:1px 2px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid #dde4f0;padding:8px 16px;font-family:"Hanken Grotesk",system-ui,sans-serif;box-shadow:0 1px 4px rgba(40,50,90,.06);}.sw-pubnav .b{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:1.15rem;color:#19223a;text-decoration:none;margin-right:14px;}.sw-pubnav .b b{color:#7b6ef0;}.sw-pubnav a.l{color:#5c6982;text-decoration:none;font-size:.84rem;padding:5px 9px;border-radius:7px;white-space:nowrap;}.sw-pubnav a.l:hover{background:#eef2f9;color:#19223a;}.sw-pubnav a.l.on{background:#7b6ef0;color:#fff;}</style><a class="b" href="/">Signal<b>Watch</b></a><a class="l" href="/">Home</a><a class="l on" href="/latest/theories/index.html">Theories</a><a class="l" href="/latest/conspiracy-today.html">Conspiracy Today</a><a class="l" href="/latest/behind-the-news.html">Behind the News</a><a class="l" href="/latest/political-valence.html">Political Valence</a><a class="l" href="/latest/source-valence.html">Source Valence</a><a class="l" href="/pseudoscience/" style="color:#2f8f6b">Pseudoscience</a><a class="l" href="/data/">Data</a></nav>
+  <div class="wrap">
+    <h1>Montauk Project</h1>
+    <nav class="lineage-bc" aria-label="Theory lineage" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:2px 0 14px;font-family:Hanken Grotesk,system-ui,sans-serif;font-size:.82rem;color:#5c6982"><span style="color:#8a95ac">↳ sub-theory of</span><a href="mkultra-extended.html" style="color:#7b6ef0;text-decoration:none;font-weight:600">MKUltra (Extended)</a><span style="color:#c2cad8">▸</span><span style="color:#19223a;font-weight:600">Montauk Project</span></nav>
+    
+    <div class="hd-tags"><span class="pill threat">Threat · Informational</span><span class="pill band">Fringe</span><span class="pill power">Power 25</span></div>
+    <p class="lead">Everyone thinks *Stranger Things* is fiction.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-pane="overview" onclick="swTab(this)">Overview</div>
+      <div class="tab" data-pane="whatsnew" onclick="swTab(this)">What's New</div>
+    </div>
+
+    <div class="pane active" data-pane="overview">
+      <h2>Core claims</h2>
+      <ul class="claims"><li>Secret US government experiments in time travel and mind control at Montauk</li><li>The US government secretly experimented with time travel and mind control at Camp Hero in Montauk.</li><li>These experiments involved psychic children who were used for various clandestine purposes.</li><li>The project was part of a larger network of black ops activities involving the extraction of adrenochrome from victims.</li></ul>
+
+      <h2>Voice of the Believer</h2>
+      <div class="voice"><p>Everyone thinks *Stranger Things* is fiction. They&#x27;re wrong.</p><p>The Montauk Project was a real, classified government program conducted at Camp Hero in Montauk, and Preston Nichols exposed the true government experiments with psychic children, time travel, and the methods they used to keep it buried. What the mainstream refuses to acknowledge is that the US government ran black ops operations at that facility — opening portals, bending time, and weaponizing the minds of children who never consented and whose fates were never accounted for. The terrifying truth is that the show is soft disclosure, a way of feeding the public the outline of what happened while maintaining plausible deniability. His testimony will haunt you, because it maps too precisely onto what we now know about how these programs operated.</p><p>These psychic children were not incidental to the project — they were the project. They were identified, extracted, and used for various clandestine purposes across a larger network of black ops activities that connected Montauk to the darkest corridors of the national security state. That network ran on exploitation, and the extraction of adrenochrome from victims was part of the machinery that kept these operations funded and concealed from public oversight.</p><p>They told you *Stranger Things* was just a fun sci-fi show, but the classified government program that opened a portal to another dimension is exactly what they don&#x27;t tell you about. Nichols didn&#x27;t stumble onto a rumor — he walked out of that program and named names. The coordinates, the children, the portal, the mind control architecture — it&#x27;s all there. The cover story was always that there was no story.</p></div>
+
+      <h2>Voice of Reason</h2>
+      <div class="voice"><p>The Montauk Project theory holds that the U.S. government conducted a classified program at Camp Hero in Montauk, New York, involving time travel, interdimensional portals, and mind-control experiments on psychic children, and that the Netflix series Stranger Things functions as covert &quot;soft disclosure&quot; of these real events. The theory further claims this program was connected to a broader black-ops network sustained by the extraction and trafficking of adrenochrome from child victims.</p><p>Starting with what the historical record actually establishes about Camp Hero: the site was initially commissioned by the U.S. Army in 1942 as a coastal defense station, disguised as a fishing village to prevent a potential invasion of New York from the sea. As the Cold War ramped up, the base was used for radar surveillance and renamed the Montauk Air Force Station. It was ultimately decommissioned in 1981, and today the site is Camp Hero State Park. The entire Montauk Project mythology does not emerge from documents, whistleblowers with verifiable records, or any official investigation. It is a conspiracy theory whose story originated in the Montauk Project series of books by Preston Nichols. Critically, the evidentiary foundation of those books is not testimony, documents, or corroborated witness accounts. The authors claim the book is based on their recovery of repressed childhood memories of being abducted and experimented on against their will — yet in the same book they also throw doubt on their own claims, writing &quot;Whether you read this as science fiction or non-fiction you are in for an amazing story.&quot; According to UFO researcher Jacques Vallée, the Montauk Experiment stories seem to have originated with the highly questionable account of Preston Nichols and Al Bielek, who both claimed to have recovered repressed memories of their own involvement. Recovered memory, without corroboration, is not evidence; it is a narrative. The theory also requires believing that hundreds of workers, construction crews, and scientific staff maintained a twelve-level underground facility for over a decade beneath a small coastal town without a single contractor, payroll record, supply shipment, or structural trace ever surfacing — a logistical impossibility that the books quietly acknowledge and then dismiss.</p><p>The &quot;soft disclosure&quot; argument — that Stranger Things encodes the truth about Montauk — inverts the actual documented creative process. The Netflix TV series Stranger Things was inspired by the stories of the Montauk Project, and at one time &quot;Montauk&quot; was used as its working title. Matt and Ross Duffer became fascinated with the Montauk Project conspiracy while researching Cold War-era government programs, and their first concept was a found-footage film featuring a character closely modeled on Duncan Cameron, with the pilot script set in Montauk in 1980. The causal arrow runs entirely the wrong direction: the Duffer Brothers read Nichols&#x27;s books as creative source material and built a fictional world from them. Stranger Things is not evidence of a real program; it is evidence of screenwriters doing research. The theory treats a fictional show&#x27;s thematic resemblance to a fictional book as proof that both are true — a closed loop of self-referential confirmation in which every creative work that draws on the mythology becomes retroactive verification of the mythology.</p><p>The kernel of legitimate concern the Montauk theory feeds on is entirely real. MKUltra was a covert CIA program that ran from 1953 to 1964, designed to develop techniques for manipulating human behavior during the Cold War; the agency funded 149 separate research subprojects across 80 institutions, testing everything from LSD to sensory deprivation on subjects who often had no idea they were being experimented on. In 1973, amid a government-wide panic caused by the Watergate scandal, CIA Director Richard Helms ordered all MKUltra files destroyed, making a full investigation impossible. That genuine, documented history of institutional abuse — real experiments, real victims, real cover-ups — creates entirely warranted public suspicion of covert government programs. The Montauk mythology parasitizes that legitimate grievance and amplifies it into claims that have no evidentiary basis: time tunnels, interdimensional monsters, and psychic boys are not extensions of what MKUltra actually was; they are fantasy layered on top of real harm in order to make the real harm harder to discuss precisely and accountability harder to pursue.</p><p>The adrenochrome claim grafted onto the Montauk narrative is the most demonstrably false element in the theory&#x27;s current form. Adrenochrome is a chemical compound produced by the oxidation of adrenaline; it was the subject of limited research from the 1950s through the 1970s as a potential cause of schizophrenia, has no currently proven medical application, and is mass produced and commercially available to the public. The association of adrenochrome with drug experiences originated in Hunter S. Thompson&#x27;s 1971 novel Fear and Loathing in Las Vegas, a work of fiction; the harvesting conspiracy theory itself emerged around 2017–2018 as part of the QAnon movement, which grafted fictional drug lore onto centuries-old blood libel tropes. There is no mechanism by which a freely synthesizable, commercially available, chemically unstable oxidation byproduct requires a covert child-exploitation network to obtain. The claim collapses on basic chemistry before any historical investigation is even necessary. Scholars and historians have identified strong structural parallels between the adrenochrome harvesting narrative and medieval blood libel — the false accusation that Jewish people kidnapped and murdered Christian children to use their blood in rituals — noting that while the modern conspiracy theory does not always name Jewish people explicitly, it frequently targets figures who are subjects of longstanding antisemitic conspiracy theories and recycles core blood libel motifs. The Montauk-adrenochrome fusion is not an extension of documented history; it is the retrofitting of a debunked, bigotry-adjacent QAnon narrative onto an older conspiracy scaffolding. This framing carries documented real-world danger: one man who swallowed the adrenochrome theory attempted to &quot;liberate&quot; children he believed were held captive in a Washington pizza parlor, brandished a rifle and pistol, and was subsequently arrested and sentenced to four and a half years in prison. Treating fiction as disclosure, recovered memory as testimony, and chemistry fiction as operational intelligence does not illuminate government wrongdoing — it obscures it.</p></div>
+
+      
+
+      <h2>Ontology</h2>
+      <div class="ox"><div class="oxk">Sub-theory of</div><div><a class="oxchip" href="mkultra-extended.html">MKUltra (Extended)</a></div><div class="oxk">Family</div><div><span class="oxchip">G — G - Government-secrets classics</span></div><div class="oxk">Arena</div><div><span class="oxchip">GOVERNANCE_POWER</span></div><div class="oxk">Mechanism(s)</div><div><span class="oxchip" title="Real event happened; conspirators hide the true cause/culprit.">COVERUP ★ — COVERUP</span></div><div class="oxk">Controlling interest(s)</div><div><span class="oxchip" title="The State / government apparatus">STATE ★ — STATE</span></div></div><h3>Structural patterns</h3><div class="deflist"><div class="di"><span class="dt">GOVERNANCE_POWER</span> — <span class="dd">who really rules</span></div><div class="di"><span class="dt">COVERUP</span> — <span class="dd">Real event happened; conspirators hide the true cause/culprit.</span></div><div class="di"><span class="dt">STATE</span> — <span class="dd">The State / government apparatus</span></div></div>
+
+      <h2>Political valence &amp; atoms</h2>
+      <div class="valence-wrap"><svg class="valence-svg" viewBox="0 0 460 180" preserveAspectRatio="xMidYMid meet"><rect x="34" y="10" width="197.6" height="144" fill="#2f86d6" opacity="0.07"/><rect x="252.4" y="10" width="197.6" height="144" fill="#d6536d" opacity="0.07"/><polygon points="34.0,86.1 38.2,80.9 42.3,75.7 46.5,70.4 50.6,65.2 54.8,59.9 59.0,54.8 63.1,49.8 67.3,44.9 71.4,40.2 75.6,35.8 79.8,31.6 83.9,27.8 88.1,24.2 92.2,21.0 96.4,18.2 100.6,15.8 104.7,13.8 108.9,12.2 113.0,11.0 117.2,10.3 121.4,10.0 125.5,10.1 129.7,10.7 133.8,11.7 138.0,13.0 142.2,14.8 146.3,16.9 150.5,19.4 154.6,22.3 158.8,25.4 163.0,28.9 167.1,32.6 171.3,36.5 175.4,40.7 179.6,45.0 183.8,49.5 187.9,54.2 192.1,58.9 196.2,63.7 200.4,68.6 204.6,73.4 208.7,78.3 212.9,83.0 217.0,87.7 221.2,92.4 225.4,96.8 229.5,101.2 233.7,105.4 237.8,109.3 242.0,113.1 246.2,116.7 250.3,120.1 254.5,123.2 258.6,126.1 262.8,128.7 267.0,131.1 271.1,133.3 275.3,135.2 279.4,136.9 283.6,138.3 287.8,139.5 291.9,140.5 296.1,141.3 300.2,142.0 304.4,142.4 308.6,142.6 312.7,142.7 316.9,142.7 321.0,142.5 325.2,142.3 329.4,141.9 333.5,141.4 337.7,140.9 341.8,140.3 346.0,139.7 350.2,139.1 354.3,138.5 358.5,137.9 362.6,137.3 366.8,136.7 371.0,136.2 375.1,135.8 379.3,135.4 383.4,135.1 387.6,134.9 391.8,134.7 395.9,134.7 400.1,134.7 404.2,134.9 408.4,135.1 412.6,135.4 416.7,135.8 420.9,136.3 425.0,136.8 429.2,137.4 433.4,138.1 437.5,138.8 441.7,139.5 445.8,140.3 450.0,141.1 450.0,154.0 34.0,154.0" fill="#7b6ef0" opacity="0.32" stroke="#7b6ef0" stroke-width="1.4"/><circle cx="180.3" cy="69.0" r="1.8" fill="#2bb3d4" opacity="0.59"/><circle cx="171.8" cy="101.1" r="1.8" fill="#2bb3d4" opacity="0.69"/><circle cx="195.1" cy="72.7" r="1.8" fill="#2bb3d4" opacity="0.61"/><circle cx="100.2" cy="104.7" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="382.7" cy="76.3" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="95.8" cy="108.4" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="192.5" cy="79.9" r="1.8" fill="#2bb3d4" opacity="0.62"/><circle cx="127.7" cy="112.0" r="1.8" fill="#2bb3d4" opacity="0.73"/><circle cx="76.8" cy="83.6" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="177.1" cy="115.6" r="1.8" fill="#2bb3d4" opacity="0.73"/><circle cx="172.0" cy="87.2" r="1.8" fill="#2bb3d4" opacity="0.68"/><circle cx="101.0" cy="119.2" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="134.0" cy="90.8" r="1.8" fill="#2bb3d4" opacity="0.76"/><circle cx="117.1" cy="122.9" r="1.8" fill="#2bb3d4" opacity="0.78"/><circle cx="96.5" cy="94.4" r="1.8" fill="#2bb3d4" opacity="0.76"/><circle cx="125.0" cy="126.5" r="1.8" fill="#2bb3d4" opacity="0.74"/><circle cx="183.6" cy="98.1" r="1.8" fill="#2bb3d4" opacity="0.67"/><circle cx="54.8" cy="69.6" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="166.9" cy="101.7" r="1.8" fill="#2bb3d4" opacity="0.65"/><circle cx="224.1" cy="73.3" r="1.8" fill="#2bb3d4" opacity="0.65"/><circle cx="97.7" cy="105.3" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="429.2" cy="76.9" r="1.8" fill="#2bb3d4" opacity="0.58"/><circle cx="130.8" cy="109.0" r="1.8" fill="#2bb3d4" opacity="0.76"/><circle cx="168.0" cy="80.5" r="1.8" fill="#2bb3d4" opacity="0.64"/><circle cx="146.4" cy="112.6" r="1.8" fill="#2bb3d4" opacity="0.56"/><circle cx="134.0" cy="84.2" r="1.8" fill="#2bb3d4" opacity="0.76"/><circle cx="100.1" cy="116.2" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="160.1" cy="87.8" r="1.8" fill="#2bb3d4" opacity="0.66"/><line x1="152.1" y1="10" x2="152.1" y2="154" stroke="#19223a" stroke-width="1.4" stroke-dasharray="3,2"/><line x1="34.0" y1="154" x2="34.0" y2="158" stroke="#b9cdec"/><text x="34.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Left</text><line x1="138.0" y1="154" x2="138.0" y2="158" stroke="#b9cdec"/><text x="138.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">−.5</text><line x1="242.0" y1="154" x2="242.0" y2="158" stroke="#b9cdec"/><text x="242.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">0</text><line x1="346.0" y1="154" x2="346.0" y2="158" stroke="#b9cdec"/><text x="346.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">+.5</text><line x1="450.0" y1="154" x2="450.0" y2="158" stroke="#b9cdec"/><text x="450.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Right</text></svg><div class="valence-meta"><div class="big lean-left">Left-leaning</div><div>centroid -0.43 · 28 political atoms</div><div class="meta">Dashed line = mean lean. Dots = individual atoms (opacity = confidence).</div></div></div>
+
+      <h2>Content surface</h2>
+      <div class="surface-row"><div class="sr-lbl">Social posts · 109</div><div class="plat-bar"><div class="plat-seg" style="background:hsl(325,45%,60%);flex:64">Podcasts</div><div class="plat-seg" style="background:#9aa0b3;flex:31">4Chan</div><div class="plat-seg" style="background:#22c55e;flex:7"></div><div class="plat-seg" style="background:hsl(253,45%,60%);flex:7"></div></div><div class="plat-legend"><span><span class="sw" style="background:hsl(325,45%,60%)"></span>Podcasts <b>64</b></span><span><span class="sw" style="background:#9aa0b3"></span>4Chan <b>31</b></span><span><span class="sw" style="background:#22c55e"></span>Gab <b>7</b></span><span><span class="sw" style="background:hsl(253,45%,60%)"></span>Odysee <b>7</b></span></div></div><div class="surface-row"><div class="sr-lbl">Podcasts (host lean) · 3</div><div class="plat-bar"><div class="plat-seg" style="background:#7dd3fc;flex:2">Neutral</div><div class="plat-seg" style="background:#6ec1ff;flex:1">Left</div></div><div class="plat-legend"><span><span class="sw" style="background:#7dd3fc"></span>Neutral <b>2</b></span><span><span class="sw" style="background:#6ec1ff"></span>Left <b>1</b></span></div></div>
+
+      <h2>Spread timeline</h2><p class="meta">Per-platform spread, cross-platform ignition, and real-world events over time. Dates back-filled from platform IDs/metadata where available.</p><script>window.__SW_TIMELINE__={"theoryId": "f931da4c-4b25-41ed-977c-eddcfa84a772", "label": "Montauk Project", "bucket": "week", "platforms": [{"id": "fringe", "label": "Fringe boards", "color": "#888780"}, {"id": "podcast", "label": "Podcasts", "color": "#8B5CF6"}], "series": [{"platform": "podcast", "t": "2019-09-09", "salience": 1.6094, "volume": 4}, {"platform": "fringe", "t": "2024-12-23", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2025-06-30", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2025-10-27", "salience": 0.6931, "volume": 1}, {"platform": "podcast", "t": "2025-11-24", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2026-01-12", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2026-02-23", "salience": 0.6931, "volume": 1}, {"platform": "podcast", "t": "2026-03-23", "salience": 0.6931, "volume": 1}], "mediaEvents": [], "meta": {"salience_basis": "log_damped_atom_volume_v2", "n_dated_atoms": 11, "date_range": ["2019-09-09", "2026-03-23"]}};</script><div data-sw-timeline data-theory-id="f931da4c-4b25-41ed-977c-eddcfa84a772" style="margin:8px 0 4px"></div><script src="/assets/sw-timeline.js?v=524caa4e" defer></script>
+
+      
+
+      <h2>Family links</h2>
+      <div class="section-empty">Not assigned to a theory family.</div>
+
+      <h2>Influencers</h2>
+      <div class="section-empty">No influencers linked yet.</div>
+
+      <h2>Related reports</h2>
+      <div class="section-empty">No reports linked to this theory yet.</div>
+    </div>
+
+    <div class="pane" data-pane="whatsnew">
+      <h2>What's New — what the new material means</h2>
+      <div class="whats-new"><p>The new material suggests that the Montauk Project theory has evolved to incorporate more sensational and fantastical elements, such as time travel and reality distortions. This is evident in claims like &quot;something that may have torn a hole in reality itself&quot; and &quot;time-ripping trauma labs.&quot; These variations deviate from the established narrative of MK Ultra experiments and mind control.</p><p>The theory has spread to new platforms, including podcasts and YouTube-style evidence links on Apple Podcasts. Prominent voices pushing the theory include filmmakers like Christopher Garetano, who claims to have investigated the Montauk Project in his documentary &quot;Montauk Chronicles.&quot; The tone of the new material is often sensationalized and urgent, with language that implies a catastrophic reality distortion.</p><p>The Montauk Project theory has also become intertwined with other conspiracy theories, such as the existence of secret underground laboratories and the use of adrenochrome. This blending of narratives suggests that the theory is becoming more complex and diffuse, with new claimants and platforms contributing to its evolution.</p></div>
+    </div>
+
+    <div class="footer">
+      Generated by SignalWatch · 2026-06-25 14:57:01 UTC ·
+      theory_id <code>f931da4c-4b25-41ed-977c-eddcfa84a772</code>
+    </div>
+  </div>
+  <script>
+    function swTab(el){
+      var w=el.closest('.wrap'), k=el.dataset.pane;
+      w.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===el);});
+      w.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('active',p.dataset.pane===k);});
+    }
+  </script>
+</body>
+</html>
