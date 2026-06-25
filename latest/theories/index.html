@@ -81,16 +81,16 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
 <div class="layout">
   <aside class="side">
     <div class="shd">
-      <h2>Theories <span id="thcount" style="color:var(--ink-faint);font-size:.8rem">125</span></h2>
+      <h2>Theories <span id="thcount" style="color:var(--ink-faint);font-size:.8rem">126</span></h2>
       <input id="thsearch" type="search" placeholder="Search…" oninput="filt()">
     </div>
     
     <div class="thlist" id="thlist">
       <div class="thgrp thgrp-new">New conspiracy theories</div>
+<button class="thx new" data-slug="aids-denialism" data-search="aids denialism  informational" onclick="pick(this)"><span class="thn">AIDS Denialism</span><span class="thm">Informational · 2 atoms</span></button>
 <button class="thx new" data-slug="hurricane-weather-control" data-search="hurricane weather control  informational haarp weather control" onclick="pick(this)"><span class="thn">Hurricane Weather Control</span><span class="thsub">↳ under HAARP Weather Control</span><span class="thm">Informational · 9 atoms</span></button>
 <button class="thx new" data-slug="targeted-individuals-and-gangstalking" data-search="targeted individuals and gangstalking  informational mysterious deaths and disappearances linked to america&#x27;s nuclear secrets" onclick="pick(this)"><span class="thn">Targeted Individuals and Gangstalking</span><span class="thsub">↳ under Mysterious Deaths and Disappearances Linked to America&#x27;s Nuclear Secrets</span><span class="thm">Informational · 5 atoms</span></button>
 <button class="thx new" data-slug="sovereign-citizen-legal-theory" data-search="sovereign citizen legal theory  informational" onclick="pick(this)"><span class="thn">Sovereign Citizen Legal Theory</span><span class="thm">Informational · 135 atoms</span></button>
-<button class="thx new" data-slug="aids-man-made-bioweapon" data-search="aids man-made bioweapon  informational depopulation agenda" onclick="pick(this)"><span class="thn">AIDS Man-Made Bioweapon</span><span class="thsub">↳ under Depopulation Agenda</span><span class="thm">Informational</span></button>
 <div class="thgrp">All theories</div>
 <button class="thx" data-slug="15-minute-cities-surveillance-grid" data-search="15-minute cities surveillance grid  informational" onclick="pick(this)"><span class="thn">15-Minute Cities Surveillance Grid</span><span class="thm">Informational · 102 atoms</span></button>
 <button class="thx" data-slug="viral-bitchute-rumble-2025-launched-with-coordinated-deep-state-psychological-op" data-search="2025 launched with coordinated deep state psychological operations  informational" onclick="pick(this)"><span class="thn">2025 launched with coordinated deep state psychological operations</span><span class="thm">Informational · 258 atoms</span></button>
@@ -99,6 +99,7 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
 <button class="thx" data-slug="9-11-trutherism" data-search="9/11 trutherism  low" onclick="pick(this)"><span class="thn">9/11 Trutherism</span><span class="thm">Low · 314 atoms</span></button>
 <button class="thx" data-slug="adrenochrome-harvesting" data-search="adrenochrome harvesting  moderate" onclick="pick(this)"><span class="thn">Adrenochrome Harvesting</span><span class="thm">Moderate · 92 atoms</span></button>
 <button class="thx" data-slug="agenda-21-2030-global-depopulation-agenda" data-search="agenda 21/2030 global depopulation agenda  informational maui fires directed energy weapon theory" onclick="pick(this)"><span class="thn">Agenda 21/2030 Global Depopulation Agenda</span><span class="thsub">↳ under Maui Fires Directed Energy Weapon Theory</span><span class="thm">Informational · 170 atoms</span></button>
+<button class="thx" data-slug="aids-man-made-bioweapon" data-search="aids man-made bioweapon  informational depopulation agenda" onclick="pick(this)"><span class="thn">AIDS Man-Made Bioweapon</span><span class="thsub">↳ under Depopulation Agenda</span><span class="thm">Informational</span></button>
 <button class="thx" data-slug="area-51-ufo-coverup" data-search="area 51/ufo coverup  informational spielberg ufo disclosure psyop theory" onclick="pick(this)"><span class="thn">Area 51/UFO Coverup</span><span class="thsub">▸ 1 sub-theory</span><span class="thm">Informational · 965 atoms</span></button>
 <button class="thx" data-slug="artemis-ii-hoax" data-search="artemis ii hoax  high" onclick="pick(this)"><span class="thn">Artemis II Hoax</span><span class="thm">High · 123 atoms</span></button>
 <button class="thx pseudo" data-slug="baba-vanga-2026-predictions-hantavirus" data-search="baba vanga 2026 predictions &amp; hantavirus prophecy  low" onclick="pick(this)"><span class="thn">Baba Vanga 2026 Predictions &amp; Hantavirus Prophecy</span><span class="thm">Low · 168 atoms</span></button>
@@ -216,7 +217,7 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bg);
       <div class="thnone" id="thnone">No theories match.</div>
     </div>
   </aside>
-  <main class="detail"><iframe id="thframe" title="Theory profile" src="hurricane-weather-control.html"></iframe></main>
+  <main class="detail"><iframe id="thframe" title="Theory profile" src="aids-denialism.html"></iframe></main>
 </div>
 <script>
 function pick(el){
