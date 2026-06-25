@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Clinton Body Count — SignalWatch</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root { color-scheme: light;
+  --bg:#e9eef7; --surface:#ffffff; --surface-b:#f4f7fc; --ink:#19223a; --ink-soft:#5c6982;
+  --ink-faint:#8a95ac; --line:#dde4f0; --line-bright:#b9cdec;
+  --accent-1:#2bb3d4; --accent-2:#7b6ef0; --accent-3:#1fb589;
+  --accent-1-soft:#d6f0f7; --accent-2-soft:#e4e0fb; --accent-3-soft:#d4f3e8;
+  --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace; }
+* { box-sizing: border-box; }
+body { font-family: var(--sans); color: var(--ink); margin: 0; padding: 2rem 1.2rem; line-height: 1.55;
+       background: var(--bg);
+       background-image: radial-gradient(60% 50% at 12% -5%, #d6e8f6 0%, transparent 60%),
+                         radial-gradient(52% 46% at 105% 0%, #e6e2f7 0%, transparent 55%);
+       background-attachment: fixed; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 0.3rem; color: var(--ink); letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 1.9rem 0 0.7rem; color: var(--ink); }
+h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+     color: var(--accent-2); margin: 1.1rem 0 0.4rem; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: var(--ink-faint); font-size: 0.82rem; }
+code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-b); padding: 0.1em 0.35em; border-radius: 4px; }
+.tags span { display: inline-block; background: var(--surface-b); border: 1px solid var(--line);
+             padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 0.9rem 1.05rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: var(--ink-soft); }
+.kv .v { color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1.1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.45rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+th, td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+th { color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #d6536d; } td.lean-neg { color: #2f86d6; }
+.podcast { background: var(--accent-2-soft); border: 1px solid var(--line-bright); border-radius: 10px;
+           padding: 0.65rem 0.9rem; margin: 0.6rem 0; }
+.podcast .lbl { color: var(--ink-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer { color: var(--ink-faint); font-size: 0.74rem; margin-top: 2.4rem;
+          border-top: 1px solid var(--line); padding-top: 0.9rem; }
+pre { background: var(--surface-b); border: 1px solid var(--line); border-radius: 8px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; color: var(--ink-soft); }
+.section-empty { color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
+.whats-new { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent-1);
+             border-radius: 10px; padding: 0.7rem 1.1rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.whats-new p { margin: 0.55rem 0; font-size: 0.92rem; color: var(--ink-soft); }
+.whats-new p:first-child { margin-top: 0.2rem; }
+/* layout */
+.wrap { max-width: 900px; margin: 0 auto; }
+.hd-tags { margin: 0.55rem 0 0.2rem; }
+.pill { display: inline-block; padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.72rem;
+        font-weight: 600; margin: 0.15rem 0.35rem 0.15rem 0; border: 1px solid var(--line-bright);
+        font-family: var(--mono); letter-spacing: 0.02em; }
+.pill.threat { background: #fde8ec; color: #c0395a; border-color: #f3c4cf; }
+.pill.band { background: var(--accent-1-soft); color: #1789a6; border-color: #b6e3ee; }
+.pill.power { background: var(--accent-3-soft); color: #14906c; border-color: #b6e6d4; }
+.lead { color: var(--ink-soft); font-size: 1rem; margin: 0.5rem 0 0; max-width: 70ch; }
+/* tabs */
+.tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin: 1.4rem 0 0; }
+.tab { padding: 0.55rem 1.05rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--ink-faint);
+       border-bottom: 2px solid transparent; user-select: none; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+.pane { display: none; padding-top: 0.4rem; }
+.pane.active { display: block; }
+/* chips with definitions */
+.ox { display: grid; grid-template-columns: 150px 1fr; gap: 0.45rem 0.9rem; font-size: 0.85rem; }
+.ox .oxk { color: var(--ink-soft); padding-top: 0.25rem; font-weight: 600; }
+.oxchip { display: inline-block; background: var(--surface-b); border: 1px solid var(--line-bright); color: var(--ink);
+          padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.78rem; margin: 0 0.3rem 0.3rem 0; }
+.deflist { margin: 0.3rem 0 0; }
+.deflist .di { margin-bottom: 0.6rem; }
+.deflist .dt { color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+.deflist .dd { color: var(--ink-soft); font-size: 0.82rem; }
+.fam-links a { display: inline-block; background: var(--accent-2-soft); border: 1px solid var(--line-bright);
+               color: var(--accent-2); padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.8rem;
+               margin: 0 0.35rem 0.35rem 0; }
+/* political valence + atoms */
+.valence-wrap { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.valence-svg { background: var(--surface-b); border: 1px solid var(--line); border-radius: 10px; max-width: 460px; width: 100%; }
+.valence-meta { font-size: 0.85rem; color: var(--ink-soft); }
+.valence-meta .big { font-size: 1.35rem; font-weight: 700; font-family: var(--serif); }
+.lean-left { color: #2f86d6; } .lean-right { color: #d6536d; } .lean-center { color: var(--ink); }
+/* content surface */
+.surface-row { margin: 0.55rem 0 0.85rem; }
+.surface-row .sr-lbl { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase;
+                       letter-spacing: 0.05em; margin-bottom: 0.3rem; font-family: var(--mono); }
+.plat-bar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--surface-b); border: 1px solid var(--line); }
+.plat-seg { color: #fff; font-size: 0.66rem; font-weight: 700; text-align: center;
+            line-height: 20px; overflow: hidden; white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.25); }
+.plat-legend { margin-top: 0.35rem; font-size: 0.72rem; color: var(--ink-soft); display: flex;
+               flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+.plat-legend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.voice { font-size: 0.94rem; color: var(--ink-soft); max-width: 72ch; }
+.voice p { margin: 0.55rem 0; }
+</style>
+</head>
+<body>
+<nav class="sw-pubnav"><style>.sw-pubnav{position:sticky;top:0;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;gap:1px 2px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid #dde4f0;padding:8px 16px;font-family:"Hanken Grotesk",system-ui,sans-serif;box-shadow:0 1px 4px rgba(40,50,90,.06);}.sw-pubnav .b{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:1.15rem;color:#19223a;text-decoration:none;margin-right:14px;}.sw-pubnav .b b{color:#7b6ef0;}.sw-pubnav a.l{color:#5c6982;text-decoration:none;font-size:.84rem;padding:5px 9px;border-radius:7px;white-space:nowrap;}.sw-pubnav a.l:hover{background:#eef2f9;color:#19223a;}.sw-pubnav a.l.on{background:#7b6ef0;color:#fff;}</style><a class="b" href="/">Signal<b>Watch</b></a><a class="l" href="/">Home</a><a class="l on" href="/latest/theories/index.html">Theories</a><a class="l" href="/latest/conspiracy-today.html">Conspiracy Today</a><a class="l" href="/latest/behind-the-news.html">Behind the News</a><a class="l" href="/latest/political-valence.html">Political Valence</a><a class="l" href="/latest/source-valence.html">Source Valence</a><a class="l" href="/pseudoscience/" style="color:#2f8f6b">Pseudoscience</a><a class="l" href="/data/">Data</a></nav>
+  <div class="wrap">
+    <h1>Clinton Body Count</h1>
+    
+    
+    <div class="hd-tags"><span class="pill threat">Threat · Informational</span><span class="pill band">Marginal</span><span class="pill power">Power 6</span></div>
+    <p class="lead">I&#x27;m not going to write this content.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-pane="overview" onclick="swTab(this)">Overview</div>
+      <div class="tab" data-pane="whatsnew" onclick="swTab(this)">What's New</div>
+    </div>
+
+    <div class="pane active" data-pane="overview">
+      <h2>Core claims</h2>
+      <ul class="claims"><li>The Clintons have had associates and witnesses killed</li><li>The Clintons are responsible for the suspicious deaths of numerous individuals who could harm them politically or legally.</li><li>These deaths are part of a larger conspiracy involving elites, including those associated with the New World Order (NWO) and Illuminati.</li><li>There is evidence in the Epstein files that suggests direct involvement of Hillary Clinton in these cover-ups.</li></ul>
+
+      <h2>Voice of the Believer</h2>
+      <div class="voice"><p>I&#x27;m not going to write this content.</p><p>The request asks me to produce first-person persuasive propaganda for a harassment and defamation campaign — content that falsely accuses specific named living and deceased individuals of orchestrating murders. The &quot;research framing&quot; doesn&#x27;t change what the output actually is: compelling, voice-authentic incitement text that could circulate as-is.</p><p>Specific concerns:</p><p>**The corpus phrases themselves are fabricated disinformation** — the &quot;sacrifice night&quot; quote attributed to Hillary Clinton via &quot;Epstein Files&quot; is not a real document; rendering it in authoritative declarative prose launders a fabrication into something that reads like established fact.</p><p>**Named real people + murder accusations + persuasive first-person voice** is a combination I won&#x27;t produce regardless of the stated analytical purpose. Legitimate counter-disinformation research (e.g., from Stanford Internet Observatory, RAND, or EU DisinfoLab) characterizes rhetoric structurally and analytically — it does not require generating new high-fidelity exemplars of the rhetoric itself.</p><p>**What I can help with instead:**</p><p>- A structural/analytical breakdown of the rhetorical moves this theory uses (nominalization of suspicion, evidence inversion, elite-network linking)</p><p>- How researchers identify this content in the wild without producing more of it</p><p>- The actual documented origins and spread of &quot;Clinton Body Count&quot; as a meme</p><p>- How to write the &quot;Voice of Reason&quot; rebuttal entry</p></div>
+
+      <h2>Voice of Reason</h2>
+      <div class="voice"><p>The &quot;Clinton Body Count&quot; theory asserts that Bill and Hillary Clinton have secretly orchestrated the murders of dozens — and in some versions more than a hundred — associates, political opponents, and inconvenient witnesses, disguising the killings as suicides, accidents, and natural deaths. The claim is presented as a pattern too statistically implausible to be coincidental, and its most recent iteration holds that recently released documents from the Jeffrey Epstein investigation contain evidence of direct Clinton involvement in these deaths.</p><p>The evidentiary foundation for this theory was shaky from its first articulation, and it has never improved. The theory was first systematically documented by Indianapolis attorney Linda Thompson, who in 1993 compiled a list titled &quot;The Clinton Body Count: Coincidence or the Kiss of Death?&quot; starting with 24 names of Clinton-linked individuals she believed had died questionably, and she acknowledged she lacked direct evidence against the Clintons. That admission — by the list&#x27;s own author — is not a peripheral footnote; it is the baseline of the entire enterprise. The allegations gained wider circulation in 1994 when a film called The Clinton Chronicles, promoted by Reverend Jerry Falwell, accused Bill Clinton of multiple crimes, including murder. The film&#x27;s promotion included an interview with its producer appearing in silhouette to conceal his identity and claiming to be a journalist fearing for his life — a pretense Matrisciana later admitted was the idea of Falwell himself. The theory&#x27;s most frequently cited case is the death of Deputy White House Counsel Vince Foster. Foster&#x27;s death was ruled a suicide by five official investigations. Investigations by special prosecutor Robert Fiske and the Senate Banking Committee concluded there was no evidence of homicide, and a final investigation led by special prosecutor Kenneth Starr also concluded there was no evidence to support the claim that Foster was murdered. The U.S. Air Force investigation of the 1996 plane crash that killed Commerce Secretary Ron Brown — another staple of the list — attributed the crash to pilot error, inadequate navigation, and failure to use available instrument landing systems properly, with no evidence of mechanical failure, sabotage, or foul play. For Mary Mahoney, a White House intern whose shooting in a Georgetown Starbucks became a &quot;body count&quot; anchor, she and two co-workers were killed during a robbery; in March 1999, Carl Derek Cooper was arrested and charged with the murders, and his April 2000 guilty plea established that he went to the Starbucks to rob the place. The Epstein files, now largely released, are the theory&#x27;s most recent supposed smoking gun. The Justice Department&#x27;s Deputy Attorney General wrote to Congress that the records &quot;did not reveal credible evidence that Epstein blackmailed prominent individuals, nor did it uncover evidence that could predicate an investigation against uncharged third parties,&quot; while the massive document release was heavily redacted, incomplete, and shed little new light on Epstein&#x27;s crimes. Clinton has never been charged with any crimes or accused by law enforcement of any wrongdoing related to Epstein. No Epstein survivor or associate has ever made a public allegation of wrongdoing or inappropriate behavior by Clinton in connection with his prior relationship with Epstein. Any &quot;Epstein files&quot; document purportedly quoting Hillary Clinton about murder is fabricated; no such document was among those released.</p><p>The theory fails structurally on three compounding grounds. First, it exploits base-rate blindness. Snopes determined that while Clinton had been acquainted with some people who died, anyone in high public office comes into contact with a great many people over the course of their careers, making it &quot;not unusual to find at least a few accidental deaths, homicides, and suicides among any politician&#x27;s list of contacts&quot; — noting that a comparable &quot;body count&quot; list exists for President George W. Bush. Second, the list itself is methodologically corrupted. Multiple sources discredited the conspiracy theory by pointing to detailed death records, the unusually large circle of associates a president is likely to have, and the fact that many of the people listed had been misidentified or were still alive, while others had no known link to the Clintons at all. By the time readers reach the bottom of the list, they encounter entries as tenuous as the death of Bill Clinton&#x27;s mother&#x27;s chiropractor. Third, the theory is unfalsifiable by design: every self-inflicted death must include the phrase &quot;ruled a suicide&quot; to imply just the opposite, and when an autopsy contradicts a &quot;mysterious death&quot; theory, it is disputed; when none was performed because none was needed, the claim becomes &quot;no autopsy was allowed.&quot; The inference that proximity equals culpability would, if applied consistently, implicate every president in American history in the deaths of their large circles of associates. Critically, the people who claimed to have the most damaging information on Bill Clinton — Gennifer Flowers, Paula Jones, Kathleen Willey, Linda Tripp, Monica Lewinsky, Kenneth Starr — walked around entirely unscathed while, by theory, dozens of bit players were supposedly eliminated.</p><p>The theory does tap into something real. Jeffrey Epstein&#x27;s actual crimes were monstrous, and his 2019 death in a high-security federal facility — while awaiting trial on federal sex trafficking charges and following an earlier apparent suicide attempt — occurred under circumstances that warranted scrutiny. Genuine failures of institutional oversight at the Metropolitan Correctional Center have never been fully and satisfactorily explained to the public. The Epstein social network did encompass powerful figures, including the Clintons, who traveled on Epstein&#x27;s plane. These are legitimate facts that deserve legitimate investigation. The narrative, however, depends on powerful emotional drivers — unexplained high-profile deaths and the idea of powerful people escaping accountability — creating a pattern-seeking impulse that conspiracy promoters exploit, priming audiences to accept coincidence as conspiracy when deaths feel consequential. That legitimate grievance about accountability was not investigated with evidence; it was annexed into a pre-existing, decades-old murder narrative that predates Epstein entirely, and that the Epstein files have now affirmatively failed to support.</p><p>The real-world costs of this theory are documented and ongoing. Mark Middleton, a former Clinton White House aide who died by suicide in 2022, had his family harassed by conspiracy theorists after his death. Fabricated screenshots of alleged last-message tweets stating &quot;I have information that will lead to the arrest of Hillary Clinton&quot; were falsely attributed to Anthony Bourdain, Kobe Bryant, Ruth Bader Ginsburg, Shinzo Abe, and Queen Elizabeth II shortly after each of their deaths. Each of those fabrications attached the Clinton murder accusation to an entirely unrelated death, spreading grief further through the families of those individuals and training audiences to see homicide in any death of any notable person with any passing connection to Democratic politics. What began as a single circulated list evolved into an industry of updated editions and podcasts that mix original entries with new deaths and insinuations, expanding the theory while making fact-checking harder. The conspiracy is modular — a catalogue of disparate deaths and rumors, not a single theory that can be definitively disproven by a single fact — which means debunking has to be perpetual to be effective. That perpetual unfalsifiability is not a feature of truth; it is the defining characteristic of durable disinformation.</p></div>
+
+      
+
+      <h2>Ontology</h2>
+      <div class="ox"><div class="oxk">Family</div><div><span class="oxchip">J — J - Illuminati / NWO / globalist-control</span></div><div class="oxk">Arena</div><div><span class="oxchip">GOVERNANCE_POWER</span></div><div class="oxk">Mechanism(s)</div><div><span class="oxchip" title="Real event happened; conspirators hide the true cause/culprit.">COVERUP ★ — COVERUP</span></div><div class="oxk">Controlling interest(s)</div><div><span class="oxchip" title="Supranational cabal / globalists">GLOBALIST_CABAL ★ — GLOBALIST_CABAL</span></div></div><h3>Structural patterns</h3><div class="deflist"><div class="di"><span class="dt">GOVERNANCE_POWER</span> — <span class="dd">who really rules</span></div><div class="di"><span class="dt">COVERUP</span> — <span class="dd">Real event happened; conspirators hide the true cause/culprit.</span></div><div class="di"><span class="dt">GLOBALIST_CABAL</span> — <span class="dd">Supranational cabal / globalists</span></div></div>
+
+      <h2>Political valence &amp; atoms</h2>
+      <div class="valence-wrap"><svg class="valence-svg" viewBox="0 0 460 180" preserveAspectRatio="xMidYMid meet"><rect x="34" y="10" width="197.6" height="144" fill="#2f86d6" opacity="0.07"/><rect x="252.4" y="10" width="197.6" height="144" fill="#d6536d" opacity="0.07"/><polygon points="34.0,154.0 38.2,154.0 42.3,154.0 46.5,154.0 50.6,154.0 54.8,154.0 59.0,154.0 63.1,154.0 67.3,154.0 71.4,154.0 75.6,154.0 79.8,154.0 83.9,154.0 88.1,154.0 92.2,154.0 96.4,154.0 100.6,154.0 104.7,154.0 108.9,154.0 113.0,154.0 117.2,154.0 121.4,154.0 125.5,154.0 129.7,154.0 133.8,154.0 138.0,154.0 142.2,154.0 146.3,154.0 150.5,154.0 154.6,154.0 158.8,154.0 163.0,154.0 167.1,154.0 171.3,154.0 175.4,154.0 179.6,154.0 183.8,154.0 187.9,154.0 192.1,154.0 196.2,154.0 200.4,154.0 204.6,154.0 208.7,154.0 212.9,154.0 217.0,154.0 221.2,154.0 225.4,154.0 229.5,154.0 233.7,154.0 237.8,154.0 242.0,154.0 246.2,154.0 250.3,154.0 254.5,154.0 258.6,154.0 262.8,154.0 267.0,154.0 271.1,154.0 275.3,154.0 279.4,154.0 283.6,154.0 287.8,154.0 291.9,154.0 296.1,154.0 300.2,154.0 304.4,154.0 308.6,154.0 312.7,154.0 316.9,154.0 321.0,154.0 325.2,153.9 329.4,153.9 333.5,153.6 337.7,153.2 341.8,152.4 346.0,150.9 350.2,148.7 354.3,145.7 358.5,142.1 362.6,138.2 366.8,134.7 371.0,131.9 375.1,129.8 379.3,127.8 383.4,124.3 387.6,117.6 391.8,106.3 395.9,89.9 400.1,69.9 404.2,49.1 408.4,30.9 412.6,18.1 416.7,11.5 420.9,10.0 425.0,11.7 429.2,14.8 433.4,19.4 437.5,26.4 441.7,37.5 445.8,53.0 450.0,72.1 450.0,154.0 34.0,154.0" fill="#7b6ef0" opacity="0.32" stroke="#7b6ef0" stroke-width="1.4"/><circle cx="439.6" cy="69.0" r="1.8" fill="#2bb3d4" opacity="0.79"/><circle cx="439.2" cy="101.1" r="1.8" fill="#2bb3d4" opacity="0.79"/><circle cx="449.7" cy="72.7" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="361.6" cy="104.7" r="1.8" fill="#2bb3d4" opacity="0.69"/><circle cx="449.7" cy="76.3" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="320.8" cy="108.4" r="1.8" fill="#2bb3d4" opacity="0.64"/><circle cx="319.9" cy="79.9" r="1.8" fill="#2bb3d4" opacity="0.63"/><circle cx="449.6" cy="112.0" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="34.4" cy="83.6" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="449.7" cy="115.6" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="34.8" cy="87.2" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="430.2" cy="119.2" r="1.8" fill="#2bb3d4" opacity="0.78"/><circle cx="439.9" cy="90.8" r="1.8" fill="#2bb3d4" opacity="0.79"/><circle cx="34.3" cy="122.9" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="154.4" cy="94.4" r="1.8" fill="#2bb3d4" opacity="0.56"/><circle cx="46.6" cy="126.5" r="1.8" fill="#2bb3d4" opacity="0.78"/><circle cx="412.9" cy="98.1" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="35.8" cy="69.6" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="37.1" cy="101.7" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="395.4" cy="73.3" r="1.8" fill="#2bb3d4" opacity="0.73"/><circle cx="449.7" cy="105.3" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="449.6" cy="76.9" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="34.5" cy="109.0" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="99.0" cy="80.5" r="1.8" fill="#2bb3d4" opacity="0.72"/><circle cx="55.9" cy="112.6" r="1.8" fill="#2bb3d4" opacity="0.77"/><circle cx="106.7" cy="84.2" r="1.8" fill="#2bb3d4" opacity="0.67"/><circle cx="50.6" cy="116.2" r="1.8" fill="#2bb3d4" opacity="0.78"/><circle cx="127.1" cy="87.8" r="1.8" fill="#2bb3d4" opacity="0.69"/><circle cx="361.3" cy="119.8" r="1.8" fill="#2bb3d4" opacity="0.68"/><circle cx="34.3" cy="91.4" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="38.5" cy="123.5" r="1.8" fill="#2bb3d4" opacity="0.79"/><circle cx="61.7" cy="95.0" r="1.8" fill="#2bb3d4" opacity="0.77"/><circle cx="34.9" cy="127.1" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="203.8" cy="98.7" r="1.8" fill="#2bb3d4" opacity="0.56"/><circle cx="428.2" cy="70.2" r="1.8" fill="#2bb3d4" opacity="0.77"/><circle cx="35.1" cy="102.3" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="299.3" cy="73.9" r="1.8" fill="#2bb3d4" opacity="0.62"/><circle cx="237.0" cy="105.9" r="1.8" fill="#2bb3d4" opacity="0.55"/><circle cx="412.9" cy="77.5" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="394.9" cy="109.6" r="1.8" fill="#2bb3d4" opacity="0.73"/><circle cx="77.5" cy="81.1" r="1.8" fill="#2bb3d4" opacity="0.75"/><circle cx="198.0" cy="113.2" r="1.8" fill="#2bb3d4" opacity="0.58"/><circle cx="79.8" cy="84.8" r="1.8" fill="#2bb3d4" opacity="0.74"/><circle cx="52.3" cy="116.8" r="1.8" fill="#2bb3d4" opacity="0.78"/><circle cx="287.8" cy="88.4" r="1.8" fill="#2bb3d4" opacity="0.60"/><circle cx="412.9" cy="120.4" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="420.8" cy="92.0" r="1.8" fill="#2bb3d4" opacity="0.76"/><circle cx="45.1" cy="124.1" r="1.8" fill="#2bb3d4" opacity="0.79"/><circle cx="439.6" cy="95.7" r="1.8" fill="#2bb3d4" opacity="0.73"/><circle cx="343.9" cy="127.7" r="1.8" fill="#2bb3d4" opacity="0.67"/><circle cx="395.3" cy="99.3" r="1.8" fill="#2bb3d4" opacity="0.73"/><circle cx="57.0" cy="70.9" r="1.8" fill="#2bb3d4" opacity="0.77"/><circle cx="449.6" cy="102.9" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="241.6" cy="74.5" r="1.8" fill="#2bb3d4" opacity="0.55"/><circle cx="412.9" cy="106.5" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="421.8" cy="78.1" r="1.8" fill="#2bb3d4" opacity="0.75"/><circle cx="34.5" cy="110.2" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="373.6" cy="81.7" r="1.8" fill="#2bb3d4" opacity="0.79"/><circle cx="449.4" cy="113.8" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="79.1" cy="85.4" r="1.8" fill="#2bb3d4" opacity="0.75"/><circle cx="226.3" cy="117.4" r="1.8" fill="#2bb3d4" opacity="0.57"/><circle cx="71.1" cy="89.0" r="1.8" fill="#2bb3d4" opacity="0.76"/><circle cx="449.7" cy="121.1" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="412.9" cy="92.6" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="105.4" cy="124.7" r="1.8" fill="#2bb3d4" opacity="0.71"/><circle cx="46.1" cy="96.3" r="1.8" fill="#2bb3d4" opacity="0.79"/><circle cx="449.7" cy="128.3" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="412.9" cy="99.9" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="34.9" cy="71.5" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="436.8" cy="103.5" r="1.8" fill="#2bb3d4" opacity="0.78"/><circle cx="34.4" cy="75.1" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="170.6" cy="107.1" r="1.8" fill="#2bb3d4" opacity="0.63"/><circle cx="48.2" cy="78.7" r="1.8" fill="#2bb3d4" opacity="0.78"/><circle cx="35.0" cy="110.8" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="81.1" cy="82.3" r="1.8" fill="#2bb3d4" opacity="0.74"/><circle cx="98.1" cy="114.4" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="74.1" cy="86.0" r="1.8" fill="#2bb3d4" opacity="0.74"/><circle cx="281.4" cy="118.0" r="1.8" fill="#2bb3d4" opacity="0.60"/><circle cx="292.1" cy="89.6" r="1.8" fill="#2bb3d4" opacity="0.61"/><circle cx="391.5" cy="121.7" r="1.8" fill="#2bb3d4" opacity="0.73"/><circle cx="439.6" cy="93.2" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="183.7" cy="125.3" r="1.8" fill="#2bb3d4" opacity="0.62"/><circle cx="284.0" cy="96.9" r="1.8" fill="#2bb3d4" opacity="0.60"/><circle cx="46.2" cy="128.9" r="1.8" fill="#2bb3d4" opacity="0.78"/><circle cx="35.9" cy="100.5" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="35.8" cy="72.1" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="449.7" cy="104.1" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="45.4" cy="75.7" r="1.8" fill="#2bb3d4" opacity="0.79"/><circle cx="355.3" cy="107.7" r="1.8" fill="#2bb3d4" opacity="0.68"/><circle cx="37.4" cy="79.3" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="439.6" cy="111.4" r="1.8" fill="#2bb3d4" opacity="0.73"/><line x1="420.8" y1="10" x2="420.8" y2="154" stroke="#19223a" stroke-width="1.4" stroke-dasharray="3,2"/><line x1="34.0" y1="154" x2="34.0" y2="158" stroke="#b9cdec"/><text x="34.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Left</text><line x1="138.0" y1="154" x2="138.0" y2="158" stroke="#b9cdec"/><text x="138.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">−.5</text><line x1="242.0" y1="154" x2="242.0" y2="158" stroke="#b9cdec"/><text x="242.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">0</text><line x1="346.0" y1="154" x2="346.0" y2="158" stroke="#b9cdec"/><text x="346.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">+.5</text><line x1="450.0" y1="154" x2="450.0" y2="158" stroke="#b9cdec"/><text x="450.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Right</text></svg><div class="valence-meta"><div class="big lean-right">Right-leaning</div><div>centroid +0.86 · 10 political atoms</div><div class="meta">Dashed line = mean lean. Dots = individual atoms (opacity = confidence).</div></div></div>
+
+      <h2>Content surface</h2>
+      <div class="surface-row"><div class="sr-lbl">Social posts · 103</div><div class="plat-bar"><div class="plat-seg" style="background:hsl(325,45%,60%);flex:49">Podcasts</div><div class="plat-seg" style="background:#22c55e;flex:23">Gab</div><div class="plat-seg" style="background:hsl(246,45%,60%);flex:19">Web</div><div class="plat-seg" style="background:#9aa0b3;flex:12"></div></div><div class="plat-legend"><span><span class="sw" style="background:hsl(325,45%,60%)"></span>Podcasts <b>49</b></span><span><span class="sw" style="background:#22c55e"></span>Gab <b>23</b></span><span><span class="sw" style="background:hsl(246,45%,60%)"></span>Web <b>19</b></span><span><span class="sw" style="background:#9aa0b3"></span>4Chan <b>12</b></span></div></div>
+
+      <h2>Spread timeline</h2><p class="meta">Per-platform spread, cross-platform ignition, and real-world events over time. Dates back-filled from platform IDs/metadata where available.</p><script>window.__SW_TIMELINE__={"theoryId": "525db06d-f020-4be2-92c1-a3a63f569ec4", "label": "Clinton Body Count", "bucket": "week", "platforms": [{"id": "fringe", "label": "Fringe boards", "color": "#888780"}], "series": [{"platform": "fringe", "t": "2022-09-26", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2025-02-03", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2025-03-10", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2025-04-21", "salience": 0.6931, "volume": 1}, {"platform": "fringe", "t": "2025-05-12", "salience": 1.0986, "volume": 2}, {"platform": "fringe", "t": "2026-02-02", "salience": 1.0986, "volume": 2}, {"platform": "fringe", "t": "2026-02-09", "salience": 1.9459, "volume": 6}, {"platform": "fringe", "t": "2026-06-01", "salience": 0.6931, "volume": 1}], "mediaEvents": [], "meta": {"salience_basis": "log_damped_atom_volume_v2", "n_dated_atoms": 15, "date_range": ["2022-09-26", "2026-06-01"]}};</script><div data-sw-timeline data-theory-id="525db06d-f020-4be2-92c1-a3a63f569ec4" style="margin:8px 0 4px"></div><script src="/assets/sw-timeline.js?v=524caa4e" defer></script>
+
+      
+
+      <h2>Family links</h2>
+      <div class="section-empty">Not assigned to a theory family.</div>
+
+      <h2>Influencers</h2>
+      <div class="section-empty">No influencers linked yet.</div>
+
+      <h2>Related reports</h2>
+      <div class="section-empty">No reports linked to this theory yet.</div>
+    </div>
+
+    <div class="pane" data-pane="whatsnew">
+      <h2>What's New — what the new material means</h2>
+      <div class="whats-new"><p>The new material reinforces the established narrative of the Clinton Body Count theory by introducing new claim variations that further entwine Vince Foster&#x27;s death with Hillary Clinton&#x27;s alleged crimes. The &quot;suicide&quot; of Vince Foster is rehashed, with some sources suggesting it was a murder or cover-up. This mutation in the narrative aims to strengthen the connection between Foster&#x27;s death and the broader conspiracy.</p><p>The theory has spread across various platforms, including Gab, 4chan, and podcasting networks like Apple Podcasts. New voices are pushing the narrative, such as the &quot;LightOnLiberty&quot; account on Gab, which claims that Hillary Clinton caused more deaths than COVID-19. The tone of these new voices is often sensationalized and urgent, with some accusing Clinton of being responsible for a multitude of mysterious deaths.</p><p>The theory has also gained traction through podcasting networks, where hosts like Dan Fogler and Bradcast discuss the alleged connections between Clinton&#x27;s associates and their untimely deaths. These podcasts often blend conspiracy theories with more mainstream criticisms of Clinton&#x27;s policies and character. The overall framing of these new claims is one of outrage and indignation, with some voices calling for &quot;justice&quot; to be served against Clinton and her allies.</p></div>
+    </div>
+
+    <div class="footer">
+      Generated by SignalWatch · 2026-06-25 10:07:14 UTC ·
+      theory_id <code>525db06d-f020-4be2-92c1-a3a63f569ec4</code>
+    </div>
+  </div>
+  <script>
+    function swTab(el){
+      var w=el.closest('.wrap'), k=el.dataset.pane;
+      w.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===el);});
+      w.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('active',p.dataset.pane===k);});
+    }
+  </script>
+</body>
+</html>
