@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Seven Days Of False Prophecy — SignalWatch</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root { color-scheme: light;
+  --bg:#e9eef7; --surface:#ffffff; --surface-b:#f4f7fc; --ink:#19223a; --ink-soft:#5c6982;
+  --ink-faint:#8a95ac; --line:#dde4f0; --line-bright:#b9cdec;
+  --accent-1:#2bb3d4; --accent-2:#7b6ef0; --accent-3:#1fb589;
+  --accent-1-soft:#d6f0f7; --accent-2-soft:#e4e0fb; --accent-3-soft:#d4f3e8;
+  --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace; }
+* { box-sizing: border-box; }
+body { font-family: var(--sans); color: var(--ink); margin: 0; padding: 2rem 1.2rem; line-height: 1.55;
+       background: var(--bg);
+       background-image: radial-gradient(60% 50% at 12% -5%, #d6e8f6 0%, transparent 60%),
+                         radial-gradient(52% 46% at 105% 0%, #e6e2f7 0%, transparent 55%);
+       background-attachment: fixed; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 0.3rem; color: var(--ink); letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 1.9rem 0 0.7rem; color: var(--ink); }
+h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+     color: var(--accent-2); margin: 1.1rem 0 0.4rem; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: var(--ink-faint); font-size: 0.82rem; }
+code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-b); padding: 0.1em 0.35em; border-radius: 4px; }
+.tags span { display: inline-block; background: var(--surface-b); border: 1px solid var(--line);
+             padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 0.9rem 1.05rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: var(--ink-soft); }
+.kv .v { color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1.1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.45rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+th, td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+th { color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #d6536d; } td.lean-neg { color: #2f86d6; }
+.podcast { background: var(--accent-2-soft); border: 1px solid var(--line-bright); border-radius: 10px;
+           padding: 0.65rem 0.9rem; margin: 0.6rem 0; }
+.podcast .lbl { color: var(--ink-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer { color: var(--ink-faint); font-size: 0.74rem; margin-top: 2.4rem;
+          border-top: 1px solid var(--line); padding-top: 0.9rem; }
+pre { background: var(--surface-b); border: 1px solid var(--line); border-radius: 8px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; color: var(--ink-soft); }
+.section-empty { color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
+.whats-new { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent-1);
+             border-radius: 10px; padding: 0.7rem 1.1rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.whats-new p { margin: 0.55rem 0; font-size: 0.92rem; color: var(--ink-soft); }
+.whats-new p:first-child { margin-top: 0.2rem; }
+/* layout */
+.wrap { max-width: 900px; margin: 0 auto; }
+.hd-tags { margin: 0.55rem 0 0.2rem; }
+.pill { display: inline-block; padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.72rem;
+        font-weight: 600; margin: 0.15rem 0.35rem 0.15rem 0; border: 1px solid var(--line-bright);
+        font-family: var(--mono); letter-spacing: 0.02em; }
+.pill.threat { background: #fde8ec; color: #c0395a; border-color: #f3c4cf; }
+.pill.band { background: var(--accent-1-soft); color: #1789a6; border-color: #b6e3ee; }
+.pill.power { background: var(--accent-3-soft); color: #14906c; border-color: #b6e6d4; }
+.lead { color: var(--ink-soft); font-size: 1rem; margin: 0.5rem 0 0; max-width: 70ch; }
+/* tabs */
+.tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin: 1.4rem 0 0; }
+.tab { padding: 0.55rem 1.05rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--ink-faint);
+       border-bottom: 2px solid transparent; user-select: none; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+.pane { display: none; padding-top: 0.4rem; }
+.pane.active { display: block; }
+/* chips with definitions */
+.ox { display: grid; grid-template-columns: 150px 1fr; gap: 0.45rem 0.9rem; font-size: 0.85rem; }
+.ox .oxk { color: var(--ink-soft); padding-top: 0.25rem; font-weight: 600; }
+.oxchip { display: inline-block; background: var(--surface-b); border: 1px solid var(--line-bright); color: var(--ink);
+          padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.78rem; margin: 0 0.3rem 0.3rem 0; }
+.deflist { margin: 0.3rem 0 0; }
+.deflist .di { margin-bottom: 0.6rem; }
+.deflist .dt { color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+.deflist .dd { color: var(--ink-soft); font-size: 0.82rem; }
+.fam-links a { display: inline-block; background: var(--accent-2-soft); border: 1px solid var(--line-bright);
+               color: var(--accent-2); padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.8rem;
+               margin: 0 0.35rem 0.35rem 0; }
+/* political valence + atoms */
+.valence-wrap { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.valence-svg { background: var(--surface-b); border: 1px solid var(--line); border-radius: 10px; max-width: 460px; width: 100%; }
+.valence-meta { font-size: 0.85rem; color: var(--ink-soft); }
+.valence-meta .big { font-size: 1.35rem; font-weight: 700; font-family: var(--serif); }
+.lean-left { color: #2f86d6; } .lean-right { color: #d6536d; } .lean-center { color: var(--ink); }
+/* content surface */
+.surface-row { margin: 0.55rem 0 0.85rem; }
+.surface-row .sr-lbl { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase;
+                       letter-spacing: 0.05em; margin-bottom: 0.3rem; font-family: var(--mono); }
+.plat-bar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--surface-b); border: 1px solid var(--line); }
+.plat-seg { color: #fff; font-size: 0.66rem; font-weight: 700; text-align: center;
+            line-height: 20px; overflow: hidden; white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.25); }
+.plat-legend { margin-top: 0.35rem; font-size: 0.72rem; color: var(--ink-soft); display: flex;
+               flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+.plat-legend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.voice { font-size: 0.94rem; color: var(--ink-soft); max-width: 72ch; }
+.voice p { margin: 0.55rem 0; }
+</style>
+</head>
+<body>
+<nav class="sw-pubnav"><style>.sw-pubnav{position:sticky;top:0;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;gap:1px 2px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid #dde4f0;padding:8px 16px;font-family:"Hanken Grotesk",system-ui,sans-serif;box-shadow:0 1px 4px rgba(40,50,90,.06);}.sw-pubnav .b{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:1.15rem;color:#19223a;text-decoration:none;margin-right:14px;}.sw-pubnav .b b{color:#7b6ef0;}.sw-pubnav a.l{color:#5c6982;text-decoration:none;font-size:.84rem;padding:5px 9px;border-radius:7px;white-space:nowrap;}.sw-pubnav a.l:hover{background:#eef2f9;color:#19223a;}.sw-pubnav a.l.on{background:#7b6ef0;color:#fff;}</style><a class="b" href="/">Signal<b>Watch</b></a><a class="l" href="/">Home</a><a class="l on" href="/latest/theories/index.html">Theories</a><a class="l" href="/latest/conspiracy-today.html">Conspiracy Today</a><a class="l" href="/latest/behind-the-news.html">Behind the News</a><a class="l" href="/latest/political-valence.html">Political Valence</a><a class="l" href="/latest/source-valence.html">Source Valence</a><a class="l" href="/pseudoscience/" style="color:#2f8f6b">Pseudoscience</a><a class="l" href="/data/">Data</a></nav>
+  <div class="wrap">
+    <h1>Seven Days Of False Prophecy</h1>
+    
+    
+    <div class="hd-tags"><span class="pill threat">Threat · Informational</span><span class="pill band">Marginal</span><span class="pill power">Power 7</span></div>
+    <p class="lead">The Master&#x27;s Voice is a vessel of darkness, spreading deliberate deception under the cover of divine revelation, and we have the receipts.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-pane="overview" onclick="swTab(this)">Overview</div>
+      <div class="tab" data-pane="whatsnew" onclick="swTab(this)">What's New</div>
+    </div>
+
+    <div class="pane active" data-pane="overview">
+      <h2>Violence-legitimation heat</h2>
+      <p class="meta">Violence-legitimation heat: not yet scored for this theory.</p>
+
+      <h2>Core claims</h2>
+      <ul class="claims"><li>The Master&#x27;s Voice is spreading false prophecies designed to deceive people.</li><li>These prophecies involve celestial predictions that are part of a larger bloodline conspiracy involving satanic elements.</li><li>A significant event or exposure related to these prophecies will occur within the next 90 days, affecting key figures in Washington D.C.</li></ul>
+
+      <h2>Voice of the Believer</h2>
+      <div class="voice"><p>The Master&#x27;s Voice is a vessel of darkness, spreading deliberate deception under the cover of divine revelation, and we have the receipts.</p><p>&quot;The Master&#x27;s Voice False Prophecy Blog Exposed&quot; — and we mean exposed fully, across part after part after part — reveals a pattern no honest seeker can ignore. These are not mistakes or misreadings of scripture. These are celestial false prophecies, engineered to mislead the faithful. Those behind this operation had the Holy Spirit and still became Pretenders, studied dark teachings, and emerged as hybrids — fallen angel possessed — producing deadly false prophecies dressed in the language of God. Home becomes Horror when you invite this kind of counterfeit anointing through your door.</p><p>The deception runs deeper than one blog or one voice. This is connected to a bloodline conspiracy with satanic elements threading through the very highest levels of influence. Satan&#x27;s prophets are among us, and their reach extends to the halls of power. The prophetic word is already circulating: sudden exposure will rock DC within 90 days — a judge brought down, a plot exposed that will stun the nation. These are not our words alone; the word is going forth.</p><p>We are in the final stages of unmasking what has been hidden. The celestial predictions they have trafficked in are the currency of the adversary, meant to distract, mislead, and ultimately destroy. Watch the 90 days. Watch Washington. The exposure is coming, and those who have named themselves prophets while serving another master will not be able to hide.</p></div>
+
+      <h2>Voice of Reason</h2>
+      <div class="voice"><p>The theory asserts that a Christian end-times prophecy platform called The Master&#x27;s Voice is secretly engineered to disseminate false prophecies tied to a satanic bloodline network, and that within ninety days some major event will force a reckoning between those prophecies and influential figures in Washington, D.C.</p><p>The Master&#x27;s Voice is a real, publicly accessible end-times teaching and Christian prophecy blog and YouTube channel. It has over 130,000 Facebook followers, and operates companion sites in Spanish and French, with a presence on Rumble, Bitchute, TikTok, Spotify, Apple Podcasts, and numerous other platforms. There is nothing covert about its existence, authorship, or stated mission. Its own published doctrine defines prophecy as &quot;the inspired writing or sharing of the mind of God with a chosen human being,&quot; describes the prophetic gift as doing &quot;the great work of building up believers,&quot; and calls it, when used properly, &quot;a beautiful and helpful gift from God intended to comfort and instruct his people.&quot; Far from concealing a sinister architecture, the platform explicitly and publicly warns against false prophecy as spiritually dangerous. It states directly that divination spirits &quot;love nothing more than the illegitimate use of power among Christians&quot; and that &quot;false prophecy seriously warps the spiritual dynamic of churches, nations and even individuals&#x27; lives.&quot; An operation supposedly built on spiritual deception does not, as a rule, publish its own detailed theology of why spiritual deception is catastrophic.</p><p>The &quot;satanic bloodline&quot; element of the theory is not a new analytical framework — it is a decades-old conspiratorial genre with well-documented origins. The claim that occult family dynasties secretly control political institutions descends directly from works like Fritz Springmeier&#x27;s 1995 *Bloodlines of the Illuminati*, a text so thoroughly unverified that no named bloodline in it has ever been confirmed by genealogical records, court documents, or investigative reporting. Conspiracy theories of this type are defined in the psychological literature as &quot;explanations for important events that involve secret plots by powerful and malevolent groups.&quot; Research shows people are drawn to them when they &quot;promise to satisfy important social psychological motives&quot; including the desire for certainty, control, and group identity — but research does not indicate that conspiracy belief actually fulfills those motivations; instead, for many people, conspiracy belief may be more appealing than satisfying. Attaching a real platform to this pre-existing bloodline framework requires no new evidence — the framework is designed to absorb any target. No mechanism is offered explaining how a prophecy blog connects to any political network, how celestial predictions function as &quot;coordination signals,&quot; or who specifically the satanic lineage involves. The theory&#x27;s three components — the platform, the bloodline, and the D.C. reckoning — are simply asserted to be linked, with the links themselves treated as self-evident.</p><p>The ninety-day exposure prediction is the theory&#x27;s most structurally revealing feature, because it is unfalsifiable by design. The history of end-times prediction is full of precedent: Charles Taze Russell predicted Jesus would return in 1914; when that failed, adherents adjusted and continued. Baptist News Global has noted that endless apocalyptic speculation &quot;continues to erode and chip away at the credibility of believers everywhere&quot; and can become &quot;the theological equivalent of The Boy Who Cried Wolf.&quot; When the ninety-day window closes without any Washington reckoning, the theory&#x27;s proponents will not retract — they will redate, reframe, or claim the event happened in a form that was simply not recognized. That is not prophecy failing; it is an unfalsifiable claim doing exactly what unfalsifiable claims do: survive. The theory also carries an implicit burden it never satisfies: for a coordinated deception of this scale to operate across a multiplatform prophecy ministry, multiple countries, occult dynasties, and D.C. political power simultaneously, it would require the sustained silence of dozens or hundreds of participants — a documented impossibility for any large secret-keeping enterprise.</p><p>The legitimate concern the theory distorts is real: online prophetic communities are genuinely crowded with voices making unverifiable claims, and observers within Christian ministry circles note that those running online &quot;prophet&quot; personas &quot;embrace false information and will hear no truth to the contrary,&quot; meeting rejection with hostility and &quot;flooding emails and inboxes with scare tactics.&quot; The concern about accountability in digital prophecy spaces is warranted and worth discussing on its own terms. What this theory does instead is take that legitimate anxiety and launder it into an accusation against a specific named platform, attach it to an evidence-free occult genealogy, and demand a political event as confirmation — a pattern consistent with research showing that conspiracy explanations tend to emerge especially after large-scale distressing events and periods of social uncertainty. Conspiracy belief is associated with documented societal harms, including prejudice against vulnerable groups and support for political violence, and theories that name specific public figures or organizations as satanic agents create real conditions for targeted harassment. The theory examined here produces no evidence, advances no testable hypothesis, and offers no mechanism — it simply converts an existing platform, an existing mythology, and an existing political anxiety into a single unfounded accusation.</p></div>
+
+      
+
+      <h2>Ontology</h2>
+      <div class="ox"><div class="oxk">Family</div><div><span class="oxchip">J — J - Illuminati / NWO / globalist-control</span></div><div class="oxk">Arena</div><div><span class="oxchip">GOVERNANCE_POWER</span></div><div class="oxk">Mechanism(s)</div><div><span class="oxchip" title="Events pre-planned/foretold and breadcrumbed (predictive programming).">PROPHECY ★ — PROPHECY</span></div><div class="oxk">Controlling interest(s)</div><div><span class="oxchip" title="Supranational cabal / globalists">GLOBALIST_CABAL ★ — GLOBALIST_CABAL</span></div><div class="oxk">Spices</div><div><span class="oxchip">anti-government/deep-state</span> <span class="oxchip">religious/apocalyptic</span> <span class="oxchip">satanic</span></div></div><h3>Structural patterns</h3><div class="deflist"><div class="di"><span class="dt">GOVERNANCE_POWER</span> — <span class="dd">who really rules</span></div><div class="di"><span class="dt">PROPHECY</span> — <span class="dd">Events pre-planned/foretold and breadcrumbed (predictive programming).</span></div><div class="di"><span class="dt">GLOBALIST_CABAL</span> — <span class="dd">Supranational cabal / globalists</span></div></div>
+
+      <h2>Political valence &amp; atoms</h2>
+      <div class="valence-wrap"><svg class="valence-svg" viewBox="0 0 460 180" preserveAspectRatio="xMidYMid meet"><rect x="34" y="10" width="197.6" height="144" fill="#2f86d6" opacity="0.07"/><rect x="252.4" y="10" width="197.6" height="144" fill="#d6536d" opacity="0.07"/><line x1="34" y1="89.2" x2="450" y2="89.2" stroke="#dde4f0"/><circle cx="299.9" cy="67.6" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><line x1="299.9" y1="10" x2="299.9" y2="154" stroke="#19223a" stroke-width="1.4" stroke-dasharray="3,2"/><line x1="34.0" y1="154" x2="34.0" y2="158" stroke="#b9cdec"/><text x="34.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Left</text><line x1="138.0" y1="154" x2="138.0" y2="158" stroke="#b9cdec"/><text x="138.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">−.5</text><line x1="242.0" y1="154" x2="242.0" y2="158" stroke="#b9cdec"/><text x="242.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">0</text><line x1="346.0" y1="154" x2="346.0" y2="158" stroke="#b9cdec"/><text x="346.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">+.5</text><line x1="450.0" y1="154" x2="450.0" y2="158" stroke="#b9cdec"/><text x="450.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Right</text></svg><div class="valence-meta"><div class="big lean-right">Right-leaning</div><div>centroid +0.28 · 1 political atom (sparse)</div><div class="meta">Sparse sample — too few atoms for a distribution curve; points are individual atoms.</div></div></div>
+
+      <h2>Content surface</h2>
+      <div class="surface-row"><div class="sr-lbl">Videos · 5</div><div class="plat-bar"><div class="plat-seg" style="background:#a855f7;flex:3">Bitchute</div><div class="plat-seg" style="background:#f97316;flex:2">Rumble</div></div><div class="plat-legend"><span><span class="sw" style="background:#a855f7"></span>Bitchute <b>3</b></span><span><span class="sw" style="background:#f97316"></span>Rumble <b>2</b></span></div></div>
+
+      
+
+      
+
+      <h2>Family links</h2>
+      <div class="deflist"><div class="di"><div class="dt">Illuminati &amp; Secret Societies · key term: Illuminati / New World Order</div><div class="fam-links"><a href="illuminati-card-game-prophecy.html">Illuminati Card Game Prophecy (INWO)</a><a href="illuminati-secret-societies.html">Illuminati/Secret Societies</a><a href="new-world-order.html">New World Order</a><a href="the-great-reset.html">The Great Reset</a><a href="bohemian-grove-elite-rituals.html">Bohemian Grove Elite Rituals</a><a href="reptilian-elites.html">Reptilian Elite Conspiracy Theory</a><a href="federal-reserve-banking-cabal.html">Federal Reserve Banking Cabal</a><a href="15-minute-cities-surveillance-grid.html">15-Minute Cities Surveillance Grid</a><a href="bilderberg-group-secret-rule.html">Bilderberg Group Secret Rule</a><a href="cern-dimensional-portals.html">CERN Dimensional Portals</a><a href="denver-airport-nwo-bunker.html">Denver Airport NWO Bunker</a><a href="georgia-guidestones-depopulation-agenda.html">Georgia Guidestones Depopulation Agenda</a><a href="vatican-jesuit-world-control.html">Vatican Jesuit World Control</a><a href="elon-musk-vs-globalist-agenda.html">Elon Musk vs. Globalist Agenda</a></div></div></div>
+
+      <h2>Influencers</h2>
+      <div class="section-empty">No influencers linked yet.</div>
+
+      <h2>Related reports</h2>
+      <div class="section-empty">No reports linked to this theory yet.</div>
+    </div>
+
+    <div class="pane" data-pane="whatsnew">
+      <h2>What's New — what the new material means</h2>
+      <div class="whats-new"><p>The new material suggests that the theory has evolved to incorporate more explicit claims about the Master&#x27;s Voice being &quot;hybrids-fallen angel possessed&quot; (Rumble video), which deviates from the established narrative of false prophecies as part of a satanic bloodline conspiracy. This mutation implies a deeper, more sinister level of involvement by supernatural entities.</p><p>The theory is spreading across multiple platforms, including Rumble, Bitchute, and TikTok, with some videos garnering significant views (e.g., 231 watching on the &quot;Make the Manor Great Again&quot; video). The presence of new voices, such as Ginger Ziegler, who claims to have prophetic insight, adds to the theory&#x27;s momentum. However, the tone remains alarmist and sensationalized, emphasizing the imminent exposure of a plot that will &quot;stun the nation.&quot;</p><p>The framing has shifted slightly, with an increased emphasis on the idea that the Master&#x27;s Voice is not just spreading false prophecies but is also being exposed for its own deception (e.g., &quot;God&#x27;s Word Exposes Deception&quot; video). This shift in tone may indicate a growing sense of urgency among proponents of the theory, who believe they are getting closer to uncovering the truth.</p></div>
+    </div>
+
+    <div class="footer">
+      Generated by SignalWatch · 2026-06-29 13:00:48 UTC ·
+      theory_id <code>807a3ae2-5dd8-484b-8de3-05e9db4b2c09</code>
+    </div>
+  </div>
+  <script>
+    function swTab(el){
+      var w=el.closest('.wrap'), k=el.dataset.pane;
+      w.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===el);});
+      w.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('active',p.dataset.pane===k);});
+    }
+  </script>
+</body>
+</html>
