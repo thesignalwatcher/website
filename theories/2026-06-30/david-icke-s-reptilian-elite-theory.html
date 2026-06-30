@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>David Icke&#x27;s Reptilian Elite Theory — SignalWatch</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root { color-scheme: light;
+  --bg:#e9eef7; --surface:#ffffff; --surface-b:#f4f7fc; --ink:#19223a; --ink-soft:#5c6982;
+  --ink-faint:#8a95ac; --line:#dde4f0; --line-bright:#b9cdec;
+  --accent-1:#2bb3d4; --accent-2:#7b6ef0; --accent-3:#1fb589;
+  --accent-1-soft:#d6f0f7; --accent-2-soft:#e4e0fb; --accent-3-soft:#d4f3e8;
+  --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace; }
+* { box-sizing: border-box; }
+body { font-family: var(--sans); color: var(--ink); margin: 0; padding: 2rem 1.2rem; line-height: 1.55;
+       background: var(--bg);
+       background-image: radial-gradient(60% 50% at 12% -5%, #d6e8f6 0%, transparent 60%),
+                         radial-gradient(52% 46% at 105% 0%, #e6e2f7 0%, transparent 55%);
+       background-attachment: fixed; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 0.3rem; color: var(--ink); letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 1.9rem 0 0.7rem; color: var(--ink); }
+h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+     color: var(--accent-2); margin: 1.1rem 0 0.4rem; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: var(--ink-faint); font-size: 0.82rem; }
+code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-b); padding: 0.1em 0.35em; border-radius: 4px; }
+.tags span { display: inline-block; background: var(--surface-b); border: 1px solid var(--line);
+             padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 0.9rem 1.05rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: var(--ink-soft); }
+.kv .v { color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1.1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.45rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+th, td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+th { color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #d6536d; } td.lean-neg { color: #2f86d6; }
+.podcast { background: var(--accent-2-soft); border: 1px solid var(--line-bright); border-radius: 10px;
+           padding: 0.65rem 0.9rem; margin: 0.6rem 0; }
+.podcast .lbl { color: var(--ink-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer { color: var(--ink-faint); font-size: 0.74rem; margin-top: 2.4rem;
+          border-top: 1px solid var(--line); padding-top: 0.9rem; }
+pre { background: var(--surface-b); border: 1px solid var(--line); border-radius: 8px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; color: var(--ink-soft); }
+.section-empty { color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
+.whats-new { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent-1);
+             border-radius: 10px; padding: 0.7rem 1.1rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.whats-new p { margin: 0.55rem 0; font-size: 0.92rem; color: var(--ink-soft); }
+.whats-new p:first-child { margin-top: 0.2rem; }
+/* layout */
+.wrap { max-width: 900px; margin: 0 auto; }
+.hd-tags { margin: 0.55rem 0 0.2rem; }
+.pill { display: inline-block; padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.72rem;
+        font-weight: 600; margin: 0.15rem 0.35rem 0.15rem 0; border: 1px solid var(--line-bright);
+        font-family: var(--mono); letter-spacing: 0.02em; }
+.pill.threat { background: #fde8ec; color: #c0395a; border-color: #f3c4cf; }
+.pill.band { background: var(--accent-1-soft); color: #1789a6; border-color: #b6e3ee; }
+.pill.power { background: var(--accent-3-soft); color: #14906c; border-color: #b6e6d4; }
+.lead { color: var(--ink-soft); font-size: 1rem; margin: 0.5rem 0 0; max-width: 70ch; }
+/* tabs */
+.tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin: 1.4rem 0 0; }
+.tab { padding: 0.55rem 1.05rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--ink-faint);
+       border-bottom: 2px solid transparent; user-select: none; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+.pane { display: none; padding-top: 0.4rem; }
+.pane.active { display: block; }
+/* chips with definitions */
+.ox { display: grid; grid-template-columns: 150px 1fr; gap: 0.45rem 0.9rem; font-size: 0.85rem; }
+.ox .oxk { color: var(--ink-soft); padding-top: 0.25rem; font-weight: 600; }
+.oxchip { display: inline-block; background: var(--surface-b); border: 1px solid var(--line-bright); color: var(--ink);
+          padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.78rem; margin: 0 0.3rem 0.3rem 0; }
+.deflist { margin: 0.3rem 0 0; }
+.deflist .di { margin-bottom: 0.6rem; }
+.deflist .dt { color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+.deflist .dd { color: var(--ink-soft); font-size: 0.82rem; }
+.fam-links a { display: inline-block; background: var(--accent-2-soft); border: 1px solid var(--line-bright);
+               color: var(--accent-2); padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.8rem;
+               margin: 0 0.35rem 0.35rem 0; }
+/* political valence + atoms */
+.valence-wrap { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.valence-svg { background: var(--surface-b); border: 1px solid var(--line); border-radius: 10px; max-width: 460px; width: 100%; }
+.valence-meta { font-size: 0.85rem; color: var(--ink-soft); }
+.valence-meta .big { font-size: 1.35rem; font-weight: 700; font-family: var(--serif); }
+.lean-left { color: #2f86d6; } .lean-right { color: #d6536d; } .lean-center { color: var(--ink); }
+/* content surface */
+.surface-row { margin: 0.55rem 0 0.85rem; }
+.surface-row .sr-lbl { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase;
+                       letter-spacing: 0.05em; margin-bottom: 0.3rem; font-family: var(--mono); }
+.plat-bar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--surface-b); border: 1px solid var(--line); }
+.plat-seg { color: #fff; font-size: 0.66rem; font-weight: 700; text-align: center;
+            line-height: 20px; overflow: hidden; white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.25); }
+.plat-legend { margin-top: 0.35rem; font-size: 0.72rem; color: var(--ink-soft); display: flex;
+               flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+.plat-legend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.voice { font-size: 0.94rem; color: var(--ink-soft); max-width: 72ch; }
+.voice p { margin: 0.55rem 0; }
+</style>
+</head>
+<body>
+<nav class="sw-pubnav"><style>.sw-pubnav{position:sticky;top:0;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;gap:1px 2px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid #dde4f0;padding:8px 16px;font-family:"Hanken Grotesk",system-ui,sans-serif;box-shadow:0 1px 4px rgba(40,50,90,.06);}.sw-pubnav .b{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:1.15rem;color:#19223a;text-decoration:none;margin-right:14px;}.sw-pubnav .b b{color:#7b6ef0;}.sw-pubnav a.l{color:#5c6982;text-decoration:none;font-size:.84rem;padding:5px 9px;border-radius:7px;white-space:nowrap;}.sw-pubnav a.l:hover{background:#eef2f9;color:#19223a;}.sw-pubnav a.l.on{background:#7b6ef0;color:#fff;}</style><a class="b" href="/">Signal<b>Watch</b></a><a class="l" href="/">Home</a><a class="l on" href="/latest/theories/index.html">Theories</a><a class="l" href="/latest/conspiracy-today.html">Conspiracy Today</a><a class="l" href="/latest/behind-the-news.html">Behind the News</a><a class="l" href="/latest/political-valence.html">Political Valence</a><a class="l" href="/latest/source-valence.html">Source Valence</a><a class="l" href="/pseudoscience/" style="color:#2f8f6b">Pseudoscience</a><a class="l" href="/data/">Data</a></nav>
+  <div class="wrap">
+    <h1>David Icke&#x27;s Reptilian Elite Theory</h1>
+    <nav class="lineage-bc" aria-label="Theory lineage" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:2px 0 14px;font-family:Hanken Grotesk,system-ui,sans-serif;font-size:.82rem;color:#5c6982"><span style="color:#8a95ac">↳ sub-theory of</span><a href="reptilian-elites.html" style="color:#7b6ef0;text-decoration:none;font-weight:600">Reptilian Elite Conspiracy Theory</a><span style="color:#c2cad8">▸</span><span style="color:#19223a;font-weight:600">David Icke&#x27;s Reptilian Elite Theory</span></nav>
+    
+    <div class="hd-tags"><span class="pill threat">Threat · Informational</span><span class="pill band">Marginal</span><span class="pill power">Power 7</span></div>
+    <p class="lead">We have been lied to at every level, and David Icke&#x27;s revelations of a mother goddess, global control, and hidden agenda cut straight through the noise to expose what the powerful have spent centuries concealing.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-pane="overview" onclick="swTab(this)">Overview</div>
+      <div class="tab" data-pane="whatsnew" onclick="swTab(this)">What's New</div>
+    </div>
+
+    <div class="pane active" data-pane="overview">
+      <h2>Violence-legitimation heat</h2>
+      <p class="meta">Violence-legitimation heat: not yet scored for this theory.</p>
+
+      <h2>Core claims</h2>
+      <ul class="claims"><li>David Icke&#x27;s revelations expose the existence of a powerful group of reptilian beings that manipulate human affairs from behind the scenes.</li><li>These secret societies and cults work hand-in-hand with the deep state and other hidden powers to maintain control over global systems like finance, media, and governance.</li><li>The spread of information about these entities is seen as part of a larger psyop aimed at discrediting genuine truth-seekers.</li></ul>
+
+      <h2>Voice of the Believer</h2>
+      <div class="voice"><p>We have been lied to at every level, and David Icke&#x27;s revelations of a mother goddess, global control, and hidden agenda cut straight through the noise to expose what the powerful have spent centuries concealing.</p><p>The truth is unambiguous: interdimensional reptilian entities, operating through human hybrids, orchestrate every major system of human civilization — finance, media, governance — from behind a veil of manufactured normality. These are not metaphors. David Icke frames the Anunnaki as reptilian, fourth-dimensional beings who occupy or &quot;overshadow&quot; human bodies, crossbreed with select bloodlines, drink human blood, and feed on fear, and anyone who has followed this research honestly knows the evidence points exactly there. The cults and secret societies that control the world are their instruments on the ground, interlocking with what others call the deep state to keep humanity docile, distracted, and drained. The worlds puppets — controlled through power and finance — answer to something far older and far stranger than any elected government.</p><p>What stops people seeing this is itself part of the operation. The alien plan is in full motion, and one of its key components is the systematic ridicule of those who name it. When researchers expose the reptilian elite and the hidden race secretly controlling our world, they are immediately dismissed, deplatformed, and destroyed — because the power control structure and shape-shifting reptilians depend entirely on our ignorance. The Epstein network, celebrity clones, bodysnatchers — these are not isolated scandals but windows into underground empires that connect directly upward to the same bloodlines Icke has documented for decades. The gnostic code tells us the archons hijacked reality long ago, and until we accept that psychotic lizards are in control of our world and ask what we do now, we cannot even begin rebuilding reality on honest foundations.</p></div>
+
+      <h2>Voice of Reason</h2>
+      <div class="voice"><p>David Icke&#x27;s reptilian elite theory holds that a race of shape-shifting interdimensional reptilian beings — identified with the ancient Mesopotamian Anunnaki and operating through human-hybrid bloodlines — covertly controls every major human institution, from finance and media to government, while feeding on the fear-energy produced by an enslaved humanity. The theory further asserts that anyone who names this hidden power is swiftly and deliberately suppressed, making apparent ridicule the system&#x27;s own proof of operation.</p><p>Every foundational factual pillar of this theory dissolves under scrutiny. Icke first published on this theme in his 1999 work The Biggest Secret, asserting that tall, blood-drinking, shape-shifting reptilian humanoids from the Alpha Draconis star system, now hiding in underground bases, are the force behind a worldwide conspiracy against humanity. The &quot;ancient&quot; source material he invokes as evidence does not hold up. Scholars who trace Icke&#x27;s sources point to Theosophy&#x27;s occult cosmology as a foundation and to specific modern reinterpretations: Icke adapted Maurice Doreal&#x27;s take on the so-called Emerald Tablets and leaned on Zecharia Sitchin&#x27;s reading of Mesopotamian myths to identify the reptilians with the Anunnaki gods. Yet Sitchin&#x27;s Mesopotamian translations are themselves rejected pseudoscience. Sitchin&#x27;s ideas have been resoundingly rejected by scientists, academics, historians — including Sumerologists, Orientalists, and Assyriologists — who dismiss his work as pseudoscience and pseudohistory, criticizing it for flawed methodology, ignoring archaeological and historical evidence, and mistranslating ancient texts. Specifically, Sitchin&#x27;s translation of the word Anunnaki is wrong: he rendered it as something like &quot;they who from heaven came&quot; to make the beings sound like extraterrestrials, but there is not a source on the planet by any Sumerian scholar that would agree with that definition. The Anunnaki actually means &quot;Princely Seed&quot; or &quot;Princely (royal) blood.&quot; The theory&#x27;s ancient-astronaut foundation is built entirely on a mistranslation that professional scholars have repeatedly corrected. The genealogy of the reptilian idea itself is even further removed from reality: academic Michael Barkun, professor of political science at Syracuse University, posits that the idea of a reptilian conspiracy originated in the fiction of Conan the Barbarian creator Robert E. Howard, in his story &quot;The Shadow Kingdom&quot; from 1929, which was itself fantasy literature. Barkun asserts that &quot;in all likelihood&quot; Doreal&#x27;s ideas came from &quot;The Shadow Kingdom,&quot; and that in turn &quot;The Emerald Tablets&quot; formed the basis for Icke&#x27;s work. The theory&#x27;s supposed ancient wisdom is a chain of science fiction borrowed from pulp fantasy.</p><p>The reasoning architecture of the claim is equally bankrupt. There is no verified biological specimen, no DNA evidence, no documented shapeshifting event, no whistleblower whose account survives independent corroboration — nothing beyond anecdotal testimony, symbolic readings of heraldry, and selective pattern-matching applied to public figures. Proponents typically point to anecdotal reports, symbolic readings of historical texts, and selective interpretation of public behavior as evidence; no empirical or reproducible scientific proof supports the existence of reptilian humanoids among humans. The theory is also structurally unfalsifiable: any absence of evidence is absorbed as proof of superior concealment, and any critic becomes an agent of the conspiracy. This is not a feature of serious inquiry — it is the signature of an epistemic trap. The claimed scale of coordination required is also implausible on its face: the theory requires thousands of world leaders, journalists, scientists, regulators, and historians across rival nations and competing institutions to have maintained perfect silence about the dominant species on the planet for the whole of recorded history. Analysts of Icke&#x27;s discourse note he reframes New Age concepts — vibration, multiple dimensions, and spiritual hijacking — into a single &quot;super-conspiracy&quot; that claims everything is connected, a rhetorical strategy that helps make implausible claims seem coherent to followers.</p><p>There is a kernel of genuine frustration the theory exploits. Contemporary authors argue the archetype&#x27;s persistence is not merely aesthetic but psychological, offering a ready metaphor for distrust of elites and an explanation for perceived social failures. Opacity in financial systems, concentrated media ownership, and documented cases of elite impunity are real civic concerns that deserve scrutiny. Icke&#x27;s reptilian thesis seeks to portray the extraterrestrial as that which is literally &quot;alien&quot; in order to explain away the perceived failure of the New Age — the New Age, he suggests, did not fail to arrive, but was prevented from arriving. That psychological function — taking diffuse, legitimate grievances and resolving them into a single, satisfying, unfalsifiable narrative with a named enemy — is precisely what makes the theory persistent and what makes it dangerous. Several analyses document that Icke&#x27;s reptilian narrative intersects with and has sometimes echoed antisemitic conspiracist motifs: references to an all-powerful cabal controlling finance and politics mirror classical antisemitic tropes, leading critics to charge that his rhetoric traffics in coded or overt hate narratives. Reporting and scholarship document that Icke has endorsed or promoted texts and ideas — for example, The Protocols of the Elders of Zion — that have fueled such concerns, with many analysts treating his reptilian language as either a modernized code for classical conspiracy scapegoating or as a dangerous, real-world radicalizing narrative. The claim that criticism equals suppression functions as a shield: it preemptively delegitimizes any rebuttal and insulates believers from correction.</p><p>The documented harms are not hypothetical. In the UK, there was a wave of arson attacks on 5G phone masts after videos of Icke falsely linking them to COVID-19 were shared in Facebook groups, amassing millions of views. Over 30 million people watched Icke&#x27;s content around COVID-19, in which he claimed COVID-19 was fake and orchestrated by a &quot;global cult&quot; with the ultimate goal of creating an Orwellian global state. UK broadcast regulator Ofcom investigated and sanctioned a broadcaster for airing an unchallenged Icke interview, judging it to have &quot;had the potential to cause significant harm&quot; during the pandemic because claims were unsubstantiated and insufficiently challenged; Ofcom made clear it does not prohibit dissenting views in principle, but requires broadcasters to provide adequate challenge and context when claims could endanger public health. Sustained circulation of reptilian elite claims normalizes conspiratorial reasoning, can obscure legitimate scrutiny of elite power, and can serve as a vehicle for prejudice; empirical studies suggest that once embedded in identity-forming communities, such beliefs are resistant to correction and can motivate political alienation or radicalization in vulnerable populations. The theory does not illuminate power; it protects it, by replacing tractable political analysis with an unfalsifiable supernatural explanation that no evidence can dislodge and no organizing can address.</p></div>
+
+      
+
+      <h2>Ontology</h2>
+      <div class="ox"><div class="oxk">Sub-theory of</div><div><a class="oxchip" href="reptilian-elites.html">Reptilian Elite Conspiracy Theory</a></div><div class="oxk">Family</div><div><span class="oxchip">J — J - Illuminati / NWO / globalist-control</span></div><div class="oxk">Arena</div><div><span class="oxchip">GOVERNANCE_POWER</span></div><div class="oxk">Mechanism(s)</div><div><span class="oxchip" title="Conspirators secretly control institutions / replace the real rulers.">INFILTRATION ★ — INFILTRATION</span></div><div class="oxk">Controlling interest(s)</div><div><span class="oxchip" title="Supranational cabal / globalists">GLOBALIST_CABAL ★ — GLOBALIST_CABAL</span></div><div class="oxk">Spices</div><div><span class="oxchip">anti-elite</span> <span class="oxchip">anti-government/deep-state</span> <span class="oxchip">suppressed-knowledge</span> <span class="oxchip">satanic</span></div></div><h3>Structural patterns</h3><div class="deflist"><div class="di"><span class="dt">GOVERNANCE_POWER</span> — <span class="dd">who really rules</span></div><div class="di"><span class="dt">INFILTRATION</span> — <span class="dd">Conspirators secretly control institutions / replace the real rulers.</span></div><div class="di"><span class="dt">GLOBALIST_CABAL</span> — <span class="dd">Supranational cabal / globalists</span></div></div>
+
+      <h2>Political valence &amp; atoms</h2>
+      <div class="valence-wrap"><svg class="valence-svg" viewBox="0 0 460 180" preserveAspectRatio="xMidYMid meet"><rect x="34" y="10" width="197.6" height="144" fill="#2f86d6" opacity="0.07"/><rect x="252.4" y="10" width="197.6" height="144" fill="#d6536d" opacity="0.07"/><polygon points="34.0,116.3 38.2,114.1 42.3,111.9 46.5,109.6 50.6,107.3 54.8,104.9 59.0,102.5 63.1,100.0 67.3,97.5 71.4,95.0 75.6,92.5 79.8,89.9 83.9,87.3 88.1,84.7 92.2,82.0 96.4,79.4 100.6,76.8 104.7,74.2 108.9,71.5 113.0,68.9 117.2,66.4 121.4,63.9 125.5,61.4 129.7,58.9 133.8,56.5 138.0,54.2 142.2,52.0 146.3,49.8 150.5,47.6 154.6,45.6 158.8,43.6 163.0,41.8 167.1,39.9 171.3,38.2 175.4,36.6 179.6,35.0 183.8,33.5 187.9,32.0 192.1,30.6 196.2,29.3 200.4,28.0 204.6,26.7 208.7,25.5 212.9,24.3 217.0,23.2 221.2,22.1 225.4,20.9 229.5,19.9 233.7,18.8 237.8,17.8 242.0,16.8 246.2,15.8 250.3,14.9 254.5,14.0 258.6,13.2 262.8,12.4 267.0,11.7 271.1,11.2 275.3,10.7 279.4,10.3 283.6,10.1 287.8,10.0 291.9,10.1 296.1,10.3 300.2,10.7 304.4,11.2 308.6,11.9 312.7,12.8 316.9,13.9 321.0,15.2 325.2,16.6 329.4,18.2 333.5,19.9 337.7,21.8 341.8,23.7 346.0,25.9 350.2,28.1 354.3,30.4 358.5,32.8 362.6,35.2 366.8,37.8 371.0,40.3 375.1,42.9 379.3,45.5 383.4,48.2 387.6,50.9 391.8,53.5 395.9,56.2 400.1,58.9 404.2,61.6 408.4,64.3 412.6,67.0 416.7,69.8 420.9,72.5 425.0,75.3 429.2,78.1 433.4,80.9 437.5,83.7 441.7,86.6 445.8,89.4 450.0,92.3 450.0,154.0 34.0,154.0" fill="#7b6ef0" opacity="0.32" stroke="#7b6ef0" stroke-width="1.4"/><circle cx="429.2" cy="69.0" r="1.8" fill="#2bb3d4" opacity="0.77"/><circle cx="313.4" cy="101.1" r="1.8" fill="#2bb3d4" opacity="0.71"/><circle cx="439.6" cy="72.7" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="221.4" cy="104.7" r="1.8" fill="#2bb3d4" opacity="0.58"/><circle cx="205.8" cy="76.3" r="1.8" fill="#2bb3d4" opacity="0.58"/><circle cx="315.6" cy="108.4" r="1.8" fill="#2bb3d4" opacity="0.72"/><circle cx="429.2" cy="79.9" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="44.4" cy="112.0" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="268.3" cy="83.6" r="1.8" fill="#2bb3d4" opacity="0.60"/><circle cx="54.8" cy="115.6" r="1.8" fill="#2bb3d4" opacity="0.69"/><circle cx="345.0" cy="87.2" r="1.8" fill="#2bb3d4" opacity="0.74"/><circle cx="313.6" cy="119.2" r="1.8" fill="#2bb3d4" opacity="0.69"/><circle cx="313.4" cy="90.8" r="1.8" fill="#2bb3d4" opacity="0.71"/><circle cx="268.3" cy="122.9" r="1.8" fill="#2bb3d4" opacity="0.60"/><circle cx="126.9" cy="94.4" r="1.8" fill="#2bb3d4" opacity="0.75"/><circle cx="146.7" cy="126.5" r="1.8" fill="#2bb3d4" opacity="0.76"/><circle cx="203.4" cy="98.1" r="1.8" fill="#2bb3d4" opacity="0.63"/><circle cx="429.2" cy="69.6" r="1.8" fill="#2bb3d4" opacity="0.61"/><circle cx="179.1" cy="101.7" r="1.8" fill="#2bb3d4" opacity="0.69"/><circle cx="379.4" cy="73.3" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="140.0" cy="105.3" r="1.8" fill="#2bb3d4" opacity="0.78"/><circle cx="315.6" cy="76.9" r="1.8" fill="#2bb3d4" opacity="0.72"/><circle cx="118.6" cy="109.0" r="1.8" fill="#2bb3d4" opacity="0.79"/><circle cx="193.1" cy="80.5" r="1.8" fill="#2bb3d4" opacity="0.57"/><circle cx="241.4" cy="112.6" r="1.8" fill="#2bb3d4" opacity="0.61"/><circle cx="184.9" cy="84.2" r="1.8" fill="#2bb3d4" opacity="0.60"/><line x1="260.8" y1="10" x2="260.8" y2="154" stroke="#19223a" stroke-width="1.4" stroke-dasharray="3,2"/><line x1="34.0" y1="154" x2="34.0" y2="158" stroke="#b9cdec"/><text x="34.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Left</text><line x1="138.0" y1="154" x2="138.0" y2="158" stroke="#b9cdec"/><text x="138.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">−.5</text><line x1="242.0" y1="154" x2="242.0" y2="158" stroke="#b9cdec"/><text x="242.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">0</text><line x1="346.0" y1="154" x2="346.0" y2="158" stroke="#b9cdec"/><text x="346.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">+.5</text><line x1="450.0" y1="154" x2="450.0" y2="158" stroke="#b9cdec"/><text x="450.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Right</text></svg><div class="valence-meta"><div class="big lean-center">Mixed / centrist</div><div>centroid +0.09 · 26 political atoms</div><div class="meta">Dashed line = mean lean. Dots = individual atoms (opacity = confidence).</div></div></div>
+
+      <h2>Content surface</h2>
+      <div class="surface-row"><div class="sr-lbl">Videos · 27</div><div class="plat-bar"><div class="plat-seg" style="background:#f97316;flex:27">Rumble</div></div><div class="plat-legend"><span><span class="sw" style="background:#f97316"></span>Rumble <b>27</b></span></div></div><div class="surface-row"><div class="sr-lbl">Text &amp; press · 2</div><div class="plat-bar"><div class="plat-seg" style="background:#60a5fa;flex:2">Web Articles</div></div><div class="plat-legend"><span><span class="sw" style="background:#60a5fa"></span>Web Articles <b>2</b></span></div></div>
+
+      
+
+      
+
+      <h2>Family links</h2>
+      <div class="deflist"><div class="di"><div class="dt">Illuminati &amp; Secret Societies · key term: Illuminati / New World Order</div><div class="fam-links"><a href="illuminati-card-game-prophecy.html">Illuminati Card Game Prophecy (INWO)</a><a href="illuminati-secret-societies.html">Illuminati/Secret Societies</a><a href="new-world-order.html">New World Order</a><a href="the-great-reset.html">The Great Reset</a><a href="bohemian-grove-elite-rituals.html">Bohemian Grove Elite Rituals</a><a href="reptilian-elites.html">Reptilian Elite Conspiracy Theory</a><a href="federal-reserve-banking-cabal.html">Federal Reserve Banking Cabal</a><a href="15-minute-cities-surveillance-grid.html">15-Minute Cities Surveillance Grid</a><a href="bilderberg-group-secret-rule.html">Bilderberg Group Secret Rule</a><a href="cern-dimensional-portals.html">CERN Dimensional Portals</a><a href="denver-airport-nwo-bunker.html">Denver Airport NWO Bunker</a><a href="georgia-guidestones-depopulation-agenda.html">Georgia Guidestones Depopulation Agenda</a><a href="vatican-jesuit-world-control.html">Vatican Jesuit World Control</a><a href="elon-musk-vs-globalist-agenda.html">Elon Musk vs. Globalist Agenda</a><a href="seven-days-of-false-prophecy.html">Seven Days Of False Prophecy</a></div></div></div>
+
+      <h2>Influencers</h2>
+      <div class="section-empty">No influencers linked yet.</div>
+
+      <h2>Related reports</h2>
+      <div class="section-empty">No reports linked to this theory yet.</div>
+    </div>
+
+    <div class="pane" data-pane="whatsnew">
+      <h2>What's New — what the new material means</h2>
+      <div class="whats-new"><p>The new material suggests that David Icke&#x27;s Reptilian Elite Theory is experiencing a resurgence in popularity, with various claims and variations emerging across different platforms. New claim mutations include the idea of &quot;archons&quot; hijacking reality, reptilians controlling the moon, and shape-shifting reptilians operating through human bodies. These claims deviate from the established narrative, which primarily focuses on reptilian entities infiltrating human society through bloodlines and secret societies.</p><p>The theory is spreading across various platforms, including Rumble, Medium, and Telegram channels dedicated to David Icke&#x27;s work. This expansion into new communities indicates a growing interest in the theory, with some voices advocating for a more radical interpretation of Icke&#x27;s ideas. For instance, claims about reptilians controlling the moon and operating through human bodies via shape-shifting are being pushed by prominent voices on Rumble and Telegram.</p><p>The tone of the new material is often urgent and conspiratorial, with advocates warning that &quot;the global system can&#x27;t hold much longer&quot; and that &quot;reptilian elites are losing control.&quot; This shift in framing suggests a growing sense of desperation among proponents of the theory, who may be trying to capitalize on current events or social unrest. Overall, the new material represents an evolution of the established narrative, with some voices pushing for more extreme interpretations of Icke&#x27;s ideas.</p></div>
+    </div>
+
+    <div class="footer">
+      Generated by SignalWatch · 2026-06-30 03:07:19 UTC ·
+      theory_id <code>7f3c8ad6-0248-4386-a7b6-4fd7818dae1f</code>
+    </div>
+  </div>
+  <script>
+    function swTab(el){
+      var w=el.closest('.wrap'), k=el.dataset.pane;
+      w.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===el);});
+      w.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('active',p.dataset.pane===k);});
+    }
+  </script>
+</body>
+</html>
