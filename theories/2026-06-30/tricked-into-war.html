@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Tricked into War — SignalWatch</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root { color-scheme: light;
+  --bg:#e9eef7; --surface:#ffffff; --surface-b:#f4f7fc; --ink:#19223a; --ink-soft:#5c6982;
+  --ink-faint:#8a95ac; --line:#dde4f0; --line-bright:#b9cdec;
+  --accent-1:#2bb3d4; --accent-2:#7b6ef0; --accent-3:#1fb589;
+  --accent-1-soft:#d6f0f7; --accent-2-soft:#e4e0fb; --accent-3-soft:#d4f3e8;
+  --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace; }
+* { box-sizing: border-box; }
+body { font-family: var(--sans); color: var(--ink); margin: 0; padding: 2rem 1.2rem; line-height: 1.55;
+       background: var(--bg);
+       background-image: radial-gradient(60% 50% at 12% -5%, #d6e8f6 0%, transparent 60%),
+                         radial-gradient(52% 46% at 105% 0%, #e6e2f7 0%, transparent 55%);
+       background-attachment: fixed; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 0.3rem; color: var(--ink); letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 1.9rem 0 0.7rem; color: var(--ink); }
+h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+     color: var(--accent-2); margin: 1.1rem 0 0.4rem; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: var(--ink-faint); font-size: 0.82rem; }
+code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-b); padding: 0.1em 0.35em; border-radius: 4px; }
+.tags span { display: inline-block; background: var(--surface-b); border: 1px solid var(--line);
+             padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 0.9rem 1.05rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: var(--ink-soft); }
+.kv .v { color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1.1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.45rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+th, td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+th { color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #d6536d; } td.lean-neg { color: #2f86d6; }
+.podcast { background: var(--accent-2-soft); border: 1px solid var(--line-bright); border-radius: 10px;
+           padding: 0.65rem 0.9rem; margin: 0.6rem 0; }
+.podcast .lbl { color: var(--ink-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer { color: var(--ink-faint); font-size: 0.74rem; margin-top: 2.4rem;
+          border-top: 1px solid var(--line); padding-top: 0.9rem; }
+pre { background: var(--surface-b); border: 1px solid var(--line); border-radius: 8px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; color: var(--ink-soft); }
+.section-empty { color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
+.whats-new { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent-1);
+             border-radius: 10px; padding: 0.7rem 1.1rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.whats-new p { margin: 0.55rem 0; font-size: 0.92rem; color: var(--ink-soft); }
+.whats-new p:first-child { margin-top: 0.2rem; }
+/* layout */
+.wrap { max-width: 900px; margin: 0 auto; }
+.hd-tags { margin: 0.55rem 0 0.2rem; }
+.pill { display: inline-block; padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.72rem;
+        font-weight: 600; margin: 0.15rem 0.35rem 0.15rem 0; border: 1px solid var(--line-bright);
+        font-family: var(--mono); letter-spacing: 0.02em; }
+.pill.threat { background: #fde8ec; color: #c0395a; border-color: #f3c4cf; }
+.pill.band { background: var(--accent-1-soft); color: #1789a6; border-color: #b6e3ee; }
+.pill.power { background: var(--accent-3-soft); color: #14906c; border-color: #b6e6d4; }
+.lead { color: var(--ink-soft); font-size: 1rem; margin: 0.5rem 0 0; max-width: 70ch; }
+/* tabs */
+.tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin: 1.4rem 0 0; }
+.tab { padding: 0.55rem 1.05rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--ink-faint);
+       border-bottom: 2px solid transparent; user-select: none; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+.pane { display: none; padding-top: 0.4rem; }
+.pane.active { display: block; }
+/* chips with definitions */
+.ox { display: grid; grid-template-columns: 150px 1fr; gap: 0.45rem 0.9rem; font-size: 0.85rem; }
+.ox .oxk { color: var(--ink-soft); padding-top: 0.25rem; font-weight: 600; }
+.oxchip { display: inline-block; background: var(--surface-b); border: 1px solid var(--line-bright); color: var(--ink);
+          padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.78rem; margin: 0 0.3rem 0.3rem 0; }
+.deflist { margin: 0.3rem 0 0; }
+.deflist .di { margin-bottom: 0.6rem; }
+.deflist .dt { color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+.deflist .dd { color: var(--ink-soft); font-size: 0.82rem; }
+.fam-links a { display: inline-block; background: var(--accent-2-soft); border: 1px solid var(--line-bright);
+               color: var(--accent-2); padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.8rem;
+               margin: 0 0.35rem 0.35rem 0; }
+/* political valence + atoms */
+.valence-wrap { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.valence-svg { background: var(--surface-b); border: 1px solid var(--line); border-radius: 10px; max-width: 460px; width: 100%; }
+.valence-meta { font-size: 0.85rem; color: var(--ink-soft); }
+.valence-meta .big { font-size: 1.35rem; font-weight: 700; font-family: var(--serif); }
+.lean-left { color: #2f86d6; } .lean-right { color: #d6536d; } .lean-center { color: var(--ink); }
+/* content surface */
+.surface-row { margin: 0.55rem 0 0.85rem; }
+.surface-row .sr-lbl { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase;
+                       letter-spacing: 0.05em; margin-bottom: 0.3rem; font-family: var(--mono); }
+.plat-bar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--surface-b); border: 1px solid var(--line); }
+.plat-seg { color: #fff; font-size: 0.66rem; font-weight: 700; text-align: center;
+            line-height: 20px; overflow: hidden; white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.25); }
+.plat-legend { margin-top: 0.35rem; font-size: 0.72rem; color: var(--ink-soft); display: flex;
+               flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+.plat-legend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.voice { font-size: 0.94rem; color: var(--ink-soft); max-width: 72ch; }
+.voice p { margin: 0.55rem 0; }
+</style>
+</head>
+<body>
+<nav class="sw-pubnav"><style>.sw-pubnav{position:sticky;top:0;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;gap:1px 2px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid #dde4f0;padding:8px 16px;font-family:"Hanken Grotesk",system-ui,sans-serif;box-shadow:0 1px 4px rgba(40,50,90,.06);}.sw-pubnav .b{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:1.15rem;color:#19223a;text-decoration:none;margin-right:14px;}.sw-pubnav .b b{color:#7b6ef0;}.sw-pubnav a.l{color:#5c6982;text-decoration:none;font-size:.84rem;padding:5px 9px;border-radius:7px;white-space:nowrap;}.sw-pubnav a.l:hover{background:#eef2f9;color:#19223a;}.sw-pubnav a.l.on{background:#7b6ef0;color:#fff;}</style><a class="b" href="/">Signal<b>Watch</b></a><a class="l" href="/">Home</a><a class="l on" href="/latest/theories/index.html">Theories</a><a class="l" href="/latest/conspiracy-today.html">Conspiracy Today</a><a class="l" href="/latest/behind-the-news.html">Behind the News</a><a class="l" href="/latest/political-valence.html">Political Valence</a><a class="l" href="/latest/source-valence.html">Source Valence</a><a class="l" href="/pseudoscience/" style="color:#2f8f6b">Pseudoscience</a><a class="l" href="/data/">Data</a></nav>
+  <div class="wrap">
+    <h1>Tricked into War</h1>
+    <nav class="lineage-bc" aria-label="Theory lineage" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:2px 0 14px;font-family:Hanken Grotesk,system-ui,sans-serif;font-size:.82rem;color:#5c6982"><span style="color:#8a95ac">↳ sub-theory of</span><a href="peace-deal-deception.html" style="color:#7b6ef0;text-decoration:none;font-weight:600">Peace Deal Deception</a><span style="color:#c2cad8">▸</span><span style="color:#19223a;font-weight:600">Tricked into War</span></nav>
+    
+    <div class="hd-tags"><span class="pill threat">Threat · Informational</span><span class="pill band">Marginal</span><span class="pill power">Power 6</span></div>
+    <p class="lead">Trump was set up — his own inner circle conspired to drag America into a war with Iran without his full knowledge or consent.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-pane="overview" onclick="swTab(this)">Overview</div>
+      <div class="tab" data-pane="whatsnew" onclick="swTab(this)">What's New</div>
+    </div>
+
+    <div class="pane active" data-pane="overview">
+      <h2>Violence-legitimation heat</h2>
+      <p class="meta">Violence-legitimation heat: not yet scored for this theory.</p>
+
+      <h2>Core claims</h2>
+      <ul class="claims"><li>The author is discussing a conspiracy theory claim that Trump&#x27;s allies tricked him into starting an Iran war.</li><li>Trump said in March 2026 that several of his allies, including Jared Kushner and Secretary of State Marco Rubio, advised him about attacking Iran.</li><li>There is no evidence that Trump said the above about Kushner.</li></ul>
+
+      <h2>Explanation of Belief</h2>
+      <div class="voice"><p>[ Voice of the Believer is Not Provided for this Content ]</p><p>The theory asserts that Trump&#x27;s close allies, allegedly including Jared Kushner and Secretary of State Marco Rubio, manipulated or tricked Trump into initiating military action against Iran. It further claims that Trump himself publicly named these individuals in March 2026 as having advised him toward such action.</p><p>Origins: The claim appears to have originated from commentary or analysis framing internal Trump administration deliberations over Iran policy as a coordinated deception by his inner circle. The specific assertion that Trump named Kushner in March 2026 lacks documented evidentiary support, suggesting the claim may have emerged from misattribution, speculation, or fabrication within political media ecosystems.</p><p>How believers defend it: Adherents of the theory tend to treat the absence of a verifiable Trump statement naming Kushner as evidence of suppression or media cover-up, arguing that inconvenient admissions are routinely scrubbed or ignored by mainstream outlets. Fact-checks or denials are often reinterpreted by believers as confirmation that powerful figures are actively concealing the truth about who influenced the decision to threaten or attack Iran.</p></div>
+
+      <h2>Voice of Reason</h2>
+      <div class="voice"><p>This theory asserts that Trump was secretly manipulated by members of his own inner circle — specifically naming Marco Rubio and Jared Kushner — into launching a war against Iran against his own will or knowledge, and that Trump himself exposed this plot in March 2026 by naming those advisors. The claim merits precise correction, because it contains a real factual kernel that has been systematically distorted to support a conspiratorial conclusion that the underlying evidence simply does not bear.</p><p>The factual record is not in dispute on the core question. On February 28, 2026, the United States and Israel launched large-scale strikes on Iran, marking the start of a war. Trump did speak about advisors in connection with that decision. During a March 2026 speech at Trump National Doral Miami, Trump said: &quot;The situation was very quickly approaching the point of no return and the United States found it intolerable, in my opinion, based on what Steve, and Jared and Pete and others were telling me. Marco was so involved, that I thought that they were going to attack us. I thought they would — if we didn&#x27;t do this at the time we did it, I think they had in mind to attack us.&quot; That is the real quote. Read carefully, it is a president crediting his advisors for reinforcing his own pre-existing assessment of an Iranian threat — not a president claiming he was tricked. The theory&#x27;s central leap — from &quot;advisors influenced Trump&quot; to &quot;advisors conspired to manipulate Trump against his knowledge and consent&quot; — is not supported by anything Trump actually said.</p><p>The specific viral claim that Trump accused Kushner of &quot;ruining his presidency&quot; by tricking him into war is simply fabricated. There is no evidence that Trump said this about Kushner. A search of news coverage about Trump&#x27;s statements on Iran showed that he said Kushner advised him about attacking Iran, but he did not say Kushner &quot;ruined&quot; his presidency or tricked him into starting the war. Fact-checkers traced the origin of this claim: the viral post originated from a parody X account known as &quot;The Halfway Post,&quot; which clearly identifies itself as satire in its bio, and regularly publishes fabricated or exaggerated political content for comedic effect. The conspiracy theory is therefore built on a foundation that is partly real (Trump mentioned Kushner among advisors) and partly invented (the word &quot;tricked,&quot; the accusation of a ruined presidency), with the invented part carrying all the conspiratorial weight. This is a classic technique: anchor a false claim to a verifiable event, then attribute to that event a meaning it does not have.</p><p>The reasoning failure compounds the factual one. Advisors advising a president is not a conspiracy — it is the defined purpose of an advisory role. By the time the third round of talks ended in Geneva, Trump had likely already made the choice to go to war, and it is unlikely that any outcome short of complete Iranian capitulation to U.S. demands at the negotiating table would have averted the military strikes. Trump&#x27;s dissatisfaction and impatience with the negotiating process appear to have been fed, in part, by Witkoff&#x27;s and Kushner&#x27;s accounts of the U.S.-Iran talks. Serious analysts and arms control experts have raised substantive, evidence-based concerns about the quality of that advice — for instance, several observers have concluded that the war may have started in part because Witkoff and Kushner &quot;lacked the technical expertise to even understand what the Iranians were offering in negotiations.&quot; Those are genuine, legitimate criticisms that deserve open scrutiny. But &quot;advisors gave poor or self-interested counsel&quot; and &quot;advisors ran a secret conspiracy to drag a president into war without his consent&quot; are entirely different claims, and only the first is supported by any evidence.</p><p>There is a real kernel of concern here that this narrative exploits. Saudi Crown Prince Mohammed bin Salman reportedly made multiple private phone calls to Trump in February advocating a U.S. attack, while Kushner&#x27;s advisory role raised conflict-of-interest concerns given his financial entanglements, and according to CNN, the UAE was also lobbying Trump to strike Iran behind the scenes. These are documented, on-the-record concerns about foreign influence, financial conflicts, and the quality of pre-war intelligence briefings — and the claim that Iran was planning an imminent attack against the U.S. is directly contradicted by U.S. intelligence agencies, with Trump administration officials telling congressional staff in private briefings that U.S. intelligence did not suggest Iran was preparing to launch a preemptive strike. These are genuine accountability questions that open-source journalism and congressional oversight can address. The conspiracy framing, however, forecloses rather than enables that scrutiny. By recasting a verifiable policy failure as an unfalsifiable secret plot — and by pre-emptively labeling any correction of the fabricated quote as itself part of the cover-up — the narrative makes it impossible for believers to evaluate evidence at all. The practical harm is that it replaces the real and important story (who shaped this decision, on what intelligence, and with what conflicts of interest) with an emotionally satisfying but factually ungrounded drama centered on a quote that does not exist.</p></div>
+
+      
+
+      <h2>Ontology</h2>
+      <div class="ox"><div class="oxk">Sub-theory of</div><div><a class="oxchip" href="peace-deal-deception.html">Peace Deal Deception</a></div><div class="oxk">Spices</div><div><span class="oxchip">anti-government/deep-state</span> <span class="oxchip">pro-Trump/MAGA</span></div></div>
+
+      <h2>Political valence &amp; atoms</h2>
+      <div class="valence-wrap"><svg class="valence-svg" viewBox="0 0 460 180" preserveAspectRatio="xMidYMid meet"><rect x="34" y="10" width="197.6" height="144" fill="#2f86d6" opacity="0.07"/><rect x="252.4" y="10" width="197.6" height="144" fill="#d6536d" opacity="0.07"/><polygon points="34.0,151.5 38.2,151.2 42.3,151.0 46.5,150.7 50.6,150.4 54.8,150.0 59.0,149.7 63.1,149.3 67.3,148.9 71.4,148.5 75.6,148.1 79.8,147.6 83.9,147.2 88.1,146.7 92.2,146.2 96.4,145.7 100.6,145.2 104.7,144.6 108.9,144.0 113.0,143.5 117.2,142.9 121.4,142.3 125.5,141.7 129.7,141.0 133.8,140.4 138.0,139.8 142.2,139.2 146.3,138.6 150.5,137.9 154.6,137.3 158.8,136.8 163.0,136.2 167.1,135.6 171.3,135.1 175.4,134.6 179.6,134.2 183.8,133.8 187.9,133.4 192.1,133.1 196.2,132.8 200.4,132.6 204.6,132.4 208.7,132.3 212.9,132.3 217.0,132.3 221.2,132.3 225.4,132.4 229.5,132.6 233.7,132.8 237.8,133.0 242.0,133.3 246.2,133.6 250.3,133.9 254.5,134.2 258.6,134.5 262.8,134.7 267.0,134.9 271.1,135.1 275.3,135.1 279.4,135.1 283.6,134.9 287.8,134.5 291.9,134.0 296.1,133.2 300.2,132.3 304.4,131.0 308.6,129.5 312.7,127.7 316.9,125.5 321.0,123.0 325.2,120.1 329.4,116.9 333.5,113.3 337.7,109.3 341.8,105.0 346.0,100.3 350.2,95.2 354.3,89.9 358.5,84.3 362.6,78.5 366.8,72.6 371.0,66.5 375.1,60.4 379.3,54.4 383.4,48.4 387.6,42.6 391.8,37.1 395.9,31.9 400.1,27.1 404.2,22.8 408.4,19.0 412.6,15.8 416.7,13.3 420.9,11.5 425.0,10.4 429.2,10.0 433.4,10.4 437.5,11.5 441.7,13.4 445.8,15.9 450.0,19.1 450.0,154.0 34.0,154.0" fill="#7b6ef0" opacity="0.32" stroke="#7b6ef0" stroke-width="1.4"/><circle cx="427.9" cy="69.0" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="430.1" cy="101.1" r="1.8" fill="#2bb3d4" opacity="0.79"/><circle cx="249.3" cy="72.7" r="1.8" fill="#2bb3d4" opacity="0.75"/><circle cx="439.6" cy="104.7" r="1.8" fill="#2bb3d4" opacity="0.79"/><circle cx="428.7" cy="76.3" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="431.0" cy="108.4" r="1.8" fill="#2bb3d4" opacity="0.79"/><circle cx="97.6" cy="79.9" r="1.8" fill="#2bb3d4" opacity="0.79"/><circle cx="430.1" cy="112.0" r="1.8" fill="#2bb3d4" opacity="0.79"/><circle cx="166.5" cy="83.6" r="1.8" fill="#2bb3d4" opacity="0.74"/><circle cx="190.8" cy="115.6" r="1.8" fill="#2bb3d4" opacity="0.78"/><circle cx="429.9" cy="87.2" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="423.5" cy="119.2" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="429.5" cy="90.8" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="428.7" cy="122.9" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="427.9" cy="94.4" r="1.8" fill="#2bb3d4" opacity="0.80"/><line x1="391.0" y1="10" x2="391.0" y2="154" stroke="#19223a" stroke-width="1.4" stroke-dasharray="3,2"/><line x1="34.0" y1="154" x2="34.0" y2="158" stroke="#b9cdec"/><text x="34.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Left</text><line x1="138.0" y1="154" x2="138.0" y2="158" stroke="#b9cdec"/><text x="138.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">−.5</text><line x1="242.0" y1="154" x2="242.0" y2="158" stroke="#b9cdec"/><text x="242.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">0</text><line x1="346.0" y1="154" x2="346.0" y2="158" stroke="#b9cdec"/><text x="346.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">+.5</text><line x1="450.0" y1="154" x2="450.0" y2="158" stroke="#b9cdec"/><text x="450.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Right</text></svg><div class="valence-meta"><div class="big lean-right">Right-leaning</div><div>centroid +0.72 · 15 political atoms</div><div class="meta">Dashed line = mean lean. Dots = individual atoms (opacity = confidence).</div></div></div>
+
+      <h2>Content surface</h2>
+      <div class="surface-row"><div class="sr-lbl">Videos · 1</div><div class="plat-bar"><div class="plat-seg" style="background:#f5b400;flex:1">Youtube</div></div><div class="plat-legend"><span><span class="sw" style="background:#f5b400"></span>Youtube <b>1</b></span></div></div><div class="surface-row"><div class="sr-lbl">Social posts · 14</div><div class="plat-bar"><div class="plat-seg" style="background:#22c55e;flex:12">Gab</div><div class="plat-seg" style="background:#14b8a6;flex:1"></div><div class="plat-seg" style="background:#06b6d4;flex:1"></div></div><div class="plat-legend"><span><span class="sw" style="background:#22c55e"></span>Gab <b>12</b></span><span><span class="sw" style="background:#14b8a6"></span>Tiktok <b>1</b></span><span><span class="sw" style="background:#06b6d4"></span>Twitter <b>1</b></span></div></div>
+
+      
+
+      
+
+      <h2>Family links</h2>
+      <div class="deflist"><div class="di"><div class="dt">Trump Administration Intrigue · key term: Trump White House intrigue</div><div class="fam-links"><a href="trump-situation-room-exclusion-theory.html">Trump Situation Room Exclusion Theory</a><a href="whcd-security-stand-down-protocol.html">WHCD Security Stand-Down Protocol</a></div></div></div>
+
+      <h2>Influencers</h2>
+      
+    <table>
+      <thead><tr>
+        <th>Influencer</th><th>Type</th><th>Classification</th>
+        <th class="num">Content</th><th class="num">Atoms</th>
+      </tr></thead>
+      <tbody><tr><td>MS NOW</td><td>youtube_channel</td><td>believer</td><td class="num">0</td><td class="num">0</td></tr></tbody>
+    </table>
+    
+
+      <h2>Related reports</h2>
+      <div class="section-empty">No reports linked to this theory yet.</div>
+    </div>
+
+    <div class="pane" data-pane="whatsnew">
+      <h2>What's New — what the new material means</h2>
+      <div class="whats-new"><p>The new material reinforces the established narrative that Trump was &quot;Tricked into War&quot; by his inner circle, particularly Jared Kushner and other advisors. However, it introduces some variations on this claim, such as the suggestion that Netanyahu and Rubio are part of a larger Zionist Jewish conspiracy to drag the US into war with Iran. This mutation of the theory emphasizes the role of external actors, specifically Israeli interests, in manipulating Trump&#x27;s decision-making.</p><p>The new material is spreading across multiple platforms, including Gab, Twitter, YouTube, TikTok, and 4chan (via archive links). The use of advocacy groups on Gab suggests a coordinated effort to promote this narrative. Prominent voices pushing the theory include individuals who claim to have inside information or connections to Trump&#x27;s inner circle.</p><p>The tone of the new material is increasingly conspiratorial and accusatory, with some claims suggesting that Kushner &quot;tricked&quot; Trump into war. The urgency and framing of the narrative have shifted to emphasize the catastrophic consequences of this alleged manipulation, including the collapse of the global economy. Overall, the new material represents a further escalation of the theory, with more explicit accusations against specific individuals and groups.</p></div>
+    </div>
+
+    <div class="footer">
+      Generated by SignalWatch · 2026-06-30 09:15:47 UTC ·
+      theory_id <code>74b2603a-3643-4266-95a0-0e070bdd85fe</code>
+    </div>
+  </div>
+  <script>
+    function swTab(el){
+      var w=el.closest('.wrap'), k=el.dataset.pane;
+      w.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===el);});
+      w.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('active',p.dataset.pane===k);});
+    }
+  </script>
+</body>
+</html>
