@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Bush Did 9/11 — SignalWatch</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root { color-scheme: light;
+  --bg:#e9eef7; --surface:#ffffff; --surface-b:#f4f7fc; --ink:#19223a; --ink-soft:#5c6982;
+  --ink-faint:#8a95ac; --line:#dde4f0; --line-bright:#b9cdec;
+  --accent-1:#2bb3d4; --accent-2:#7b6ef0; --accent-3:#1fb589;
+  --accent-1-soft:#d6f0f7; --accent-2-soft:#e4e0fb; --accent-3-soft:#d4f3e8;
+  --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace; }
+* { box-sizing: border-box; }
+body { font-family: var(--sans); color: var(--ink); margin: 0; padding: 2rem 1.2rem; line-height: 1.55;
+       background: var(--bg);
+       background-image: radial-gradient(60% 50% at 12% -5%, #d6e8f6 0%, transparent 60%),
+                         radial-gradient(52% 46% at 105% 0%, #e6e2f7 0%, transparent 55%);
+       background-attachment: fixed; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 0.3rem; color: var(--ink); letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 1.9rem 0 0.7rem; color: var(--ink); }
+h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+     color: var(--accent-2); margin: 1.1rem 0 0.4rem; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: var(--ink-faint); font-size: 0.82rem; }
+code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-b); padding: 0.1em 0.35em; border-radius: 4px; }
+.tags span { display: inline-block; background: var(--surface-b); border: 1px solid var(--line);
+             padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 0.9rem 1.05rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: var(--ink-soft); }
+.kv .v { color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1.1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.45rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+th, td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+th { color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #d6536d; } td.lean-neg { color: #2f86d6; }
+.podcast { background: var(--accent-2-soft); border: 1px solid var(--line-bright); border-radius: 10px;
+           padding: 0.65rem 0.9rem; margin: 0.6rem 0; }
+.podcast .lbl { color: var(--ink-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer { color: var(--ink-faint); font-size: 0.74rem; margin-top: 2.4rem;
+          border-top: 1px solid var(--line); padding-top: 0.9rem; }
+pre { background: var(--surface-b); border: 1px solid var(--line); border-radius: 8px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; color: var(--ink-soft); }
+.section-empty { color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
+.whats-new { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent-1);
+             border-radius: 10px; padding: 0.7rem 1.1rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.whats-new p { margin: 0.55rem 0; font-size: 0.92rem; color: var(--ink-soft); }
+.whats-new p:first-child { margin-top: 0.2rem; }
+/* layout */
+.wrap { max-width: 900px; margin: 0 auto; }
+.hd-tags { margin: 0.55rem 0 0.2rem; }
+.pill { display: inline-block; padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.72rem;
+        font-weight: 600; margin: 0.15rem 0.35rem 0.15rem 0; border: 1px solid var(--line-bright);
+        font-family: var(--mono); letter-spacing: 0.02em; }
+.pill.threat { background: #fde8ec; color: #c0395a; border-color: #f3c4cf; }
+.pill.band { background: var(--accent-1-soft); color: #1789a6; border-color: #b6e3ee; }
+.pill.power { background: var(--accent-3-soft); color: #14906c; border-color: #b6e6d4; }
+.lead { color: var(--ink-soft); font-size: 1rem; margin: 0.5rem 0 0; max-width: 70ch; }
+/* tabs */
+.tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin: 1.4rem 0 0; }
+.tab { padding: 0.55rem 1.05rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--ink-faint);
+       border-bottom: 2px solid transparent; user-select: none; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+.pane { display: none; padding-top: 0.4rem; }
+.pane.active { display: block; }
+/* chips with definitions */
+.ox { display: grid; grid-template-columns: 150px 1fr; gap: 0.45rem 0.9rem; font-size: 0.85rem; }
+.ox .oxk { color: var(--ink-soft); padding-top: 0.25rem; font-weight: 600; }
+.oxchip { display: inline-block; background: var(--surface-b); border: 1px solid var(--line-bright); color: var(--ink);
+          padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.78rem; margin: 0 0.3rem 0.3rem 0; }
+.deflist { margin: 0.3rem 0 0; }
+.deflist .di { margin-bottom: 0.6rem; }
+.deflist .dt { color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+.deflist .dd { color: var(--ink-soft); font-size: 0.82rem; }
+.fam-links a { display: inline-block; background: var(--accent-2-soft); border: 1px solid var(--line-bright);
+               color: var(--accent-2); padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.8rem;
+               margin: 0 0.35rem 0.35rem 0; }
+/* political valence + atoms */
+.valence-wrap { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.valence-svg { background: var(--surface-b); border: 1px solid var(--line); border-radius: 10px; max-width: 460px; width: 100%; }
+.valence-meta { font-size: 0.85rem; color: var(--ink-soft); }
+.valence-meta .big { font-size: 1.35rem; font-weight: 700; font-family: var(--serif); }
+.lean-left { color: #2f86d6; } .lean-right { color: #d6536d; } .lean-center { color: var(--ink); }
+/* content surface */
+.surface-row { margin: 0.55rem 0 0.85rem; }
+.surface-row .sr-lbl { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase;
+                       letter-spacing: 0.05em; margin-bottom: 0.3rem; font-family: var(--mono); }
+.plat-bar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--surface-b); border: 1px solid var(--line); }
+.plat-seg { color: #fff; font-size: 0.66rem; font-weight: 700; text-align: center;
+            line-height: 20px; overflow: hidden; white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.25); }
+.plat-legend { margin-top: 0.35rem; font-size: 0.72rem; color: var(--ink-soft); display: flex;
+               flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+.plat-legend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.voice { font-size: 0.94rem; color: var(--ink-soft); max-width: 72ch; }
+.voice p { margin: 0.55rem 0; }
+</style>
+</head>
+<body>
+<nav class="sw-pubnav"><style>.sw-pubnav{position:sticky;top:0;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;gap:1px 2px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid #dde4f0;padding:8px 16px;font-family:"Hanken Grotesk",system-ui,sans-serif;box-shadow:0 1px 4px rgba(40,50,90,.06);}.sw-pubnav .b{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:1.15rem;color:#19223a;text-decoration:none;margin-right:14px;}.sw-pubnav .b b{color:#7b6ef0;}.sw-pubnav a.l{color:#5c6982;text-decoration:none;font-size:.84rem;padding:5px 9px;border-radius:7px;white-space:nowrap;}.sw-pubnav a.l:hover{background:#eef2f9;color:#19223a;}.sw-pubnav a.l.on{background:#7b6ef0;color:#fff;}</style><a class="b" href="/">Signal<b>Watch</b></a><a class="l" href="/">Home</a><a class="l on" href="/latest/theories/index.html">Theories</a><a class="l" href="/latest/conspiracy-today.html">Conspiracy Today</a><a class="l" href="/latest/behind-the-news.html">Behind the News</a><a class="l" href="/latest/political-valence.html">Political Valence</a><a class="l" href="/latest/source-valence.html">Source Valence</a><a class="l" href="/pseudoscience/" style="color:#2f8f6b">Pseudoscience</a><a class="l" href="/data/">Data</a></nav>
+  <div class="wrap">
+    <h1>Bush Did 9/11</h1>
+    <nav class="lineage-bc" aria-label="Theory lineage" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:2px 0 14px;font-family:Hanken Grotesk,system-ui,sans-serif;font-size:.82rem;color:#5c6982"><span style="color:#8a95ac">↳ sub-theory of</span><a href="9-11-trutherism.html" style="color:#7b6ef0;text-decoration:none;font-weight:600">9/11 Trutherism</a><span style="color:#c2cad8">▸</span><span style="color:#19223a;font-weight:600">Bush Did 9/11</span></nav>
+    
+    <div class="hd-tags"><span class="pill threat">Threat · Elevated</span><span class="pill band">Marginal</span><span class="pill power">Power 0</span></div>
+    <p class="lead">We were lied to from the very first moment, and the evidence — hidden in plain sight for anyone willing to look — proves that the September 11th attacks were not the work of nineteen men with box cutters but a carefully orchestrated false flag carried out by the Bush administration and the deep state apparatus behind i…</p>
+
+    <div class="tabs">
+      <div class="tab active" data-pane="overview" onclick="swTab(this)">Overview</div>
+      <div class="tab" data-pane="whatsnew" onclick="swTab(this)">What's New</div>
+    </div>
+
+    <div class="pane active" data-pane="overview">
+      <h2>Violence-legitimation heat</h2>
+      <p class="meta">Violence-legitimation heat: not yet scored for this theory.</p>
+
+      <h2>Core claims</h2>
+      <ul class="claims"><li>The U.S. government — the Bush administration and/or a hidden &#x27;deep state&#x27; — planned and carried out the 9/11 attacks as a false flag; al-Qaeda was a cover story or a patsy.</li><li>Jet fuel can&#x27;t melt steel beams, so the Twin Towers could not have collapsed from the plane impacts and fires — they had to be demolished.</li><li>The Twin Towers fell straight down, symmetrically, at near free-fall speed into their own footprints — the signature of a professional controlled demolition.</li><li>Scientists found unreacted nano-thermite (military-grade incendiary/explosive) in the WTC dust, proving the buildings were rigged.</li><li>Videos show &#x27;squibs&#x27; — puffs of smoke and debris shooting out of windows far below the collapse front — which are demolition charges going off ahead of the collapse.</li><li>Larry Silverstein said &#x27;pull it&#x27; about WTC 7 in a documentary, openly admitting the building was intentionally demolished.</li><li>No Boeing 757 hit the Pentagon — the hole was too small and there was no plane debris; it was a missile or a drone.</li><li>Norman Mineta testified that Cheney was told &#x27;the orders still stand&#x27; as the plane approached the Pentagon — a stand-down order to not intercept it.</li><li>Bush kept reading &#x27;My Pet Goat&#x27; to schoolchildren for minutes after being told &#x27;America is under attack&#x27; — the calm of a man who already knew.</li></ul>
+
+      <h2>Voice of the Believer</h2>
+      <div class="voice"><p>We were lied to from the very first moment, and the evidence — hidden in plain sight for anyone willing to look — proves that the September 11th attacks were not the work of nineteen men with box cutters but a carefully orchestrated false flag carried out by the Bush administration and the deep state apparatus behind it.</p><p>Start with the physics, because the physics don&#x27;t lie. Jet fuel burns at temperatures that cannot — under any circumstances — melt structural steel beams, yet we are asked to believe that office fires brought down three engineered skyscrapers in a single afternoon. Three buildings, and every one of them fell straight down, symmetrically, at near free-fall speed, directly into their own footprints — the unmistakable signature of a professional controlled demolition. You don&#x27;t get that from a fire. You get that from charges placed precisely throughout the structure over weeks of access. And we don&#x27;t have to speculate: independent scientists found unreacted nano-thermite — military-grade material, not available at any hardware store — in multiple independent samples of the WTC dust. Then watch the footage again and look for the squibs, the puffs of smoke and debris punching out of windows floors below the collapse front, right on sequence, exactly as demolition charges fire. Larry Silverstein removed all remaining doubt himself when he said on camera that the decision was made to &quot;pull it&quot; on WTC 7 — the building that no plane ever touched, that fell the same way anyway.</p><p>The Pentagon and the White House tell the same story of foreknowledge and complicity. The hole in the Pentagon facade was far too small for a Boeing 757, there was no wreckage, no wings, no tail section — what hit the Pentagon was not a commercial airliner. And Norman Mineta testified under oath that Dick Cheney was in the bunker and was told repeatedly, as the aircraft closed on Washington, that &quot;the orders still stand&quot; — the stand-down order that guaranteed the attack would not be intercepted. Meanwhile the President of the United States sat in a Florida classroom for nearly seven minutes after being told America was under attack, calmly listening to children read about a pet goat — the composed, unhurried demeanor of a man who already knew exactly what was happening and exactly how it would end.</p></div>
+
+      <h2>Voice of Reason</h2>
+      <div class="voice"><p>The &quot;Bush Did 9/11&quot; family of theories — encompassing both the claim that the U.S. government actively planned and executed the September 11, 2001 attacks (MIHOP) and the claim that it knowingly allowed them to proceed (LIHOP) — holds that al-Qaeda was a cover story for a self-inflicted false-flag operation designed to justify wars and expand executive power. Every specific claim undergirding this framework collapses when measured against the verified evidence.</p><p>Start with the foundational assertion that al-Qaeda&#x27;s role was fabricated. The 9/11 Commission interviewed over 1,200 people in ten countries and reviewed over two and a half million pages of documents, including closely guarded classified national security documents. Its final report narrated in detail the development of al-Qaeda, its evolution into the organization that carried out the September 11 attacks, and the central leadership role played by Osama bin Laden. By late 1998 or early 1999, bin Laden and his advisers had agreed on what Khalid Sheikh Mohammed called the &quot;planes operation,&quot; relying on a cell of Muslim extremists clustered in Hamburg, Germany — one of whom, Mohamed Atta, became the tactical commander of the operation in the United States. Ten commissioners — five Republicans and five Democrats — presented this report without dissent. The commission also documented the government&#x27;s own institutional failures, including poor intelligence-sharing and inadequate imagination about the threat — findings that hardly fit an administration supposedly orchestrating the attack it was supposedly investigating. Moving to the physical claims: the &quot;jet fuel can&#x27;t melt steel&quot; slogan is a deliberate misdirection, because no engineer argued that fire needed to melt steel to cause collapse. The National Institute of Standards and Technology&#x27;s findings suggested that fires, in conjunction with damage to structural members and fire suppression systems inflicted by the jet airliners, played a key role in the collapse of the buildings. For WTC 7, which truthers treat as the clearest demolition case, NIST conducted a three-year investigation. The extensive scientific and technical investigation found that the fires on multiple floors in WTC 7, which were uncontrolled but otherwise similar to fires experienced in other tall buildings, caused an extraordinary event: heating of floor beams and girders caused a critical support column to fail, initiating a fire-induced progressive collapse that brought the building down. Specialists in structural mechanics and structural engineering accept the model of a fire-induced, gravity-driven collapse of the WTC buildings; NIST found no corroborating evidence for alternative hypotheses suggesting that the towers were brought down by controlled demolition using explosives planted prior to September 11, 2001. Professors Zdeněk Bažant of Northwestern University, Thomas Eagar of the Massachusetts Institute of Technology, and James Quintiere of the University of Maryland have also dismissed the controlled-demolition conspiracy theory. The &quot;squibs&quot; observed in videos are explained structurally by air pressure from collapsing floors blowing out window glass and debris along paths of least resistance — a well-documented phenomenon in progressive building collapses, not a signature of sequential charges. On the nano-thermite claim, the single paper cited — published in 2009 by Harrit, Jones, and others — is the entire physical evidentiary foundation. Publishing the article caused the journal&#x27;s own editor, Prof. Marie-Paule Pileni, to resign, accusing the publisher of printing it without her knowledge. Forensic scientist Dr. James Millette subsequently examined red-gray chips from multiple independent WTC dust samples; his analysis found the chips consistent with carbon-steel coated with an epoxy resin containing primarily iron oxide and kaolin clay pigments — and found no evidence of individual elemental aluminum particles of any size, meaning the red layer is not thermite or nano-thermite. Larry Silverstein&#x27;s &quot;pull it&quot; remark is perhaps the most thoroughly distorted piece of evidence in the entire canon. Silverstein was interviewed for the PBS documentary &quot;America Rebuilds&quot; and never said, let alone admitted, that he had ordered Building 7 demolished; he said he told the fire department commander that given the terrible loss of life, &quot;maybe the smartest thing to do is pull it.&quot; Silverstein later stated that his comments had been mischaracterized and clarified that what he meant by &quot;pull it&quot; was the crew of firefighters inside the building, not the building itself. Even if one accepted the theorists&#x27; preferred reading, it would be physically incoherent: rigging a skyscraper for controlled demolition takes weeks of preparation, meaning any decision made on the afternoon of September 11 could not explain a demolition that same evening. The Mineta testimony, cited as proof of a stand-down order, is similarly inverted. When the full transcript is read — not the clipped version circulated online — it becomes clear that Mineta was talking about a shoot-down order issued by President Bush, which is the order Cheney followed. Commissioner Lee Hamilton queried whether the order was to shoot down the plane, to which Mineta replied that he did not know that specifically. The theory relies on cutting off the very next sentence in Mineta&#x27;s testimony — a textbook example of evidence manipulation, not discovery.</p><p>There are real and legitimate grievances threading through the circumstances of September 11 that the conspiracy theory exploits. The 9/11 Commission stated that the attacks &quot;were a shock but they should not have come as a surprise,&quot; and outlined the failings of numerous government agencies — particularly the CIA, FBI, Pentagon, and National Security Council — in acting on existing intelligence. President Bush received more than 40 intelligence articles in Presidential Daily Briefs between January 20 and September 10, 2001, related to bin Laden, including the August 6 brief titled &quot;Bin Ladin Determined to Strike in US,&quot; and the Commission found no indication of any further discussion about the threat after that date. That documented institutional failure — inertia, turf battles, failures of imagination — is real and warrants accountability. But the leap from &quot;the government failed to prevent this attack&quot; to &quot;the government planned and executed it&quot; is not an analytical inference; it is an unfalsifiable narrative substitution. Every piece of counter-evidence — engineering reports, commission testimony, physical debris — is incorporated into the theory as further proof of cover-up. A framework that can absorb any disconfirming evidence without adjustment is not a hypothesis; it is an ideology.</p><p>The harms this theory generates are concrete. Families of victims have been subjected to harassment and to the implicit accusation that their grief is being used to obscure murder by their own government. First responders already burdened by illness and trauma have had their deaths treated as stagecraft. The theory has served as a template and recruitment tool for subsequent conspiracy movements, and in documented cases has been weaponized by foreign state media — Iranian state broadcaster Press TV, for instance, has actively promoted WTC demolition claims — to degrade trust in U.S. institutions broadly. Most corrosively, it redirects legitimate outrage about real failures of intelligence, policy, and imagination into an unfalsifiable dead end, where no reform is possible because the entire system is presumed to be criminal from the top.</p></div>
+
+      
+
+      <h2>Ontology</h2>
+      <div class="ox"><div class="oxk">Sub-theory of</div><div><a class="oxchip" href="9-11-trutherism.html">9/11 Trutherism</a></div><div class="oxk">Family</div><div><span class="oxchip">M — M - Deep-state psyop, false-flag / staged-event &amp; mass-casualty denial</span></div><div class="oxk">Arena</div><div><span class="oxchip">GEOPOLITICAL</span></div><div class="oxk">Mechanism(s)</div><div><span class="oxchip" title="Conspirators actively do the harm, then disguise it.">DIRECT_ACTION ★ — DIRECT_ACTION</span></div><div class="oxk">Controlling interest(s)</div><div><span class="oxchip" title="The State / government apparatus">STATE ★ — STATE</span></div><div class="oxk">Spices</div><div><span class="oxchip">anti-government/deep-state</span> <span class="oxchip">anti-science</span> <span class="oxchip">false-flag</span></div></div><h3>Structural patterns</h3><div class="deflist"><div class="di"><span class="dt">GEOPOLITICAL</span> — <span class="dd">war, nations, foreign threat</span></div><div class="di"><span class="dt">DIRECT_ACTION</span> — <span class="dd">Conspirators actively do the harm, then disguise it.</span></div><div class="di"><span class="dt">STATE</span> — <span class="dd">The State / government apparatus</span></div></div>
+
+      <h2>Political valence &amp; atoms</h2>
+      <div class="section-empty">No lean distribution yet.</div>
+
+      <h2>Content surface</h2>
+      <div class="section-empty">No content surface mapped yet.</div>
+
+      
+
+      
+
+      <h2>Family links</h2>
+      <div class="deflist"><div class="di"><div class="dt">False Flag Attacks · key term: false flag</div><div class="fam-links"><a href="bondi-beach-mossad-false-flag.html">Bondi Beach Mossad False Flag</a><a href="october-6th-attack-on-israel-was-a-false-flag.html">October 6th Attack on Israel Was A False Flag</a><a href="9-11-trutherism.html">9/11 Trutherism</a><a href="kharg-island-invasion-plot.html">Kharg Island Invasion Plot</a><a href="trump-rewards-fifa-fans.html">Trump Rewards FIFA Fans</a><a href="ufc-white-house-fisa-pretext-manufacturing.html">UFC White House FISA Pretext Manufacturing</a></div></div></div>
+
+      <h2>Influencers</h2>
+      
+    <table>
+      <thead><tr>
+        <th>Influencer</th><th>Type</th><th>Classification</th>
+        <th class="num">Content</th><th class="num">Atoms</th>
+      </tr></thead>
+      <tbody><tr><td>cjnewson88</td><td>youtube_channel</td><td>believer</td><td class="num">0</td><td class="num">0</td></tr><tr><td>pumpitout video</td><td>youtube_channel</td><td>believer</td><td class="num">0</td><td class="num">0</td></tr></tbody>
+    </table>
+    
+
+      <h2>Related reports</h2>
+      <div class="section-empty">No reports linked to this theory yet.</div>
+    </div>
+
+    <div class="pane" data-pane="whatsnew">
+      <h2>What's New — what the new material means</h2>
+      <div class="section-empty">No new material linked in the last week.</div>
+    </div>
+
+    <div class="footer">
+      Generated by SignalWatch · 2026-07-02 01:26:07 UTC ·
+      theory_id <code>ffd87496-04dd-4fe7-a789-839abaa9a5ea</code>
+    </div>
+  </div>
+  <script>
+    function swTab(el){
+      var w=el.closest('.wrap'), k=el.dataset.pane;
+      w.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===el);});
+      w.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('active',p.dataset.pane===k);});
+    }
+  </script>
+</body>
+</html>
