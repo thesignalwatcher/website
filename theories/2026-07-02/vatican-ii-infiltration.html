@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Vatican II Infiltration — SignalWatch</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root { color-scheme: light;
+  --bg:#e9eef7; --surface:#ffffff; --surface-b:#f4f7fc; --ink:#19223a; --ink-soft:#5c6982;
+  --ink-faint:#8a95ac; --line:#dde4f0; --line-bright:#b9cdec;
+  --accent-1:#2bb3d4; --accent-2:#7b6ef0; --accent-3:#1fb589;
+  --accent-1-soft:#d6f0f7; --accent-2-soft:#e4e0fb; --accent-3-soft:#d4f3e8;
+  --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace; }
+* { box-sizing: border-box; }
+body { font-family: var(--sans); color: var(--ink); margin: 0; padding: 2rem 1.2rem; line-height: 1.55;
+       background: var(--bg);
+       background-image: radial-gradient(60% 50% at 12% -5%, #d6e8f6 0%, transparent 60%),
+                         radial-gradient(52% 46% at 105% 0%, #e6e2f7 0%, transparent 55%);
+       background-attachment: fixed; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 0.3rem; color: var(--ink); letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 1.9rem 0 0.7rem; color: var(--ink); }
+h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+     color: var(--accent-2); margin: 1.1rem 0 0.4rem; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: var(--ink-faint); font-size: 0.82rem; }
+code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-b); padding: 0.1em 0.35em; border-radius: 4px; }
+.tags span { display: inline-block; background: var(--surface-b); border: 1px solid var(--line);
+             padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 0.9rem 1.05rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: var(--ink-soft); }
+.kv .v { color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1.1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.45rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+th, td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+th { color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #d6536d; } td.lean-neg { color: #2f86d6; }
+.podcast { background: var(--accent-2-soft); border: 1px solid var(--line-bright); border-radius: 10px;
+           padding: 0.65rem 0.9rem; margin: 0.6rem 0; }
+.podcast .lbl { color: var(--ink-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer { color: var(--ink-faint); font-size: 0.74rem; margin-top: 2.4rem;
+          border-top: 1px solid var(--line); padding-top: 0.9rem; }
+pre { background: var(--surface-b); border: 1px solid var(--line); border-radius: 8px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; color: var(--ink-soft); }
+.section-empty { color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
+.whats-new { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent-1);
+             border-radius: 10px; padding: 0.7rem 1.1rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.whats-new p { margin: 0.55rem 0; font-size: 0.92rem; color: var(--ink-soft); }
+.whats-new p:first-child { margin-top: 0.2rem; }
+/* layout */
+.wrap { max-width: 900px; margin: 0 auto; }
+.hd-tags { margin: 0.55rem 0 0.2rem; }
+.pill { display: inline-block; padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.72rem;
+        font-weight: 600; margin: 0.15rem 0.35rem 0.15rem 0; border: 1px solid var(--line-bright);
+        font-family: var(--mono); letter-spacing: 0.02em; }
+.pill.threat { background: #fde8ec; color: #c0395a; border-color: #f3c4cf; }
+.pill.band { background: var(--accent-1-soft); color: #1789a6; border-color: #b6e3ee; }
+.pill.power { background: var(--accent-3-soft); color: #14906c; border-color: #b6e6d4; }
+.lead { color: var(--ink-soft); font-size: 1rem; margin: 0.5rem 0 0; max-width: 70ch; }
+/* tabs */
+.tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin: 1.4rem 0 0; }
+.tab { padding: 0.55rem 1.05rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--ink-faint);
+       border-bottom: 2px solid transparent; user-select: none; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+.pane { display: none; padding-top: 0.4rem; }
+.pane.active { display: block; }
+/* chips with definitions */
+.ox { display: grid; grid-template-columns: 150px 1fr; gap: 0.45rem 0.9rem; font-size: 0.85rem; }
+.ox .oxk { color: var(--ink-soft); padding-top: 0.25rem; font-weight: 600; }
+.oxchip { display: inline-block; background: var(--surface-b); border: 1px solid var(--line-bright); color: var(--ink);
+          padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.78rem; margin: 0 0.3rem 0.3rem 0; }
+.deflist { margin: 0.3rem 0 0; }
+.deflist .di { margin-bottom: 0.6rem; }
+.deflist .dt { color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+.deflist .dd { color: var(--ink-soft); font-size: 0.82rem; }
+.fam-links a { display: inline-block; background: var(--accent-2-soft); border: 1px solid var(--line-bright);
+               color: var(--accent-2); padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.8rem;
+               margin: 0 0.35rem 0.35rem 0; }
+/* political valence + atoms */
+.valence-wrap { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.valence-svg { background: var(--surface-b); border: 1px solid var(--line); border-radius: 10px; max-width: 460px; width: 100%; }
+.valence-meta { font-size: 0.85rem; color: var(--ink-soft); }
+.valence-meta .big { font-size: 1.35rem; font-weight: 700; font-family: var(--serif); }
+.lean-left { color: #2f86d6; } .lean-right { color: #d6536d; } .lean-center { color: var(--ink); }
+/* content surface */
+.surface-row { margin: 0.55rem 0 0.85rem; }
+.surface-row .sr-lbl { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase;
+                       letter-spacing: 0.05em; margin-bottom: 0.3rem; font-family: var(--mono); }
+.plat-bar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--surface-b); border: 1px solid var(--line); }
+.plat-seg { color: #fff; font-size: 0.66rem; font-weight: 700; text-align: center;
+            line-height: 20px; overflow: hidden; white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.25); }
+.plat-legend { margin-top: 0.35rem; font-size: 0.72rem; color: var(--ink-soft); display: flex;
+               flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+.plat-legend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.voice { font-size: 0.94rem; color: var(--ink-soft); max-width: 72ch; }
+.voice p { margin: 0.55rem 0; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Vatican II Infiltration</h1>
+    
+    
+    <div class="hd-tags"><span class="pill threat">Threat · Elevated</span><span class="pill band">Marginal</span><span class="pill power">Power 2</span></div>
+    <p class="lead">The Church did not change by accident — she was conquered from within, and the evidence has been hiding in plain sight for over a century.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-pane="overview" onclick="swTab(this)">Overview</div>
+      <div class="tab" data-pane="whatsnew" onclick="swTab(this)">What's New</div>
+    </div>
+
+    <div class="pane active" data-pane="overview">
+      <h2>Violence-legitimation heat</h2>
+      <p class="meta">Violence-legitimation heat: not yet scored for this theory.</p>
+
+      <h2>Core claims</h2>
+      <ul class="claims"><li>Annibale Bugnini, the architect of the New Mass, was a secret Freemason who deliberately engineered the reformed liturgy to please Protestants and Masons.</li><li>The July 1, 2026 excommunication of the SSPX bishops is not a valid penalty but proof that the modernist-captured hierarchy is persecuting the last faithful Catholics.</li><li>Rome embraces heretics — a female Anglican &#x27;archbishop,&#x27; LGBT gatherings, other religions — while punishing the men defending the true priesthood; this double standard reveals whose side the hierarchy is really on.</li><li>The infiltration was ordered in the 19th century by the Alta Vendita / Carbonari, an Italian branch of Freemasonry, in a document directing the gradual corruption of the clergy up to the eventual election of a compromised pope.</li><li>The Council&#x27;s removal of &#x27;anti-Jewish&#x27; liturgical content and its declaration Nostra Aetate prove that Vatican II served Jewish and Masonic interests.</li><li>Benedict XVI&#x27;s 2009 lifting of the excommunications proves Rome secretly knew the SSPX was right, and only outside pressure has forced its continued marginalization.</li></ul>
+
+      <h2>Voice of the Believer</h2>
+      <div class="voice"><p>The Church did not change by accident — she was conquered from within, and the evidence has been hiding in plain sight for over a century.</p><p>The blueprint for this conquest was laid down in the nineteenth century by the Alta Vendita, the Italian Masonic lodge whose own documents called for the slow corruption of the clergy and the eventual elevation of a compromised pope to the throne of Peter. That long patient work bore its fullest fruit at the Second Vatican Council, where Annibale Bugnini — a secret Freemason, as his own superiors came to suspect — sat as the chief architect of a New Mass deliberately engineered to satisfy Protestants and Masons rather than to worship the God of Tradition. The liturgical revolution was not reform; it was demolition by design. And when the same Council produced Nostra Aetate, stripping the sacred rites of their ancient witness against those who rejected Christ, it confirmed which interests the Council truly served — Jewish and Masonic interests, not the interests of the Mystical Body.</p><p>The hierarchy&#x27;s treatment of the Society of Saint Pius X strips away any remaining doubt. When Benedict XVI lifted the excommunications in 2009, Rome was admitting, however quietly, that the Society had been right all along — that Archbishop Lefebvre&#x27;s men were not schismatics but the last faithful guardians of an unbroken priesthood. Yet outside pressure forced the reconciliation into a cul-de-sac, and now the modernist-captured hierarchy moves to excommunicate those same bishops again, manufacturing a penalty as invalid as every other act of a church that has long since surrendered its authority to the enemies of Christ. Meanwhile, that same hierarchy welcomes a female Anglican so-called archbishop, hosts gatherings that celebrate what God condemns, and opens its altars to representatives of every false religion — all without penalty, all with smiles and applause. The double standard is not a contradiction; it is a confession. It tells us, plainly and without any possibility of innocent explanation, whose side the men in Rome are really on. We see it. We name it. And we will not submit to it.</p></div>
+
+      <h2>Voice of Reason</h2>
+      <div class="voice"><p>The &quot;Vatican II Infiltration&quot; theory holds that the Catholic Church was covertly captured by a coordinated coalition of Freemasons, Modernists, and related forces during and after the Second Vatican Council (1962–1965), rendering the resulting hierarchy a counterfeit institution persecuting a faithful remnant — a narrative that its proponents now use to interpret the July 1, 2026 episcopal consecrations by the Society of Saint Pius X and the automatic excommunications that followed as martyrdom rather than canonical consequence.</p><p>Every factual pillar of this theory collapses under scrutiny, and the connective tissue between those pillars is pure inferential leap. Begin with the central exhibit: Archbishop Annibale Bugnini, the liturgical reformer whose alleged Masonic membership is supposed to prove the New Mass was engineered by outsiders. The allegation that Bugnini was a Freemason first appeared in print in 1976, based on an anonymous source&#x27;s claim that incriminating documents were found in a briefcase he left behind in a conference room. The primary documentary &quot;evidence&quot; — a list of 121 Vatican-connected names published by the Italian journalist Carmine Pecorelli — is itself deeply tainted: Pecorelli was himself a member of the Propaganda Due lodge and was assassinated in 1979. Historians now recognize that the P2 lodge had an interest in spreading deliberate confusion by mixing genuine members&#x27; names with innocent ones on such lists. Historians including Kevin Symonds, Yves Chiron, and Joseph Shaw argue the Masonic affiliation accusations were rumors spread by traditionalist opponents, and that no one has been able to present documentary evidence. Even Michael Davies, the critic who popularized the charge most widely, later clarified in writing that he never claimed proof that Bugnini was a Mason — only that Paul VI may have believed he was. Davies stated explicitly: &quot;I have never claimed to have proof that Archbishop Bugnini was a Freemason. What I have claimed is that Pope Paul VI dismissed him because he believed him to be a Freemason. It is possible that the evidence was not genuine and that the Pope was deceived.&quot; The most careful scholarly biography of Bugnini, by the French historian Yves Chiron, reaches the same dead end: the conclusion is that it is impossible to say with certainty whether Bugnini was or was not a Freemason, and that evidence adequate to a conviction is simply wanting. Absent proven Masonic membership, the entire mechanism of a deliberately sabotaged liturgy dissolves — and with it, the theory&#x27;s first foundation stone. The foundational 19th-century document on which the broader narrative depends, the so-called &quot;Permanent Instruction of the Alta Vendita,&quot; is similarly unreliable at its root: scholars of conspiracy theory and religion characterize this document, first published in 1859 and cited by contemporary Catholic conspiracists, as almost certainly a crude forgery — and even if authentic, only tangentially linked to mainstream Masonry. The document was never subjected to independent archival verification; its chain of custody runs entirely through ecclesiastical polemicists of the mid-19th century. We have no idea if the text is authentic; it may be akin to fabrications like the Protocols of the Learned Elders of Zion, and if genuine, could very well have been a product of grandiose fantasy on the part of its author.</p><p>Turning to the live events that the theory is now metabolizing as confirmation: the July 1, 2026 consecrations at Écône, Switzerland are exactly what canon law says they are — not persecution, but the predictable consequence of a deliberate act of institutional defiance. In a defiant move and despite repeated warnings from Rome, the SSPX went ahead with the consecration of four new bishops without a pontifical mandate — an act of open disobedience to the authority of the pope that, under canon law, carries automatic excommunication for the six bishops involved. This is not novel ecclesiastical novelty invented to silence critics: the same automatic penalty was applied in 1988 when founder Archbishop Marcel Lefebvre did the same thing. The SSPX justified the 2026 consecrations by appealing to an alleged &quot;state of necessity,&quot; an argument also used in 1988, though the Holy See has repeatedly said it does not apply — especially after an explicit warning from the pope. The schismatic act carried out in direct defiance of Pope Leo XIV&#x27;s public warning resulted in the bishops incurring automatic excommunication — while, as the SSPX&#x27;s own superior general declared, those being excommunicated claim to uphold the traditional faith, even as they cast aside the dogmatic teaching that the pope is the Supreme Authority to whom all Catholics owe obedience. The 2009 lifting of the 1988 excommunications by Benedict XVI — cited as proof Rome secretly acknowledged the SSPX was right — is straightforwardly explained in Benedict&#x27;s own stated rationale: the excommunication was lifted in January 2009 in order to facilitate the reintegration of the SSPX into the Catholic Church, after this possibility had emerged in the course of dialogue. The Vatican made clear that the lifting of excommunication does not mean the bishops of SSPX could function as Catholic bishops — a precedent directly analogous to Paul VI&#x27;s withdrawal of excommunication from the Orthodox Patriarch in 1965, which did not end that schism either. Full canonical reintegration never occurred because the SSPX refused to accept the Council. Benedict&#x27;s gesture of clemency was a pastoral opening, not a theological concession, and the SSPX&#x27;s own subsequent conduct — culminating in 2026 — shows they understood it as neither. The claim that Nostra Aetate&#x27;s reformulation of Catholic-Jewish relations proves the Council &quot;served Jewish and Masonic interests&quot; follows the same logical structure: it identifies an outcome that displeases the theorist, attributes malevolent intent to those who produced it, and calls the attribution proof. Nostra Aetate affirmed God&#x27;s covenant with the Jewish people and rejected the belief that the Jews as a people bear collective guilt for Jesus&#x27; death — a theological position debated and voted on by the world&#x27;s Catholic bishops, not inserted by outside agents. Lefebvre had strongly opposed Nostra Aetate during the Council&#x27;s deliberations and was defeated by an overwhelming vote of the world&#x27;s Catholic bishops — a democratic theological outcome reframed retrospectively as evidence of capture. The &quot;double standard&quot; argument — that Rome welcomes heterodox outsiders while punishing the SSPX — ignores that the penalty applied to the SSPX bishops is a specific canonical provision triggered by a specific act (consecration without papal mandate), not by their liturgical preferences.</p><p>The theory does encode a genuine grievance. The Second Vatican Council produced real and rapid institutional change that many Catholics experienced as disorienting, and some post-conciliar reforms were implemented in ways that were pastorally clumsy. As political scientists have observed, Vatican II resulted in a marginalization of extremist views within the Church, but its advent revived conspiracy theories, which provided infinitely malleable material that transcended the ideological currents themselves. That malleability is precisely the problem: a framework that explains every reform as infiltration and every penalty as persecution is by construction unfalsifiable. Any evidence of Rome accommodating the SSPX becomes proof of secret sympathy; any evidence of Rome punishing the SSPX becomes proof of Masonic control. No possible outcome could refute it. This unfalsifiability has serious costs to real people. Ordinary laypeople attracted by legitimate aesthetic and theological preferences for traditional liturgy are funneled into a narrative that demands they view the entire post-conciliar Church as a counterfeit — severing them from sacramental and institutional life, from legitimate traditionalist communities that are in full communion with Rome, and from the capacity to evaluate Church teaching on its theological merits. The SSPX hemorrhages clergy from both ends of the theological spectrum, and the number of priests who have left since the society&#x27;s inception, though undocumented officially, would easily exceed a hundred — a hemorrhage the infiltration narrative can only explain as defections by the weak, never as evidence that the society&#x27;s own theological position is internally unsustainable. The antisemitic undertow present in several of the theory&#x27;s sub-claims — that Nostra Aetate served Jewish interests, that Jewish groups oppose SSPX recognition — is not incidental decoration. An analysis conducted by the Anti-Defamation League found various SSPX websites around the world riddled with antisemitic themes, and the Vatican has been unambiguous in response: Cardinal Koch stated that efforts to reach accord with the SSPX &quot;absolutely does not mean&quot; the Church will accept anti-Jewish or antisemitic positions from any of its members. Conspiracy theories that explain institutional reform through the lens of secret Jewish and Masonic coordination have a genealogy that reaches well beyond Catholic traditionalism, and that genealogy is not incidental to the theory&#x27;s appeal or its harm.</p></div>
+
+      
+
+      <h2>Ontology</h2>
+      <div class="ox"><div class="oxk">Family</div><div><span class="oxchip">J — J - Illuminati / NWO / globalist-control</span></div><div class="oxk">Arena</div><div><span class="oxchip">GOVERNANCE_POWER</span></div><div class="oxk">Mechanism(s)</div><div><span class="oxchip" title="Conspirators secretly control institutions / replace the real rulers.">INFILTRATION ★ — INFILTRATION</span></div><div class="oxk">Controlling interest(s)</div><div><span class="oxchip" title="Ethno-religious power (antisemitic core); recurs as a substrate under GlobalistCabal.">ETHNORELIGIOUS ★ — ETHNORELIGIOUS</span></div><div class="oxk">Spices</div><div><span class="oxchip">anti-elite</span> <span class="oxchip">antisemitism</span> <span class="oxchip">religious/apocalyptic</span></div></div><h3>Structural patterns</h3><div class="deflist"><div class="di"><span class="dt">GOVERNANCE_POWER</span> — <span class="dd">who really rules</span></div><div class="di"><span class="dt">INFILTRATION</span> — <span class="dd">Conspirators secretly control institutions / replace the real rulers.</span></div><div class="di"><span class="dt">ETHNORELIGIOUS</span> — <span class="dd">Ethno-religious power (antisemitic core); recurs as a substrate under GlobalistCabal.</span></div></div>
+
+      <h2>Political valence &amp; atoms</h2>
+      <div class="valence-wrap"><svg class="valence-svg" viewBox="0 0 460 180" preserveAspectRatio="xMidYMid meet"><rect x="34" y="10" width="197.6" height="144" fill="#2f86d6" opacity="0.07"/><rect x="252.4" y="10" width="197.6" height="144" fill="#d6536d" opacity="0.07"/><polygon points="34.0,76.2 38.2,73.9 42.3,71.5 46.5,69.2 50.6,66.8 54.8,64.4 59.0,62.1 63.1,59.7 67.3,57.3 71.4,55.0 75.6,52.7 79.8,50.4 83.9,48.1 88.1,45.8 92.2,43.6 96.4,41.4 100.6,39.2 104.7,37.1 108.9,35.0 113.0,33.0 117.2,31.1 121.4,29.2 125.5,27.3 129.7,25.6 133.8,23.9 138.0,22.2 142.2,20.7 146.3,19.3 150.5,17.9 154.6,16.7 158.8,15.5 163.0,14.5 167.1,13.5 171.3,12.7 175.4,12.0 179.6,11.4 183.8,10.9 187.9,10.5 192.1,10.2 196.2,10.1 200.4,10.0 204.6,10.1 208.7,10.2 212.9,10.5 217.0,10.8 221.2,11.3 225.4,11.8 229.5,12.4 233.7,13.1 237.8,13.8 242.0,14.6 246.2,15.5 250.3,16.4 254.5,17.3 258.6,18.2 262.8,19.1 267.0,20.1 271.1,21.0 275.3,22.0 279.4,22.9 283.6,23.8 287.8,24.6 291.9,25.4 296.1,26.2 300.2,26.9 304.4,27.5 308.6,28.1 312.7,28.7 316.9,29.1 321.0,29.5 325.2,29.8 329.4,30.1 333.5,30.2 337.7,30.4 341.8,30.4 346.0,30.5 350.2,30.4 354.3,30.3 358.5,30.2 362.6,30.1 366.8,29.9 371.0,29.8 375.1,29.6 379.3,29.4 383.4,29.3 387.6,29.2 391.8,29.1 395.9,29.0 400.1,29.1 404.2,29.2 408.4,29.3 412.6,29.6 416.7,29.9 420.9,30.3 425.0,30.9 429.2,31.5 433.4,32.3 437.5,33.1 441.7,34.1 445.8,35.3 450.0,36.5 450.0,154.0 34.0,154.0" fill="#7b6ef0" opacity="0.32" stroke="#7b6ef0" stroke-width="1.4"/><circle cx="202.4" cy="69.0" r="1.8" fill="#2bb3d4" opacity="0.67"/><circle cx="255.7" cy="101.1" r="1.8" fill="#2bb3d4" opacity="0.58"/><circle cx="439.6" cy="72.7" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="44.4" cy="104.7" r="1.8" fill="#2bb3d4" opacity="0.63"/><circle cx="210.7" cy="76.3" r="1.8" fill="#2bb3d4" opacity="0.70"/><circle cx="193.8" cy="108.4" r="1.8" fill="#2bb3d4" opacity="0.71"/><circle cx="429.2" cy="79.9" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="54.8" cy="112.0" r="1.8" fill="#2bb3d4" opacity="0.75"/><circle cx="200.3" cy="83.6" r="1.8" fill="#2bb3d4" opacity="0.63"/><circle cx="164.2" cy="115.6" r="1.8" fill="#2bb3d4" opacity="0.77"/><circle cx="439.6" cy="87.2" r="1.8" fill="#2bb3d4" opacity="0.69"/><circle cx="439.6" cy="119.2" r="1.8" fill="#2bb3d4" opacity="0.65"/><line x1="270.1" y1="10" x2="270.1" y2="154" stroke="#19223a" stroke-width="1.4" stroke-dasharray="3,2"/><line x1="34.0" y1="154" x2="34.0" y2="158" stroke="#b9cdec"/><text x="34.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Left</text><line x1="138.0" y1="154" x2="138.0" y2="158" stroke="#b9cdec"/><text x="138.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">−.5</text><line x1="242.0" y1="154" x2="242.0" y2="158" stroke="#b9cdec"/><text x="242.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">0</text><line x1="346.0" y1="154" x2="346.0" y2="158" stroke="#b9cdec"/><text x="346.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">+.5</text><line x1="450.0" y1="154" x2="450.0" y2="158" stroke="#b9cdec"/><text x="450.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Right</text></svg><div class="valence-meta"><div class="big lean-center">Mixed / centrist</div><div>centroid +0.14 · 12 political atoms</div><div class="meta">Dashed line = mean lean. Dots = individual atoms (opacity = confidence).</div></div></div>
+
+      <h2>Content surface</h2>
+      <div class="surface-row"><div class="sr-lbl">Videos · 3</div><div class="plat-bar"><div class="plat-seg" style="background:#f5b400;flex:3">Youtube</div></div><div class="plat-legend"><span><span class="sw" style="background:#f5b400"></span>Youtube <b>3</b></span></div></div><div class="surface-row"><div class="sr-lbl">Text &amp; press · 10</div><div class="plat-bar"><div class="plat-seg" style="background:#60a5fa;flex:10">Web Articles</div></div><div class="plat-legend"><span><span class="sw" style="background:#60a5fa"></span>Web Articles <b>10</b></span></div></div>
+
+      
+
+      
+
+      <h2>Family links</h2>
+      <div class="deflist"><div class="di"><div class="dt">Illuminati &amp; Secret Societies · key term: Illuminati / New World Order</div><div class="fam-links"><a href="illuminati-card-game-prophecy.html">Illuminati Card Game Prophecy (INWO)</a><a href="illuminati-secret-societies.html">Illuminati/Secret Societies</a><a href="new-world-order.html">New World Order</a><a href="the-great-reset.html">The Great Reset</a><a href="bohemian-grove-elite-rituals.html">Bohemian Grove Elite Rituals</a><a href="reptilian-elites.html">Reptilian Elite Conspiracy Theory</a><a href="federal-reserve-banking-cabal.html">Federal Reserve Banking Cabal</a><a href="15-minute-cities-surveillance-grid.html">15-Minute Cities Surveillance Grid</a><a href="bilderberg-group-secret-rule.html">Bilderberg Group Secret Rule</a><a href="cern-dimensional-portals.html">CERN Dimensional Portals</a><a href="denver-airport-nwo-bunker.html">Denver Airport NWO Bunker</a><a href="georgia-guidestones-depopulation-agenda.html">Georgia Guidestones Depopulation Agenda</a><a href="vatican-jesuit-world-control.html">Vatican Jesuit World Control</a><a href="elon-musk-vs-globalist-agenda.html">Elon Musk vs. Globalist Agenda</a><a href="seven-days-of-false-prophecy.html">Seven Days Of False Prophecy</a><a href="david-icke-s-reptilian-elite-theory.html">David Icke&#x27;s Reptilian Elite Theory</a></div></div></div>
+
+      <h2>Influencers</h2>
+      
+    <table>
+      <thead><tr>
+        <th>Influencer</th><th>Type</th><th>Classification</th>
+        <th class="num">Content</th><th class="num">Atoms</th>
+      </tr></thead>
+      <tbody><tr><td>Kennedy1op</td><td>youtube_channel</td><td>believer</td><td class="num">0</td><td class="num">0</td></tr><tr><td>vaticancatholic.com</td><td>youtube_channel</td><td>believer</td><td class="num">0</td><td class="num">0</td></tr></tbody>
+    </table>
+    
+
+      <h2>Related reports</h2>
+      <div class="section-empty">No reports linked to this theory yet.</div>
+    </div>
+
+    <div class="pane" data-pane="whatsnew">
+      <h2>What's New — what the new material means</h2>
+      <div class="whats-new"><p>The new material reinforces the established narrative of Vatican II Infiltration by introducing fresh evidence and perspectives that further solidify the theory&#x27;s core claims. One notable development is the proliferation of Alta Vendita-related content across various platforms, including YouTube, advocacy websites, and online forums. This suggests a growing interest in the topic among conspiracy theorists and traditional Catholics, who are increasingly framing Vatican II as a deliberate attempt to subvert the Church from within.</p><p>New claim variations or mutations include the emphasis on Annibale Bugnini&#x27;s role as the mastermind behind the liturgical reforms of Vatican II, as well as the alleged connections between Freemasonry and the Alta Vendita. These claims are not entirely new but have gained traction in recent weeks, with some proponents arguing that Bugnini was a key figure in implementing Masonic principles within the Church. The tone of these claims is often urgent and conspiratorial, with some voices warning about an imminent &quot;takeover&quot; or &quot;subversion&quot; of the Church.</p><p>The emergence of prominent voices pushing this narrative includes Archbishop Viganò, who has been linked to several of the new sources and has spoken out on the topic in recent years. His involvement lends credibility to the theory among some conservative Catholics and conspiracy theorists. Additionally, YouTube channels such as Bugnini&#x27;s Liturgical Reform and Father Francisco Radecki&#x27;s Modernist Infiltration of the Church have gained significant traction, suggesting a growing online presence for this narrative. Overall, while the new material does not significantly alter the established narrative, it represents a concerted effort to popularize and mainstream the theory among certain segments of the Catholic community.</p></div>
+    </div>
+
+    <div class="footer">
+      Generated by SignalWatch · 2026-07-02 12:34:34 UTC ·
+      theory_id <code>45654702-71ee-4b98-80c4-14b8fe67fae9</code>
+    </div>
+  </div>
+  <script>
+    function swTab(el){
+      var w=el.closest('.wrap'), k=el.dataset.pane;
+      w.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===el);});
+      w.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('active',p.dataset.pane===k);});
+    }
+  </script>
+</body>
+</html>
