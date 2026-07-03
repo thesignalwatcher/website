@@ -7,7 +7,7 @@
 <meta name="robots" content="index,follow">
 <title>Behind The News — last 7 days published · through Jul 3, 2026</title>
 <meta property="og:title" content="Behind The News — last 7 days published · through Jul 3, 2026">
-<meta property="og:description" content="68 mainstream news stories with documented links to 26 conspiracy theory narratives.">
+<meta property="og:description" content="77 mainstream news stories with documented links to 27 conspiracy theory narratives.">
 <meta property="og:type" content="article">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@0,400;0,500;0,600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -104,79 +104,65 @@
 </style>
 </head>
 <body>
-<!-- Shared top navigation — included at the top of <body> on every page so the
-     nav is uniform app-wide. Self-contained (scoped CSS + JS); no page context
-     needed. Active link is set by matching location.pathname. -->
-<nav class="sw-topnav" aria-label="Primary navigation">
+
+
+<!-- Canonical PUBLIC top navigation (www.signalwat.ch). Self-contained: scoped
+     CSS + JS. Included ONLY on exported/public pages — NOT the internal CMS nav
+     (sw_nav.html). Active link is computed from location.pathname (never
+     hardcoded). Set `nav_dark = true` in the caller before including for the
+     dark briefing variant (Conspiracy Today / Political Valence / Source Valence).
+     Grayed items (Deep Dives / Methodology) have no destination yet — swap the
+     <span> for an <a href> the moment a page ships. -->
+<nav class="sw-nav" aria-label="Primary">
   <style>
-    .sw-topnav{position:sticky;top:0;z-index:99999;display:flex;flex-wrap:wrap;
-      align-items:center;gap:1px 2px;background:#0d1117;border-bottom:1px solid #30363d;
-      padding:6px 12px;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      box-shadow:0 1px 4px rgba(0,0,0,.35);box-sizing:border-box;}
-    .sw-topnav *{box-sizing:border-box;}
-    .sw-topnav .sw-brand{font-weight:700;color:#e6edf3;font-size:0.95rem;
-      margin-right:12px;text-decoration:none;letter-spacing:.02em;flex:none;}
-    .sw-topnav .sw-brand b{color:#58a6ff;}
-    .sw-topnav a.nl{color:#adbac7;text-decoration:none;font-size:0.78rem;
-      padding:5px 9px;border-radius:6px;white-space:nowrap;line-height:1.2;}
-    .sw-topnav a.nl:hover{background:#21262d;color:#e6edf3;}
-    .sw-topnav a.nl.active{background:#1f6feb;color:#fff;}
-    .sw-topnav .sw-sep{flex:1 1 12px;min-width:8px;}
-    .sw-topnav a.nl.tool{color:#8b949e;font-size:0.74rem;}
-    @media(max-width:760px){.sw-topnav a.nl{font-size:0.72rem;padding:4px 7px;}}
-    /* Collapse legacy inline navs app-wide now that the shared top bar exists,
-       WITHOUT editing each page's markup. Preserve the homepage cost panel —
-       the only non-nav content living in a rail (uses :has, widely supported). */
-    nav.rail > a, nav.rail > .rail-group, nav.rail > .rail-title { display:none !important; }
-    nav.topnav { display:none !important; }
-    nav.rail:not(:has(.cost-panel)) { display:none !important; }
-    .layout:not(:has(.cost-panel)) { grid-template-columns:1fr !important; }
-    body > nav:not(.sw-topnav) { display:none !important; }  /* families top-level nav */
-    .topbar > nav { display:none !important; }               /* btn_export nav inside .topbar */
+    .sw-nav{display:flex;align-items:center;justify-content:space-between;gap:20px;
+      flex-wrap:wrap;padding:12px 22px;background:#fff;border-bottom:1px solid #e3e7ef;
+      font-family:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      box-sizing:border-box;position:sticky;top:0;z-index:9999;}
+    .sw-nav *{box-sizing:border-box;}
+    .sw-nav__brand{font-weight:700;font-size:16px;letter-spacing:-.01em;color:#12141c;text-decoration:none;}
+    .sw-nav__links{display:flex;flex-wrap:wrap;gap:2px;list-style:none;margin:0;padding:0;}
+    .sw-nav__link{display:inline-block;padding:8px 12px;border-radius:8px;font-weight:500;
+      font-size:14px;color:#3a3f4d;text-decoration:none;transition:background .12s,color .12s;}
+    .sw-nav__link:hover{background:rgba(123,110,240,.10);color:#7b6ef0;}
+    .sw-nav__link.is-active{background:rgba(123,110,240,.12);color:#7b6ef0;}
+    .sw-nav__link.is-disabled{color:#b3b8c4;cursor:not-allowed;pointer-events:none;}
+    /* dark briefing variant */
+    .sw-nav--dark{background:#0d1117;border-bottom-color:#232936;}
+    .sw-nav--dark .sw-nav__brand{color:#fff;}
+    .sw-nav--dark .sw-nav__link{color:#c9d1d9;}
+    .sw-nav--dark .sw-nav__link:hover{background:rgba(123,110,240,.18);color:#fff;}
+    .sw-nav--dark .sw-nav__link.is-active{background:rgba(123,110,240,.22);color:#fff;}
+    .sw-nav--dark .sw-nav__link.is-disabled{color:#4a515e;}
   </style>
-  <a class="sw-brand" href="/"><b>Signal</b>Watch</a>
-  <a class="nl" href="/">Situation</a>
-  <a class="nl" href="/theories/dashboard">Theories</a>
-  <a class="nl" href="/influencerwatch">Influencers</a>
-  <a class="nl" href="/intel">Intel</a>
-  <a class="nl" href="/ontology">Ontology</a>
-  <a class="nl" href="/families">Families</a>
-  <a class="nl" href="/dossiers">Dossiers</a>
-  <a class="nl" href="/statistics">Statistics</a>
-  <a class="nl" href="/freshness">Freshness</a>
-  <a class="nl" href="/video">Video</a>
-  <a class="nl" href="/content">Content</a>
-  <a class="nl" href="/images">Graphics</a>
-  <span class="sw-sep"></span>
-  <a class="nl tool" href="/investigate/new-theory">🔎 Investigate</a>
-  <a class="nl tool" href="/investigate/document">📄 Document</a>
-  <a class="nl tool" href="/match-content">Match</a>
-  <a class="nl tool" href="/signature-scan">Signature</a>
-  <a class="nl tool" href="/tabs">Tabs</a>
+  <a class="sw-nav__brand" href="/">SignalWatch</a>
+  <ul class="sw-nav__links">
+    <li><a class="sw-nav__link" href="/">Home</a></li>
+    <li><a class="sw-nav__link" href="/latest/theories/">Theories</a></li>
+    <li><a class="sw-nav__link" href="/latest/conspiracy-today.html">Conspiracy Today</a></li>
+    <li><a class="sw-nav__link" href="/latest/behind-the-news.html">Behind the News</a></li>
+    <li><a class="sw-nav__link" href="/latest/political-valence.html">Political Valence</a></li>
+    <li><a class="sw-nav__link" href="/latest/source-valence.html">Source Valence</a></li>
+    <li><a class="sw-nav__link" href="/pseudoscience/">Pseudoscience</a></li>
+    <li><a class="sw-nav__link" href="/data/">Data</a></li>
+    <!-- no destination yet -> non-interactive, grayed -->
+    <li><span class="sw-nav__link is-disabled" aria-disabled="true">Deep Dives</span></li>
+    <li><span class="sw-nav__link is-disabled" aria-disabled="true">Methodology</span></li>
+  </ul>
   <script>
   (function(){
     var p=(location.pathname||'/').replace(/\/+$/,'')||'/';
     var best=null,bestlen=-1;
-    document.querySelectorAll('.sw-topnav a.nl').forEach(function(a){
+    document.querySelectorAll('.sw-nav a.sw-nav__link').forEach(function(a){
       var h=(a.getAttribute('href')||'/').replace(/\/+$/,'')||'/';
-      if(h===p || (h!=='/' && p.indexOf(h+'/')===0) || (h!=='/' && p===h)){
-        if(h.length>bestlen){best=a;bestlen=h.length;}
-      } else if(h==='/' && p==='/'){ if(bestlen<0){best=a;bestlen=0;} }
+      var hit=(h===p)||(h!=='/'&&p.indexOf(h+'/')===0)||(h!=='/'&&p===h)||(h==='/'&&p==='/');
+      if(hit&&h.length>bestlen){best=a;bestlen=h.length;}
     });
-    if(best) best.classList.add('active');
+    if(best){best.classList.add('is-active');best.setAttribute('aria-current','page');}
   })();
   </script>
 </nav>
-<div class="topbar">
-  <a class="brand" href="/"><b>Signal</b>Watch · Behind the News</a>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/latest/theories/index.html">Theories</a>
-    <a href="/latest/conspiracy-today.html">Conspiracy Today</a>
-    <a href="/latest/political-valence.html">Political Valence</a>
-    <a href="/latest/source-valence.html">Source Valence</a>
-  </nav>
-</div>
+
 <div class="wrap">
 
   <header class="hdr">
@@ -186,9 +172,9 @@
     <div class="meta">
       <span><b>last 7 days published · through Jul 3, 2026</b></span>
       <span>review state: <b>approved</b></span>
-      <span><b>68</b> stories</span>
-      <span><b>101</b> connections</span>
-      <span><b>26</b> theories</span>
+      <span><b>77</b> stories</span>
+      <span><b>111</b> connections</span>
+      <span><b>27</b> theories</span>
     </div>
     <p class="blurb">
       Each card below is a real news story. The tags name a conspiracy-theory narrative
@@ -200,6 +186,315 @@
   </header>
 
   
+    
+    <article class="story">
+      <div class="story-src">
+        <span class="src-name">memeorandum</span>
+        <span class="src-date">· Jul 3, 2026</span>
+      </div>
+      <h2 class="story-headline">
+        
+          <a href="https://www.memeorandum.com/260703/p12#a260703p12" target="_blank" rel="noopener noreferrer">Trump Jr.&#39;s &#39;Amazon of guns&#39; could make millions under new proposed firearm rule (Dan Rosenzweig-Ziff/Reuters)</a>
+        
+        
+      </h2>
+
+      <ul class="theory-list">
+        
+        <li class="theory-row">
+          <span class="conf MEDIUM">MEDIUM</span>
+          <div style="flex:1">
+            <div>
+              <span class="theory-name">Trump Crypto Coverup</span>
+              <span class="conn-type">· consequence</span>
+            </div>
+            <div class="evidence">President Donald Trump suggested on Thursday that he was not aware of the extent of his digital asset holdings but said there was nothing illegal about his involvement, following disclosures about his family companies&#39; crypto windfall.</div>
+            <p class="explanation">The core claim of this theory is that the Trump family is using the presidency to generate hidden crypto windfalls while distracting the public. The article directly reports Trump disclosing massive securities trades, the family&#39;s crypto windfall, and Trump saying &#39;there&#39;s nothing wrong&#39; with his digital asset holdings — the exact narrative the theory centers on. Believers will cite this as confirmation that the financial self-dealing is real and ongoing.</p>
+          </div>
+        </li>
+        
+      </ul>
+
+      
+        <a class="cta" href="https://www.memeorandum.com/260703/p12#a260703p12" target="_blank" rel="noopener noreferrer">Read the story</a>
+      
+    </article>
+    
+    <article class="story">
+      <div class="story-src">
+        <span class="src-name">memeorandum</span>
+        <span class="src-date">· Jul 3, 2026</span>
+      </div>
+      <h2 class="story-headline">
+        
+          <a href="https://www.memeorandum.com/260703/p11#a260703p11" target="_blank" rel="noopener noreferrer">Trump&#39;s Huge Windfall Has Few Known Global Precedents (Jason Horowitz/New York Times)</a>
+        
+        
+      </h2>
+
+      <ul class="theory-list">
+        
+        <li class="theory-row">
+          <span class="conf HIGH">HIGH</span>
+          <div style="flex:1">
+            <div>
+              <span class="theory-name">Trump Crypto Coverup</span>
+              <span class="conn-type">· consequence</span>
+            </div>
+            <div class="evidence">President Donald Trump suggested on Thursday that he was not aware of the extent of his digital asset holdings but said there was nothing illegal about his involvement, following disclosures about his family companies&#39; crypto windfall.</div>
+            <p class="explanation">The core claim of the Trump Crypto Coverup theory is that Trump is personally enriching himself through crypto on a massive, concealed scale while in office. This story directly reports on disclosed crypto windfalls for Trump family companies and Trump&#39;s own statement that there is &#39;nothing wrong&#39; with his involvement, which believers treat as confirmation of the theory&#39;s central premise — that the presidency is being leveraged for extraordinary, norm-shattering personal financial gain.</p>
+          </div>
+        </li>
+        
+      </ul>
+
+      
+        <a class="cta" href="https://www.memeorandum.com/260703/p11#a260703p11" target="_blank" rel="noopener noreferrer">Read the story</a>
+      
+    </article>
+    
+    <article class="story">
+      <div class="story-src">
+        <span class="src-name">memeorandum</span>
+        <span class="src-date">· Jul 3, 2026</span>
+      </div>
+      <h2 class="story-headline">
+        
+          <a href="https://www.memeorandum.com/260703/p9#a260703p9" target="_blank" rel="noopener noreferrer">America&#39;s 250th turns into a fight over God and country (Russell Contreras/Axios)</a>
+        
+        
+      </h2>
+
+      <ul class="theory-list">
+        
+        <li class="theory-row">
+          <span class="conf HIGH">HIGH</span>
+          <div style="flex:1">
+            <div>
+              <span class="theory-name">Stop the Steal</span>
+              <span class="conn-type">· consequence</span>
+            </div>
+            <div class="evidence">The expansion of an investigation into Fulton County&#39;s election office reflects President Trump&#39;s desire to prove his baseless claims that the 2020 election in Georgia was rigged.</div>
+            <p class="explanation">The core claim of Stop the Steal is that the 2020 election was fraudulently taken from Trump. The NYT reports that the FBI is now assigning scores of analysts to examine Georgia election records specifically to validate Trump&#39;s claims — claims the article itself describes as &#39;baseless.&#39; This is a direct CONSEQUENCE of the theory driving real federal law enforcement action, not merely rhetorical repetition.</p>
+          </div>
+        </li>
+        
+        <li class="theory-row">
+          <span class="conf MEDIUM">MEDIUM</span>
+          <div style="flex:1">
+            <div>
+              <span class="theory-name">Trump Crypto Coverup</span>
+              <span class="conn-type">· explicit mention</span>
+            </div>
+            <div class="evidence">President Donald Trump suggested on Thursday that he was not aware of the extent of his digital asset holdings but said there was nothing illegal about his involvement, following disclosures about his family companies&#39; crypto windfall.</div>
+            <p class="explanation">The conspiracy theory claims Trump&#39;s crypto gains are a cover-up involving secret dealings and potential illegality. The article directly reports on Trump acknowledging his &#39;digital asset holdings&#39; and &#39;family companies&#39; crypto windfall&#39; while insisting nothing illegal occurred — precisely the scenario the theory frames as concealment. Believers will cite Trump&#39;s own admission of the scale of gains as confirmation of the theory&#39;s financial claims.</p>
+          </div>
+        </li>
+        
+      </ul>
+
+      
+        <a class="cta" href="https://www.memeorandum.com/260703/p9#a260703p9" target="_blank" rel="noopener noreferrer">Read the story</a>
+      
+    </article>
+    
+    <article class="story">
+      <div class="story-src">
+        <span class="src-name">NYT &gt; Top Stories</span>
+        <span class="src-date">· Jul 3, 2026</span>
+      </div>
+      <h2 class="story-headline">
+        
+          <a href="https://www.nytimes.com/2026/07/03/climate/heat-wave-us-canada-climate-change.html" target="_blank" rel="noopener noreferrer">Without Climate Change, U.S. Heat Wave Called ‘Virtually Impossible’</a>
+        
+        
+      </h2>
+
+      <ul class="theory-list">
+        
+        <li class="theory-row">
+          <span class="conf HIGH">HIGH</span>
+          <div style="flex:1">
+            <div>
+              <span class="theory-name">Climate Change Hoax</span>
+              <span class="conn-type">· consequence</span>
+            </div>
+            <div class="evidence">Scientists have said the conditions are the result of a climate that is &#39;fundamentally different&#39; from the time before fossil fuel use started rapidly warming the world.</div>
+            <p class="explanation">The core claim of the Climate Change Hoax theory is that scientific consensus on global warming is manufactured by coordinated scientists serving a political agenda. This article — featuring scientists making a definitive, attribution-based claim that a heat wave was &#39;virtually impossible&#39; without man-made climate change — is precisely the type of confident scientific pronouncement that believers in this theory cite as evidence of fabricated, agenda-driven science. The framing of the climate as &#39;fundamentally different&#39; due to fossil fuels directly contradicts the hoax theory&#39;s foundational claim, making this a story the community actively consumes as confirmation of coordinated scientific deception.</p>
+          </div>
+        </li>
+        
+      </ul>
+
+      
+        <a class="cta" href="https://www.nytimes.com/2026/07/03/climate/heat-wave-us-canada-climate-change.html" target="_blank" rel="noopener noreferrer">Read the story</a>
+      
+    </article>
+    
+    <article class="story">
+      <div class="story-src">
+        <span class="src-name">memeorandum</span>
+        <span class="src-date">· Jul 3, 2026</span>
+      </div>
+      <h2 class="story-headline">
+        
+          <a href="https://www.memeorandum.com/260703/p7#a260703p7" target="_blank" rel="noopener noreferrer">Has the MAHA Movement Given Up? (David Wallace-Wells/New York Times)</a>
+        
+        
+      </h2>
+
+      <ul class="theory-list">
+        
+        <li class="theory-row">
+          <span class="conf MEDIUM">MEDIUM</span>
+          <div style="flex:1">
+            <div>
+              <span class="theory-name">Trump Crypto Coverup</span>
+              <span class="conn-type">· consequence</span>
+            </div>
+            <div class="evidence">President Donald Trump suggested on Thursday that he was not aware of the extent of his digital asset holdings but said there was nothing illegal about his involvement, following disclosures about his family companies&#39; crypto windfall.</div>
+            <p class="explanation">The theory&#39;s core claim is that Trump&#39;s crypto empire is a corrupt scheme he concealed or downplayed. The story directly reports Trump acknowledging his family companies&#39; crypto windfall while claiming ignorance of the extent and insisting nothing was illegal — precisely the pattern of denial and self-enrichment that believers in this theory cite as confirmation of the cover-up narrative.</p>
+          </div>
+        </li>
+        
+      </ul>
+
+      
+        <a class="cta" href="https://www.memeorandum.com/260703/p7#a260703p7" target="_blank" rel="noopener noreferrer">Read the story</a>
+      
+    </article>
+    
+    <article class="story">
+      <div class="story-src">
+        <span class="src-name">memeorandum</span>
+        <span class="src-date">· Jul 3, 2026</span>
+      </div>
+      <h2 class="story-headline">
+        
+          <a href="https://www.memeorandum.com/260703/p6#a260703p6" target="_blank" rel="noopener noreferrer">As Trump commands 250th stage, Democrats offer their vision of patriotism (Ben Binday/Washington Post)</a>
+        
+        
+      </h2>
+
+      <ul class="theory-list">
+        
+        <li class="theory-row">
+          <span class="conf HIGH">HIGH</span>
+          <div style="flex:1">
+            <div>
+              <span class="theory-name">Trump Crypto Coverup</span>
+              <span class="conn-type">· consequence</span>
+            </div>
+            <div class="evidence">Trump suggested on Thursday that he was not aware of the extent of his digital asset holdings but said there was nothing illegal about his involvement, following disclosures about his family companies&#39; crypto windfall.</div>
+            <p class="explanation">The Trump Crypto Coverup theory claims Trump is concealing massive personal crypto profits made while in office. This story reports Trump publicly acknowledged his family companies&#39; &#39;crypto windfall&#39; and said there was &#39;nothing illegal&#39; about his involvement — directly engaging the theory&#39;s core claim about the scale of his crypto earnings and the alleged cover-up of conflicts of interest.</p>
+          </div>
+        </li>
+        
+      </ul>
+
+      
+        <a class="cta" href="https://www.memeorandum.com/260703/p6#a260703p6" target="_blank" rel="noopener noreferrer">Read the story</a>
+      
+    </article>
+    
+    <article class="story">
+      <div class="story-src">
+        <span class="src-name">NYT &gt; Top Stories</span>
+        <span class="src-date">· Jul 3, 2026</span>
+      </div>
+      <h2 class="story-headline">
+        
+          <a href="https://www.nytimes.com/2026/07/03/magazine/maha-movement-survival-rfk.html" target="_blank" rel="noopener noreferrer">Has the MAHA Movement Given Up?</a>
+        
+        
+      </h2>
+
+      <ul class="theory-list">
+        
+        <li class="theory-row">
+          <span class="conf HIGH">HIGH</span>
+          <div style="flex:1">
+            <div>
+              <span class="theory-name">MAHA moms</span>
+              <span class="conn-type">· consequence</span>
+            </div>
+            <div class="evidence">Robert F. Kennedy Jr. and his allies promised public-health libertarianism. The idea couldn&#39;t survive once they took power.</div>
+            <p class="explanation">The MAHA conspiracy framework holds that RFK Jr. is a heroic outsider fighting Big Pharma and Big Food on behalf of ordinary families. This NYT piece argues that once MAHA took power, its &#39;public-health libertarianism&#39; proved unworkable — a narrative that MAHA believers will interpret as confirmation that the system absorbed and neutralized their champion, consistent with the theory&#39;s claim of elite suppression of reform efforts.</p>
+          </div>
+        </li>
+        
+      </ul>
+
+      
+        <a class="cta" href="https://www.nytimes.com/2026/07/03/magazine/maha-movement-survival-rfk.html" target="_blank" rel="noopener noreferrer">Read the story</a>
+      
+    </article>
+    
+    <article class="story">
+      <div class="story-src">
+        <span class="src-name">Top stories - Google News</span>
+        <span class="src-date">· Jul 3, 2026</span>
+      </div>
+      <h2 class="story-headline">
+        
+          <a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQOFR4YldILUtzWS0wSU1jU2k2Z0k5S0VaMVhLZ3BjVm1Icm42b2xtQVJ1eTFDNGtTWkx3WDB4QnZwa2IxcVQwVHBQWWdRMXRmT2NpdWZkZkJOYzRsRHpIcHdJX2dlb2hkLXRpYUlEUDZvcDZmdk5FWFd6akg3RDJxQkRWek9UTjNtbWtkRkJoVWFfcmk0OU1BN1hZRTZrenNWSjJ5S255a2hVLXgzOWVXOdIBtgFBVV95cUxNUEZ5RkNPTm9YRF95S3dFTWhHTVp1VnhDc29TYmx0LW9tTGc2NW8wazJFRWdFS1cwT21CMm9LbVJxZk02LXJ0QlZuSkgtMVZBX0pfbXdscHJBdVVfXzVqb0FRNTNHM3Q0aWh3Vk9tUEtvWllTdHZfWVdVYVBIMlVHdnIwMTZSSzBHbUp6RTQtSjd6eTVRLV9Oajg4RW1ER3RISzVOa29EWFBuaHVqSUZLa05BVjlFdw?oc=5" target="_blank" rel="noopener noreferrer">$500m for Trump, access for Pakistan: How a crypto-diplomatic bet paid off - Al Jazeera</a>
+        
+        
+      </h2>
+
+      <ul class="theory-list">
+        
+        <li class="theory-row">
+          <span class="conf HIGH">HIGH</span>
+          <div style="flex:1">
+            <div>
+              <span class="theory-name">Trump Crypto Coverup</span>
+              <span class="conn-type">· consequence</span>
+            </div>
+            <div class="evidence">$500m for Trump, access for Pakistan: How a crypto-diplomatic bet paid off</div>
+            <p class="explanation">The core claim of the Trump Crypto Coverup theory is that Trump is secretly enriching himself through crypto arrangements tied to his political position. This story directly reports a $2.2 billion windfall and a specific alleged mechanism — Pakistan receiving diplomatic access in exchange for a $500 million crypto investment in Trump-linked ventures — which maps precisely onto the theory&#39;s claim of hidden personal enrichment through crypto while exercising presidential power.</p>
+          </div>
+        </li>
+        
+      </ul>
+
+      
+        <a class="cta" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQOFR4YldILUtzWS0wSU1jU2k2Z0k5S0VaMVhLZ3BjVm1Icm42b2xtQVJ1eTFDNGtTWkx3WDB4QnZwa2IxcVQwVHBQWWdRMXRmT2NpdWZkZkJOYzRsRHpIcHdJX2dlb2hkLXRpYUlEUDZvcDZmdk5FWFd6akg3RDJxQkRWek9UTjNtbWtkRkJoVWFfcmk0OU1BN1hZRTZrenNWSjJ5S255a2hVLXgzOWVXOdIBtgFBVV95cUxNUEZ5RkNPTm9YRF95S3dFTWhHTVp1VnhDc29TYmx0LW9tTGc2NW8wazJFRWdFS1cwT21CMm9LbVJxZk02LXJ0QlZuSkgtMVZBX0pfbXdscHJBdVVfXzVqb0FRNTNHM3Q0aWh3Vk9tUEtvWllTdHZfWVdVYVBIMlVHdnIwMTZSSzBHbUp6RTQtSjd6eTVRLV9Oajg4RW1ER3RISzVOa29EWFBuaHVqSUZLa05BVjlFdw?oc=5" target="_blank" rel="noopener noreferrer">Read the story</a>
+      
+    </article>
+    
+    <article class="story">
+      <div class="story-src">
+        <span class="src-name">memeorandum</span>
+        <span class="src-date">· Jul 3, 2026</span>
+      </div>
+      <h2 class="story-headline">
+        
+          <a href="https://www.memeorandum.com/260703/p2#a260703p2" target="_blank" rel="noopener noreferrer">Peter Thiel in Aspen: The pope is &#39;working for the Chinese Communists&#39; (Tommy Walters/CNN)</a>
+        
+        
+      </h2>
+
+      <ul class="theory-list">
+        
+        <li class="theory-row">
+          <span class="conf HIGH">HIGH</span>
+          <div style="flex:1">
+            <div>
+              <span class="theory-name">Trump Crypto Coverup</span>
+              <span class="conn-type">· consequence</span>
+            </div>
+            <div class="evidence">President Donald Trump suggested on Thursday that he was not aware of the extent of his digital asset holdings but said there was nothing illegal about his involvement, following disclosures about his family companies&#39; crypto windfall.</div>
+            <p class="explanation">The theory&#39;s core claims center on Trump secretly profiting from crypto while in office and concealing the scale of those gains. This story directly engages that claim: Trump himself acknowledged not knowing &#39;the extent of his digital asset holdings&#39; while disclosures revealed a major &#39;crypto windfall&#39; for his family companies — a pattern believers seize on as confirmation of hidden, undisclosed enrichment.</p>
+          </div>
+        </li>
+        
+      </ul>
+
+      
+        <a class="cta" href="https://www.memeorandum.com/260703/p2#a260703p2" target="_blank" rel="noopener noreferrer">Read the story</a>
+      
+    </article>
     
     <article class="story">
       <div class="story-src">
@@ -522,6 +817,39 @@
 
       
         <a class="cta" href="https://www.npr.org/2026/07/02/nx-s1-5879162/freedom-250-report-house-democrats-controversy" target="_blank" rel="noopener noreferrer">Read the story</a>
+      
+    </article>
+    
+    <article class="story">
+      <div class="story-src">
+        <span class="src-name">Top stories - Google News</span>
+        <span class="src-date">· Jul 2, 2026</span>
+      </div>
+      <h2 class="story-headline">
+        
+          <a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxOQzgzZEFoT1FaUzk1Q3I5TVl6TXBIMjdObmlhSXl2TWM2UTgwRlZBc0VXOHhDeGdQMTZvX1Q4Q3ZWN3o0dFM2Q1dYLVRaZmpMY28xX1pGcGpVOXlobDJrS0NKYU5OMzFqVnFESWZIS2xObW0zOVdpZllHMDRtZDQ2RlFmMERmYnNuSDZnYTBadG9UZXlWX3c?oc=5" target="_blank" rel="noopener noreferrer">House Democrats accuse Trump of &#39;hijacking&#39; America&#39;s 250th birthday for his own gain - NPR</a>
+        
+        
+      </h2>
+
+      <ul class="theory-list">
+        
+        <li class="theory-row">
+          <span class="conf MEDIUM">MEDIUM</span>
+          <div style="flex:1">
+            <div>
+              <span class="theory-name">America 250 Hidden Agenda</span>
+              <span class="conn-type">· underlying driver</span>
+            </div>
+            <div class="evidence">How Trump Branded America&#39;s Big Birthday</div>
+            <p class="explanation">The America 250 Hidden Agenda theory holds that the 250th celebrations are being weaponized by political actors to advance hidden agendas rather than genuinely commemorate the nation. Democrats framing Trump as &#39;hijacking&#39; the event — and outlets like The Atlantic analyzing &#39;How Trump Branded America&#39;s Big Birthday&#39; — directly feeds the theory&#39;s core claim that powerful actors are exploiting the festivities for ulterior motives, even if the partisan framing differs from the theory&#39;s typical targeting.</p>
+          </div>
+        </li>
+        
+      </ul>
+
+      
+        <a class="cta" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxOQzgzZEFoT1FaUzk1Q3I5TVl6TXBIMjdObmlhSXl2TWM2UTgwRlZBc0VXOHhDeGdQMTZvX1Q4Q3ZWN3o0dFM2Q1dYLVRaZmpMY28xX1pGcGpVOXlobDJrS0NKYU5OMzFqVnFESWZIS2xObW0zOVdpZllHMDRtZDQ2RlFmMERmYnNuSDZnYTBadG9UZXlWX3c?oc=5" target="_blank" rel="noopener noreferrer">Read the story</a>
       
     </article>
     
@@ -2808,43 +3136,10 @@
       
     </article>
     
-    <article class="story">
-      <div class="story-src">
-        <span class="src-name">Top stories - Google News</span>
-        <span class="src-date">· Jun 26, 2026</span>
-      </div>
-      <h2 class="story-headline">
-        
-          <a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOQjZLTWowZjRUaHZXTG4zbS0ySjNCT1lEYVE1ekZlMmp6aE1zSkExazF4WlhuWnpjUnN5bFNKS1FsNkdDckNRV2RqbzMxamJZdmhpd1F6VVl5UjdId1UxSjFobVhoLWNCcV9DTkZ4b3hUTlgxRGRORGJvRHlBRHRUM3lHUFR5UlJzN2xobVdGTTlTWlBSZFJFZDByaTZtb3EzNUljYW14OW9wSHhGQlHSAbMBQVVfeXFMUFM4TTl2ZFlVa0hCdnU2LW1ST1BPaGpzX3JLMWliV3RpMzRhYktUQnFoNk9Ob3ZBM2hMZ1Z0YmRWNTBSeUVzVGRBNmFpb0NJWEc2ODhKNnZabUNKYWJaOExiTWV4UWtMNkEySWd3eW93dFdEa1B2ZGc3WDkxRmtySlNOSUNqOHF4czRSR0RFcjR3QTAtYVloeERuOVM1aE1HSE1GRTNKWnlpVWVlYUUzWkk3eWM?oc=5" target="_blank" rel="noopener noreferrer">Pennsylvania skipping Trump state fair celebration - The Hill</a>
-        
-        
-      </h2>
-
-      <ul class="theory-list">
-        
-        <li class="theory-row">
-          <span class="conf MEDIUM">MEDIUM</span>
-          <div style="flex:1">
-            <div>
-              <span class="theory-name">MAHA moms</span>
-              <span class="conn-type">· explicit mention</span>
-            </div>
-            <div class="evidence">At the Great American State Fair, MAHA Meets Sno-Cones and Corn Dogs — The New York Times</div>
-            <p class="explanation">The New York Times headline explicitly names MAHA in the context of Trump&#39;s Great American State Fair, signaling the movement&#39;s growing integration with mainstream Trump political events. This directly reflects the MAHA theory&#39;s claim that the movement is gaining momentum through alignment with political figures. However, the article does not appear to engage deeper conspiratorial claims about Big Pharma or food companies.</p>
-          </div>
-        </li>
-        
-      </ul>
-
-      
-        <a class="cta" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOQjZLTWowZjRUaHZXTG4zbS0ySjNCT1lEYVE1ekZlMmp6aE1zSkExazF4WlhuWnpjUnN5bFNKS1FsNkdDckNRV2RqbzMxamJZdmhpd1F6VVl5UjdId1UxSjFobVhoLWNCcV9DTkZ4b3hUTlgxRGRORGJvRHlBRHRUM3lHUFR5UlJzN2xobVdGTTlTWlBSZFJFZDByaTZtb3EzNUljYW14OW9wSHhGQlHSAbMBQVVfeXFMUFM4TTl2ZFlVa0hCdnU2LW1ST1BPaGpzX3JLMWliV3RpMzRhYktUQnFoNk9Ob3ZBM2hMZ1Z0YmRWNTBSeUVzVGRBNmFpb0NJWEc2ODhKNnZabUNKYWJaOExiTWV4UWtMNkEySWd3eW93dFdEa1B2ZGc3WDkxRmtySlNOSUNqOHF4czRSR0RFcjR3QTAtYVloeERuOVM1aE1HSE1GRTNKWnlpVWVlYUUzWkk3eWM?oc=5" target="_blank" rel="noopener noreferrer">Read the story</a>
-      
-    </article>
-    
   
 
   <footer class="ftr">
-    Generated <span class="brand">2026-07-03 12:55 UTC</span> by SignalWatch · <code>btn-export</code><br>
+    Generated <span class="brand">2026-07-03 17:05 UTC</span> by SignalWatch · <code>btn-export</code><br>
     Showing items reviewed and approved by an analyst. Connection types and
     confidence ratings are produced by an LLM analysis pass over the original story.
   </footer>
