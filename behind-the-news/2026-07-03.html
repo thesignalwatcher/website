@@ -106,62 +106,69 @@
 <body>
 
 
-<!-- Canonical PUBLIC top navigation (www.signalwat.ch). Self-contained: scoped
-     CSS + JS. Included ONLY on exported/public pages — NOT the internal CMS nav
-     (sw_nav.html). Active link is computed from location.pathname (never
-     hardcoded). Set `nav_dark = true` in the caller before including for the
-     dark briefing variant (Conspiracy Today / Political Valence / Source Valence).
-     Grayed items (Deep Dives / Methodology) have no destination yet — swap the
-     <span> for an <a href> the moment a page ships. -->
-<nav class="sw-nav" aria-label="Primary">
+<!-- Canonical PUBLIC masthead (www.signalwat.ch) — a self-contained copy of the
+     homepage Aurora header (light theme values inlined). Included on exported
+     public pages. Active link is computed from location.pathname. Unique `swm-`
+     class prefix so it never collides with a host page's own .brand/.nav. -->
+<header class="swm">
   <style>
-    .sw-nav{display:flex;align-items:center;justify-content:space-between;gap:20px;
-      flex-wrap:wrap;padding:12px 22px;background:#fff;border-bottom:1px solid #e3e7ef;
-      font-family:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-      box-sizing:border-box;position:sticky;top:0;z-index:9999;}
-    .sw-nav *{box-sizing:border-box;}
-    .sw-nav__brand{font-weight:700;font-size:16px;letter-spacing:-.01em;color:#12141c;text-decoration:none;}
-    .sw-nav__links{display:flex;flex-wrap:wrap;gap:2px;list-style:none;margin:0;padding:0;}
-    .sw-nav__link{display:inline-block;padding:8px 12px;border-radius:8px;font-weight:500;
-      font-size:14px;color:#3a3f4d;text-decoration:none;transition:background .12s,color .12s;}
-    .sw-nav__link:hover{background:rgba(123,110,240,.10);color:#7b6ef0;}
-    .sw-nav__link.is-active{background:rgba(123,110,240,.12);color:#7b6ef0;}
-    .sw-nav__link.is-disabled{color:#b3b8c4;cursor:not-allowed;pointer-events:none;}
-    /* dark briefing variant */
-    .sw-nav--dark{background:#0d1117;border-bottom-color:#232936;}
-    .sw-nav--dark .sw-nav__brand{color:#fff;}
-    .sw-nav--dark .sw-nav__link{color:#c9d1d9;}
-    .sw-nav--dark .sw-nav__link:hover{background:rgba(123,110,240,.18);color:#fff;}
-    .sw-nav--dark .sw-nav__link.is-active{background:rgba(123,110,240,.22);color:#fff;}
-    .sw-nav--dark .sw-nav__link.is-disabled{color:#4a515e;}
+    @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,500&family=Hanken+Grotesk:wght@400;500;600&display=swap');
+    .swm{position:sticky;top:0;z-index:9999;backdrop-filter:blur(14px) saturate(140%);
+      -webkit-backdrop-filter:blur(14px) saturate(140%);background:color-mix(in srgb,#e9eef7 82%,transparent);
+      border-bottom:1px solid #dde4f0;font-family:'Hanken Grotesk',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-sizing:border-box;}
+    .swm *{box-sizing:border-box;}
+    .swm-inner{max-width:1480px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;
+      justify-content:space-between;gap:14px 24px;flex-wrap:wrap;}
+    .swm-brand{display:flex;align-items:center;gap:11px;text-decoration:none;}
+    .swm-mark{position:relative;width:30px;height:30px;display:grid;place-items:center;flex:none;}
+    .swm-core{width:11px;height:11px;border-radius:50%;background:#2bb3d4;box-shadow:0 0 0 0 #2bb3d4;
+      animation:swm-pulse 2.4s ease-out infinite;z-index:2;}
+    .swm-ring{position:absolute;inset:0;border-radius:50%;border:1.5px solid #2bb3d4;opacity:.55;
+      animation:swm-ring 2.4s ease-out infinite;}
+    @keyframes swm-pulse{0%{box-shadow:0 0 0 0 rgba(43,179,212,.55);}70%,100%{box-shadow:0 0 0 9px transparent;}}
+    @keyframes swm-ring{0%{transform:scale(.55);opacity:.7;}100%{transform:scale(1.05);opacity:0;}}
+    @media(prefers-reduced-motion:reduce){.swm-core,.swm-ring{animation:none;}}
+    .swm-name{font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:21px;letter-spacing:-.015em;line-height:1;color:#19223a;}
+    .swm-name .watch{color:#7b6ef0;font-style:italic;font-weight:500;}
+    .swm-nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap;}
+    .swm-nav a{font-size:13.5px;font-weight:500;color:#5c6982;text-decoration:none;padding:7px 12px;
+      border-radius:9px;transition:color .15s,background .15s;}
+    .swm-nav a:hover{color:#19223a;background:rgba(228,224,251,.7);}
+    .swm-nav a.active{color:#19223a;background:rgba(228,224,251,.55);}
+    .swm-nav .swm-off{font-size:13.5px;font-weight:500;color:#8a95ac;padding:7px 12px;cursor:not-allowed;}
+    @media(max-width:720px){.swm-nav a:not(.active),.swm-nav .swm-off{display:none;}}
   </style>
-  <a class="sw-nav__brand" href="/">SignalWatch</a>
-  <ul class="sw-nav__links">
-    <li><a class="sw-nav__link" href="/">Home</a></li>
-    <li><a class="sw-nav__link" href="/latest/theories/">Theories</a></li>
-    <li><a class="sw-nav__link" href="/latest/conspiracy-today.html">Conspiracy Today</a></li>
-    <li><a class="sw-nav__link" href="/latest/behind-the-news.html">Behind the News</a></li>
-    <li><a class="sw-nav__link" href="/latest/political-valence.html">Political Valence</a></li>
-    <li><a class="sw-nav__link" href="/latest/source-valence.html">Source Valence</a></li>
-    <li><a class="sw-nav__link" href="/pseudoscience/">Pseudoscience</a></li>
-    <li><a class="sw-nav__link" href="/data/">Data</a></li>
-    <!-- no destination yet -> non-interactive, grayed -->
-    <li><span class="sw-nav__link is-disabled" aria-disabled="true">Deep Dives</span></li>
-    <li><span class="sw-nav__link is-disabled" aria-disabled="true">Methodology</span></li>
-  </ul>
+  <div class="swm-inner">
+    <a class="swm-brand" href="/">
+      <span class="swm-mark"><span class="swm-ring"></span><span class="swm-core"></span></span>
+      <span class="swm-name"><b>Signal</b><span class="watch">Watch</span></span>
+    </a>
+    <nav class="swm-nav">
+      <a href="/">Home</a>
+      <a href="/latest/theories/">Theories</a>
+      <a href="/latest/conspiracy-today.html">Conspiracy Today</a>
+      <a href="/latest/behind-the-news.html">Behind the News</a>
+      <a href="/latest/political-valence.html">Political Valence</a>
+      <a href="/latest/source-valence.html">Source Valence</a>
+      <a href="/pseudoscience/">Pseudoscience</a>
+      <a href="/data/">Data</a>
+      <span class="swm-off" aria-disabled="true">Deep Dives</span>
+      <span class="swm-off" aria-disabled="true">Methodology</span>
+    </nav>
+  </div>
   <script>
   (function(){
     var p=(location.pathname||'/').replace(/\/+$/,'')||'/';
     var best=null,bestlen=-1;
-    document.querySelectorAll('.sw-nav a.sw-nav__link').forEach(function(a){
+    document.querySelectorAll('.swm-nav a').forEach(function(a){
       var h=(a.getAttribute('href')||'/').replace(/\/+$/,'')||'/';
-      var hit=(h===p)||(h!=='/'&&p.indexOf(h+'/')===0)||(h!=='/'&&p===h)||(h==='/'&&p==='/');
+      var hit=(h===p)||(h!=='/'&&p.indexOf(h+'/')===0)||(h==='/'&&p==='/');
       if(hit&&h.length>bestlen){best=a;bestlen=h.length;}
     });
-    if(best){best.classList.add('is-active');best.setAttribute('aria-current','page');}
+    if(best){best.classList.add('active');best.setAttribute('aria-current','page');}
   })();
   </script>
-</nav>
+</header>
 
 <div class="wrap">
 
@@ -3125,7 +3132,7 @@
     .sw-footer--dark .sw-footer__note{color:#6e7681;}
   </style>
   <span class="sw-footer__brand">SignalWatch — external intelligence brief</span>
-  <span class="sw-footer__meta">Generated <time>2026-07-03 18:34 UTC</time></span>
+  <span class="sw-footer__meta">Generated <time>2026-07-03 20:10 UTC</time></span>
   <span class="sw-footer__note">Showing items reviewed and approved by an analyst. Connection types and confidence ratings are produced by an LLM analysis pass over the original story.</span>
 </footer>
   
