@@ -112,7 +112,13 @@ post seen by ten, so each mention is weighted by the reach and engagement of whe
 it appeared. **Third, we compare**: we measure today's weighted volume against
 that theory's own recent baseline and against the whole board, then scale the
 result from 0 to 100. A score of 50 means "typical background chatter for a major
-theory." A score above 80 means the theory is having a breakout day.`;function tp(d){const a={green:"🟢",amber:"🟡",red:"🔴",red_glow:"🔴✨"},s=(h,p,g,v,C,j,N,$)=>{const M=p?`<span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:${p};margin-right:7px;vertical-align:baseline"></span>`:"",O=j>0?`▲ +${j}`:j<0?`▼ ${j}`:"—",B=($||[]).map(F=>`<span style="font-size:10px;font-weight:700;letter-spacing:.05em;color:#7b6ef0;border:1px solid #c9c2f5;border-radius:4px;padding:1px 5px;margin-left:6px;text-transform:uppercase">${F}</span>`).join("");return`<tr>
+theory." A score above 80 means the theory is having a breakout day.
+
+One honesty rule: theories added to tracking within the last week are **excluded**
+from this board. When we first pick up a theory we harvest its whole recent
+footprint at once, which looks like a burst of attention but is really just us
+starting to listen. New theories appear in the *New Conspiracy Theories* shelf
+until their baseline settles, then compete here fairly.`;function tp(d){const a={green:"🟢",amber:"🟡",red:"🔴",red_glow:"🔴✨"},s=(h,p,g,v,C,j,N,$)=>{const M=p?`<span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:${p};margin-right:7px;vertical-align:baseline"></span>`:"",O=j>0?`▲ +${j}`:j<0?`▼ ${j}`:"—",B=($||[]).map(F=>`<span style="font-size:10px;font-weight:700;letter-spacing:.05em;color:#7b6ef0;border:1px solid #c9c2f5;border-radius:4px;padding:1px 5px;margin-left:6px;text-transform:uppercase">${F}</span>`).join("");return`<tr>
       <td style="padding:6px 8px;color:#8a95ac;font-family:monospace">${h}</td>
       <td style="padding:6px 8px">${M}<a href="${v}">${qh(g)}</a>${B}</td>
       <td style="padding:6px 8px;text-align:right;font-family:monospace;font-weight:700">${C}</td>
