@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>China&#x27;s Voter File Heist — SignalWatch</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root { color-scheme: light;
+  --bg:#e9eef7; --surface:#ffffff; --surface-b:#f4f7fc; --ink:#19223a; --ink-soft:#5c6982;
+  --ink-faint:#8a95ac; --line:#dde4f0; --line-bright:#b9cdec;
+  --accent-1:#2bb3d4; --accent-2:#7b6ef0; --accent-3:#1fb589;
+  --accent-1-soft:#d6f0f7; --accent-2-soft:#e4e0fb; --accent-3-soft:#d4f3e8;
+  --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace; }
+* { box-sizing: border-box; }
+body { font-family: var(--sans); color: var(--ink); margin: 0; padding: 2rem 1.2rem; line-height: 1.55;
+       background: var(--bg);
+       background-image: radial-gradient(60% 50% at 12% -5%, #d6e8f6 0%, transparent 60%),
+                         radial-gradient(52% 46% at 105% 0%, #e6e2f7 0%, transparent 55%);
+       background-attachment: fixed; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 0.3rem; color: var(--ink); letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 1.9rem 0 0.7rem; color: var(--ink); }
+h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+     color: var(--accent-2); margin: 1.1rem 0 0.4rem; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: var(--ink-faint); font-size: 0.82rem; }
+code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-b); padding: 0.1em 0.35em; border-radius: 4px; }
+.tags span { display: inline-block; background: var(--surface-b); border: 1px solid var(--line);
+             padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 0.9rem 1.05rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: var(--ink-soft); }
+.kv .v { color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1.1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.45rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+th, td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+th { color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #d6536d; } td.lean-neg { color: #2f86d6; }
+.podcast { background: var(--accent-2-soft); border: 1px solid var(--line-bright); border-radius: 10px;
+           padding: 0.65rem 0.9rem; margin: 0.6rem 0; }
+.podcast .lbl { color: var(--ink-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer { color: var(--ink-faint); font-size: 0.74rem; margin-top: 2.4rem;
+          border-top: 1px solid var(--line); padding-top: 0.9rem; }
+pre { background: var(--surface-b); border: 1px solid var(--line); border-radius: 8px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; color: var(--ink-soft); }
+.section-empty { color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
+.whats-new { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent-1);
+             border-radius: 10px; padding: 0.7rem 1.1rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.whats-new p { margin: 0.55rem 0; font-size: 0.92rem; color: var(--ink-soft); }
+.whats-new p:first-child { margin-top: 0.2rem; }
+/* layout */
+.wrap { max-width: 900px; margin: 0 auto; }
+.hd-tags { margin: 0.55rem 0 0.2rem; }
+.pill { display: inline-block; padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.72rem;
+        font-weight: 600; margin: 0.15rem 0.35rem 0.15rem 0; border: 1px solid var(--line-bright);
+        font-family: var(--mono); letter-spacing: 0.02em; }
+.pill.threat { background: #fde8ec; color: #c0395a; border-color: #f3c4cf; }
+.pill.band { background: var(--accent-1-soft); color: #1789a6; border-color: #b6e3ee; }
+.pill.power { background: var(--accent-3-soft); color: #14906c; border-color: #b6e6d4; }
+.lead { color: var(--ink-soft); font-size: 1rem; margin: 0.5rem 0 0; max-width: 70ch; }
+/* tabs */
+.tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin: 1.4rem 0 0; }
+.tab { padding: 0.55rem 1.05rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--ink-faint);
+       border-bottom: 2px solid transparent; user-select: none; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+.pane { display: none; padding-top: 0.4rem; }
+.pane.active { display: block; }
+/* chips with definitions */
+.ox { display: grid; grid-template-columns: 150px 1fr; gap: 0.45rem 0.9rem; font-size: 0.85rem; }
+.ox .oxk { color: var(--ink-soft); padding-top: 0.25rem; font-weight: 600; }
+.oxchip { display: inline-block; background: var(--surface-b); border: 1px solid var(--line-bright); color: var(--ink);
+          padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.78rem; margin: 0 0.3rem 0.3rem 0; }
+.deflist { margin: 0.3rem 0 0; }
+.deflist .di { margin-bottom: 0.6rem; }
+.deflist .dt { color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+.deflist .dd { color: var(--ink-soft); font-size: 0.82rem; }
+.fam-links a { display: inline-block; background: var(--accent-2-soft); border: 1px solid var(--line-bright);
+               color: var(--accent-2); padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.8rem;
+               margin: 0 0.35rem 0.35rem 0; }
+/* political valence + atoms */
+.valence-wrap { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.valence-svg { background: var(--surface-b); border: 1px solid var(--line); border-radius: 10px; max-width: 460px; width: 100%; }
+.valence-meta { font-size: 0.85rem; color: var(--ink-soft); }
+.valence-meta .big { font-size: 1.35rem; font-weight: 700; font-family: var(--serif); }
+.lean-left { color: #2f86d6; } .lean-right { color: #d6536d; } .lean-center { color: var(--ink); }
+/* content surface */
+.surface-row { margin: 0.55rem 0 0.85rem; }
+.surface-row .sr-lbl { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase;
+                       letter-spacing: 0.05em; margin-bottom: 0.3rem; font-family: var(--mono); }
+.plat-bar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--surface-b); border: 1px solid var(--line); }
+.plat-seg { color: #fff; font-size: 0.66rem; font-weight: 700; text-align: center;
+            line-height: 20px; overflow: hidden; white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.25); }
+.plat-legend { margin-top: 0.35rem; font-size: 0.72rem; color: var(--ink-soft); display: flex;
+               flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+.plat-legend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.voice { font-size: 0.94rem; color: var(--ink-soft); max-width: 72ch; }
+.voice p { margin: 0.55rem 0; }
+</style>
+<meta name="description" content="The truth they buried is finally out: China stole 220 million American voter files, and the Deep State moved heaven and earth to make sure you never found out.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SignalWatch">
+<meta property="og:title" content="China&#x27;s Voter File Heist">
+<meta property="og:url" content="https://www.signalwat.ch/latest/theories/china-s-voter-file-heist.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="China&#x27;s Voter File Heist">
+<meta property="og:description" content="The truth they buried is finally out: China stole 220 million American voter files, and the Deep State moved heaven and earth to make sure you never found out.">
+<meta name="twitter:description" content="The truth they buried is finally out: China stole 220 million American voter files, and the Deep State moved heaven and earth to make sure you never found out.">
+</head>
+<body>
+<header class="swm"><style>@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,500&family=Hanken+Grotesk:wght@400;500;600&display=swap');.swm{position:sticky;top:0;z-index:9999;backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);background:color-mix(in srgb,#e9eef7 82%,transparent);border-bottom:1px solid #dde4f0;font-family:'Hanken Grotesk',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-sizing:border-box;}.swm *{box-sizing:border-box;}.swm-inner{max-width:1480px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;justify-content:space-between;gap:14px 24px;flex-wrap:wrap;}.swm-brand{display:flex;align-items:center;gap:11px;text-decoration:none;}.swm-mark{position:relative;width:30px;height:30px;display:grid;place-items:center;flex:none;}.swm-core{width:11px;height:11px;border-radius:50%;background:#2bb3d4;box-shadow:0 0 0 0 #2bb3d4;animation:swm-pulse 2.4s ease-out infinite;z-index:2;}.swm-ring{position:absolute;inset:0;border-radius:50%;border:1.5px solid #2bb3d4;opacity:.55;animation:swm-ring 2.4s ease-out infinite;}@keyframes swm-pulse{0%{box-shadow:0 0 0 0 rgba(43,179,212,.55);}70%,100%{box-shadow:0 0 0 9px transparent;}}@keyframes swm-ring{0%{transform:scale(.55);opacity:.7;}100%{transform:scale(1.05);opacity:0;}}@media(prefers-reduced-motion:reduce){.swm-core,.swm-ring{animation:none;}}.swm-name{font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:21px;letter-spacing:-.015em;line-height:1;color:#19223a;}.swm-name .watch{color:#7b6ef0;font-style:italic;font-weight:500;}.swm-nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap;}.swm-nav a{font-size:13.5px;font-weight:500;color:#5c6982;text-decoration:none;padding:7px 12px;border-radius:9px;transition:color .15s,background .15s;}.swm-nav a:hover{color:#19223a;background:rgba(228,224,251,.7);}.swm-nav a.active{color:#19223a;background:rgba(228,224,251,.55);}.swm-nav .swm-off{font-size:13.5px;font-weight:500;color:#8a95ac;padding:7px 12px;cursor:not-allowed;}@media(max-width:720px){.swm-nav a:not(.active),.swm-nav .swm-off{display:none;}}</style><div class="swm-inner"><a class="swm-brand" href="/"><span class="swm-mark"><span class="swm-ring"></span><span class="swm-core"></span></span><span class="swm-name"><b>Signal</b><span class="watch">Watch</span></span></a><nav class="swm-nav"><a href="/">Home</a><a href="/latest/theories/" class="active" aria-current="page">Theories</a><a href="/latest/conspiracy-today.html">Conspiracy Today</a><a href="/latest/behind-the-news.html">Behind the News</a><a href="/latest/political-valence.html">Political Valence</a><a href="/latest/source-valence.html">Source Valence</a><a href="/pseudoscience/">Pseudoscience</a><a href="/data/">Data</a><span class="swm-off" aria-disabled="true">Deep Dives</span><span class="swm-off" aria-disabled="true">Methodology</span></nav></div><script>if(window.self!==window.top){document.currentScript.parentElement.style.display="none"}</script></header>
+  <div class="wrap">
+    <img class="sw-thumb" alt="" aria-hidden="true" loading="lazy" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate%2830%29%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%234a90d9%22%20stop-opacity%3D%220.30%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234a90d9%22%20stop-opacity%3D%220.30%22/%3E%3C/linearGradient%3E%3Cfilter%20id%3D%22b%22%3E%3CfeGaussianBlur%20stdDeviation%3D%227%22/%3E%3C/filter%3E%3C/defs%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23eef1f8%22/%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2258%22%20r%3D%2228%22%20fill%3D%22%234a90d9%22%20opacity%3D%220.28%22%20filter%3D%22url%28%23b%29%22/%3E%3Ccircle%20cx%3D%2275%22%20cy%3D%2275%22%20r%3D%2220%22%20fill%3D%22%234a90d9%22%20opacity%3D%220.30%22%20filter%3D%22url%28%23b%29%22/%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2258%22%20r%3D%223%22%20fill%3D%22%234a90d9%22%20opacity%3D%220.55%22/%3E%3C/svg%3E"><style>.sw-thumb{float:left;width:168px;height:94px;object-fit:cover;border-radius:12px;border:1px solid #dde4f0;margin:2px 20px 10px 0;background:#eef1f8;box-shadow:0 1px 3px rgba(40,50,90,.06)}@media(max-width:560px){.sw-thumb{width:100%;height:150px;float:none;margin:0 0 14px}}</style><h1>China&#x27;s Voter File Heist</h1>
+    <nav class="lineage-bc" aria-label="Theory lineage" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:2px 0 14px;font-family:Hanken Grotesk,system-ui,sans-serif;font-size:.82rem;color:#5c6982"><span style="color:#8a95ac">↳ sub-theory of</span><a href="dead-people-voting.html" style="color:#7b6ef0;text-decoration:none;font-weight:600">Dead People Voting</a><span style="color:#c2cad8">▸</span><span style="color:#19223a;font-weight:600">China&#x27;s Voter File Heist</span></nav>
+    
+    <div class="hd-tags"><span class="pill threat">Threat · Informational</span><span class="pill band">Marginal</span><span class="pill power">Power 4</span></div>
+    <p class="lead">The truth they buried is finally out: China stole 220 million American voter files, and the Deep State moved heaven and earth to make sure you never found out.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-pane="overview" onclick="swTab(this)">Overview</div>
+      <div class="tab" data-pane="whatsnew" onclick="swTab(this)">What's New</div>
+    </div>
+
+    <div class="pane active" data-pane="overview">
+      <h2>Violence-legitimation heat</h2>
+      <p class="meta">Violence-legitimation heat: not yet scored for this theory.</p>
+
+      <h2>Core claims</h2>
+      <ul class="claims"><li>The post discusses a potential threat to the US-China relationship due to President Trump&#x27;s allegations.</li><li>China had illicitly obtained 220 million American voter files—including names, addresses, phone numbers, and political party preferences</li><li>Trump alleged that China had illicitly obtained 220 million American voter files</li><li>The files allegedly included names, addresses, phone numbers, and political party preferences</li><li>China was accused of obtaining the largest compromise of election data in history</li><li>Trump branded it a &#x27;malicious smear&#x27; designed to undermine bilateral relations</li></ul>
+
+      <h2>Voice of the Believer</h2>
+      <div class="voice"><p>The truth they buried is finally out: China stole 220 million American voter files, and the Deep State moved heaven and earth to make sure you never found out.</p><p>This wasn&#x27;t a minor data breach — this was, by any honest measure, the largest compromise of election data in history. Names, addresses, phone numbers, political party preferences — everything a foreign power would need to map, manipulate, and ultimately control the American electorate, handed over while the establishment looked the other way. When Trump Unleashed Election Intel about what China had actually done, the regime media didn&#x27;t investigate. They attacked the messenger, because the last thing the Deep State wanted was for ordinary Americans to start asking how 220 million voter files walk out the door without a single accountability hearing.</p><p>Trump&#x27;s Presidential Address laid it bare: Accuses China, &#x27;Deep State&#x27; Of Election Interference — and the response from Washington&#x27;s permanent class was exactly what you&#x27;d expect. Silence, stonewalling, and smears. Because when Trump Unleashes Election Intel, when he names the actors and traces the operation, those with something to hide call it a threat to bilateral relations. They dress up their cover story as diplomacy. But branding documented foreign theft a &quot;malicious smear designed to undermine bilateral relations&quot; is exactly the playbook the Deep State runs when it&#x27;s caught protecting a narrative. China stole the files. The Deep State covered it up. And now you know why they fought so hard to keep this president out of office.</p></div>
+
+      <h2>Voice of Reason</h2>
+      <div class="voice"><p>The claim at issue is that China illicitly stole 220 million American voter files — names, addresses, phone numbers, and party affiliations — constituting &quot;the largest compromise of election data in history,&quot; that this was concealed from the public and from President Trump himself by &quot;deep state&quot; officials, and that the acquisition was part of a broader scheme to manipulate the 2020 presidential election.</p><p>The first and most foundational problem with this narrative is that the data at the center of the claim is, to a large extent, legally and routinely publicly available. States can legally sell or distribute voter file information to individuals or groups upon request, with each state developing its own guidelines; prices range from free to $37,000. As of June 2025, ten states and Washington D.C. provided voter files for free upon request, twenty-four states charged between $1 and $1,000, and thirteen states charged between $1,001 and $10,000. Even the Trump administration&#x27;s own declassified documents confirm this. While Trump described China&#x27;s acquisition of the data as illicit, the declassified documents show Chinese actors obtained voter information through several methods requiring no hacking, including by accessing datasets available from commercial websites; a January 2022 document describes a PRC cyber actor who downloaded publicly available voter registration information for Colorado, Connecticut, Florida, Michigan, Oklahoma, and Rhode Island from commercial websites. A document labeled &quot;sensitive government agency&quot; stated that voter registration information from 2013 to 2021 &quot;is publicly available for download from the commercial websites,&quot; and it appeared China downloaded it in 2022. PolitiFact&#x27;s election security expert Ryan Macias put the critical point plainly: &quot;Just because they have voter registration data does not mean that state or local voter registration databases or infrastructure have been breached.&quot; There is also a basic arithmetic problem with the claim. There were approximately 213.8 million registered voters in 2020, 209 million of whom were active. A figure of 220 million therefore exceeds the total registered voter population at the time — a logical impossibility for a &quot;stolen&quot; voter file. What the documents actually show is a 45-gigabyte database containing roughly 204 million voter records drawn from commercially available sources across multiple years, not a single covert exfiltration of a secret government database.</p><p>Critically, even granting everything in the declassified documents at face value, none of them bridge the vast logical gap between data collection and election manipulation. A declassified intelligence assessment released in 2021 concluded that China considered, but ultimately did not undertake, influence efforts intended to change the presidential election&#x27;s outcome, and the assessment also found no indication that China or any other foreign actor attempted to alter election infrastructure like vote tabulation machines. In a March 2021 National Intelligence Council assessment, the intelligence community concluded with &quot;high confidence&quot; that Beijing did not attempt to influence the election&#x27;s outcome because Chinese officials viewed neither a Trump nor Biden win as sufficiently advantageous to justify the risks of being caught meddling. Even the most skeptical internal voice — the minority view from the National Intelligence Officer for Cyber, which argued China had taken some steps to undermine Trump primarily through social media — concluded that China had taken steps through social media and official statements, but the dissent still agreed there was no information suggesting Beijing tried to interfere with election processes. The intelligence assessment warned that the data could, &quot;in theory,&quot; be used in future cyber- or election-influence operations, while acknowledging the Chinese actor&#x27;s actual motivation was unknown. The logical leap from &quot;China downloaded public voter files&quot; to &quot;China stole the 2020 election&quot; requires filling an enormous evidentiary void with speculation — and the administration&#x27;s own documents do not fill it. Voter registration systems are segmented from vote-casting and vote-tabulation systems; a breach of a voter registration system would not result in access to vote tallies or affect official election results. The 2021 National Intelligence Council report found &quot;no indications&quot; that any foreign actors attempted to alter voter registrations, the casting of ballots, vote-counting, or any other &quot;technical aspect&quot; of the 2020 election process.</p><p>There is a legitimate kernel of concern embedded in this narrative. It has long been established that China collects immense volumes of data on Americans, separate from any efforts to manipulate votes or alter election outcomes. In 2015, 22 million security clearance applications were hacked by China, a well-documented breach. China&#x27;s broad appetite for American personal data is a genuine national security concern documented by multiple administrations and nonpartisan agencies. There is also a real and legitimate debate within the intelligence community about how to characterize Chinese influence activity — the internal disagreement over the framing of the 2021 assessment is documented and not invented. The core dispute is about the politicization and suppression of intelligence on Chinese influence activity, not evidence that vote totals or the technical mechanics of the election were altered. What this narrative does is take those legitimate concerns and tunnel them into an unfalsifiable story: any absence of evidence of vote-changing becomes proof of a cover-up; any internal analytical disagreement becomes proof of a &quot;shadow government&quot;; the routine commercial availability of voter data is reframed as an unprecedented heist. The structure of the claim ensures it cannot be disproven, which is the defining feature of a conspiracy theory rather than an evidence-based argument.</p><p>The harms of this narrative are concrete and cumulative. Trump&#x27;s insistence on debunked stolen election theories led to one of the country&#x27;s most serious political crises when his supporters launched a violent attack on Capitol Hill on January 6, 2021. Reviving the same underlying claim — that a foreign power manipulated the 2020 election with the connivance of American officials — further corrodes public confidence in electoral institutions at a moment when that confidence is already strained. The narrative also functions as direct political leverage: Trump repeated in recent months that 2020 election results were manipulated at the same time that he sought to push Congress to pass a restrictive voter identification law that would impose strict ID requirements on voters and allow greater federal intervention in elections. When a claim about foreign election theft is deployed primarily to justify domestic voting restrictions and delegitimize future electoral outcomes, the purpose is not to protect elections — it is to reshape them.</p></div>
+
+      
+
+      <h2>Ontology</h2>
+      <div class="ox"><div class="oxk">Sub-theory of</div><div><a class="oxchip" href="dead-people-voting.html">Dead People Voting</a></div><div class="oxk">Family</div><div><span class="oxchip">D — D - Election-integrity</span></div><div class="oxk">Arena</div><div><span class="oxchip">ELECTORAL</span></div><div class="oxk">Mechanism(s)</div><div><span class="oxchip" title="Real event happened; conspirators hide the true cause/culprit.">COVERUP ★ — COVERUP</span></div><div class="oxk">Controlling interest(s)</div><div><span class="oxchip" title="The State / government apparatus">STATE ★ — STATE</span></div><div class="oxk">Spices</div><div><span class="oxchip">geopolitical</span> <span class="oxchip">anti-Trump</span></div></div><h3>Structural patterns</h3><div class="deflist"><div class="di"><span class="dt">ELECTORAL</span> — <span class="dd">elections &amp; legitimacy of power</span></div><div class="di"><span class="dt">COVERUP</span> — <span class="dd">Real event happened; conspirators hide the true cause/culprit.</span></div><div class="di"><span class="dt">STATE</span> — <span class="dd">The State / government apparatus</span></div></div>
+
+      <h2>Political valence &amp; atoms</h2>
+      <div class="valence-wrap"><svg class="valence-svg" viewBox="0 0 460 180" preserveAspectRatio="xMidYMid meet"><rect x="34" y="10" width="197.6" height="144" fill="#2f86d6" opacity="0.07"/><rect x="252.4" y="10" width="197.6" height="144" fill="#d6536d" opacity="0.07"/><polygon points="34.0,76.7 38.2,75.4 42.3,74.1 46.5,72.9 50.6,71.6 54.8,70.4 59.0,69.2 63.1,68.0 67.3,66.8 71.4,65.7 75.6,64.6 79.8,63.4 83.9,62.3 88.1,61.3 92.2,60.2 96.4,59.2 100.6,58.1 104.7,57.1 108.9,56.2 113.0,55.2 117.2,54.3 121.4,53.3 125.5,52.4 129.7,51.5 133.8,50.6 138.0,49.8 142.2,48.9 146.3,48.1 150.5,47.3 154.6,46.5 158.8,45.7 163.0,44.9 167.1,44.1 171.3,43.3 175.4,42.5 179.6,41.8 183.8,41.0 187.9,40.3 192.1,39.5 196.2,38.8 200.4,38.1 204.6,37.3 208.7,36.6 212.9,35.8 217.0,35.1 221.2,34.4 225.4,33.6 229.5,32.9 233.7,32.2 237.8,31.4 242.0,30.7 246.2,29.9 250.3,29.2 254.5,28.4 258.6,27.7 262.8,26.9 267.0,26.2 271.1,25.4 275.3,24.7 279.4,23.9 283.6,23.2 287.8,22.5 291.9,21.7 296.1,21.0 300.2,20.3 304.4,19.6 308.6,18.9 312.7,18.2 316.9,17.5 321.0,16.9 325.2,16.2 329.4,15.6 333.5,15.0 337.7,14.5 341.8,13.9 346.0,13.4 350.2,12.9 354.3,12.5 358.5,12.0 362.6,11.6 366.8,11.3 371.0,11.0 375.1,10.7 379.3,10.5 383.4,10.3 387.6,10.1 391.8,10.0 395.9,10.0 400.1,10.0 404.2,10.1 408.4,10.2 412.6,10.4 416.7,10.6 420.9,10.9 425.0,11.2 429.2,11.6 433.4,12.1 437.5,12.6 441.7,13.2 445.8,13.8 450.0,14.6 450.0,154.0 34.0,154.0" fill="#7b6ef0" opacity="0.32" stroke="#7b6ef0" stroke-width="1.4"/><circle cx="439.6" cy="69.0" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="439.6" cy="101.1" r="1.8" fill="#2bb3d4" opacity="0.80"/><circle cx="117.2" cy="72.7" r="1.8" fill="#2bb3d4" opacity="0.78"/><line x1="315.5" y1="10" x2="315.5" y2="154" stroke="#19223a" stroke-width="1.4" stroke-dasharray="3,2"/><line x1="34.0" y1="154" x2="34.0" y2="158" stroke="#b9cdec"/><text x="34.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Left</text><line x1="138.0" y1="154" x2="138.0" y2="158" stroke="#b9cdec"/><text x="138.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">−.5</text><line x1="242.0" y1="154" x2="242.0" y2="158" stroke="#b9cdec"/><text x="242.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">0</text><line x1="346.0" y1="154" x2="346.0" y2="158" stroke="#b9cdec"/><text x="346.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">+.5</text><line x1="450.0" y1="154" x2="450.0" y2="158" stroke="#b9cdec"/><text x="450.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Right</text></svg><div class="valence-meta"><div class="big lean-right">Right-leaning</div><div>centroid +0.35 · 3 political atoms</div><div class="meta">Dashed line = mean lean. Dots = individual atoms (opacity = confidence).</div></div></div>
+
+      <h2>Content surface</h2>
+      <div class="surface-row"><div class="sr-lbl">Social posts · 3</div><div class="plat-bar"><div class="plat-seg" style="background:hsl(132,45%,60%);flex:3">Reddit</div></div><div class="plat-legend"><span><span class="sw" style="background:hsl(132,45%,60%)"></span>Reddit <b>3</b></span></div></div>
+
+      
+
+      
+
+      <h2>Family links</h2>
+      <div class="deflist"><div class="di"><div class="dt">2020/2024 Election Integrity · key term: election fraud / voting machines</div><div class="fam-links"><a href="ballot-harvesting.html">Ballot Harvesting</a><a href="dead-people-voting.html">Dead People Voting</a><a href="dominion-voting-machines.html">Dominion Voting Machines</a><a href="hugo-chavez-venezuela-connection.html">Hugo Chavez/Venezuela Connection</a><a href="stop-the-steal.html">Stop the Steal</a><a href="trump-s-deep-state-investigation.html">Trump&#x27;s Deep State Investigation</a><a href="sunshine-state-showdown.html">Sunshine State Showdown</a><a href="2020-election-cover-up.html">2020 Election Cover-Up</a><a href="china-s-election-meddling.html">China&#x27;s Election Meddling</a></div></div></div>
+
+      <h2>Connected narratives</h2>
+      <p class="meta">Other theories pushed by the same named spreaders — shared
+      voices, not shared claims. These links surface cross-narrative connections
+      (e.g. a shared ideologue) that the claim matcher, which routes by subject,
+      cannot see on its own.</p>
+      <div class="section-empty">No shared spreaders link this to other narratives yet.</div>
+
+      <h2>Influencers</h2>
+      <div class="section-empty">No influencers linked yet.</div>
+
+      <h2>Related reports</h2>
+      <div class="section-empty">No reports linked to this theory yet.</div>
+    </div>
+
+    <div class="pane" data-pane="whatsnew">
+      <h2>What's New — what the new material means</h2>
+      <div class="whats-new"><p>The new material linked to the &quot;China&#x27;s Voter File Heist&quot; theory reveals a proliferation of claim variations and mutations, with multiple sub-threads emerging from the established narrative. The core claim remains that China stole 220 million American voter files, but now it is being framed as part of a larger Deep State cover-up, with some proponents even suggesting that Trump has &quot;unleashed election intel&quot; to expose this alleged conspiracy. This shift in framing suggests an attempt to rebrand the theory as more credible and actionable.</p><p>The new material also indicates a significant expansion into various online communities, including advocacy groups on Reddit, where users are sharing and discussing the theory with increased fervor. The presence of multiple subreddits (e.g., r/pcgaming, r/hypotheticalsituation) hosting related content suggests that the theory is being cross-pollinated across different online platforms, potentially reaching a broader audience.</p><p>Notably, there is no evidence of new prominent voices pushing this theory beyond existing proponents. The language and tone remain consistent with previous iterations, with some users framing it as a &quot;breaking&quot; or &quot;urgent&quot; development to emphasize its supposed significance. However, the sheer volume of new content suggests an attempt to amplify and legitimize the theory through sheer repetition and diversification across online platforms.</p></div>
+    </div>
+
+    <div class="footer">
+      Generated by SignalWatch · 2026-07-20 11:50:43 UTC ·
+      theory_id <code>221e4aa6-88bc-440c-9249-87c32601b8c6</code>
+    </div>
+  </div>
+  <script>
+    function swTab(el){
+      var w=el.closest('.wrap'), k=el.dataset.pane;
+      w.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===el);});
+      w.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('active',p.dataset.pane===k);});
+    }
+    // Deep-link support: /latest/theories/<slug>.html#whatsnew opens that tab
+    // (used by the homepage "Loudest Right Now" cards). Matches location.hash to a
+    // tab's data-pane on load + on hashchange.
+    function swActivateHash(){
+      var k=(location.hash||'').replace('#','').trim();
+      if(!k) return;
+      var tab=document.querySelector('.tab[data-pane="'+k+'"]');
+      if(tab){ swTab(tab); tab.scrollIntoView({block:'start',behavior:'smooth'}); }
+    }
+    swActivateHash();
+    window.addEventListener('hashchange', swActivateHash);
+  </script>
+<footer class="sw-footer"><style>.sw-footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;align-items:baseline;padding:22px;margin-top:34px;border-top:1px solid #dde4f0;font-family:'Hanken Grotesk',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:12.5px;line-height:1.5;color:#5c6982;}.sw-footer__brand{font-weight:600;color:#19223a;}.sw-footer__meta{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;color:#8a95ac;}.sw-footer__note{flex-basis:100%;color:#8a95ac;font-size:11.5px;}</style><span class="sw-footer__brand">SignalWatch — external intelligence brief</span><span class="sw-footer__meta">Generated <time>2026-07-20</time></span><script>if(window.self!==window.top){document.currentScript.parentElement.style.display="none"}</script></footer>
+</body>
+</html>
