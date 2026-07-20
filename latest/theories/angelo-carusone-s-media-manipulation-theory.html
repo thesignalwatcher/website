@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Angelo Carusone&#x27;s Media Manipulation Theory — SignalWatch</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root { color-scheme: light;
+  --bg:#e9eef7; --surface:#ffffff; --surface-b:#f4f7fc; --ink:#19223a; --ink-soft:#5c6982;
+  --ink-faint:#8a95ac; --line:#dde4f0; --line-bright:#b9cdec;
+  --accent-1:#2bb3d4; --accent-2:#7b6ef0; --accent-3:#1fb589;
+  --accent-1-soft:#d6f0f7; --accent-2-soft:#e4e0fb; --accent-3-soft:#d4f3e8;
+  --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace; }
+* { box-sizing: border-box; }
+body { font-family: var(--sans); color: var(--ink); margin: 0; padding: 2rem 1.2rem; line-height: 1.55;
+       background: var(--bg);
+       background-image: radial-gradient(60% 50% at 12% -5%, #d6e8f6 0%, transparent 60%),
+                         radial-gradient(52% 46% at 105% 0%, #e6e2f7 0%, transparent 55%);
+       background-attachment: fixed; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 0.3rem; color: var(--ink); letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 1.9rem 0 0.7rem; color: var(--ink); }
+h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+     color: var(--accent-2); margin: 1.1rem 0 0.4rem; }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: var(--ink-faint); font-size: 0.82rem; }
+code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-b); padding: 0.1em 0.35em; border-radius: 4px; }
+.tags span { display: inline-block; background: var(--surface-b); border: 1px solid var(--line);
+             padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.74rem;
+             margin: 0.15rem 0.3rem 0.15rem 0; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 0.9rem 1.05rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; font-size: 0.85rem; }
+.kv .k { color: var(--ink-soft); }
+.kv .v { color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+ul.claims { margin: 0.25rem 0 0 1.1rem; padding: 0; }
+ul.claims li { margin-bottom: 0.45rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+th, td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+th { color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.lean-pos { color: #d6536d; } td.lean-neg { color: #2f86d6; }
+.podcast { background: var(--accent-2-soft); border: 1px solid var(--line-bright); border-radius: 10px;
+           padding: 0.65rem 0.9rem; margin: 0.6rem 0; }
+.podcast .lbl { color: var(--ink-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer { color: var(--ink-faint); font-size: 0.74rem; margin-top: 2.4rem;
+          border-top: 1px solid var(--line); padding-top: 0.9rem; }
+pre { background: var(--surface-b); border: 1px solid var(--line); border-radius: 8px;
+      padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; color: var(--ink-soft); }
+.section-empty { color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
+.whats-new { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent-1);
+             border-radius: 10px; padding: 0.7rem 1.1rem; box-shadow: 0 1px 2px rgba(25,34,58,.05); }
+.whats-new p { margin: 0.55rem 0; font-size: 0.92rem; color: var(--ink-soft); }
+.whats-new p:first-child { margin-top: 0.2rem; }
+/* layout */
+.wrap { max-width: 900px; margin: 0 auto; }
+.hd-tags { margin: 0.55rem 0 0.2rem; }
+.pill { display: inline-block; padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.72rem;
+        font-weight: 600; margin: 0.15rem 0.35rem 0.15rem 0; border: 1px solid var(--line-bright);
+        font-family: var(--mono); letter-spacing: 0.02em; }
+.pill.threat { background: #fde8ec; color: #c0395a; border-color: #f3c4cf; }
+.pill.band { background: var(--accent-1-soft); color: #1789a6; border-color: #b6e3ee; }
+.pill.power { background: var(--accent-3-soft); color: #14906c; border-color: #b6e6d4; }
+.lead { color: var(--ink-soft); font-size: 1rem; margin: 0.5rem 0 0; max-width: 70ch; }
+/* tabs */
+.tabs { display: flex; gap: 0.3rem; border-bottom: 1px solid var(--line); margin: 1.4rem 0 0; }
+.tab { padding: 0.55rem 1.05rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--ink-faint);
+       border-bottom: 2px solid transparent; user-select: none; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+.pane { display: none; padding-top: 0.4rem; }
+.pane.active { display: block; }
+/* chips with definitions */
+.ox { display: grid; grid-template-columns: 150px 1fr; gap: 0.45rem 0.9rem; font-size: 0.85rem; }
+.ox .oxk { color: var(--ink-soft); padding-top: 0.25rem; font-weight: 600; }
+.oxchip { display: inline-block; background: var(--surface-b); border: 1px solid var(--line-bright); color: var(--ink);
+          padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.78rem; margin: 0 0.3rem 0.3rem 0; }
+.deflist { margin: 0.3rem 0 0; }
+.deflist .di { margin-bottom: 0.6rem; }
+.deflist .dt { color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+.deflist .dd { color: var(--ink-soft); font-size: 0.82rem; }
+.fam-links a { display: inline-block; background: var(--accent-2-soft); border: 1px solid var(--line-bright);
+               color: var(--accent-2); padding: 0.22rem 0.65rem; border-radius: 999px; font-size: 0.8rem;
+               margin: 0 0.35rem 0.35rem 0; }
+/* political valence + atoms */
+.valence-wrap { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.valence-svg { background: var(--surface-b); border: 1px solid var(--line); border-radius: 10px; max-width: 460px; width: 100%; }
+.valence-meta { font-size: 0.85rem; color: var(--ink-soft); }
+.valence-meta .big { font-size: 1.35rem; font-weight: 700; font-family: var(--serif); }
+.lean-left { color: #2f86d6; } .lean-right { color: #d6536d; } .lean-center { color: var(--ink); }
+/* content surface */
+.surface-row { margin: 0.55rem 0 0.85rem; }
+.surface-row .sr-lbl { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase;
+                       letter-spacing: 0.05em; margin-bottom: 0.3rem; font-family: var(--mono); }
+.plat-bar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--surface-b); border: 1px solid var(--line); }
+.plat-seg { color: #fff; font-size: 0.66rem; font-weight: 700; text-align: center;
+            line-height: 20px; overflow: hidden; white-space: nowrap; text-shadow: 0 1px 1px rgba(0,0,0,.25); }
+.plat-legend { margin-top: 0.35rem; font-size: 0.72rem; color: var(--ink-soft); display: flex;
+               flex-wrap: wrap; gap: 0.1rem 0.9rem; }
+.plat-legend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.voice { font-size: 0.94rem; color: var(--ink-soft); max-width: 72ch; }
+.voice p { margin: 0.55rem 0; }
+</style>
+<meta name="description" content="The lines are gone — the wall between right-wing media and the levers of government power has collapsed, and what we are watching now is a coordinated machine running misinformation straight from the…">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SignalWatch">
+<meta property="og:title" content="Angelo Carusone&#x27;s Media Manipulation Theory">
+<meta property="og:url" content="https://www.signalwat.ch/latest/theories/angelo-carusone-s-media-manipulation-theory.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Angelo Carusone&#x27;s Media Manipulation Theory">
+<meta property="og:description" content="The lines are gone — the wall between right-wing media and the levers of government power has collapsed, and what we are watching now is a coordinated machine running misinformation straight from the…">
+<meta name="twitter:description" content="The lines are gone — the wall between right-wing media and the levers of government power has collapsed, and what we are watching now is a coordinated machine running misinformation straight from the…">
+</head>
+<body>
+<header class="swm"><style>@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,500&family=Hanken+Grotesk:wght@400;500;600&display=swap');.swm{position:sticky;top:0;z-index:9999;backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);background:color-mix(in srgb,#e9eef7 82%,transparent);border-bottom:1px solid #dde4f0;font-family:'Hanken Grotesk',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-sizing:border-box;}.swm *{box-sizing:border-box;}.swm-inner{max-width:1480px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;justify-content:space-between;gap:14px 24px;flex-wrap:wrap;}.swm-brand{display:flex;align-items:center;gap:11px;text-decoration:none;}.swm-mark{position:relative;width:30px;height:30px;display:grid;place-items:center;flex:none;}.swm-core{width:11px;height:11px;border-radius:50%;background:#2bb3d4;box-shadow:0 0 0 0 #2bb3d4;animation:swm-pulse 2.4s ease-out infinite;z-index:2;}.swm-ring{position:absolute;inset:0;border-radius:50%;border:1.5px solid #2bb3d4;opacity:.55;animation:swm-ring 2.4s ease-out infinite;}@keyframes swm-pulse{0%{box-shadow:0 0 0 0 rgba(43,179,212,.55);}70%,100%{box-shadow:0 0 0 9px transparent;}}@keyframes swm-ring{0%{transform:scale(.55);opacity:.7;}100%{transform:scale(1.05);opacity:0;}}@media(prefers-reduced-motion:reduce){.swm-core,.swm-ring{animation:none;}}.swm-name{font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:21px;letter-spacing:-.015em;line-height:1;color:#19223a;}.swm-name .watch{color:#7b6ef0;font-style:italic;font-weight:500;}.swm-nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap;}.swm-nav a{font-size:13.5px;font-weight:500;color:#5c6982;text-decoration:none;padding:7px 12px;border-radius:9px;transition:color .15s,background .15s;}.swm-nav a:hover{color:#19223a;background:rgba(228,224,251,.7);}.swm-nav a.active{color:#19223a;background:rgba(228,224,251,.55);}.swm-nav .swm-off{font-size:13.5px;font-weight:500;color:#8a95ac;padding:7px 12px;cursor:not-allowed;}@media(max-width:720px){.swm-nav a:not(.active),.swm-nav .swm-off{display:none;}}</style><div class="swm-inner"><a class="swm-brand" href="/"><span class="swm-mark"><span class="swm-ring"></span><span class="swm-core"></span></span><span class="swm-name"><b>Signal</b><span class="watch">Watch</span></span></a><nav class="swm-nav"><a href="/">Home</a><a href="/latest/theories/" class="active" aria-current="page">Theories</a><a href="/latest/conspiracy-today.html">Conspiracy Today</a><a href="/latest/behind-the-news.html">Behind the News</a><a href="/latest/political-valence.html">Political Valence</a><a href="/latest/source-valence.html">Source Valence</a><a href="/pseudoscience/">Pseudoscience</a><a href="/data/">Data</a><span class="swm-off" aria-disabled="true">Deep Dives</span><span class="swm-off" aria-disabled="true">Methodology</span></nav></div><script>if(window.self!==window.top){document.currentScript.parentElement.style.display="none"}</script></header>
+  <div class="wrap">
+    <img class="sw-thumb" alt="" aria-hidden="true" loading="lazy" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20160%2090%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate%2858%29%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232bb3d4%22%20stop-opacity%3D%220.30%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231fb589%22%20stop-opacity%3D%220.30%22/%3E%3C/linearGradient%3E%3Cfilter%20id%3D%22b%22%3E%3CfeGaussianBlur%20stdDeviation%3D%227%22/%3E%3C/filter%3E%3C/defs%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22%23eef1f8%22/%3E%3Crect%20width%3D%22160%22%20height%3D%2290%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%2258%22%20cy%3D%2267%22%20r%3D%2236%22%20fill%3D%22%232bb3d4%22%20opacity%3D%220.28%22%20filter%3D%22url%28%23b%29%22/%3E%3Ccircle%20cx%3D%2265%22%20cy%3D%2269%22%20r%3D%2228%22%20fill%3D%22%231fb589%22%20opacity%3D%220.30%22%20filter%3D%22url%28%23b%29%22/%3E%3Ccircle%20cx%3D%2258%22%20cy%3D%2267%22%20r%3D%223%22%20fill%3D%22%232bb3d4%22%20opacity%3D%220.55%22/%3E%3C/svg%3E"><style>.sw-thumb{float:left;width:168px;height:94px;object-fit:cover;border-radius:12px;border:1px solid #dde4f0;margin:2px 20px 10px 0;background:#eef1f8;box-shadow:0 1px 3px rgba(40,50,90,.06)}@media(max-width:560px){.sw-thumb{width:100%;height:150px;float:none;margin:0 0 14px}}</style><h1>Angelo Carusone&#x27;s Media Manipulation Theory</h1>
+    <nav class="lineage-bc" aria-label="Theory lineage" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:2px 0 14px;font-family:Hanken Grotesk,system-ui,sans-serif;font-size:.82rem;color:#5c6982"><span style="color:#8a95ac">↳ sub-theory of</span><a href="dnc-rigged-the-2016-primary-against-bernie.html" style="color:#7b6ef0;text-decoration:none;font-weight:600">DNC Rigged the 2016 Primary Against Bernie</a><span style="color:#c2cad8">▸</span><span style="color:#19223a;font-weight:600">Angelo Carusone&#x27;s Media Manipulation Theory</span></nav>
+    
+    <div class="hd-tags"><span class="pill threat">Threat · Informational</span><span class="pill band">Marginal</span><span class="pill power">Power 6</span></div>
+    <p class="lead">The lines are gone — the wall between right-wing media and the levers of government power has collapsed, and what we are watching now is a coordinated machine running misinformation straight from the White House into American living rooms.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-pane="overview" onclick="swTab(this)">Overview</div>
+      <div class="tab" data-pane="whatsnew" onclick="swTab(this)">What's New</div>
+    </div>
+
+    <div class="pane active" data-pane="overview">
+      <h2>Violence-legitimation heat</h2>
+      <p class="meta">Violence-legitimation heat: not yet scored for this theory.</p>
+
+      <h2>Core claims</h2>
+      <ul class="claims"><li>A researcher discussing the spread of conspiracy theories on mainstream media</li><li>The lines are gone</li><li>The Trump administration has merged with the right-wing media to spread misinformation.</li><li>The lines between Fox News and the White House have been blurred, allowing for direct implementation of election lies.</li><li>Fox News is doing damage control by ignoring Trump&#x27;s election lies.</li></ul>
+
+      <h2>Voice of the Believer</h2>
+      <div class="voice"><p>The lines are gone — the wall between right-wing media and the levers of government power has collapsed, and what we are watching now is a coordinated machine running misinformation straight from the White House into American living rooms.</p><p>Media Matters President Angelo Carusone has made this case with receipts. When Chris Hayes talks to Media Matters President Angelo Carusone about the explosive new audio his organization uncovered, what you are hearing is not punditry — it is documentation. The Trump administration has merged with the right-wing media to spread misinformation, and Fox News is the primary transmission line. Tucker Carlson, the anchors, the whole apparatus — they are not commentators on power, they are instruments of it. The lines between Fox News and the White House have been blurred, allowing for direct implementation of election lies into the broader media bloodstream.</p><p>And when the pressure comes, Fox does not correct course — it retreats into silence. Fox News is doing damage control by ignoring Trump&#x27;s election lies, which is itself a choice, a deliberate editorial posture that protects the lie by refusing to name it. That silence is active. Carusone&#x27;s organization exists precisely to expose this mechanism: to show how conspiracy theories move from fringe spaces onto mainstream platforms, laundered through credible-seeming anchors and prime-time slots until they become ambient, unquestioned, treated as common knowledge. The merger is the message.</p></div>
+
+      <h2>Voice of Reason</h2>
+      <div class="voice"><p>The theory under examination holds that Angelo Carusone — president of the nonprofit media watchdog Media Matters for America — has himself been advancing a conspiratorial narrative: that the Trump administration secretly &quot;colluded&quot; with Fox News to spread election disinformation as part of a hidden, coordinated plot to undermine public trust in elections. Treating Carusone as a conspiracy theorist is the central inversion this entry addresses.</p><p>The first factual problem is that this framing misrepresents what Carusone actually said and who he is. Carusone is an American nonprofit executive who serves as president of Media Matters for America, a nonprofit media watchdog. He was named president and CEO in December 2016. His public statements about the Trump administration and right-wing media are not conspiracy theories — they are analytical commentary made on mainstream television, grounded in documented, verifiable facts about personnel and institutional behavior. The specific remark at issue, &quot;the lines are gone,&quot; appeared during a television segment on MSNBC and referred explicitly to a concrete, named individual: Carusone was explaining, in the context of discussing Fox News and election-related claims, that the old feedback loop between media and government had changed. He pointed to John Solomon — identified as running a White House task force — as an example: someone who could appear on Steve Bannon&#x27;s podcast in the morning and then walk into the White House to implement policy. &quot;The lines are gone,&quot; he said, meaning the institutional separation had collapsed into personnel overlap, not that there was a hidden cabal directing talking points from a secret room. That is an empirical observation about staffing, not a secret coordination theory.</p><p>The empirical record underlying that observation is, in key respects, independently established. Among the highest-profile examples, Pete Hegseth, one of the hosts of Fox &amp; Friends Weekend, became secretary of defense, and Dan Bongino, who had left Fox in 2023, became deputy director of the FBI. Sean Duffy, who had co-hosted a Fox Business program, became secretary of transportation, and his wife, Rachel Campos-Duffy, continued to host Fox &amp; Friends Weekend. Trump also tapped Fox News host Jeanine Pirro to serve as interim U.S. attorney in Washington, D.C., and what Media Matters has called the &quot;revolving door&quot; between the network and the Trump White House also runs in the other direction, with family members and former White House staffers obtaining Fox roles. This is verifiable personnel data, not inference. More critically, the Dominion Voting Systems lawsuit, settled in 2023, produced a documentary record that directly dismantles the claim that Fox was coordinating with the White House to push election lies it believed in. The evidence showed precisely the opposite dynamic. Records released as part of the lawsuit showed how Fox hosts and executives did not believe the claims by Trump&#x27;s allies but aired them anyway, in part to win back viewers who were fleeing the network after it correctly called Arizona for Democrat Joe Biden on election night. Sean Hannity said in deposition that he &quot;did not believe it for one second&quot; regarding the fraud claims; a February 2023 court filing showed primetime hosts messaging each other to insult and mock Trump advisers; and Rupert Murdoch himself messaged that Trump&#x27;s voter fraud claims were &quot;really crazy stuff,&quot; telling the Fox CEO it was &quot;terrible stuff damaging everybody.&quot; Fox News agreed to pay Dominion $787.5 million — the largest known media defamation settlement in U.S. history — and acknowledged the court&#x27;s earlier ruling that Fox had broadcast false statements about Dominion. This is not the profile of a network faithfully implementing White House messaging as a matter of ideology; it is the profile of a commercial institution that amplified lies for audience retention, privately contemptuous of the very claims it was broadcasting.</p><p>There is a legitimate concern at the core of what Carusone — and independent journalists including Jane Mayer of The New Yorker — have been documenting for years: the historically unusual porousness between a media organization and a presidential administration, the revolving-door personnel transfers, and the way ideologically symbiotic media ecosystems can amplify misinformation without requiring formal coordination. Jane Mayer reported that past administrations had favored press members, but there was &quot;nothing where someone is so close in that they are coordinating on a daily basis with the president,&quot; a situation she had never encountered in any previous White House she had studied. That concern is legitimate, documented, and important. What transforms it into a distortion is the leap from documented institutional closeness and commercial misinformation to the claim that Carusone is advancing a secret-collusion narrative. He is not. He is describing observable structural facts and doing so as an identified media critic on attribution. The conspiracy theory reversal — casting the analyst as the conspiracist — is itself a recognizable disinformation tactic: targeting the messenger, disputing the framing of an observation to avoid engaging the substance of the evidence it rests on. Treating a documented revolving door as unfalsifiable speculation, and treating the person pointing to the door as the problem, is precisely the kind of reasoning failure that counter-disinformation research exists to name and correct.</p></div>
+
+      
+
+      <h2>Ontology</h2>
+      <div class="ox"><div class="oxk">Sub-theory of</div><div><a class="oxchip" href="dnc-rigged-the-2016-primary-against-bernie.html">DNC Rigged the 2016 Primary Against Bernie</a></div><div class="oxk">Family</div><div><span class="oxchip">D — D - Election-integrity</span></div><div class="oxk">Arena</div><div><span class="oxchip">ELECTORAL</span></div><div class="oxk">Mechanism(s)</div><div><span class="oxchip" title="Engineer public behaviour/opinion via manufactured fear or cultural campaign.">MANIPULATION ★ — MANIPULATION</span></div><div class="oxk">Controlling interest(s)</div><div><span class="oxchip" title="Media / culture industry">MEDIA ★ — MEDIA</span></div><div class="oxk">Spices</div><div><span class="oxchip">anti-government/deep-state</span> <span class="oxchip">pro-Trump/MAGA</span></div></div><h3>Structural patterns</h3><div class="deflist"><div class="di"><span class="dt">ELECTORAL</span> — <span class="dd">elections &amp; legitimacy of power</span></div><div class="di"><span class="dt">MANIPULATION</span> — <span class="dd">Engineer public behaviour/opinion via manufactured fear or cultural campaign.</span></div><div class="di"><span class="dt">MEDIA</span> — <span class="dd">Media / culture industry</span></div></div>
+
+      <h2>Political valence &amp; atoms</h2>
+      <div class="valence-wrap"><svg class="valence-svg" viewBox="0 0 460 180" preserveAspectRatio="xMidYMid meet"><rect x="34" y="10" width="197.6" height="144" fill="#2f86d6" opacity="0.07"/><rect x="252.4" y="10" width="197.6" height="144" fill="#d6536d" opacity="0.07"/><line x1="34" y1="89.2" x2="450" y2="89.2" stroke="#dde4f0"/><circle cx="127.2" cy="67.6" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><circle cx="153.8" cy="90.5" r="4" fill="#2bb3d4" opacity="0.75" stroke="#1b8fb0" stroke-width="0.8"/><line x1="140.5" y1="10" x2="140.5" y2="154" stroke="#19223a" stroke-width="1.4" stroke-dasharray="3,2"/><line x1="34.0" y1="154" x2="34.0" y2="158" stroke="#b9cdec"/><text x="34.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Left</text><line x1="138.0" y1="154" x2="138.0" y2="158" stroke="#b9cdec"/><text x="138.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">−.5</text><line x1="242.0" y1="154" x2="242.0" y2="158" stroke="#b9cdec"/><text x="242.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">0</text><line x1="346.0" y1="154" x2="346.0" y2="158" stroke="#b9cdec"/><text x="346.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">+.5</text><line x1="450.0" y1="154" x2="450.0" y2="158" stroke="#b9cdec"/><text x="450.0" y="172" fill="#5c6982" font-size="9" text-anchor="middle">Right</text></svg><div class="valence-meta"><div class="big lean-left">Left-leaning</div><div>centroid -0.49 · 2 political atoms (sparse)</div><div class="meta">Sparse sample — too few atoms for a distribution curve; points are individual atoms.</div></div></div>
+
+      <h2>Content surface</h2>
+      <div class="surface-row"><div class="sr-lbl">Videos · 1</div><div class="plat-bar"><div class="plat-seg" style="background:#f5b400;flex:1">Youtube</div></div><div class="plat-legend"><span><span class="sw" style="background:#f5b400"></span>Youtube <b>1</b></span></div></div><div class="surface-row"><div class="sr-lbl">Text &amp; press · 1</div><div class="plat-bar"><div class="plat-seg" style="background:#60a5fa;flex:1">Web Articles</div></div><div class="plat-legend"><span><span class="sw" style="background:#60a5fa"></span>Web Articles <b>1</b></span></div></div>
+
+      
+
+      
+
+      <h2>Family links</h2>
+      <div class="deflist"><div class="di"><div class="dt">Trump Administration Intrigue · key term: Trump White House intrigue</div><div class="fam-links"><a href="trump-situation-room-exclusion-theory.html">Trump Situation Room Exclusion Theory</a><a href="whcd-security-stand-down-protocol.html">WHCD Security Stand-Down Protocol</a><a href="tricked-into-war.html">Tricked into War</a><a href="trump-crypto-coverup.html">Trump Crypto Coverup</a></div></div></div>
+
+      <h2>Connected narratives</h2>
+      <p class="meta">Other theories pushed by the same named spreaders — shared
+      voices, not shared claims. These links surface cross-narrative connections
+      (e.g. a shared ideologue) that the claim matcher, which routes by subject,
+      cannot see on its own.</p>
+      <div class="section-empty">No shared spreaders link this to other narratives yet.</div>
+
+      <h2>Influencers</h2>
+      <div class="section-empty">No influencers linked yet.</div>
+
+      <h2>Related reports</h2>
+      <div class="section-empty">No reports linked to this theory yet.</div>
+    </div>
+
+    <div class="pane" data-pane="whatsnew">
+      <h2>What's New — what the new material means</h2>
+      <div class="whats-new"><p>The new material reinforces the established narrative that the Trump administration has merged with right-wing media to push election misinformation. The claims now include variations on this theme, such as Angelo Carusone explaining how the lines between government power and media have collapsed, and Chris Hayes discussing explosive audio of Fox News host Tucker Carlson. This suggests a continued emphasis on the idea that there is a coordinated effort to spread misinformation.</p><p>The new material also indicates that the theory is spreading across multiple platforms, including YouTube, MSNBC, and Chinese news websites (e.g., sina.com.cn, ifeng.com). The presence of articles in Chinese language media outlets may indicate an attempt to reach a broader audience or to create a sense of global coordination. Additionally, the use of YouTube videos featuring Chris Hayes and Angelo Carusone suggests that prominent voices are continuing to push this narrative.</p><p>The tone of the new material is consistent with the established narrative, emphasizing the urgency and gravity of the situation. However, some articles (e.g., those on sina.com.cn) frame the issue in more neutral or technical terms, suggesting a shift towards presenting the theory as a matter of fact rather than an urgent warning.</p></div>
+    </div>
+
+    <div class="footer">
+      Generated by SignalWatch · 2026-07-20 09:28:54 UTC ·
+      theory_id <code>cf0097c3-b8fe-414d-870f-845cf928c311</code>
+    </div>
+  </div>
+  <script>
+    function swTab(el){
+      var w=el.closest('.wrap'), k=el.dataset.pane;
+      w.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===el);});
+      w.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('active',p.dataset.pane===k);});
+    }
+    // Deep-link support: /latest/theories/<slug>.html#whatsnew opens that tab
+    // (used by the homepage "Loudest Right Now" cards). Matches location.hash to a
+    // tab's data-pane on load + on hashchange.
+    function swActivateHash(){
+      var k=(location.hash||'').replace('#','').trim();
+      if(!k) return;
+      var tab=document.querySelector('.tab[data-pane="'+k+'"]');
+      if(tab){ swTab(tab); tab.scrollIntoView({block:'start',behavior:'smooth'}); }
+    }
+    swActivateHash();
+    window.addEventListener('hashchange', swActivateHash);
+  </script>
+<footer class="sw-footer"><style>.sw-footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;align-items:baseline;padding:22px;margin-top:34px;border-top:1px solid #dde4f0;font-family:'Hanken Grotesk',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:12.5px;line-height:1.5;color:#5c6982;}.sw-footer__brand{font-weight:600;color:#19223a;}.sw-footer__meta{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;color:#8a95ac;}.sw-footer__note{flex-basis:100%;color:#8a95ac;font-size:11.5px;}</style><span class="sw-footer__brand">SignalWatch — external intelligence brief</span><span class="sw-footer__meta">Generated <time>2026-07-20</time></span><script>if(window.self!==window.top){document.currentScript.parentElement.style.display="none"}</script></footer>
+</body>
+</html>
